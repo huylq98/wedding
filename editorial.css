@@ -1,0 +1,279 @@
+:root {
+  --silk: #f4ecdd;
+  --silk-deep: #e9dcc8;
+  --lacquer: #6f191b;
+  --vermilion: #a92e28;
+  --ink: #291b18;
+  --gold: #c79a54;
+  --serif: "Trirong", Georgia, serif;
+  --sans: "Be Vietnam Pro", Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--silk); color: var(--ink); font-family: var(--sans); }
+a { color: inherit; text-decoration: none; }
+
+.viet-hero {
+  position: relative;
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  padding: 108px 5vw 86px;
+  background:
+    radial-gradient(circle at 50% 20%, rgba(188, 65, 53, 0.38), transparent 40%),
+    linear-gradient(145deg, #4b1013, var(--lacquer) 55%, #4a1012);
+  color: var(--silk);
+}
+
+.viet-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.12;
+  background-image: repeating-radial-gradient(circle at 0 0, transparent 0 52px, var(--gold) 53px 54px, transparent 55px 104px);
+  background-size: 210px 210px;
+}
+
+.hero-meta {
+  position: absolute;
+  z-index: 2;
+  top: 92px;
+  left: 5vw;
+  right: 5vw;
+  display: flex;
+  justify-content: space-between;
+  color: rgba(244, 236, 221, 0.72);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.hero-orbit {
+  position: absolute;
+  border: 1px solid rgba(199, 154, 84, 0.2);
+  border-radius: 50%;
+}
+.orbit-one { width: 42vw; height: 42vw; top: -20vw; right: -13vw; }
+.orbit-two { width: 30vw; height: 30vw; bottom: -18vw; left: -8vw; }
+
+.invitation-frame {
+  position: relative;
+  z-index: 1;
+  width: min(760px, 90vw);
+  min-height: min(680px, 76svh);
+  display: grid;
+  place-items: center;
+  align-content: center;
+  padding: 74px 70px 68px;
+  border: 1px solid rgba(199, 154, 84, 0.68);
+  background: rgba(69, 13, 15, 0.3);
+  box-shadow: inset 0 0 0 7px rgba(199, 154, 84, 0.05), 0 32px 90px rgba(20, 2, 3, 0.3);
+  text-align: center;
+  animation: frame-in 1s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.frame-corner { position: absolute; width: 46px; height: 46px; border-color: var(--gold); opacity: 0.9; }
+.corner-one { top: 14px; left: 14px; border-top: 1px solid; border-left: 1px solid; }
+.corner-two { top: 14px; right: 14px; border-top: 1px solid; border-right: 1px solid; }
+.corner-three { right: 14px; bottom: 14px; border-right: 1px solid; border-bottom: 1px solid; }
+.corner-four { bottom: 14px; left: 14px; border-bottom: 1px solid; border-left: 1px solid; }
+
+.double-happiness {
+  width: 62px;
+  height: 62px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 30px;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  color: var(--gold);
+  font-family: serif;
+  font-size: 29px;
+}
+
+.hero-kicker {
+  margin: 0 0 30px;
+  color: rgba(244, 236, 221, 0.76);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.invitation-frame h1 {
+  margin: 0;
+  font: 300 clamp(42px, 6.2vw, 82px)/1.08 var(--serif);
+  letter-spacing: -0.045em;
+}
+.invitation-frame h1 span { display: block; }
+.invitation-frame h1 i {
+  display: block;
+  margin: 0.08em 0;
+  color: var(--gold);
+  font: italic 300 0.58em/1 var(--serif);
+}
+
+.hero-date {
+  width: min(540px, 100%);
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 18px;
+  margin-top: 40px;
+  padding-top: 19px;
+  border-top: 1px solid rgba(199, 154, 84, 0.42);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.hero-date span:first-child { text-align: right; }
+.hero-date span:last-child { text-align: left; }
+.hero-date time { color: var(--gold); font: 400 17px/1 var(--serif); letter-spacing: 0.06em; }
+
+.scroll-cue {
+  position: absolute;
+  z-index: 2;
+  bottom: 31px;
+  left: 50%;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  transform: translateX(-50%);
+}
+.scroll-cue span { margin-left: 8px; color: var(--gold); }
+
+.wedding-note {
+  position: relative;
+  min-height: 770px;
+  display: grid;
+  grid-template-columns: 0.25fr 1fr;
+  gap: 7vw;
+  align-items: center;
+  overflow: hidden;
+  padding: 120px 10vw;
+  border-bottom: 1px solid rgba(111, 25, 27, 0.22);
+}
+.note-number { align-self: start; padding-top: 12px; color: var(--vermilion); font: 400 13px/1 var(--serif); }
+.note-copy { position: relative; z-index: 1; max-width: 850px; }
+.eyebrow { margin: 0 0 25px; color: var(--vermilion); font-size: 9px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; }
+.note-copy h2, .date-copy h2 {
+  margin: 0;
+  font: 300 clamp(54px, 7vw, 100px)/1.04 var(--serif);
+  letter-spacing: -0.05em;
+}
+.note-copy > p:last-child {
+  max-width: 650px;
+  margin: 48px 0 0;
+  font-size: clamp(16px, 1.4vw, 19px);
+  font-weight: 300;
+  line-height: 1.85;
+}
+.lotus { position: absolute; width: min(42vw, 520px); color: var(--vermilion); opacity: 0.12; }
+.lotus-left { right: -7vw; bottom: -13%; transform: rotate(-8deg); }
+
+.date-section {
+  display: grid;
+  grid-template-columns: 0.82fr 1.18fr;
+  min-height: 740px;
+  background: var(--silk-deep);
+}
+.date-disc {
+  align-self: center;
+  justify-self: center;
+  width: min(32vw, 430px);
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  border: 1px solid rgba(199, 154, 84, 0.68);
+  border-radius: 50%;
+  background: var(--vermilion);
+  box-shadow: 0 28px 70px rgba(111, 25, 27, 0.19);
+  color: var(--silk);
+}
+.date-disc span, .date-disc small { font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; }
+.date-disc strong { margin: -4px 0 -13px; font: 300 clamp(120px, 15vw, 210px)/1 var(--serif); letter-spacing: -0.1em; }
+.date-copy { align-self: center; padding: 100px 8vw 100px 4vw; }
+.calendar-line { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; margin-top: 60px; }
+.calendar-line span { min-height: 64px; display: grid; place-items: center; align-content: center; border-top: 1px solid rgba(41, 27, 24, 0.28); font: 400 18px/1 var(--serif); }
+.calendar-line small { display: block; margin-bottom: 10px; color: #766c63; font: 500 8px/1 var(--sans); letter-spacing: 0.12em; }
+.calendar-line .is-wedding-day { border-radius: 50% 50% 3px 3px; background: var(--vermilion); color: var(--silk); }
+.calendar-line .is-wedding-day small { color: var(--silk); }
+
+.venue-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: var(--lacquer);
+  color: var(--silk);
+}
+.venue-heading { position: relative; min-height: 630px; display: flex; flex-direction: column; justify-content: center; padding: 100px 8vw; border-right: 1px solid rgba(244, 236, 221, 0.18); }
+.venue-heading > span { position: absolute; top: 55px; right: 6vw; color: rgba(199, 154, 84, 0.13); font: 400 170px/1 serif; }
+.venue-heading .eyebrow { color: var(--gold); }
+.venue-heading h2 { margin: 0; font: 300 clamp(82px, 10vw, 150px)/1 var(--serif); letter-spacing: -0.06em; }
+.venue-address { max-width: 390px; margin: 38px 0 0; color: rgba(244, 236, 221, 0.68); font-size: 12px; line-height: 1.8; }
+.ceremony-details { align-self: center; margin: 0; padding: 80px 7vw; }
+.ceremony-details div { display: grid; grid-template-columns: 120px 1fr; gap: 30px; padding: 27px 0; border-bottom: 1px solid rgba(244, 236, 221, 0.18); }
+.ceremony-details dt { color: var(--gold); font-size: 8px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; }
+.ceremony-details dd { margin: 0; font: 300 clamp(22px, 2.4vw, 34px)/1.25 var(--serif); }
+
+.viet-close {
+  min-height: 75svh;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  padding: 100px 24px;
+  background: var(--silk);
+  text-align: center;
+}
+.viet-close > p { margin: 0 0 27px; color: var(--vermilion); font-size: 9px; font-weight: 600; letter-spacing: 0.19em; text-transform: uppercase; }
+.viet-close h2 { margin: 0; font: 300 clamp(63px, 10vw, 140px)/0.95 var(--serif); letter-spacing: -0.07em; }
+.viet-close h2 i { color: var(--vermilion); font-weight: 300; }
+.closing-mark { width: 48px; height: 48px; display: grid; place-items: center; margin: 45px 0 22px; border: 1px solid var(--vermilion); border-radius: 50%; color: var(--vermilion); font-family: serif; }
+.viet-close > span { font-size: 9px; letter-spacing: 0.2em; }
+
+@keyframes frame-in {
+  from { opacity: 0; transform: translateY(18px) scale(0.985); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (max-width: 720px) {
+  .viet-hero { padding: 92px 18px 74px; }
+  .hero-meta { top: 72px; left: 22px; right: 22px; }
+  .hero-meta span:last-child { display: none; }
+  .invitation-frame { width: 100%; min-height: 72svh; padding: 54px 24px 48px; }
+  .double-happiness { width: 54px; height: 54px; margin-bottom: 25px; font-size: 25px; }
+  .hero-kicker { max-width: 250px; margin-bottom: 24px; line-height: 1.7; }
+  .invitation-frame h1 { font-size: clamp(38px, 11vw, 56px); line-height: 1.13; }
+  .hero-date { grid-template-columns: 1fr; gap: 9px; margin-top: 32px; }
+  .hero-date span, .hero-date span:first-child, .hero-date span:last-child { text-align: center; }
+  .scroll-cue { bottom: 24px; }
+
+  .wedding-note { min-height: 680px; grid-template-columns: 1fr; gap: 25px; padding: 100px 24px; }
+  .note-number { padding: 0; }
+  .note-copy h2, .date-copy h2 { font-size: clamp(47px, 13vw, 68px); }
+  .note-copy > p:last-child { margin-top: 38px; font-size: 15px; line-height: 1.8; }
+  .lotus { width: 88vw; right: -31vw; bottom: -4%; }
+
+  .date-section { grid-template-columns: 1fr; min-height: 0; padding: 90px 24px; }
+  .date-disc { width: min(76vw, 330px); }
+  .date-disc strong { font-size: clamp(116px, 38vw, 165px); }
+  .date-copy { padding: 80px 0 0; }
+  .calendar-line { gap: 4px; margin-top: 44px; }
+  .calendar-line span { min-height: 58px; font-size: 16px; }
+
+  .venue-section { grid-template-columns: 1fr; }
+  .venue-heading { min-height: 470px; padding: 90px 24px; border-right: 0; border-bottom: 1px solid rgba(244, 236, 221, 0.18); }
+  .venue-heading > span { top: 38px; right: 18px; font-size: 120px; }
+  .venue-heading h2 { font-size: clamp(72px, 22vw, 105px); }
+  .ceremony-details { padding: 55px 24px 85px; }
+  .ceremony-details div { grid-template-columns: 88px 1fr; gap: 16px; }
+  .ceremony-details dd { font-size: 23px; }
+  .viet-close h2 { font-size: clamp(55px, 15vw, 78px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .invitation-frame { animation: none; }
+}

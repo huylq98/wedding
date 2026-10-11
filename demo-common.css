@@ -1,0 +1,124 @@
+.design-switcher {
+  position: fixed;
+  z-index: 200;
+  top: 14px;
+  left: 50%;
+  display: flex;
+  gap: 3px;
+  width: max-content;
+  max-width: calc(100vw - 28px);
+  padding: 4px;
+  border: 1px solid rgba(35, 30, 25, 0.18);
+  border-radius: 100px;
+  background: rgba(248, 244, 235, 0.92);
+  box-shadow: 0 8px 28px rgba(20, 17, 13, 0.1);
+  color: #27231f;
+  font-family: "Be Vietnam Pro", Arial, sans-serif;
+  backdrop-filter: blur(14px);
+  transform: translateX(-50%);
+}
+
+.design-switcher a {
+  display: flex;
+  align-items: center;
+  min-height: 34px;
+  border-radius: 100px;
+  padding: 0 14px;
+  color: inherit;
+  font-size: 10px;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+}
+
+.design-switcher a span {
+  margin-right: 6px;
+  opacity: 0.5;
+}
+
+.design-switcher a.is-active {
+  background: #27231f;
+  color: #f7f2e8;
+}
+
+.demo-music {
+  position: fixed;
+  z-index: 180;
+  right: 18px;
+  bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 43px;
+  border: 1px solid rgba(245, 239, 227, 0.3);
+  border-radius: 100px;
+  padding: 0 16px;
+  background: #211f1c;
+  box-shadow: 0 10px 32px rgba(21, 18, 15, 0.18);
+  color: #f5efe3;
+  cursor: pointer;
+  font: 500 9px/1 "Be Vietnam Pro", Arial, sans-serif;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.demo-music:focus-visible {
+  outline: 2px solid #b58a55;
+  outline-offset: 3px;
+}
+
+.demo-music .music-bars {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  height: 13px;
+}
+
+.demo-music .music-bars i {
+  display: block;
+  width: 2px;
+  height: 4px;
+  background: currentColor;
+}
+
+.demo-music.is-playing .music-bars i {
+  animation: demo-music-bar 0.75s ease-in-out infinite alternate;
+}
+
+.demo-music.is-playing .music-bars i:nth-child(2) { animation-delay: -0.3s; }
+.demo-music.is-playing .music-bars i:nth-child(3) { animation-delay: -0.55s; }
+
+@keyframes demo-music-bar { to { height: 13px; } }
+
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.75s ease, transform 0.75s cubic-bezier(0.2, 0.75, 0.25, 1);
+}
+
+[data-reveal].is-visible { opacity: 1; transform: none; }
+
+@media (max-width: 620px) {
+  .design-switcher {
+    top: 9px;
+    width: calc(100vw - 18px);
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .design-switcher::-webkit-scrollbar { display: none; }
+
+  .design-switcher a {
+    flex: 1 0 auto;
+    justify-content: center;
+    min-width: 0;
+    padding-inline: 8px;
+    font-size: 8px;
+  }
+
+  .design-switcher a span { display: none; }
+  .demo-music { right: 12px; bottom: 12px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] { opacity: 1; transform: none; }
+}
