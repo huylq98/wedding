@@ -17,24 +17,24 @@ body[data-theme="paper"] .wedding-extras {
 }
 
 body[data-theme="floral"] .wedding-extras {
-  --extra-bg: #efe6e0;
-  --extra-panel: #fffaf5;
-  --extra-ink: #392c2f;
-  --extra-accent: #995f69;
+  --extra-bg: #ead3cc;
+  --extra-panel: #fff8ef;
+  --extra-ink: #45191c;
+  --extra-accent: #8f1d2a;
 }
 
 body[data-theme="seoul"] .wedding-extras {
-  --extra-bg: #f2e9e4;
-  --extra-panel: #fffaf6;
-  --extra-ink: #3d3433;
-  --extra-accent: #a66e72;
+  --extra-bg: #ecddca;
+  --extra-panel: #fff8ed;
+  --extra-ink: #491817;
+  --extra-accent: #981f24;
 }
 
 body[data-theme="editorial-photo"] .wedding-extras {
-  --extra-bg: #e8e5df;
-  --extra-panel: #f8f6f1;
-  --extra-ink: #181818;
-  --extra-accent: #a02620;
+  --extra-bg: #e2b66f;
+  --extra-panel: #f5d493;
+  --extra-ink: #49130f;
+  --extra-accent: #971f19;
 }
 
 body[data-theme="wine"] .wedding-extras {
