@@ -97,6 +97,54 @@
 
 [data-reveal].is-visible { opacity: 1; transform: none; }
 
+body.is-invitation-locked { overflow: hidden; }
+.invitation-gate {
+  --gate-deep: #741a1a;
+  --gate-paper: #f3e5cc;
+  --gate-gold: #d3aa64;
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  perspective: 1400px;
+  background: var(--gate-deep);
+  color: var(--gate-paper);
+}
+body[data-theme="wine"] .invitation-gate { --gate-deep: #3c2524; --gate-paper: #f0e3d5; --gate-gold: #b98774; }
+.invitation-door { position: absolute; top: 0; bottom: 0; width: 51%; background:
+  radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--gate-gold) 13%, transparent), transparent 38%),
+  repeating-linear-gradient(90deg, transparent 0 44px, color-mix(in srgb, var(--gate-gold) 6%, transparent) 45px 46px),
+  var(--gate-deep); transition: transform 1.25s cubic-bezier(.7,0,.2,1); }
+.invitation-door::after { content: ""; position: absolute; inset: 24px; border: 1px solid color-mix(in srgb, var(--gate-gold) 43%, transparent); }
+.invitation-door-left { left: 0; border-right: 1px solid color-mix(in srgb, var(--gate-gold) 48%, transparent); transform-origin: left center; }
+.invitation-door-right { right: 0; border-left: 1px solid color-mix(in srgb, var(--gate-gold) 48%, transparent); transform-origin: right center; }
+.invitation-gate-card { position: relative; z-index: 3; width: min(580px, calc(100vw - 44px)); padding: 58px 35px 48px; border: 1px solid color-mix(in srgb, var(--gate-gold) 60%, transparent); background: color-mix(in srgb, var(--gate-deep) 92%, transparent); box-shadow: 0 28px 90px rgba(26,10,8,.36); text-align: center; backdrop-filter: blur(8px); transition: opacity .45s ease, transform .65s ease; }
+.invitation-gate-card::before { content: "囍"; position: absolute; inset: 50% auto auto 50%; color: color-mix(in srgb, var(--gate-gold) 8%, transparent); font: 400 260px/1 Georgia, serif; transform: translate(-50%,-50%); }
+body[data-theme="wine"] .invitation-gate-card::before { content: "H&P"; font: 600 150px/1 "Dancing Script", cursive; }
+.invitation-gate-card > * { position: relative; z-index: 1; }
+.invitation-gate-card > p { margin: 0; color: var(--gate-gold); font-size: 9px; letter-spacing: .22em; text-transform: uppercase; }
+.invitation-gate-card h1 { margin: 30px 0 38px; font: 500 clamp(66px,9vw,118px)/.85 "Dancing Script", cursive; letter-spacing: -.04em; }
+.invitation-gate-card h1 i { color: var(--gate-gold); font-weight: 500; }
+.invitation-gate-card button { display: grid; gap: 13px; place-items: center; margin: 0 auto; border: 0; background: transparent; color: var(--gate-paper); cursor: pointer; font: 600 9px/1 "Be Vietnam Pro", Arial, sans-serif; letter-spacing: .17em; text-transform: uppercase; }
+.invitation-gate-card button span { display: grid; width: 88px; height: 88px; place-items: center; border: 1px solid var(--gate-gold); border-radius: 50%; background: var(--gate-gold); box-shadow: 0 0 0 8px color-mix(in srgb, var(--gate-gold) 14%, transparent); color: var(--gate-deep); font: 600 29px/1 "Dancing Script", cursive; transition: transform .3s ease, box-shadow .3s ease; }
+.invitation-gate-card button:hover span, .invitation-gate-card button:focus-visible span { box-shadow: 0 0 0 13px color-mix(in srgb, var(--gate-gold) 17%, transparent); transform: rotate(-5deg) scale(1.04); }
+.invitation-gate-card button:focus-visible { outline: 0; }
+.invitation-gate-card > small { display: block; margin-top: 25px; color: color-mix(in srgb, var(--gate-paper) 62%, transparent); font-size: 8px; letter-spacing: .08em; }
+.opening-petals { position: absolute; z-index: 4; inset: 0; pointer-events: none; }
+.opening-petals i { position: absolute; top: 48%; left: var(--petal-x); width: 13px; height: 22px; border-radius: 80% 15% 70% 25%; background: var(--gate-gold); opacity: 0; transform: rotate(var(--petal-rotate)); }
+.invitation-gate.is-opening .invitation-door-left { transform: translateX(-102%) rotateY(10deg); }
+.invitation-gate.is-opening .invitation-door-right { transform: translateX(102%) rotateY(-10deg); }
+.invitation-gate.is-opening .invitation-gate-card { opacity: 0; transform: scale(.86); }
+.invitation-gate.is-opening .opening-petals i { animation: openingPetal 1.3s var(--petal-delay) cubic-bezier(.15,.65,.25,1) both; }
+
+@keyframes openingPetal {
+  0% { opacity: 0; translate: 0 0; rotate: 0deg; scale: .7; }
+  18% { opacity: .9; }
+  100% { opacity: 0; translate: var(--petal-drift) 48vh; rotate: 260deg; scale: 1.15; }
+}
+
 @media (max-width: 620px) {
   .design-switcher {
     top: 9px;
@@ -117,8 +165,13 @@
 
   .design-switcher a span { display: none; }
   .demo-music { right: 12px; bottom: 12px; }
+  .invitation-gate-card { padding: 50px 22px 42px; }
+  .invitation-gate-card h1 { font-size: 68px; }
+  .invitation-door::after { inset: 14px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   [data-reveal] { opacity: 1; transform: none; }
+  .invitation-door, .invitation-gate-card { transition: none; }
+  .invitation-gate.is-opening .opening-petals i { animation: none; }
 }

@@ -1,6 +1,7 @@
 const musicButton = document.querySelector("[data-music-toggle]");
 const musicLabel = document.querySelector("[data-music-label]");
 const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const melody = [
   261.63, 329.63, 392.0, 329.63,
   220.0, 261.63, 329.63, 261.63,
@@ -73,7 +74,56 @@ musicButton?.addEventListener("click", () => {
   else startMusic();
 });
 
-const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const invitationTheme = document.body.dataset.theme;
+if (["viet", "wine"].includes(invitationTheme)) {
+  const storageKey = `huy-phuong-opened-${invitationTheme}`;
+  let alreadyOpened = false;
+  try {
+    alreadyOpened = window.sessionStorage.getItem(storageKey) === "yes";
+  } catch {}
+
+  if (!alreadyOpened) {
+    const gate = document.createElement("div");
+    gate.className = "invitation-gate";
+    gate.setAttribute("role", "dialog");
+    gate.setAttribute("aria-modal", "true");
+    gate.setAttribute("aria-labelledby", "invitation-gate-title");
+    gate.innerHTML = `
+      <div class="invitation-door invitation-door-left" aria-hidden="true"></div>
+      <div class="invitation-door invitation-door-right" aria-hidden="true"></div>
+      <div class="invitation-gate-card">
+        <p>Trân trọng mời bạn đến chung vui</p>
+        <h1 id="invitation-gate-title">Huy <i>&amp;</i> Phương</h1>
+        <button type="button" data-open-invitation><span>H&amp;P</span>Mở thiệp</button>
+        <small>Nhạc nền sẽ bắt đầu sau khi mở</small>
+      </div>
+      <div class="opening-petals" aria-hidden="true"></div>
+    `;
+    document.body.prepend(gate);
+    document.body.classList.add("is-invitation-locked");
+
+    const petalLayer = gate.querySelector(".opening-petals");
+    for (let index = 0; index < 12; index += 1) {
+      const petal = document.createElement("i");
+      petal.style.setProperty("--petal-x", `${8 + ((index * 17) % 84)}vw`);
+      petal.style.setProperty("--petal-drift", `${-34 + ((index * 13) % 68)}vw`);
+      petal.style.setProperty("--petal-delay", `${(index % 6) * 0.08}s`);
+      petal.style.setProperty("--petal-rotate", `${25 + index * 31}deg`);
+      petalLayer.append(petal);
+    }
+
+    gate.querySelector("[data-open-invitation]").addEventListener("click", () => {
+      gate.classList.add("is-opening");
+      document.body.classList.remove("is-invitation-locked");
+      try {
+        window.sessionStorage.setItem(storageKey, "yes");
+      } catch {}
+      if (AudioContextClass && !musicTimer) startMusic().catch(() => {});
+      window.setTimeout(() => gate.remove(), reduceMotion ? 80 : 1500);
+    });
+  }
+}
+
 const revealItems = document.querySelectorAll("[data-reveal]");
 if ("IntersectionObserver" in window && !reduceMotion) {
   const observer = new IntersectionObserver(

@@ -104,12 +104,20 @@ extras.innerHTML = `
       </div>
       <p class="venue-assumption">Địa chỉ đang dùng theo cơ sở Selena Palace tại Hoài Đức.</p>
     </div>
-    <div class="map-frame">
+    <div class="map-frame is-collapsed" id="ban-do">
+      <div class="map-placeholder">
+        <span class="map-pin" aria-hidden="true"><i></i></span>
+        <p class="extras-kicker">Chỉ đường</p>
+        <h3>${venueName}</h3>
+        <p>Bản đồ chỉ tải khi bạn chọn xem.</p>
+        <button type="button" data-map-reveal>Xem bản đồ</button>
+      </div>
       <iframe
         title="Bản đồ đến Selena Palace"
-        src="https://www.google.com/maps?q=${mapQuery}&output=embed"
+        data-src="https://www.google.com/maps?q=${mapQuery}&output=embed"
         loading="lazy"
         referrerpolicy="no-referrer-when-downgrade"
+        hidden
       ></iframe>
     </div>
   </div>
@@ -252,6 +260,15 @@ document.querySelector("[data-add-calendar]")?.addEventListener("click", () => {
   URL.revokeObjectURL(url);
 });
 
+document.querySelector("[data-map-reveal]")?.addEventListener("click", () => {
+  const mapFrame = document.querySelector(".map-frame");
+  const map = mapFrame?.querySelector("iframe");
+  if (!map?.src) map.src = map.dataset.src;
+  map.hidden = false;
+  mapFrame.classList.remove("is-collapsed");
+  mapFrame.classList.add("is-open");
+});
+
 document.querySelector("[data-rsvp-form]")?.addEventListener("submit", (event) => {
   event.preventDefault();
   document.querySelector("[data-form-status]").textContent =
@@ -309,6 +326,13 @@ wishForm?.addEventListener("submit", (event) => {
   document.querySelector("[data-wish-status]").textContent =
     "Đã thêm vào bản xem thử trên thiết bị này. Lời chúc chưa được gửi lên máy chủ.";
   renderPreviewWishes();
+
+  const bubble = document.createElement("div");
+  bubble.className = "wish-bubble";
+  bubble.setAttribute("role", "status");
+  bubble.innerHTML = "<span>♡</span><strong>Một lời chúc vừa được ghi lại</strong>";
+  document.body.append(bubble);
+  window.setTimeout(() => bubble.remove(), 3600);
 });
 
 renderPreviewWishes();
