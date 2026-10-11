@@ -49,9 +49,9 @@ extras.innerHTML = `
     </article>
     <article>
       <span>03</span>
-      <p class="extras-kicker">Lịch trình</p>
-      <h3>Đón khách · Làm lễ · Dùng tiệc</h3>
-      <p>Giờ bắt đầu đã có. Giờ đón khách và dùng tiệc đang để trống.</p>
+      <p class="extras-kicker">Lễ Vu Quy</p>
+      <h3>Ngày giờ và địa điểm nhà gái</h3>
+      <p>Đang chờ thông tin từ gia đình cô dâu để hoàn thiện.</p>
     </article>
     <article>
       <span>04</span>
@@ -59,6 +59,28 @@ extras.innerHTML = `
       <h3>Màu sắc và lưu ý trang phục</h3>
       <p>Đang chờ dress code hoặc bảng màu từ hai bạn.</p>
     </article>
+  </div>
+
+  <div class="ceremony-schedule" id="lich-trinh" data-reveal>
+    <div class="schedule-heading">
+      <p class="extras-kicker">Lịch trình ngày vui</p>
+      <h2>Hai nghi lễ,<br />hai nhà cùng chung vui.</h2>
+    </div>
+    <div class="schedule-list">
+      <article class="schedule-item is-pending">
+        <span class="schedule-number">01</span>
+        <div><p>Lễ Vu Quy</p><h3>Nhà gái</h3><small>Ngày giờ và địa điểm đang cập nhật</small></div>
+      </article>
+      <article class="schedule-item">
+        <span class="schedule-number">02</span>
+        <time datetime="2026-11-28T10:00:00+07:00">10:00 · 28.11.2026</time>
+        <div><p>Lễ Thành Hôn</p><h3>Selena Palace</h3><small>Km 19 Quốc lộ 32, Đức Thượng, Hoài Đức, Hà Nội</small></div>
+      </article>
+      <article class="schedule-item is-pending">
+        <span class="schedule-number">03</span>
+        <div><p>Tiệc Chung Vui</p><h3>Cùng gia đình và bạn bè</h3><small>Thời gian đang cập nhật</small></div>
+      </article>
+    </div>
   </div>
 
   <div class="countdown-block" data-reveal>
@@ -113,16 +135,48 @@ extras.innerHTML = `
       <p class="form-status" data-form-status>Form đang ở chế độ xem trước, chưa lưu phản hồi.</p>
     </form>
 
-    <div class="gift-card" id="mung-cuoi" data-reveal>
+    <section class="wishes-card" id="loi-chuc" data-reveal>
+      <p class="extras-kicker">Sổ lời chúc</p>
+      <h2>Gửi một lời đến hai đứa</h2>
+      <form data-wish-form>
+        <label class="wish-name-field">
+          <span>Tên của bạn</span>
+          <input name="wish-name" autocomplete="name" required placeholder="Nhập tên" />
+        </label>
+        <label class="anonymous-choice"><input type="checkbox" name="anonymous" /> Gửi ẩn danh</label>
+        <label>
+          <span>Lời chúc</span>
+          <textarea name="wish-message" rows="4" required placeholder="Viết lời chúc cho Huy và Phương"></textarea>
+        </label>
+        <button class="submit-wish" type="submit">Gửi lời chúc</button>
+        <p class="form-status" data-wish-status>Bản demo chỉ lưu lời chúc trên thiết bị này.</p>
+      </form>
+      <div class="wish-preview" aria-live="polite">
+        <p class="wish-empty" data-wish-empty>Chưa có lời chúc nào trên thiết bị này.</p>
+        <div class="wish-preview-list" data-wish-list></div>
+      </div>
+    </section>
+  </div>
+
+  <div class="gift-card" id="mung-cuoi" data-reveal>
+    <div class="gift-heading">
       <p class="extras-kicker">Mừng cưới</p>
       <h2>Gửi chút yêu thương</h2>
-      <div class="qr-placeholder" role="img" aria-label="Vị trí mã QR ngân hàng sẽ cập nhật sau">
-        <span>QR</span>
-        <small>Đang cập nhật</small>
-      </div>
-      <p class="bank-placeholder">Ngân hàng · Số tài khoản · Chủ tài khoản</p>
-      <p class="gift-note">Mã QR thật sẽ được thêm khi có thông tin ngân hàng.</p>
+      <p>Hai mã QR sẽ được thay bằng thông tin ngân hàng thật của cô dâu và chú rể.</p>
     </div>
+    <div class="gift-accounts">
+      <article class="gift-account-card">
+        <p>Cô dâu</p><h3>Nguyễn Vũ Thu Phương</h3>
+        <div class="qr-placeholder" role="img" aria-label="Vị trí mã QR ngân hàng của cô dâu sẽ cập nhật sau"><span>QR</span><small>Cô dâu</small></div>
+        <p class="bank-placeholder">Ngân hàng · Số tài khoản</p>
+      </article>
+      <article class="gift-account-card">
+        <p>Chú rể</p><h3>Lê Quốc Huy</h3>
+        <div class="qr-placeholder" role="img" aria-label="Vị trí mã QR ngân hàng của chú rể sẽ cập nhật sau"><span>QR</span><small>Chú rể</small></div>
+        <p class="bank-placeholder">Ngân hàng · Số tài khoản</p>
+      </article>
+    </div>
+    <p class="gift-note">Thông tin chuyển khoản đang cập nhật.</p>
   </div>
 `;
 
@@ -203,4 +257,59 @@ document.querySelector("[data-rsvp-form]")?.addEventListener("submit", (event) =
   document.querySelector("[data-form-status]").textContent =
     "Đã kiểm tra biểu mẫu. Đây vẫn là bản xem trước nên phản hồi chưa được lưu.";
 });
+
+const wishForm = document.querySelector("[data-wish-form]");
+const wishNameInput = wishForm?.elements.namedItem("wish-name");
+const anonymousInput = wishForm?.elements.namedItem("anonymous");
+const wishList = document.querySelector("[data-wish-list]");
+const wishEmpty = document.querySelector("[data-wish-empty]");
+const wishStorageKey = "huy-phuong-preview-wishes";
+
+function readPreviewWishes() {
+  try {
+    return JSON.parse(window.localStorage.getItem(wishStorageKey) || "[]");
+  } catch {
+    return [];
+  }
+}
+
+function renderPreviewWishes() {
+  const wishes = readPreviewWishes();
+  wishList.replaceChildren();
+  wishEmpty.hidden = wishes.length > 0;
+  wishes.slice(-4).reverse().forEach((wish) => {
+    const item = document.createElement("article");
+    const name = document.createElement("strong");
+    const message = document.createElement("p");
+    name.textContent = wish.name;
+    message.textContent = wish.message;
+    item.append(name, message);
+    wishList.append(item);
+  });
+}
+
+anonymousInput?.addEventListener("change", () => {
+  wishNameInput.disabled = anonymousInput.checked;
+  wishNameInput.required = !anonymousInput.checked;
+  wishNameInput.placeholder = anonymousInput.checked ? "Sẽ hiển thị là Ẩn danh" : "Nhập tên";
+});
+
+wishForm?.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const formData = new FormData(wishForm);
+  const wishes = readPreviewWishes();
+  wishes.push({
+    name: formData.get("anonymous") ? "Ẩn danh" : String(formData.get("wish-name")).trim(),
+    message: String(formData.get("wish-message")).trim(),
+  });
+  window.localStorage.setItem(wishStorageKey, JSON.stringify(wishes));
+  wishForm.reset();
+  wishNameInput.disabled = false;
+  wishNameInput.required = true;
+  document.querySelector("[data-wish-status]").textContent =
+    "Đã thêm vào bản xem thử trên thiết bị này. Lời chúc chưa được gửi lên máy chủ.";
+  renderPreviewWishes();
+});
+
+renderPreviewWishes();
 
