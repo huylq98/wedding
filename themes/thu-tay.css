@@ -100,9 +100,10 @@ body[data-theme="ink"] .x-lead, body[data-theme="ink"] .x-address { margin-left:
 body[data-theme="ink"] .countdown > span { border: 0; border-left: 1px solid var(--ink); background: transparent; text-align: left; padding: 4px 0 4px 10px; }
 body[data-theme="ink"] .countdown strong { color: var(--accent); font-weight: 300; font-size: 44px; }
 body[data-theme="ink"] .x-wishes { background: var(--paper); }
-body[data-theme="ink"] .x-field input, body[data-theme="ink"] .x-field textarea { border-width: 0 0 1px; border-color: var(--ink); background: transparent; padding-inline: 0; }
+body[data-theme="ink"] .x-field input, body[data-theme="ink"] .x-field textarea, body[data-theme="ink"] .x-field select { border-width: 0 0 1px; border-color: var(--ink); background: transparent; padding-inline: 0; }
 body[data-theme="ink"] .x-field input:focus, body[data-theme="ink"] .x-field textarea:focus { box-shadow: none; border-color: var(--accent); }
 body[data-theme="ink"] .form-status { text-align: left; }
+body[data-theme="ink"] .x-field select { background-image: linear-gradient(45deg, transparent 50%, var(--muted) 50%), linear-gradient(-45deg, transparent 50%, var(--muted) 50%); background-position: calc(100% - 12px) 50%, calc(100% - 6px) 50%; background-size: 6px 6px; background-repeat: no-repeat; }
 body[data-theme="ink"] .qr-placeholder { outline-color: var(--ink); }
 
 body[data-theme="ink"] .theme-close { border-top: 1px solid var(--ink); text-align: left; }

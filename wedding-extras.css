@@ -173,7 +173,7 @@
   letter-spacing: 0.18em;
   text-transform: uppercase;
 }
-.x-field input, .x-field textarea {
+.x-field input, .x-field textarea, .x-field select {
   width: 100%;
   padding: 14px 16px;
   border: 1px solid var(--line);
@@ -185,7 +185,10 @@
 .x-field input::placeholder, .x-field textarea::placeholder { color: var(--muted); }
 .x-field input:disabled { opacity: 0.55; }
 .x-field textarea { resize: vertical; }
-.x-field input:focus, .x-field textarea:focus { outline: 0; border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 14%, transparent); }
+.x-field select { appearance: none; background-image: linear-gradient(45deg, transparent 50%, var(--muted) 50%), linear-gradient(-45deg, transparent 50%, var(--muted) 50%); background-position: calc(100% - 22px) 50%, calc(100% - 16px) 50%; background-size: 6px 6px; background-repeat: no-repeat; }
+/* Ô bẫy spam: người thật không thấy, bot hay điền vào. */
+.x-hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.x-field input:focus, .x-field textarea:focus, .x-field select:focus { outline: 0; border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 14%, transparent); }
 .x-choice { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 0; padding: 0; border: 0; }
 .x-choice legend { margin-bottom: 8px; padding: 0; }
 .x-choice label { position: relative; }
@@ -212,7 +215,7 @@
 .x-wishes .x-field input, .x-wishes .x-field textarea { background: var(--bg); }
 .wish-preview { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
 .wish-empty { margin: 0; color: var(--muted); font-size: 13px; }
-.wish-preview-list { display: grid; gap: 12px; text-align: left; }
+.wish-preview-list { display: grid; gap: 12px; max-height: 520px; overflow-y: auto; text-align: left; overscroll-behavior: contain; }
 .wish-preview-list article { padding: 18px 20px; border-left: 2px solid var(--accent); border-radius: var(--radius); background: var(--bg); }
 .wish-preview-list strong { font: 400 21px/1.2 var(--f-display); }
 .wish-preview-list p { margin: 6px 0 0; font-size: 14px; line-height: 1.6; }

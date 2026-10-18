@@ -3,6 +3,10 @@ const venueName = "Selena Palace";
 const venueAddress = "Km 19 Quốc lộ 32, Đức Thượng, Hoài Đức, Hà Nội";
 const mapQuery = encodeURIComponent(`${venueName}, ${venueAddress}`);
 
+// Dán URL Web App của Google Apps Script vào đây (xem README, mục "Nhận phản hồi vào Google Sheet").
+// Để trống thì thiệp chạy chế độ xem trước: xác nhận không được gửi, lời chúc chỉ lưu trên máy khách.
+const sheetEndpoint = "https://script.google.com/macros/s/AKfycbwUJnghXZGk-drfNuTzlkpcdvAqyPvL6bzMquEorKlwRJCmZC8VV-v9Wzgmq6z6nZOI/exec";
+
 const extras = document.createElement("section");
 extras.className = "wedding-extras";
 extras.id = "tham-du";
@@ -143,11 +147,22 @@ extras.innerHTML = `
         <label><input type="radio" name="attendance" value="no" /><span>Xin phép vắng</span></label>
       </fieldset>
       <label class="x-field">
-        <span>Lời nhắn</span>
-        <textarea name="message" rows="3" placeholder="Gửi vài lời đến Huy và Phương"></textarea>
+        <span>Số người đi cùng (tính cả bạn)</span>
+        <select name="guests">
+          <option value="1">1 người</option>
+          <option value="2">2 người</option>
+          <option value="3">3 người</option>
+          <option value="4">4 người</option>
+          <option value="5">5 người trở lên</option>
+        </select>
       </label>
+      <label class="x-field">
+        <span>Lời nhắn</span>
+        <textarea name="message" rows="3" maxlength="500" placeholder="Gửi vài lời đến Huy và Phương"></textarea>
+      </label>
+      <input class="x-hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
       <button class="x-btn is-solid" type="submit">Gửi xác nhận</button>
-      <p class="form-status" data-form-status role="status">Bản xem trước, phản hồi chưa được lưu.</p>
+      <p class="form-status" data-form-status role="status">${sheetEndpoint ? "" : "Bản xem trước, phản hồi chưa được lưu."}</p>
     </form>
   </section>
 
@@ -164,13 +179,14 @@ extras.innerHTML = `
       <label class="x-check"><input type="checkbox" name="anonymous" /> Gửi ẩn danh</label>
       <label class="x-field">
         <span>Lời chúc</span>
-        <textarea name="wish-message" rows="4" required placeholder="Viết lời chúc cho Huy và Phương"></textarea>
+        <textarea name="wish-message" rows="4" required maxlength="500" placeholder="Viết lời chúc cho Huy và Phương"></textarea>
       </label>
+      <input class="x-hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
       <button class="x-btn is-solid" type="submit">Gửi lời chúc</button>
-      <p class="form-status" data-wish-status role="status">Bản demo chỉ lưu lời chúc trên thiết bị này.</p>
+      <p class="form-status" data-wish-status role="status">${sheetEndpoint ? "Lời chúc sẽ hiện ở đây sau khi Huy và Phương đọc." : "Bản demo chỉ lưu lời chúc trên thiết bị này."}</p>
     </form>
     <div class="wish-preview" aria-live="polite">
-      <p class="wish-empty" data-wish-empty>Chưa có lời chúc nào trên thiết bị này.</p>
+      <p class="wish-empty" data-wish-empty>${sheetEndpoint ? "Chưa có lời chúc nào. Bạn gửi lời đầu tiên nhé!" : "Chưa có lời chúc nào trên thiết bị này."}</p>
       <div class="wish-preview-list" data-wish-list></div>
     </div>
   </section>
@@ -280,10 +296,45 @@ document.querySelector("[data-map-reveal]")?.addEventListener("click", () => {
   mapFrame.classList.add("is-open");
 });
 
-document.querySelector("[data-rsvp-form]")?.addEventListener("submit", (event) => {
+// Gửi dạng text/plain để trình duyệt không cần hỏi trước (preflight), Apps Script vẫn đọc được JSON.
+async function sendToSheet(payload) {
+  const response = await fetch(sheetEndpoint, {
+    method: "POST",
+    headers: { "Content-Type": "text/plain;charset=utf-8" },
+    body: JSON.stringify(payload),
+  });
+  const result = await response.json();
+  if (!result.ok) throw new Error(result.error || "send-failed");
+}
+
+const rsvpForm = document.querySelector("[data-rsvp-form]");
+rsvpForm?.addEventListener("submit", async (event) => {
   event.preventDefault();
-  document.querySelector("[data-form-status]").textContent =
-    "Đã kiểm tra biểu mẫu. Đây vẫn là bản xem trước nên phản hồi chưa được lưu.";
+  const status = document.querySelector("[data-form-status]");
+  if (!sheetEndpoint) {
+    status.textContent = "Đã kiểm tra biểu mẫu. Đây vẫn là bản xem trước nên phản hồi chưa được lưu.";
+    return;
+  }
+  const formData = new FormData(rsvpForm);
+  const button = rsvpForm.querySelector("button[type=submit]");
+  button.disabled = true;
+  status.textContent = "Đang gửi…";
+  try {
+    await sendToSheet({
+      type: "rsvp",
+      name: formData.get("guest-name"),
+      attendance: formData.get("attendance"),
+      guests: formData.get("guests"),
+      message: formData.get("message"),
+      website: formData.get("website"),
+    });
+    rsvpForm.reset();
+    status.textContent = "Cảm ơn bạn! Huy và Phương đã nhận được phản hồi.";
+  } catch {
+    status.textContent = "Chưa gửi được. Bạn kiểm tra mạng rồi thử lại nhé.";
+  } finally {
+    button.disabled = false;
+  }
 });
 
 const wishForm = document.querySelector("[data-wish-form]");
@@ -305,11 +356,11 @@ function readPreviewWishes() {
   }
 }
 
-function renderPreviewWishes() {
-  const wishes = readPreviewWishes();
+// wishes: mới nhất đứng trước.
+function renderWishes(wishes) {
   wishList.replaceChildren();
   wishEmpty.hidden = wishes.length > 0;
-  wishes.slice(-4).reverse().forEach((wish) => {
+  wishes.forEach((wish) => {
     const item = document.createElement("article");
     const name = document.createElement("strong");
     const message = document.createElement("p");
@@ -326,9 +377,62 @@ anonymousInput?.addEventListener("change", () => {
   wishNameInput.placeholder = anonymousInput.checked ? "Sẽ hiển thị là Ẩn danh" : "Nhập tên";
 });
 
-wishForm?.addEventListener("submit", (event) => {
+function renderPreviewWishes() {
+  renderWishes(readPreviewWishes().slice(-4).reverse());
+}
+
+function showWishBubble() {
+  const bubble = document.createElement("div");
+  bubble.className = "wish-bubble";
+  bubble.setAttribute("role", "status");
+  bubble.innerHTML = "<span>♡</span><strong>Một lời chúc vừa được ghi lại</strong>";
+  document.body.append(bubble);
+  window.setTimeout(() => bubble.remove(), 3600);
+}
+
+function resetWishForm() {
+  wishForm.reset();
+  wishNameInput.disabled = false;
+  wishNameInput.required = true;
+  wishNameInput.placeholder = "Nhập tên";
+}
+
+async function loadApprovedWishes() {
+  try {
+    const response = await fetch(`${sheetEndpoint}?action=wishes`);
+    const result = await response.json();
+    if (result.ok) renderWishes(result.wishes);
+  } catch {
+    // Không tải được thì giữ dòng "Chưa có lời chúc nào".
+  }
+}
+
+wishForm?.addEventListener("submit", async (event) => {
   event.preventDefault();
   const formData = new FormData(wishForm);
+  if (sheetEndpoint) {
+    const status = document.querySelector("[data-wish-status]");
+    const button = wishForm.querySelector("button[type=submit]");
+    button.disabled = true;
+    status.textContent = "Đang gửi…";
+    try {
+      await sendToSheet({
+        type: "wish",
+        name: formData.get("anonymous") ? "Ẩn danh" : formData.get("wish-name"),
+        message: formData.get("wish-message"),
+        website: formData.get("website"),
+      });
+      resetWishForm();
+      status.textContent = "Cảm ơn bạn! Lời chúc sẽ hiện ở đây sau khi Huy và Phương đọc.";
+      showWishBubble();
+    } catch {
+      status.textContent = "Chưa gửi được. Bạn kiểm tra mạng rồi thử lại nhé.";
+    } finally {
+      button.disabled = false;
+    }
+    return;
+  }
+
   const wishes = readPreviewWishes();
   wishes.push({
     name: formData.get("anonymous") ? "Ẩn danh" : String(formData.get("wish-name")).trim(),
@@ -341,21 +445,14 @@ wishForm?.addEventListener("submit", (event) => {
     saved = false;
     unsavedWishes = wishes;
   }
-  wishForm.reset();
-  wishNameInput.disabled = false;
-  wishNameInput.required = true;
+  resetWishForm();
   document.querySelector("[data-wish-status]").textContent = saved
     ? "Đã thêm vào bản xem thử trên thiết bị này. Lời chúc chưa được gửi lên máy chủ."
     : "Máy này không cho lưu, lời chúc chỉ hiện trong lần xem này.";
   renderPreviewWishes();
-
-  const bubble = document.createElement("div");
-  bubble.className = "wish-bubble";
-  bubble.setAttribute("role", "status");
-  bubble.innerHTML = "<span>♡</span><strong>Một lời chúc vừa được ghi lại</strong>";
-  document.body.append(bubble);
-  window.setTimeout(() => bubble.remove(), 3600);
+  showWishBubble();
 });
 
-renderPreviewWishes();
+if (sheetEndpoint) loadApprovedWishes();
+else renderPreviewWishes();
 
