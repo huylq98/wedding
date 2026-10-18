@@ -7,7 +7,7 @@ hiển thị thành một cột giữa nền trang trí):
 - `editorial.html` · **02 Thư Tay**: giấy kem, mực đỏ son, chữ in lớn, mục đánh số như một bức thư
 - `keepsake.html` · **03 Hồng Nhung**: hồng phấn, đỏ nhung, hoa hồng nét mảnh, lịch tháng 11
 - `photo-editorial.html` · **04 Tơ Duyên**: sợi chỉ đỏ vẽ dần theo khi cuộn, thẻ cào để xem ngày cưới
-- `wine-rustic.html` · **05 Hoa Đăng**: trời đêm, đèn lồng đỏ bay lên, chạm để thả đèn, lời chúc bay lên cùng đèn
+- `wine-rustic.html` · **05 Chuyện Hai Ta**: sách tranh cắt giấy, năm chương chuyện tình chuyển cảnh theo khi cuộn
 
 Cấu trúc:
 

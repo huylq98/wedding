@@ -3,65 +3,258 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#12060a" />
-    <meta name="description" content="Thiệp cưới Hoa Đăng của Huy và Phương: bầu trời đêm, đèn lồng đỏ và lời chúc bay lên cùng đèn." />
-    <title>05 · Hoa Đăng · Huy &amp; Phương</title>
+    <meta name="theme-color" content="#fbf1e6" />
+    <meta name="description" content="Thiệp cưới Chuyện Hai Ta của Huy và Phương: một cuốn sách tranh cắt giấy, kể chuyện tình qua năm chương khi cuộn." />
+    <title>05 · Chuyện Hai Ta · Huy &amp; Phương</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&family=Corinthia:wght@400;700&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="demo-common.css?v=20261018" />
     <link rel="stylesheet" href="wedding-extras.css?v=20261018" />
-    <link rel="stylesheet" href="themes/hoa-dang.css?v=20261018-2" />
+    <link rel="stylesheet" href="themes/chuyen-hai-ta.css?v=20261018" />
     <script src="demo-common.js?v=20261018" defer></script>
     <script src="wedding-extras.js?v=20261018" defer></script>
-    <script src="themes/hoa-dang.js?v=20261018-2" defer></script>
+    <script src="themes/chuyen-hai-ta.js?v=20261018" defer></script>
   </head>
-  <body data-theme="lantern">
-    <canvas class="hd-sky" aria-hidden="true"></canvas>
+  <body data-theme="story">
+    <svg width="0" height="0" style="position: absolute" aria-hidden="true">
+      <defs>
+        <filter id="st-paper" x="-10%" y="-20%" width="120%" height="140%">
+          <feDropShadow dx="0" dy="-3" stdDeviation="3" flood-color="#5a0f12" flood-opacity="0.28" />
+        </filter>
+        <radialGradient id="st-lamp"><stop offset="0" stop-color="#ffe2a0" stop-opacity="0.9" /><stop offset="1" stop-color="#ffe2a0" stop-opacity="0" /></radialGradient>
+        <radialGradient id="st-moonglow"><stop offset="0.35" stop-color="#f7e2b0" stop-opacity="0.45" /><stop offset="1" stop-color="#f7e2b0" stop-opacity="0" /></radialGradient>
+        <g id="st-groom"><circle cx="0" cy="-47" r="6.5" /><path d="M-9 -38Q0 -41 9 -38L8 -15L5 0H1.2L0 -13L-1.2 0H-5L-8 -15Z" /></g>
+        <g id="st-bride"><circle cx="0" cy="-46" r="6" fill="#3a1013" /><circle cx="-4" cy="-50" r="3.6" fill="#3a1013" /><path d="M-7 -38Q0 -41 7 -38L8.5 -20L15 0H-15L-8.5 -20Z" /></g>
+        <g id="st-kneel"><circle cx="3" cy="-35" r="6.5" /><path d="M-6 -27Q2 -30 9 -27L8 -12H14L15 0H10L9 -6H-3L-4 0H-8L-6 -12Z" /></g>
+        <path id="st-heart" d="M0 8C-6 3-10 0-10-4C-10-7-8-9-5.5-9C-3-9-1-7.5 0-6C1-7.5 3-9 5.5-9C8-9 10-7 10-4C10 0 6 3 0 8Z" />
+        <path id="st-leaf" d="M0 0C4-5 11-5 14 0C11 5 4 5 0 0Z" />
+      </defs>
+    </svg>
+
     <nav class="design-switcher" aria-label="Chọn mẫu thiệp">
       <a href="index.html"><span>01</span>Son Mài</a>
       <a href="editorial.html"><span>02</span>Thư Tay</a>
       <a href="keepsake.html"><span>03</span>Hồng Nhung</a>
       <a href="photo-editorial.html"><span>04</span>Tơ Duyên</a>
-      <a class="is-active" href="wine-rustic.html" aria-current="page"><span>05</span>Hoa Đăng</a>
+      <a class="is-active" href="wine-rustic.html" aria-current="page"><span>05</span>Chuyện Hai Ta</a>
     </nav>
     <button class="demo-music" data-music-toggle type="button" aria-pressed="false" aria-label="Bật nhạc nền tạm"><span class="music-bars" aria-hidden="true"><i></i><i></i><i></i></span><span data-music-label>Bật nhạc</span></button>
 
-    <main class="invite hd">
-      <header class="hd-cover" id="top" data-release-sky>
-        <p class="hd-eyebrow">Đêm hoa đăng · Hà Nội</p>
-        <h1 class="hd-names" data-reveal>
-          <span>Quốc Huy</span>
-          <i>&amp;</i>
-          <span>Thu Phương</span>
-        </h1>
-        <p class="hd-date">28 . 11 . 2026</p>
-        <p class="hd-tap"><span aria-hidden="true"></span>Chạm vào bầu trời để thả một chiếc đèn</p>
-        <div class="hd-water" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+    <main class="invite st">
+      <header class="st-cover" id="top">
+        <p class="st-eyebrow">Một câu chuyện có thật</p>
+        <h1>Chuyện<br /><em>Hai Ta</em></h1>
+        <p class="st-byline">Huy &amp; Phương · 28 . 11 . 2026</p>
+        <svg class="st-cover-art" viewBox="0 0 390 300" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+          <g filter="url(#st-paper)">
+            <path class="st-float st-f1" fill="#f1c3b2" d="M0 120C60 90 120 100 180 120S300 150 390 110V300H0Z" />
+            <path class="st-float st-f2" fill="#e08a78" d="M0 170C80 140 150 160 220 176S330 190 390 160V300H0Z" />
+            <path class="st-float st-f3" fill="#c2413c" d="M0 215C90 196 170 206 250 222S350 236 390 214V300H0Z" />
+          </g>
+          <g class="st-couple">
+            <use href="#st-groom" fill="#3a1013" transform="translate(182 214) scale(1.25)" />
+            <use href="#st-bride" fill="#fbeedd" transform="translate(206 215) scale(1.25)" />
+            <use class="st-cover-heart" href="#st-heart" fill="#e8344a" transform="translate(194 140) scale(1.1)" />
+          </g>
+          <g filter="url(#st-paper)">
+            <path class="st-float st-f4" fill="#8e1b22" d="M0 258C110 244 230 250 390 262V300H0Z" />
+          </g>
+          <g class="st-float st-f2" fill="#fff6ec" opacity="0.85">
+            <path d="M40 70a14 14 0 0 1 26-6 11 11 0 0 1 18 8H40Z" />
+            <path d="M280 40a16 16 0 0 1 30-6 12 12 0 0 1 20 9H280Z" />
+          </g>
+        </svg>
+        <a class="st-hint" href="#chuong-1">Cuộn để mở trang đầu tiên</a>
       </header>
 
-      <section class="hd-letter" id="loi-moi">
-        <figure class="ph hd-photo" style="--ratio: 4 / 5" data-reveal><figcaption>Ảnh cưới · 4:5</figcaption></figure>
-        <div data-reveal>
-          <p class="kicker">Mỗi chiếc đèn là một điều ước</p>
-          <h2>Điều ước của chúng mình<br /><em>là có bạn ở đó.</em></h2>
-          <p>Huy và Phương trân trọng mời bạn đến chung vui trong lễ thành hôn. Hãy cùng hai đứa thắp lên ngày vui nhất.</p>
+      <section class="st-story" id="chuong-1" aria-label="Câu chuyện của Huy và Phương">
+        <div class="st-stage">
+          <ol class="st-dots" aria-hidden="true"><li></li><li></li><li></li><li></li><li></li></ol>
+
+          <!-- Chương 1 -->
+          <article class="sc sc1">
+            <div class="sc-caption">
+              <p class="kicker">Chương 1</p>
+              <h2>Hà Nội, những ngày chưa quen</h2>
+              <p>Hai người, hai con đường, cùng một thành phố. Chưa ai biết mình đang đi về phía nhau.</p>
+            </div>
+            <svg class="sc-art" viewBox="0 0 390 844" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+              <circle class="st-sun" cx="285" cy="470" r="44" fill="#f3c46b" />
+              <g class="lyr" style="--d: 30" filter="url(#st-paper)">
+                <path fill="#ecb9a8" d="M0 640V585H22V570L32 562L42 570V590H58V560H70V552H82V560H92V600H110V578L122 566L134 578V596H150V548H160V540H172V548H178V592H196V572H214V582H230V556L242 546L254 556V588H270V566H290V574H300V545H306V536H312V545H318V590H336V570L348 560L360 570V584H376V562H390V640Z" />
+              </g>
+              <g class="lyr" style="--d: 50" fill="#dc8576" filter="url(#st-paper)">
+                <circle cx="20" cy="628" r="22" /><circle cx="60" cy="634" r="18" /><circle cx="110" cy="636" r="14" /><circle cx="285" cy="636" r="15" /><circle cx="330" cy="630" r="24" /><circle cx="372" cy="624" r="20" />
+              </g>
+              <rect y="638" width="390" height="206" fill="#e8a291" />
+              <g class="st-ripples" stroke="#f6d3c2" stroke-width="2" stroke-linecap="round" opacity="0.7"><path d="M40 668h60M250 676h80M120 702h50M210 728h70M60 744h40" /></g>
+              <g class="lyr" style="--d: 70" fill="#c2413c" filter="url(#st-paper)">
+                <ellipse cx="195" cy="690" rx="62" ry="10" />
+                <path fill-rule="evenodd" d="M171 688V654H219V688ZM177 688V670A5 5 0 0 1 187 670V688ZM190 688V668A5 5 0 0 1 200 668V688ZM203 688V670A5 5 0 0 1 213 670V688Z" />
+                <path d="M166 656L171 650H219L224 656Z" />
+                <path fill-rule="evenodd" d="M179 650V630H211V650ZM185 650V641A4 4 0 0 1 193 641V650ZM197 650V641A4 4 0 0 1 205 641V650Z" />
+                <path d="M175 632L180 626H210L215 632Z" />
+                <path fill-rule="evenodd" d="M186 626V611H204V626ZM191 626V619A4 4 0 0 1 199 619V626Z" />
+                <path d="M182 612L195 600L208 612ZM194 600V591H196V600Z" />
+              </g>
+              <g class="lyr" style="--d: 110" filter="url(#st-paper)"><path fill="#8e1b22" d="M0 770C80 752 150 760 210 768S330 778 390 764V844H0Z" /></g>
+              <g class="st-walk-a"><g class="st-bob"><use href="#st-groom" fill="#3a1013" transform="translate(0 774) scale(1.7)" /></g></g>
+              <g class="st-walk-b"><g class="st-bob st-bob-late"><use href="#st-bride" fill="#fbeedd" transform="translate(390 774) scale(1.7)" /></g></g>
+              <g class="lyr st-willow" style="--d: 150" fill="none" stroke="#6e1016" stroke-linecap="round">
+                <path stroke-width="10" d="M-8 844C10 760 6 640 40 560" />
+                <path stroke-width="2.4" d="M40 560C70 540 100 560 110 620M40 560C60 560 80 600 84 690M36 580C50 600 58 650 56 730M44 566C90 560 120 600 140 650M30 600C36 640 34 690 28 750M42 562C80 540 130 556 160 600" />
+              </g>
+            </svg>
+          </article>
+
+          <!-- Chương 2 -->
+          <article class="sc sc2">
+            <div class="sc-caption">
+              <p class="kicker">Chương 2</p>
+              <h2>Một chiều thu, gặp nhau</h2>
+              <p>Ở một góc phố quen, hai con đường bỗng trùng làm một. Có những cuộc gặp, nhìn lại mới biết là duyên.</p>
+            </div>
+            <svg class="sc-art" viewBox="0 0 390 844" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+              <circle class="lyr" style="--d: 20" cx="110" cy="520" r="70" fill="#f6c77a" opacity="0.9" />
+              <g class="lyr" style="--d: 40" filter="url(#st-paper)">
+                <path fill="#e08a73" d="M0 700V560H40V548L60 536L80 548V560H96V700ZM100 700V580H150V566L170 554L190 566V580H200V700ZM206 700V540H246V528L266 516L286 528V540H300V700ZM306 700V572H350V560L370 548L390 560V700Z" />
+                <g fill="#f9d6c2"><rect x="12" y="590" width="12" height="18" /><rect x="58" y="590" width="12" height="18" /><rect x="12" y="630" width="12" height="18" /><rect x="114" y="604" width="12" height="18" /><rect x="164" y="604" width="12" height="18" /><rect x="220" y="566" width="12" height="18" /><rect x="262" y="566" width="12" height="18" /><rect x="220" y="610" width="12" height="18" /><rect x="320" y="600" width="12" height="18" /><rect x="360" y="600" width="12" height="18" /></g>
+              </g>
+              <rect y="696" width="390" height="6" fill="#9e1f25" />
+              <rect y="702" width="390" height="142" fill="#c2413c" />
+              <g class="lyr" style="--d: 70">
+                <circle class="st-glow" cx="324" cy="572" r="34" fill="url(#st-lamp)" />
+                <rect x="322" y="566" width="4" height="200" fill="#6e1016" />
+                <path d="M314 568H334L330 554H318Z" fill="#6e1016" />
+              </g>
+              <g class="st-meet-a"><g class="st-bob"><use href="#st-groom" fill="#3a1013" transform="translate(110 764) scale(1.7)" /></g></g>
+              <g class="st-meet-b"><g class="st-bob st-bob-late"><use href="#st-bride" fill="#fbeedd" transform="translate(280 764) scale(1.7)" /></g></g>
+              <g class="st-pop"><use href="#st-heart" fill="#e8344a" transform="translate(195 650) scale(1.8)" /></g>
+              <g class="lyr" style="--d: 120" filter="url(#st-paper)">
+                <path stroke="#6e1016" stroke-width="12" d="M28 844V640" />
+                <g fill="#b8343a"><circle cx="30" cy="600" r="48" /><circle cx="76" cy="632" r="34" /><circle cx="-4" cy="640" r="36" /></g>
+              </g>
+              <g class="st-leaves" fill="#d9534a">
+                <use href="#st-leaf" style="--x: 60; --t: 0s" /><use href="#st-leaf" style="--x: 120; --t: -2s" /><use href="#st-leaf" style="--x: 40; --t: -4s" /><use href="#st-leaf" style="--x: 180; --t: -1s" /><use href="#st-leaf" style="--x: 90; --t: -3s" />
+              </g>
+            </svg>
+          </article>
+
+          <!-- Chương 3 -->
+          <article class="sc sc3">
+            <div class="st-sky st-s1"></div><div class="st-sky st-s2"></div><div class="st-sky st-s3"></div><div class="st-sky st-s4"></div>
+            <div class="sc-caption">
+              <p class="kicker">Chương 3</p>
+              <h2>Những mùa bên nhau</h2>
+              <p>Xuân, hạ, thu, đông. Mỗi mùa trôi qua lại thêm một lý do để ở cạnh nhau.</p>
+            </div>
+            <svg class="sc-art" viewBox="0 0 390 844" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+              <g class="st-words" text-anchor="middle">
+                <text class="w1" x="195" y="470">Xuân</text><text class="w2" x="195" y="470">Hạ</text><text class="w3" x="195" y="470">Thu</text><text class="w4" x="195" y="470">Đông</text>
+              </g>
+              <g class="lyr" style="--d: 60" filter="url(#st-paper)"><path fill="#c2413c" d="M0 720C90 670 170 660 240 676S350 712 390 700V844H0Z" /></g>
+              <g class="lyr" style="--d: 60">
+                <path fill="none" stroke="#6e1016" stroke-width="7" stroke-linecap="round" d="M280 690C282 640 276 600 268 570M276 620C300 600 316 590 330 588M272 600C250 584 236 580 222 584" />
+                <g class="c1" fill="#f6b3c0"><circle cx="268" cy="560" r="40" /><circle cx="302" cy="576" r="32" /><circle cx="234" cy="578" r="30" /><circle cx="285" cy="534" r="28" /></g>
+                <g class="c2" fill="#d8443e"><circle cx="268" cy="560" r="40" /><circle cx="302" cy="576" r="32" /><circle cx="234" cy="578" r="30" /><circle cx="285" cy="534" r="28" /></g>
+                <g class="c3" fill="#ec8a3c"><circle cx="268" cy="560" r="40" /><circle cx="302" cy="576" r="32" /><circle cx="234" cy="578" r="30" /><circle cx="285" cy="534" r="28" /></g>
+                <g class="c4" fill="#fff4f2" opacity="0.6"><circle cx="262" cy="566" r="5" /><circle cx="300" cy="586" r="4" /><circle cx="236" cy="584" r="4" /><circle cx="284" cy="548" r="3" /></g>
+              </g>
+              <g class="lyr" style="--d: 100" filter="url(#st-paper)"><path fill="#8e1b22" d="M0 790C120 770 260 772 390 786V844H0Z" /></g>
+              <g class="st-stroll">
+                <g class="st-bob"><use href="#st-groom" fill="#3a1013" transform="translate(110 792) scale(1.7)" /></g>
+                <g class="st-bob st-bob-late"><use href="#st-bride" fill="#fbeedd" transform="translate(140 792) scale(1.7)" /></g>
+              </g>
+            </svg>
+          </article>
+
+          <!-- Chương 4 -->
+          <article class="sc sc4 is-dark">
+            <div class="sc-caption">
+              <p class="kicker">Chương 4</p>
+              <h2>Lời hẹn ước</h2>
+              <p>Một tối trăng sáng bên hồ Gươm, có người hỏi một câu thật khẽ. Và có người đáp: “Đồng ý”.</p>
+            </div>
+            <svg class="sc-art" viewBox="0 0 390 844" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+              <g class="st-stars" fill="#ffe7c2">
+                <circle cx="40" cy="380" r="1.4" /><circle cx="90" cy="430" r="1" style="animation-delay: -1s" /><circle cx="150" cy="370" r="1.6" style="animation-delay: -2s" /><circle cx="210" cy="420" r="1" /><circle cx="340" cy="390" r="1.3" style="animation-delay: -1.5s" /><circle cx="370" cy="460" r="1" style="animation-delay: -0.5s" /><circle cx="20" cy="500" r="1.2" style="animation-delay: -2.5s" /><circle cx="120" cy="520" r="1" style="animation-delay: -1.2s" /><circle cx="180" cy="480" r="1.4" style="animation-delay: -0.8s" /><circle cx="60" cy="560" r="1" style="animation-delay: -2.2s" />
+              </g>
+              <g class="st-moon">
+                <circle cx="270" cy="0" r="90" fill="url(#st-moonglow)" />
+                <circle cx="270" cy="0" r="40" fill="#f7e2b0" />
+              </g>
+              <rect y="660" width="390" height="184" fill="#2a0a10" />
+              <g class="st-moon-ref" stroke="#f7e2b0" stroke-linecap="round" stroke-width="2"><path d="M246 690h48M254 706h32M240 722h60M258 738h24M250 756h40" /></g>
+              <g class="lyr" style="--d: 50">
+                <path fill="#c8323a" filter="url(#st-paper)" d="M-10 672Q125 600 260 672V682Q125 614 -10 682Z" />
+                <path fill="none" stroke="#c8323a" stroke-width="2" d="M-10 660Q125 588 260 660M14 664V652M40 650V638M66 640V628M92 634V622M118 632V620M144 632V620M170 636V624M196 643V631M222 652V640" />
+                <path fill="#c8323a" opacity="0.22" d="M-10 690Q125 760 260 690V684Q125 748 -10 684Z" />
+              </g>
+              <g class="lyr" style="--d: 100" filter="url(#st-paper)"><path fill="#12040a" d="M0 780C110 766 250 768 390 780V844H0Z" /></g>
+              <use href="#st-bride" fill="#fff3e3" transform="translate(232 784) scale(1.7)" />
+              <g class="st-stand"><use href="#st-groom" fill="#f3d6b0" transform="translate(184 784) scale(1.7)" /></g>
+              <g class="st-kneel"><use href="#st-kneel" fill="#f3d6b0" transform="translate(190 784) scale(1.7)" /></g>
+              <g class="st-ring">
+                <g class="st-rays" stroke="#f2c46b" stroke-width="1.6" stroke-linecap="round"><path d="M210 664V652M210 716V704M184 690H172M248 690H236M192 672L184 664M228 672L236 664M192 708L184 716M228 708L236 716" /></g>
+                <circle cx="210" cy="690" r="10" fill="none" stroke="#f2c46b" stroke-width="3" />
+                <path d="M205 680L210 673L215 680L210 684Z" fill="#fff6dc" />
+              </g>
+            </svg>
+          </article>
+
+          <!-- Chương 5 -->
+          <article class="sc sc5">
+            <div class="st-rays-bg"></div>
+            <div class="sc-caption st-cap-a">
+              <p class="kicker">Chương 5</p>
+              <h2>Về chung một nhà</h2>
+              <p>Và rồi, hai đứa quyết định viết tiếp câu chuyện này dưới cùng một mái nhà.</p>
+            </div>
+            <div class="sc-caption st-cap-b">
+              <p class="kicker">Chúng mình cưới!</p>
+              <p class="st-final-date">28 . 11 . 2026</p>
+              <p>Thứ Bảy · 10 giờ sáng · Selena Palace</p>
+            </div>
+            <svg class="sc-art" viewBox="0 0 390 844" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+              <g class="lyr" style="--d: 90" filter="url(#st-paper)"><path fill="#c2413c" d="M0 760C130 744 260 744 390 760V844H0Z" /></g>
+              <g class="st-house">
+                <rect x="105" y="600" width="180" height="160" fill="#fbeedd" filter="url(#st-paper)" />
+                <path fill="#9e1f25" filter="url(#st-paper)" d="M78 612C92 610 98 604 104 596L195 520L286 596C292 604 298 610 312 612L300 620H90Z" />
+                <path fill="#e3b45f" d="M184 524Q195 506 206 524Z" />
+                <rect x="122" y="650" width="34" height="40" fill="#6e1016" /><rect x="234" y="650" width="34" height="40" fill="#6e1016" />
+                <g class="st-windows" fill="#ffd98a"><rect x="122" y="650" width="34" height="40" /><rect x="234" y="650" width="34" height="40" /></g>
+                <rect x="172" y="670" width="46" height="90" fill="#b81d2a" />
+                <text x="195" y="726" text-anchor="middle" fill="#f2c46b" font-size="26" font-family="'Noto Serif TC', SimSun, serif" font-weight="700">囍</text>
+                <g class="st-lantern"><path d="M112 612V630" stroke="#6e1016" /><rect x="106" y="630" width="12" height="3" fill="#e3b45f" /><ellipse cx="112" cy="644" rx="10" ry="12" fill="#d8323a" /><rect x="106" y="655" width="12" height="3" fill="#e3b45f" /></g>
+                <g class="st-lantern st-lantern-late"><path d="M278 612V630" stroke="#6e1016" /><rect x="272" y="630" width="12" height="3" fill="#e3b45f" /><ellipse cx="278" cy="644" rx="10" ry="12" fill="#d8323a" /><rect x="272" y="655" width="12" height="3" fill="#e3b45f" /></g>
+              </g>
+              <g class="st-home-a"><g class="st-bob"><use href="#st-groom" fill="#3a1013" transform="translate(40 772) scale(1.7)" /></g></g>
+              <g class="st-home-b"><g class="st-bob st-bob-late"><use href="#st-bride" fill="#fbeedd" transform="translate(350 772) scale(1.7)" /></g></g>
+              <g class="st-confetti">
+                <use href="#st-leaf" fill="#e8344a" style="--x: 50; --t: 0s" /><use href="#st-leaf" fill="#f2c46b" style="--x: 140; --t: -1.5s" /><use href="#st-leaf" fill="#e8344a" style="--x: 230; --t: -3s" /><use href="#st-leaf" fill="#f2c46b" style="--x: 320; --t: -0.7s" /><use href="#st-leaf" fill="#f6b3c0" style="--x: 100; --t: -2.2s" /><use href="#st-leaf" fill="#f6b3c0" style="--x: 280; --t: -3.6s" />
+              </g>
+            </svg>
+          </article>
         </div>
       </section>
 
-      <section class="hd-event" aria-labelledby="event-title">
-        <div class="hd-glass" data-reveal>
-          <p class="kicker">Lễ thành hôn</p>
-          <p class="hd-day">Thứ Bảy</p>
-          <p class="hd-big">28 . 11</p>
-          <p class="hd-year">2026 · 10 giờ sáng</p>
-          <h2 id="event-title">Selena Palace</h2>
-          <address>Km 19 Quốc lộ 32, Đức Thượng, Hoài Đức, Hà Nội</address>
+      <section class="st-invite" id="loi-moi">
+        <div class="st-page" data-reveal>
+          <p class="kicker">Lời kết, cũng là lời mời</p>
+          <h2>Chương tiếp theo,<br /><em>chúng mình muốn viết cùng bạn.</em></h2>
+          <p>Huy và Phương trân trọng mời bạn đến dự lễ thành hôn, để có mặt ở trang đẹp nhất của câu chuyện này.</p>
+          <dl>
+            <div><dt>Ngày</dt><dd>Thứ Bảy, 28 . 11 . 2026</dd></div>
+            <div><dt>Giờ</dt><dd>10 giờ sáng</dd></div>
+            <div><dt>Nơi</dt><dd>Selena Palace</dd></div>
+            <div><dt>Địa chỉ</dt><dd>Km 19 Quốc lộ 32, Đức Thượng, Hoài Đức, Hà Nội</dd></div>
+          </dl>
         </div>
       </section>
 
-      <footer class="theme-close" data-release-sky>
-        <p data-reveal>Hẹn gặp bạn dưới bầu trời ấy</p>
+      <footer class="theme-close">
+        <p data-reveal>Hết sách. Và bắt đầu.</p>
         <h2 data-reveal>Huy <i>&amp;</i> Phương</h2>
         <span>28 . 11 . 2026</span>
       </footer>
