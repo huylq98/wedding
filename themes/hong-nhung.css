@@ -193,7 +193,8 @@ body[data-theme="rose"] .invitation-gate.is-opening .invitation-gate-card {
 }
 body[data-theme="rose"] .invitation-gate.is-opening .invitation-gate-card > :not(button) { opacity: 0; transition: opacity 0.3s ease; }
 body[data-theme="rose"] .invitation-gate.is-opening .invitation-gate-card button { color: transparent; transition: color 0.3s ease; }
-body[data-theme="rose"] .invitation-gate.is-opening button span { animation: rose-bloom 1.5s cubic-bezier(0.5, 0, 0.3, 1) forwards; }
+/* Bỏ bóng đổ khi nở: phóng to cả bóng đổ mỗi khung hình làm màn mở giật */
+body[data-theme="rose"] .invitation-gate.is-opening button span { filter: none; animation: rose-bloom 1.5s cubic-bezier(0.5, 0, 0.3, 1) forwards; }
 body[data-theme="rose"] .invitation-door { transition: opacity 0.3s 0.7s linear; }
 body[data-theme="rose"] .invitation-gate.is-opening .invitation-door { opacity: 0; transform: none; }
 @keyframes rose-bloom {
