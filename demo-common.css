@@ -35,7 +35,9 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 a { color: inherit; }
-h1, h2, h3 { font-weight: 400; }
+h1, h2, h3 { font-weight: 400; text-wrap: balance; }
+p, blockquote, address { text-wrap: pretty; }
+.invite:focus { outline: none; }
 
 .invite {
   position: relative;
@@ -128,8 +130,8 @@ h1, h2, h3 { font-weight: 400; }
 .demo-music {
   position: fixed;
   z-index: 180;
-  right: 16px;
-  bottom: 16px;
+  right: calc(16px + env(safe-area-inset-right));
+  bottom: calc(16px + env(safe-area-inset-bottom));
   display: grid;
   place-items: center;
   width: 48px;
@@ -203,11 +205,11 @@ body.is-invitation-locked { overflow: hidden; }
   letter-spacing: 0.2em;
   text-transform: uppercase;
 }
-.invitation-gate-card h1 {
+.invitation-gate-card .gate-title {
   margin: 22px 0 34px;
   font: 400 52px/1.02 var(--f-display);
 }
-.invitation-gate-card h1 i { color: var(--gate-gold); font-style: normal; }
+.invitation-gate-card .gate-title i { color: var(--gate-gold); font-style: normal; }
 .invitation-gate-card button {
   display: grid;
   gap: 14px;

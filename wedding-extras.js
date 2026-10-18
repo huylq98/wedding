@@ -67,7 +67,7 @@ extras.innerHTML = `
   <section class="x-section x-schedule" id="lich-trinh" data-reveal>
     <header class="x-head">
       <p class="x-kicker">Lịch trình ngày vui</p>
-      <h2>Hai nghi lễ,<br />một ngày vui.</h2>
+      <h2>Hai nghi lễ,<br />một tiệc vui.</h2>
     </header>
     <ol class="x-schedule-list">
       <li class="is-pending">
@@ -75,15 +75,15 @@ extras.innerHTML = `
         <h3>Lễ Vu Quy</h3>
         <p>Tại tư gia nhà gái</p>
       </li>
-      <li class="is-main">
-        <time datetime="2026-11-28T10:00:00+07:00">10:00 · Thứ Bảy 28.11.2026</time>
-        <h3>Lễ Thành Hôn</h3>
-        <p>${venueName} · ${venueAddress}</p>
-      </li>
       <li class="is-pending">
         <time>Đang cập nhật</time>
-        <h3>Tiệc chung vui</h3>
-        <p>Cùng gia đình và bạn bè</p>
+        <h3>Lễ Thành Hôn</h3>
+        <p>Tại tư gia nhà trai</p>
+      </li>
+      <li class="is-main">
+        <time datetime="2026-11-28T10:00:00+07:00">10 giờ sáng · Thứ Bảy 28.11.2026</time>
+        <h3>Tiệc cưới</h3>
+        <p>${venueName} · ${venueAddress}</p>
       </li>
     </ol>
     <p class="x-dress">Trang phục · <span>đang cập nhật</span></p>
@@ -93,7 +93,7 @@ extras.innerHTML = `
     <header class="x-head">
       <p class="x-kicker">Đếm ngược đến ngày vui</p>
     </header>
-    <div class="countdown" data-countdown aria-live="polite">
+    <div class="countdown" data-countdown>
       <span><strong data-days>--</strong><small>Ngày</small></span>
       <span><strong data-hours>--</strong><small>Giờ</small></span>
       <span><strong data-minutes>--</strong><small>Phút</small></span>
@@ -147,7 +147,7 @@ extras.innerHTML = `
         <textarea name="message" rows="3" placeholder="Gửi vài lời đến Huy và Phương"></textarea>
       </label>
       <button class="x-btn is-solid" type="submit">Gửi xác nhận</button>
-      <p class="form-status" data-form-status>Bản xem trước, phản hồi chưa được lưu.</p>
+      <p class="form-status" data-form-status role="status">Bản xem trước, phản hồi chưa được lưu.</p>
     </form>
   </section>
 
@@ -167,7 +167,7 @@ extras.innerHTML = `
         <textarea name="wish-message" rows="4" required placeholder="Viết lời chúc cho Huy và Phương"></textarea>
       </label>
       <button class="x-btn is-solid" type="submit">Gửi lời chúc</button>
-      <p class="form-status" data-wish-status>Bản demo chỉ lưu lời chúc trên thiết bị này.</p>
+      <p class="form-status" data-wish-status role="status">Bản demo chỉ lưu lời chúc trên thiết bị này.</p>
     </form>
     <div class="wish-preview" aria-live="polite">
       <p class="wish-empty" data-wish-empty>Chưa có lời chúc nào trên thiết bị này.</p>
@@ -180,7 +180,7 @@ extras.innerHTML = `
       <p class="x-kicker">Mừng cưới</p>
       <h2>Gửi chút yêu thương</h2>
     </header>
-    <p class="x-lead">Nếu không thể đến chung vui, bạn có thể gửi lời chúc qua mã QR bên dưới.</p>
+    <p class="x-lead">Nếu không thể đến chung vui, bạn có thể gửi quà mừng qua mã QR bên dưới.</p>
     <div class="x-gift-grid">
       <article>
         <p class="x-label">Chú rể</p>
@@ -203,7 +203,7 @@ const footer = main?.querySelector(":scope > footer");
 if (footer) main.insertBefore(extras, footer);
 else main?.append(extras);
 if (window.location.hash) {
-  const anchorTarget = document.querySelector(window.location.hash);
+  const anchorTarget = document.getElementById(decodeURIComponent(window.location.hash.slice(1)));
   if (anchorTarget) window.requestAnimationFrame(() => anchorTarget.scrollIntoView());
 }
 
@@ -226,7 +226,8 @@ function updateCountdown() {
   const remaining = weddingDate.getTime() - Date.now();
   if (remaining <= 0) {
     const countdown = document.querySelector("[data-countdown]");
-    countdown.innerHTML = "<p class=\"wedding-day-message\">Hôm nay là ngày cưới!</p>";
+    const message = remaining > -86400000 ? "Hôm nay là ngày cưới!" : "Cảm ơn bạn đã cùng chung vui!";
+    countdown.innerHTML = `<p class="wedding-day-message">${message}</p>`;
     return false;
   }
 
@@ -255,9 +256,9 @@ document.querySelector("[data-add-calendar]")?.addEventListener("click", () => {
     "BEGIN:VEVENT",
     "UID:huy-phuong-20261128@wedding.local",
     "DTSTAMP:20261011T000000Z",
-    "DTSTART;TZID=Asia/Ho_Chi_Minh:20261128T100000",
-    "SUMMARY:Lễ thành hôn của Huy & Phương",
-    `LOCATION:${venueName} - ${venueAddress}`,
+    "DTSTART:20261128T030000Z",
+    "SUMMARY:Đám cưới Huy & Phương",
+    `LOCATION:${`${venueName} - ${venueAddress}`.replace(/[,;]/g, "\\$&")}`,
     "DESCRIPTION:Trân trọng mời bạn đến chung vui cùng Huy và Phương.",
     "END:VEVENT",
     "END:VCALENDAR",
@@ -267,7 +268,7 @@ document.querySelector("[data-add-calendar]")?.addEventListener("click", () => {
   download.href = url;
   download.download = "le-thanh-hon-huy-phuong.ics";
   download.click();
-  URL.revokeObjectURL(url);
+  window.setTimeout(() => URL.revokeObjectURL(url), 1000);
 });
 
 document.querySelector("[data-map-reveal]")?.addEventListener("click", () => {
@@ -292,11 +293,15 @@ const wishList = document.querySelector("[data-wish-list]");
 const wishEmpty = document.querySelector("[data-wish-empty]");
 const wishStorageKey = "huy-phuong-preview-wishes";
 
+// Nếu máy chặn localStorage, lời chúc vẫn hiện trong lần xem này.
+let unsavedWishes = [];
+
 function readPreviewWishes() {
+  if (unsavedWishes.length) return unsavedWishes;
   try {
     return JSON.parse(window.localStorage.getItem(wishStorageKey) || "[]");
   } catch {
-    return [];
+    return unsavedWishes;
   }
 }
 
@@ -329,12 +334,19 @@ wishForm?.addEventListener("submit", (event) => {
     name: formData.get("anonymous") ? "Ẩn danh" : String(formData.get("wish-name")).trim(),
     message: String(formData.get("wish-message")).trim(),
   });
-  window.localStorage.setItem(wishStorageKey, JSON.stringify(wishes));
+  let saved = true;
+  try {
+    window.localStorage.setItem(wishStorageKey, JSON.stringify(wishes));
+  } catch {
+    saved = false;
+    unsavedWishes = wishes;
+  }
   wishForm.reset();
   wishNameInput.disabled = false;
   wishNameInput.required = true;
-  document.querySelector("[data-wish-status]").textContent =
-    "Đã thêm vào bản xem thử trên thiết bị này. Lời chúc chưa được gửi lên máy chủ.";
+  document.querySelector("[data-wish-status]").textContent = saved
+    ? "Đã thêm vào bản xem thử trên thiết bị này. Lời chúc chưa được gửi lên máy chủ."
+    : "Máy này không cho lưu, lời chúc chỉ hiện trong lần xem này.";
   renderPreviewWishes();
 
   const bubble = document.createElement("div");

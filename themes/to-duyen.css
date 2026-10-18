@@ -1,4 +1,4 @@
-/* 04 · Tơ Duyên — giấy trắng ngà, một sợi chỉ đỏ chạy suốt thiệp. */
+/* 04 · Tơ Duyên — giấy trắng ngà, một sợi tơ hồng chạy suốt thiệp. */
 body[data-theme="thread"] {
   --bg: #fbf6f1;
   --paper: #fffdf9;
@@ -118,7 +118,9 @@ body:not(.is-invitation-locked) .td-amp { animation: td-fade 0.8s 2.6s ease forw
 .td-scratch-foil { position: absolute; inset: 0; width: 100%; height: 100%; cursor: grab; touch-action: none; transition: opacity 0.7s ease; }
 .td-scratch-card.is-revealed .td-scratch-foil { opacity: 0; pointer-events: none; }
 .td-scratch-skip {
-  margin-top: 14px;
+  min-height: 44px;
+  margin-top: 4px;
+  padding: 0 12px;
   border: 0;
   background: none;
   color: var(--muted);
@@ -185,7 +187,7 @@ body[data-theme="thread"] .invitation-gate::after {
 }
 body[data-theme="thread"] .invitation-gate.is-opening::after { opacity: 0; transform: translateX(-50%) scaleY(0); }
 body[data-theme="thread"] .invitation-gate-card { background: #fffdf9; border-radius: 22px; box-shadow: 0 30px 70px -36px rgba(80, 20, 20, 0.45); }
-body[data-theme="thread"] .invitation-gate-card h1 { font-weight: 300; }
+body[data-theme="thread"] .invitation-gate-card .gate-title { font-weight: 300; }
 body[data-theme="thread"] .invitation-gate-card button span { color: #fff6f2; font: italic 300 24px/1 var(--f-display); }
 
 @media (max-width: 360px) {

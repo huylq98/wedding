@@ -66,8 +66,12 @@ body[data-theme="story"] .kicker { color: var(--accent); }
 @keyframes st-scroll { 50% { background-position: 0 8px; } }
 
 /* Sân khấu truyện */
-.st-story { position: relative; height: 600svh; }
-.st-stage { position: sticky; top: 0; height: 100svh; overflow: hidden; background: #fbe9da; }
+.st-story { position: relative; height: 600vh; height: 600svh; }
+.st-stage { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; background: #fbe9da; }
+/* Trình duyệt cũ không có overflow: clip thì bỏ cắt để sticky vẫn chạy. */
+@supports not (overflow: clip) {
+  body[data-theme="story"] .invite { overflow: visible; }
+}
 .st-stage::after {
   content: "";
   position: absolute;
@@ -128,9 +132,9 @@ body[data-theme="story"] .kicker { color: var(--accent); }
 
 /* Chương 3: bốn mùa nối nhau */
 .sc3 {
-  --a2: clamp(0, (var(--s) - 0.22) * 8, 1);
-  --a3: clamp(0, (var(--s) - 0.47) * 8, 1);
-  --a4: clamp(0, (var(--s) - 0.72) * 8, 1);
+  --a2: clamp(0, (var(--s) - 0.22) * 16, 1);
+  --a3: clamp(0, (var(--s) - 0.47) * 16, 1);
+  --a4: clamp(0, (var(--s) - 0.72) * 16, 1);
 }
 .st-sky { position: absolute; inset: 0; }
 .st-s1 { background: linear-gradient(180deg, #fff0f0 0%, #f9c8cf 100%); }
@@ -138,9 +142,13 @@ body[data-theme="story"] .kicker { color: var(--accent); }
 .st-s3 { background: linear-gradient(180deg, #fde3cc 0%, #e9905f 100%); opacity: var(--a3); }
 .st-s4 { background: linear-gradient(180deg, #efe6e9 0%, #b9a2aa 100%); opacity: var(--a4); }
 .st-words text { fill: #9e1f25; font: italic 400 72px/1 "Playfair Display", Georgia, serif; }
-.st-words .w1, .sc3 .c1 { opacity: calc(1 - var(--a2)); }
-.st-words .w2, .sc3 .c2 { opacity: calc(var(--a2) - var(--a3)); }
-.st-words .w3, .sc3 .c3 { opacity: calc(var(--a3) - var(--a4)); }
+.sc3 .c1 { opacity: calc(1 - var(--a2)); }
+.sc3 .c2 { opacity: calc(var(--a2) - var(--a3)); }
+.sc3 .c3 { opacity: calc(var(--a3) - var(--a4)); }
+/* Chữ tên mùa: chữ cũ mờ hẳn rồi chữ mới mới hiện, không chồng lên nhau. */
+.st-words .w1 { opacity: calc(1 - clamp(0, (var(--s) - 0.16) * 16, 1)); }
+.st-words .w2 { opacity: calc(var(--a2) - clamp(0, (var(--s) - 0.41) * 16, 1)); }
+.st-words .w3 { opacity: calc(var(--a3) - clamp(0, (var(--s) - 0.66) * 16, 1)); }
 .st-words .w4 { opacity: var(--a4); }
 .sc3 .c4 { opacity: calc(var(--a4) * 0.7); }
 .st-stroll { transform: translateX(calc(var(--s) * 60px)); }
@@ -172,11 +180,11 @@ body[data-theme="story"] .kicker { color: var(--accent); }
   --q: clamp(0, (var(--s) - 0.64) * 10, 1);
   background: linear-gradient(180deg, #fff2da 0%, #f8cf93 55%, #f0a06c 100%);
 }
-.st-rays-bg {
+.st-glow-bg {
   position: absolute;
   inset: 0;
-  background: repeating-conic-gradient(from 0deg at 50% 74%, rgba(255, 255, 255, 0.4) 0 5deg, transparent 5deg 15deg);
-  opacity: calc(var(--b) * 0.8);
+  background: radial-gradient(60% 40% at 50% 72%, rgba(255, 246, 220, 0.85), transparent 70%);
+  opacity: var(--b);
 }
 .st-house { transform: translateY(calc((1 - var(--b)) * 380px)); }
 .st-windows { opacity: var(--w); }
@@ -214,6 +222,8 @@ body[data-theme="story"] .kicker { color: var(--accent); }
 
 /* Phần dùng chung: mỗi mục một tờ giấy, mép lượn như giấy cắt */
 body[data-theme="story"] .x-section { border-top: 0; }
+/* Năm chương phía trên đã kể chuyện tình, không lặp lại phần dòng thời gian. */
+body[data-theme="story"] .x-story { display: none; }
 body[data-theme="story"] .x-section:nth-child(even) {
   background: #f8e4d6;
   -webkit-mask: radial-gradient(14px 10px at 50% 0, transparent 98%, #000) 0 0 / 28px 100% repeat-x;
@@ -248,8 +258,8 @@ body[data-theme="story"] .invitation-door-right {
 body[data-theme="story"] .invitation-gate.is-opening .invitation-door-left { transform: rotateY(-105deg); }
 body[data-theme="story"] .invitation-gate.is-opening .invitation-door-right { transform: none; opacity: 0; }
 body[data-theme="story"] .invitation-gate-card .gate-mark::before { content: "Sách tranh · Tập 1"; display: block; margin-bottom: 18px; color: rgba(251, 233, 214, 0.7); font: italic 400 15px/1 var(--f-display); }
-body[data-theme="story"] .invitation-gate-card h1 { font: 400 58px/1 var(--f-display); }
-body[data-theme="story"] .invitation-gate-card h1 i { font-style: italic; }
+body[data-theme="story"] .invitation-gate-card .gate-title { font: 400 58px/1 var(--f-display); }
+body[data-theme="story"] .invitation-gate-card .gate-title i { font-style: italic; }
 body[data-theme="story"] .invitation-gate-card button span { color: #7a141b; font: italic 400 24px/1 var(--f-display); }
 body[data-theme="story"] .opening-petals { display: none; }
 

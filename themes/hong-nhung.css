@@ -3,14 +3,14 @@ body[data-theme="rose"] {
   --bg: #f8e9e5;
   --paper: #fdf6f3;
   --ink: #4a1420;
-  --muted: #8b6670;
+  --muted: #7a525c;
   --accent: #a3203a;
   --gold: #c98f8a;
   --line: rgba(163, 32, 58, 0.15);
   --on-accent: #fff4f1;
   --f-display: "Cormorant Garamond", Georgia, serif;
   --f-script: "Great Vibes", cursive;
-  --ornament: "❦";
+  --ornament: "";
   --radius: 18px;
   --btn-radius: 999px;
   --ph-1: #f2d6d1;
@@ -55,6 +55,7 @@ body[data-theme="rose"] {
   margin: 44px 0 0;
   color: var(--accent);
   font: 400 64px/1 var(--f-script);
+  word-spacing: 0.18em;
 }
 .rose-names i { margin: 0 0 4px; color: var(--gold); font: italic 400 30px/1.2 var(--f-display); }
 .rose-date {
@@ -135,6 +136,13 @@ body[data-theme="rose"] {
 
 /* Phần dùng chung */
 body[data-theme="rose"] .x-head h2 { color: var(--accent); }
+body[data-theme="rose"] .x-head::after {
+  content: "";
+  width: 90px;
+  height: 36px;
+  margin: 14px auto 0;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 40'%3E%3Cg fill='none' stroke='%23a3203a' stroke-width='1.4' stroke-linecap='round'%3E%3Cpath d='M4 30c30-4 60-14 92-26'/%3E%3Cpath d='M24 26c-2-8 2-14 10-16-1 8-4 13-10 16zM44 21c0-8 5-13 13-14-2 8-6 12-13 14zM64 14c1-7 6-11 13-11-2 7-7 10-13 11zM30 27c6 4 13 4 18 0-6-3-12-3-18 0zM52 20c6 3 13 2 17-2-6-2-12-1-17 2z'/%3E%3C/g%3E%3C/svg%3E") center / contain no-repeat;
+}
 body[data-theme="rose"] .x-story-list .ph { border-radius: 999px; }
 body[data-theme="rose"] .x-story-list .ph figcaption { display: none; }
 body[data-theme="rose"] .x-album-a { border-radius: 999px 999px 18px 18px; }
@@ -142,7 +150,7 @@ body[data-theme="rose"] .x-schedule-list .is-main { background: linear-gradient(
 body[data-theme="rose"] .x-gift { background: linear-gradient(180deg, var(--bg), #f1d3cd); }
 
 body[data-theme="rose"] .theme-close { position: relative; background: var(--paper); }
-body[data-theme="rose"] .theme-close h2 { color: var(--accent); font: 400 72px/1 var(--f-script); }
+body[data-theme="rose"] .theme-close h2 { color: var(--accent); font: 400 72px/1 var(--f-script); word-spacing: 0.18em; }
 body[data-theme="rose"] .theme-close h2 i { color: var(--gold); font: italic 400 36px/1 var(--f-display); }
 .rose-close-bloom { display: block; width: 70px; height: 70px; margin: 0 auto 18px; color: var(--accent); }
 
@@ -160,8 +168,8 @@ body[data-theme="rose"] .invitation-gate-card {
   box-shadow: 0 30px 70px -30px rgba(120, 20, 40, 0.45);
   padding-top: 70px;
 }
-body[data-theme="rose"] .invitation-gate-card h1 { color: #a3203a; font: 400 58px/1.05 var(--f-script); }
-body[data-theme="rose"] .invitation-gate-card h1 i { color: #c98f8a; font: italic 400 30px/1 var(--f-display); }
+body[data-theme="rose"] .invitation-gate-card .gate-title { color: #a3203a; font: 400 58px/1.05 var(--f-script); }
+body[data-theme="rose"] .invitation-gate-card .gate-title i { color: #c98f8a; font: italic 400 30px/1 var(--f-display); }
 body[data-theme="rose"] .invitation-gate-card button span { color: #fff4f1; font: italic 500 24px/1 var(--f-display); }
 body[data-theme="rose"] .opening-petals i { background: linear-gradient(135deg, #e48a96, #a3203a); }
 

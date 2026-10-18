@@ -5,6 +5,8 @@ const tdPath = tdSvg.querySelector(".td-thread-path");
 const tdTip = tdSvg.querySelector(".td-thread-tip");
 let tdStart = 0;
 let tdEnd = 1;
+let tdLength = 0;
+const tdCalm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 function layoutThread() {
   const width = tdMain.clientWidth;
@@ -13,28 +15,28 @@ function layoutThread() {
   const footer = tdMain.querySelector(".theme-close");
   tdSvg.setAttribute("viewBox", `0 0 ${width} ${height}`);
 
-  // Bắt đầu ở cuối nút thắt trên bìa, lượn trái phải, kết thúc ở chiếc nơ cuối thiệp.
-  const points = [[width - 30, cover.offsetHeight - 20]];
+  // Sợi tơ chạy sát lề, chỉ vắt sang lề bên kia ở khoảng trống giữa hai phần,
+  // nên không bao giờ cắt ngang chữ. Kết thúc ở chiếc nơ cuối thiệp.
+  const mainTop = tdMain.getBoundingClientRect().top;
+  const gaps = [...tdMain.querySelectorAll(":scope > section, .wedding-extras > .x-section:not([hidden])")]
+    .map((section) => section.getBoundingClientRect().top - mainTop)
+    .filter((top) => top > cover.offsetHeight + 40)
+    .filter((top, index) => index % 2 === 0);
+  const startX = width - 30;
+  const startY = cover.offsetHeight - 20;
   const endY = footer.offsetTop + 60;
-  const step = 560;
-  let y = points[0][1];
-  let left = true;
-  while (y + step < endY - 200) {
-    y += step;
-    points.push([left ? 16 : width - 16, y]);
-    left = !left;
-  }
-  points.push([width / 2, endY]);
-
-  let d = `M${points[0][0]} ${points[0][1]}`;
-  for (let i = 1; i < points.length; i += 1) {
-    const [x0, y0] = points[i - 1];
-    const [x1, y1] = points[i];
-    const pull = (y1 - y0) * 0.55;
-    d += `C${x0} ${y0 + pull} ${x1} ${y1 - pull} ${x1} ${y1}`;
-  }
+  const edge = [12, width - 12];
+  let side = 1;
+  let d = `M${startX} ${startY}C${startX} ${startY + 60} ${edge[side]} ${startY + 40} ${edge[side]} ${startY + 120}`;
+  gaps.forEach((gap) => {
+    const next = 1 - side;
+    d += `L${edge[side]} ${gap - 50}C${edge[side]} ${gap} ${edge[next]} ${gap - 10} ${edge[next]} ${gap + 50}`;
+    side = next;
+  });
+  d += `L${edge[side]} ${endY - 90}C${edge[side]} ${endY - 30} ${width / 2} ${endY - 50} ${width / 2} ${endY}`;
   tdPath.setAttribute("d", d);
-  tdStart = points[0][1];
+  tdLength = tdPath.getTotalLength();
+  tdStart = startY;
   tdEnd = endY;
   drawThread();
 }
@@ -42,9 +44,9 @@ function layoutThread() {
 function drawThread() {
   const top = tdMain.getBoundingClientRect().top;
   const reach = window.innerHeight * 0.72 - top;
-  const progress = Math.min(1, Math.max(0, (reach - tdStart) / (tdEnd - tdStart)));
+  const progress = tdCalm ? 1 : Math.min(1, Math.max(0, (reach - tdStart) / (tdEnd - tdStart)));
   tdPath.style.setProperty("--thread-offset", String(1 - progress));
-  const point = tdPath.getPointAtLength(progress * tdPath.getTotalLength());
+  const point = tdPath.getPointAtLength(progress * tdLength);
   tdTip.setAttribute("cx", point.x);
   tdTip.setAttribute("cy", point.y);
   tdTip.style.opacity = progress > 0 && progress < 1 ? "1" : "0";
@@ -65,7 +67,7 @@ document.fonts?.ready.then(layoutThread);
 // Thẻ cào
 const scratchCard = document.querySelector("[data-scratch]");
 const foil = scratchCard.querySelector(".td-scratch-foil");
-const foilContext = foil.getContext("2d");
+const foilContext = foil.getContext("2d", { willReadFrequently: true });
 const burst = scratchCard.querySelector(".td-burst");
 let scratching = false;
 let lastPoint;

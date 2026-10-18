@@ -43,9 +43,17 @@ function playNextNote() {
   noteIndex = (noteIndex + 1) % melody.length;
 }
 
+let musicStarting = false;
+
 async function startMusic() {
+  if (musicStarting || musicTimer) return;
+  musicStarting = true;
   audioContext ??= new AudioContextClass();
-  await audioContext.resume();
+  try {
+    await audioContext.resume();
+  } finally {
+    musicStarting = false;
+  }
   playNextNote();
   musicTimer = window.setInterval(playNextNote, 720);
   musicButton.classList.add("is-playing");
@@ -70,8 +78,16 @@ musicButton?.addEventListener("click", () => {
     musicButton.disabled = true;
     return;
   }
+  if (musicStarting) return;
   if (musicTimer) stopMusic();
   else startMusic();
+});
+
+// Tạm dừng nhạc khi khách chuyển app hoặc tab.
+document.addEventListener("visibilitychange", () => {
+  if (!audioContext || !musicTimer) return;
+  if (document.hidden) audioContext.suspend();
+  else audioContext.resume();
 });
 
 const invitationTheme = document.body.dataset.theme;
@@ -93,15 +109,20 @@ if (invitationTheme) {
       <div class="invitation-door invitation-door-right" aria-hidden="true"></div>
       <div class="invitation-gate-card">
         <span class="gate-mark" aria-hidden="true"></span>
-        <p>Trân trọng kính mời</p>
-        <h1 id="invitation-gate-title">Huy <i>&amp;</i> Phương</h1>
+        <p>Thiệp mời cưới của</p>
+        <h2 class="gate-title" id="invitation-gate-title">Huy <i>&amp;</i>&nbsp;Phương</h2>
         <button type="button" data-open-invitation><span>H&amp;P</span>Mở thiệp</button>
         <small>Nhạc nền sẽ bắt đầu sau khi mở</small>
       </div>
       <div class="opening-petals" aria-hidden="true"></div>
     `;
+    // Khi màn mở đang hiện, phần phía sau không nhận focus hay chạm.
+    const behind = [...document.body.children];
+    behind.forEach((element) => { element.inert = true; });
     document.body.prepend(gate);
     document.body.classList.add("is-invitation-locked");
+    const openButton = gate.querySelector("[data-open-invitation]");
+    openButton.focus({ preventScroll: true });
 
     const petalLayer = gate.querySelector(".opening-petals");
     for (let index = 0; index < 12; index += 1) {
@@ -113,9 +134,11 @@ if (invitationTheme) {
       petalLayer.append(petal);
     }
 
-    gate.querySelector("[data-open-invitation]").addEventListener("click", () => {
+    openButton.addEventListener("click", () => {
       gate.classList.add("is-opening");
       document.body.classList.remove("is-invitation-locked");
+      behind.forEach((element) => { element.inert = false; });
+      document.querySelector("main")?.focus({ preventScroll: true });
       try {
         window.sessionStorage.setItem(storageKey, "yes");
       } catch {}

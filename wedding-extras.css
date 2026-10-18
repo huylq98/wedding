@@ -80,7 +80,7 @@
 }
 .x-schedule-list .is-main + li { border-top: 0; }
 .x-schedule-list .is-main time, .x-schedule-list .is-main p { color: inherit; }
-.x-schedule-list .is-main p { opacity: 0.82; }
+.x-schedule-list .is-main p { opacity: 0.94; }
 .x-dress { margin: 30px 0 0; color: var(--muted); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; }
 .x-dress span { color: var(--ink); }
 
@@ -182,7 +182,7 @@
   color: var(--ink);
   font: 400 16px/1.5 var(--f-body);
 }
-.x-field input::placeholder, .x-field textarea::placeholder { color: color-mix(in srgb, var(--muted) 70%, transparent); }
+.x-field input::placeholder, .x-field textarea::placeholder { color: var(--muted); }
 .x-field input:disabled { opacity: 0.55; }
 .x-field textarea { resize: vertical; }
 .x-field input:focus, .x-field textarea:focus { outline: 0; border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 14%, transparent); }
@@ -203,7 +203,7 @@
 }
 .x-choice input:checked + span { border-color: var(--accent); background: var(--accent); color: var(--on-accent); }
 .x-choice input:focus-visible + span { outline: 2px solid var(--gold); outline-offset: 2px; }
-.x-check { display: flex; gap: 10px; align-items: center; margin-top: -8px; font-size: 14px; }
+.x-check { display: flex; gap: 10px; align-items: center; min-height: 44px; margin-top: -8px; font-size: 14px; }
 .x-check input { width: 18px; height: 18px; accent-color: var(--accent); }
 .form-status { margin: -6px 0 0; color: var(--muted); font-size: 12px; line-height: 1.6; text-align: center; }
 
