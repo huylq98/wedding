@@ -111,27 +111,30 @@ body[data-theme="ink"] .theme-close h2 { font-weight: 300; font-size: 76px; lett
 body[data-theme="ink"] .theme-close h2 i { font-style: italic; }
 
 /* Màn mở: tờ giấy gấp đôi tách theo chiều ngang */
-body[data-theme="ink"] .invitation-gate { --gate-bg: #f3eee6; --gate-ink: #1e1a17; --gate-gold: #c0281c; }
+body[data-theme="ink"] .invitation-gate {
+  --ink-speckle: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='92' height='92'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.55' numOctaves='3' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 .95 0 0 0 0 .93 0 0 0 0 .9 0 0 0 -16 6.4'/%3E%3C/filter%3E%3Crect width='92' height='92' filter='url(%23n)'/%3E%3C/svg%3E");
+  --gate-bg: #f3eee6; --gate-ink: #1e1a17; --gate-gold: #c0281c; }
 body[data-theme="ink"] .invitation-door-left { inset: 0 0 auto 0; width: auto; height: 50.5%; }
 body[data-theme="ink"] .invitation-door-right { inset: auto 0 0 0; width: auto; height: 50.5%; }
 body[data-theme="ink"] .invitation-gate.is-opening .invitation-door-left { transform: translateY(-101%); }
 body[data-theme="ink"] .invitation-gate.is-opening .invitation-door-right { transform: translateY(101%); }
 body[data-theme="ink"] .invitation-gate-card .gate-title { font-weight: 300; font-size: 60px; letter-spacing: -0.04em; }
 body[data-theme="ink"] .invitation-gate-card .gate-title i { font-style: italic; }
-body[data-theme="ink"] .invitation-gate-card { transition-delay: 0.45s; }
-body[data-theme="ink"] .invitation-door { transition-duration: 1s; transition-delay: 0.45s; }
+body[data-theme="ink"] .invitation-gate-card { transition-delay: 1s; }
+body[data-theme="ink"] .invitation-door { transition-duration: 0.85s; transition-delay: 1s; }
 body[data-theme="ink"] .invitation-gate-card button { gap: 18px; }
+/* Con dấu đang nhấc lên khỏi giấy: có bóng đổ bên dưới */
 body[data-theme="ink"] .invitation-gate-card button span {
   position: relative;
   width: 92px;
   height: 92px;
   border-radius: 50%;
   background: #c0281c;
-  box-shadow: inset 0 0 0 4px #c0281c, inset 0 0 0 5px rgba(251, 246, 238, 0.7);
+  box-shadow: inset 0 0 0 4px #c0281c, inset 0 0 0 5px rgba(251, 246, 238, 0.7), 0 10px 18px -6px rgba(30, 26, 23, 0.45);
   color: transparent;
   font-size: 0;
   animation: none;
-  transform: rotate(-8deg);
+  transform: translateY(-4px) rotate(-8deg);
 }
 body[data-theme="ink"] .invitation-gate-card button span::before {
   content: "囍";
@@ -147,19 +150,30 @@ body[data-theme="ink"] .invitation-gate-card button span::after {
   border-radius: 50%;
   opacity: 0;
 }
-body[data-theme="ink"] .invitation-gate-card button:hover span { transform: rotate(-2deg) scale(1.04); }
-body[data-theme="ink"] .invitation-gate.is-opening button span { animation: ink-press 0.45s cubic-bezier(0.3, 0, 0.3, 1) forwards; }
-body[data-theme="ink"] .invitation-gate.is-opening button span::after { animation: ink-ring 0.7s 0.2s ease-out forwards; }
+body[data-theme="ink"] .invitation-gate-card button:hover span { transform: translateY(-8px) rotate(-4deg) scale(1.04); }
+/* Bấm: nhấc dấu lên cao, đập xuống, để lại vết mực loang lổ trên giấy rồi tờ giấy mới tách */
+body[data-theme="ink"] .invitation-gate.is-opening button span { animation: ink-press 0.8s cubic-bezier(0.3, 0, 0.3, 1) forwards; }
+body[data-theme="ink"] .invitation-gate.is-opening button span::after { animation: ink-ring 0.7s 0.38s ease-out both; }
+body[data-theme="ink"] .invitation-gate.is-opening .invitation-gate-card { animation: ink-jolt 0.24s 0.36s ease-out; }
 body[data-theme="ink"] .opening-petals { display: none; }
 @keyframes ink-press {
-  0% { transform: rotate(-8deg) scale(1); }
-  45% { transform: rotate(-2deg) scale(0.82); box-shadow: inset 0 0 0 4px #c0281c, inset 0 0 0 5px rgba(251, 246, 238, 0.7), 0 0 0 0 rgba(192, 40, 28, 0.4); }
-  100% { transform: rotate(-2deg) scale(1.02); }
+  0% { transform: translateY(-4px) rotate(-8deg) scale(1); }
+  38% { transform: translateY(-46px) rotate(-16deg) scale(1.35); box-shadow: inset 0 0 0 4px #c0281c, inset 0 0 0 5px rgba(251, 246, 238, 0.7), 0 60px 34px -14px rgba(30, 26, 23, 0.28); animation-timing-function: cubic-bezier(0.6, 0, 1, 0.6); }
+  48% { transform: translateY(0) rotate(-3deg) scale(0.9); box-shadow: inset 0 0 0 4px #c0281c, inset 0 0 0 5px rgba(251, 246, 238, 0.7), 0 0 0 0 rgba(30, 26, 23, 0); background-image: none; }
+  49% { background-image: var(--ink-speckle); }
+  58% { transform: translateY(0) rotate(-3deg) scale(1.05); }
+  100% { transform: translateY(0) rotate(-3deg) scale(1); box-shadow: inset 0 0 0 4px #c0281c, inset 0 0 0 5px rgba(251, 246, 238, 0.7), 0 0 0 0 rgba(30, 26, 23, 0); background-image: var(--ink-speckle); }
 }
 @keyframes ink-ring {
   from { opacity: 0.8; transform: scale(1); }
-  to { opacity: 0; transform: scale(1.9); }
+  to { opacity: 0; transform: scale(2.1); }
 }
+@keyframes ink-jolt {
+  0% { transform: translateY(0); }
+  35% { transform: translateY(3px) scale(0.995); }
+  100% { transform: translateY(0); }
+}
+
 
 @media (max-width: 360px) {
   .ink-names { font-size: 92px; }
