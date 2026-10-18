@@ -185,7 +185,25 @@ body[data-theme="thread"] .invitation-gate::after {
   transform: translateX(-50%);
   transition: transform 0.6s ease, opacity 0.6s ease;
 }
-body[data-theme="thread"] .invitation-gate.is-opening::after { opacity: 0; transform: translateX(-50%) scaleY(0); }
+/* Bấm: tim đập mạnh, sợi tơ căng sáng lên; rồi giấy tách đôi và sợi tơ rút lên trên */
+body[data-theme="thread"] .invitation-gate.is-opening::after { animation: td-gate-thread 1.2s ease-in-out forwards; }
+body[data-theme="thread"] .invitation-gate.is-opening button span { animation: td-tie 0.6s ease-out; }
+body[data-theme="thread"] .invitation-gate-card { transition-delay: 0.55s; }
+body[data-theme="thread"] .invitation-door { transition-duration: 1.1s; transition-delay: 0.55s; }
+body[data-theme="thread"] .invitation-gate.is-opening .invitation-door-left { transform: translateX(-115%); box-shadow: 14px 0 34px -8px rgba(80, 20, 20, 0.28); }
+body[data-theme="thread"] .invitation-gate.is-opening .invitation-door-right { transform: translateX(115%); box-shadow: -14px 0 34px -8px rgba(80, 20, 20, 0.28); }
+@keyframes td-tie {
+  0% { transform: scale(1); }
+  20% { transform: scale(1.32); }
+  38% { transform: scale(0.94); }
+  56% { transform: scale(1.24); }
+  100% { transform: scale(1); }
+}
+@keyframes td-gate-thread {
+  0% { width: 2px; box-shadow: none; transform: translateX(-50%); transform-origin: top; }
+  30%, 46% { width: 3px; box-shadow: 0 0 10px 2px rgba(196, 30, 58, 0.55); transform: translateX(-50%); transform-origin: top; }
+  100% { width: 2px; box-shadow: none; transform: translateX(-50%) scaleY(0); transform-origin: top; }
+}
 body[data-theme="thread"] .invitation-gate-card { background: #fffdf9; border-radius: 22px; box-shadow: 0 30px 70px -36px rgba(80, 20, 20, 0.45); }
 body[data-theme="thread"] .invitation-gate-card .gate-title { font-weight: 300; }
 body[data-theme="thread"] .invitation-gate-card button span {

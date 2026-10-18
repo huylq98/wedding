@@ -219,3 +219,31 @@ body[data-theme="son"] .invitation-gate-card .gate-mark::before {
   font: 700 46px/1 "Noto Serif TC", "SimSun", serif;
 }
 body[data-theme="son"] .invitation-gate-card { background: #6a120e; border: 1px solid rgba(207, 165, 99, 0.5); }
+/* Bấm mở: thẻ lui ra, hai cánh cửa xoay vào trong, ánh vàng hắt ra từ khe cửa */
+body[data-theme="son"] .invitation-gate { perspective: 1100px; }
+body[data-theme="son"] .invitation-gate::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, transparent 42%, rgba(255, 236, 190, 0.9) 50%, transparent 58%),
+    radial-gradient(60% 70% at 50% 50%, rgba(255, 222, 150, 0.85), rgba(207, 165, 99, 0.35) 45%, transparent 75%);
+  opacity: 0;
+  pointer-events: none;
+}
+body[data-theme="son"] .invitation-gate.is-opening::before { animation: son-light 1.5s 0.35s ease-out both; }
+body[data-theme="son"] .invitation-door {
+  backface-visibility: hidden;
+  transition: transform 1.35s 0.35s cubic-bezier(0.55, 0, 0.25, 1), filter 1.35s 0.35s ease-in;
+}
+body[data-theme="son"] .invitation-door-left { transform-origin: left center; }
+body[data-theme="son"] .invitation-door-right { transform-origin: right center; }
+body[data-theme="son"] .invitation-gate.is-opening .invitation-door-left { transform: rotateY(88deg); filter: brightness(0.45); }
+body[data-theme="son"] .invitation-gate.is-opening .invitation-door-right { transform: rotateY(-88deg); filter: brightness(0.45); }
+body[data-theme="son"] .invitation-gate-card { transition: opacity 0.45s ease, transform 0.6s ease; }
+body[data-theme="son"] .invitation-gate.is-opening .invitation-gate-card { transform: scale(1.06); }
+@keyframes son-light {
+  0% { opacity: 0; }
+  35% { opacity: 1; }
+  100% { opacity: 0; }
+}
