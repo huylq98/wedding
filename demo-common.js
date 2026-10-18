@@ -111,8 +111,8 @@ if (invitationTheme) {
         <span class="gate-mark" aria-hidden="true"></span>
         <p>Thiệp mời cưới của</p>
         <h2 class="gate-title" id="invitation-gate-title">Huy <i>&amp;</i>&nbsp;Phương</h2>
-        <button type="button" data-open-invitation><span>H&amp;P</span>Mở thiệp</button>
-        <small>Nhạc nền sẽ bắt đầu sau khi mở</small>
+        <button type="button" data-open-invitation><span>H&amp;P</span>${document.body.dataset.gateLabel || "Mở thiệp"}</button>
+        <small>${document.body.dataset.gateHint || "Nhạc nền sẽ bắt đầu sau khi mở"}</small>
       </div>
       <div class="opening-petals" aria-hidden="true"></div>
     `;
@@ -143,7 +143,7 @@ if (invitationTheme) {
         window.sessionStorage.setItem(storageKey, "yes");
       } catch {}
       if (AudioContextClass && !musicTimer) startMusic().catch(() => {});
-      window.setTimeout(() => gate.remove(), reduceMotion ? 80 : 1500);
+      window.setTimeout(() => gate.remove(), reduceMotion ? 80 : 1900);
     });
   }
 }

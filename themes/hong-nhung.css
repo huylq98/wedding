@@ -1,4 +1,4 @@
-/* 03 · Hồng Nhung — hồng phấn, đỏ nhung, hoa hồng nét mảnh và chữ viết tay. */
+/* 03 · Hồng Nhung — hồng phấn, đỏ nhung, cúc họa mi đầu đông và chữ viết tay. */
 body[data-theme="rose"] {
   --bg: #f8e9e5;
   --paper: #fdf6f3;
@@ -43,10 +43,10 @@ body[data-theme="rose"] {
 }
 .rose-arch figcaption { left: 50%; transform: translateX(-50%); white-space: nowrap; }
 .rose-bloom, .rose-sprig { position: absolute; color: var(--accent); pointer-events: none; }
-.rose-bloom { width: 92px; height: 92px; }
-.rose-bloom-a { top: 22%; left: -50px; transform: rotate(-18deg); }
-.rose-bloom-b { top: calc(22% + 58px); left: -22px; width: 64px; height: 64px; transform: rotate(14deg); opacity: 0.85; }
-.rose-bloom-c { right: -44px; bottom: 12%; transform: rotate(160deg) scaleX(-1); }
+.rose-bloom { width: 84px; height: 84px; filter: drop-shadow(0 6px 8px rgba(120, 20, 40, 0.18)); }
+.rose-bloom-a { top: 20%; left: -42px; transform: rotate(-12deg); }
+.rose-bloom-b { top: calc(20% + 62px); left: -14px; width: 54px; height: 54px; transform: rotate(20deg); }
+.rose-bloom-c { right: -36px; bottom: 14%; width: 74px; height: 74px; transform: rotate(8deg); }
 .rose-sprig { width: 120px; height: 48px; }
 .rose-sprig-a { top: calc(22% - 36px); left: -36px; transform: rotate(-58deg); }
 .rose-sprig-b { right: -30px; bottom: calc(12% + 70px); transform: rotate(118deg); }
@@ -152,7 +152,7 @@ body[data-theme="rose"] .x-gift { background: linear-gradient(180deg, var(--bg),
 body[data-theme="rose"] .theme-close { position: relative; background: var(--paper); }
 body[data-theme="rose"] .theme-close h2 { color: var(--accent); font: 400 72px/1 var(--f-script); word-spacing: 0.18em; }
 body[data-theme="rose"] .theme-close h2 i { color: var(--gold); font: italic 400 36px/1 var(--f-display); }
-.rose-close-bloom { display: block; width: 70px; height: 70px; margin: 0 auto 18px; color: var(--accent); }
+.rose-close-bloom { display: block; width: 64px; height: 64px; margin: 0 auto 18px; filter: drop-shadow(0 6px 8px rgba(120, 20, 40, 0.18)); }
 
 /* Màn mở */
 body[data-theme="rose"] .invitation-gate { --gate-bg: #f8e9e5; --gate-ink: #4a1420; --gate-gold: #a3203a; }
@@ -170,7 +170,19 @@ body[data-theme="rose"] .invitation-gate-card {
 }
 body[data-theme="rose"] .invitation-gate-card .gate-title { color: #a3203a; font: 400 58px/1.05 var(--f-script); }
 body[data-theme="rose"] .invitation-gate-card .gate-title i { color: #c98f8a; font: italic 400 30px/1 var(--f-display); }
-body[data-theme="rose"] .invitation-gate-card button span { color: #fff4f1; font: italic 500 24px/1 var(--f-display); }
+body[data-theme="rose"] .invitation-gate-card button span {
+  width: 104px;
+  height: 104px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-50 -50 100 100'%3E%3Cg fill='%23fffdfa' stroke='%23e2b3b3' stroke-width='0.8'%3E%3Cellipse cx='0' cy='-27' rx='5.6' ry='19' transform='rotate(0)'/%3E%3Cellipse cx='0' cy='-27' rx='5.6' ry='19' transform='rotate(22.5)'/%3E%3Cellipse cx='0' cy='-27' rx='5.6' ry='19' transform='rotate(45)'/%3E%3Cellipse cx='0' cy='-27' rx='5.6' ry='19' transform='rotate(67.5)'/%3E%3Cellipse cx='0' cy='-27' rx='5.6' ry='19' transform='rotate(90)'/%3E%3Cellipse cx='0' cy='-27' rx='5.6' ry='19' transform='rotate(112.5)'/%3E%3Cellipse cx='0' cy='-27' rx='5.6' ry='19' transform='rotate(135)'/%3E%3Cellipse cx='0' cy='-27' rx='5.6' ry='19' transform='rotate(157.5)'/%3E%3Cellipse cx='0' cy='-27' rx='5.6' ry='19' transform='rotate(180)'/%3E%3Cellipse cx='0' cy='-27' rx='5.6' ry='19' transform='rotate(202.5)'/%3E%3Cellipse cx='0' cy='-27' rx='5.6' ry='19' transform='rotate(225)'/%3E%3Cellipse cx='0' cy='-27' rx='5.6' ry='19' transform='rotate(247.5)'/%3E%3Cellipse cx='0' cy='-27' rx='5.6' ry='19' transform='rotate(270)'/%3E%3Cellipse cx='0' cy='-27' rx='5.6' ry='19' transform='rotate(292.5)'/%3E%3Cellipse cx='0' cy='-27' rx='5.6' ry='19' transform='rotate(315)'/%3E%3Cellipse cx='0' cy='-27' rx='5.6' ry='19' transform='rotate(337.5)'/%3E%3C/g%3E%3Ccircle r='10' fill='%23e9a93c'/%3E%3Ccircle r='7' fill='none' stroke='%23c98a2a' stroke-dasharray='1.5 2'/%3E%3C/svg%3E") center / contain no-repeat;
+  box-shadow: none;
+  color: transparent;
+  font-size: 0;
+  filter: drop-shadow(0 8px 12px rgba(120, 20, 40, 0.22));
+  animation: rose-sway 3.2s ease-in-out infinite alternate;
+}
+body[data-theme="rose"] .invitation-gate-card button:hover span { transform: rotate(20deg) scale(1.05); }
+body[data-theme="rose"] .invitation-gate.is-opening button span { transform: rotate(120deg) scale(1.1); transition: transform 0.8s ease; }
+@keyframes rose-sway { from { rotate: -8deg; } to { rotate: 8deg; } }
 body[data-theme="rose"] .opening-petals i { background: linear-gradient(135deg, #e48a96, #a3203a); }
 
 @media (prefers-reduced-motion: reduce) {

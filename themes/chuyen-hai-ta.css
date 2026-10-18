@@ -237,15 +237,16 @@ body[data-theme="story"] .x-wishes { background: var(--paper); }
 body[data-theme="story"] .theme-close { background: linear-gradient(180deg, var(--bg), #f8d3bf); }
 body[data-theme="story"] .theme-close p { font: italic 400 20px/1.4 var(--f-display); letter-spacing: 0; text-transform: none; }
 
-/* Màn mở: lật bìa sách */
-body[data-theme="story"] .invitation-gate { --gate-bg: #8e1b22; --gate-ink: #fbe9d6; --gate-gold: #f2c46b; perspective: 1600px; }
+/* Màn mở: bìa sách tranh cắt giấy lật sang trái, lộ trang giấy kẻ */
+body[data-theme="story"] .invitation-gate { --gate-bg: #fbe1d0; --gate-ink: #3a1013; --gate-gold: #b81d2a; perspective: 1600px; }
 body[data-theme="story"] .invitation-door-left {
   z-index: 2;
   width: 100%;
   background:
-    linear-gradient(90deg, rgba(0, 0, 0, 0.25), transparent 6%),
-    radial-gradient(120% 80% at 50% 40%, #b8323a, #7a141b);
-  box-shadow: inset 0 0 0 14px #7a141b, inset 0 0 0 15px rgba(242, 196, 107, 0.6);
+    linear-gradient(90deg, rgba(58, 16, 19, 0.22), transparent 5%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 390 300' preserveAspectRatio='none'%3E%3Cpath fill='%23f1c3b2' d='M0 120C60 90 120 100 180 120S300 150 390 110V300H0Z'/%3E%3Cpath fill='%23e08a78' d='M0 170C80 140 150 160 220 176S330 190 390 160V300H0Z'/%3E%3Cpath fill='%23c2413c' d='M0 215C90 196 170 206 250 222S350 236 390 214V300H0Z'/%3E%3Cpath fill='%238e1b22' d='M0 258C110 244 230 250 390 262V300H0Z'/%3E%3C/svg%3E") left bottom / 100% 42% no-repeat,
+    linear-gradient(180deg, #fdf3e8, #fbe1d0 70%);
+  box-shadow: inset 0 0 0 12px rgba(255, 250, 243, 0.5), inset 0 0 0 13px rgba(184, 29, 42, 0.35);
   transform-origin: left center;
   transition: transform 1.4s cubic-bezier(0.6, 0, 0.25, 1);
 }
@@ -257,10 +258,26 @@ body[data-theme="story"] .invitation-door-right {
 }
 body[data-theme="story"] .invitation-gate.is-opening .invitation-door-left { transform: rotateY(-105deg); }
 body[data-theme="story"] .invitation-gate.is-opening .invitation-door-right { transform: none; opacity: 0; }
-body[data-theme="story"] .invitation-gate-card .gate-mark::before { content: "Sách tranh · Tập 1"; display: block; margin-bottom: 18px; color: rgba(251, 233, 214, 0.7); font: italic 400 15px/1 var(--f-display); }
-body[data-theme="story"] .invitation-gate-card .gate-title { font: 400 58px/1 var(--f-display); }
-body[data-theme="story"] .invitation-gate-card .gate-title i { font-style: italic; }
-body[data-theme="story"] .invitation-gate-card button span { color: #7a141b; font: italic 400 24px/1 var(--f-display); }
+body[data-theme="story"] .invitation-gate-card { align-self: start; margin-top: 16vh; }
+body[data-theme="story"] .invitation-gate-card > p { color: #b81d2a; }
+body[data-theme="story"] .invitation-gate-card .gate-mark::before { content: "Một câu chuyện có thật"; display: block; margin-bottom: 14px; color: #80605a; font: italic 400 16px/1 var(--f-display); }
+body[data-theme="story"] .invitation-gate-card .gate-title { margin: 14px 0 26px; font: 400 60px/1 var(--f-display); }
+body[data-theme="story"] .invitation-gate-card .gate-title i { color: #b81d2a; font-style: italic; }
+body[data-theme="story"] .invitation-gate-card button {
+  display: inline-block;
+  padding: 17px 32px;
+  border-radius: 999px;
+  background: #b81d2a;
+  box-shadow: 4px 4px 0 #f1c3b2, 8px 8px 0 #e08a78;
+  color: #fff6ec;
+  font: 600 13px/1 var(--f-body);
+  letter-spacing: 0.24em;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+body[data-theme="story"] .invitation-gate-card button:hover,
+body[data-theme="story"] .invitation-gate-card button:focus-visible { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 #f1c3b2, 11px 11px 0 #e08a78; }
+body[data-theme="story"] .invitation-gate-card button span { display: none; }
+body[data-theme="story"] .invitation-gate-card > small { color: #80605a; }
 body[data-theme="story"] .opening-petals { display: none; }
 
 @media (max-width: 360px) {

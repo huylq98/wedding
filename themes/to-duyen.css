@@ -188,7 +188,19 @@ body[data-theme="thread"] .invitation-gate::after {
 body[data-theme="thread"] .invitation-gate.is-opening::after { opacity: 0; transform: translateX(-50%) scaleY(0); }
 body[data-theme="thread"] .invitation-gate-card { background: #fffdf9; border-radius: 22px; box-shadow: 0 30px 70px -36px rgba(80, 20, 20, 0.45); }
 body[data-theme="thread"] .invitation-gate-card .gate-title { font-weight: 300; }
-body[data-theme="thread"] .invitation-gate-card button span { color: #fff6f2; font: italic 300 24px/1 var(--f-display); }
+body[data-theme="thread"] .invitation-gate-card button span {
+  width: 76px;
+  height: 70px;
+  border-radius: 0;
+  background: #c41e3a;
+  box-shadow: none;
+  color: transparent;
+  font-size: 0;
+  clip-path: path("M38 68C14 50 2 36 2 21 2 10 10 2 21 2c8 0 14 4 17 10 3-6 9-10 17-10 11 0 19 8 19 19 0 15-12 29-36 47Z");
+  animation: td-heartbeat 1.6s ease-in-out infinite;
+}
+body[data-theme="thread"] .invitation-gate-card button:hover span { transform: scale(1.06); }
+@keyframes td-heartbeat { 0%, 100% { transform: scale(1); } 15% { transform: scale(1.12); } 30% { transform: scale(1); } 45% { transform: scale(1.08); } }
 
 @media (max-width: 360px) {
   .td-names h1 { font-size: 44px; }

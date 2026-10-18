@@ -197,6 +197,7 @@ body.is-invitation-locked { overflow: hidden; }
   text-align: center;
   transition: opacity 0.5s ease, transform 0.7s ease;
 }
+.invitation-gate.is-opening { pointer-events: none; }
 .invitation-gate.is-opening .invitation-gate-card { opacity: 0; transform: scale(0.92); }
 .invitation-gate-card > p {
   margin: 0;
