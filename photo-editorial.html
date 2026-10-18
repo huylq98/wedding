@@ -3,67 +3,83 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#f1e5ce" />
-    <meta name="description" content="Thiệp cưới Đông Dương của Huy và Phương: gạch bông đỏ, khung vòm art-deco và giấy kem." />
-    <title>04 · Đông Dương · Huy &amp; Phương</title>
+    <meta name="theme-color" content="#fbf6f1" />
+    <meta name="description" content="Thiệp cưới Tơ Duyên của Huy và Phương: một sợi chỉ đỏ nối hai người, vẽ dần theo từng lần cuộn." />
+    <title>04 · Tơ Duyên · Huy &amp; Phương</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&family=Prata&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&family=Noto+Serif+Display:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="demo-common.css?v=20261018" />
     <link rel="stylesheet" href="wedding-extras.css?v=20261018" />
-    <link rel="stylesheet" href="themes/dong-duong.css?v=20261018" />
+    <link rel="stylesheet" href="themes/to-duyen.css?v=20261018-2" />
     <script src="demo-common.js?v=20261018" defer></script>
     <script src="wedding-extras.js?v=20261018" defer></script>
+    <script src="themes/to-duyen.js?v=20261018-2" defer></script>
   </head>
-  <body data-theme="indochine">
+  <body data-theme="thread">
     <nav class="design-switcher" aria-label="Chọn mẫu thiệp">
       <a href="index.html"><span>01</span>Son Mài</a>
       <a href="editorial.html"><span>02</span>Thư Tay</a>
       <a href="keepsake.html"><span>03</span>Hồng Nhung</a>
-      <a class="is-active" href="photo-editorial.html" aria-current="page"><span>04</span>Đông Dương</a>
-      <a href="wine-rustic.html"><span>05</span>Điện Ảnh</a>
+      <a class="is-active" href="photo-editorial.html" aria-current="page"><span>04</span>Tơ Duyên</a>
+      <a href="wine-rustic.html"><span>05</span>Hoa Đăng</a>
     </nav>
     <button class="demo-music" data-music-toggle type="button" aria-pressed="false" aria-label="Bật nhạc nền tạm"><span class="music-bars" aria-hidden="true"><i></i><i></i><i></i></span><span data-music-label>Bật nhạc</span></button>
 
-    <main class="invite dd">
-      <header class="dd-cover" id="top">
-        <div class="dd-band" aria-hidden="true"></div>
-        <div class="dd-arch" data-reveal>
-          <figure class="ph" style="--ratio: 3 / 4"><figcaption>Ảnh áo dài · 3:4</figcaption></figure>
+    <main class="invite td">
+      <svg class="td-thread" aria-hidden="true">
+        <path class="td-thread-path" pathLength="1" />
+        <circle class="td-thread-tip" r="4" />
+      </svg>
+
+      <header class="td-cover" id="top">
+        <p class="td-eyebrow">Sợi chỉ đỏ · 28 . 11 . 2026</p>
+        <div class="td-names">
+          <h1>
+            <span class="td-name td-name-a">Quốc Huy</span>
+            <span class="td-amp">và</span>
+            <span class="td-name td-name-b">Thu Phương</span>
+          </h1>
+          <svg class="td-knot" viewBox="0 0 300 230" aria-hidden="true">
+            <path pathLength="1" d="M8 14C70 14 100 40 120 55S145 75 150 85C160 60 205 62 200 100C196 125 165 140 150 158C135 140 104 125 100 100C95 62 140 60 150 85C165 70 232 62 242 110C250 150 266 200 292 218" />
+          </svg>
         </div>
-        <p class="dd-eyebrow">Hỷ sự · Hà Nội · 2026</p>
-        <h1 class="dd-names" data-reveal>Huy <span>&amp;</span> Phương</h1>
-        <div class="dd-date">
-          <span>Thứ Bảy</span>
-          <strong><b>28</b></strong>
-          <span>Tháng 11</span>
-        </div>
-        <p class="dd-time">10 giờ sáng · Selena Palace</p>
+        <blockquote class="td-legend">
+          Tương truyền, ông Tơ bà Nguyệt buộc một sợi chỉ đỏ vào hai người có duyên. Dù xa đến đâu, sợi chỉ ấy chưa từng đứt.
+        </blockquote>
+        <a class="td-hint" href="#loi-moi">Kéo xuống để theo sợi chỉ</a>
       </header>
 
-      <section class="dd-letter" id="loi-moi">
-        <div class="dd-panel" data-reveal>
-          <p class="kicker">Thư mời</p>
-          <h2>Hai họ<br />kết tóc se duyên</h2>
-          <p>Trong không khí ấm áp cuối thu, gia đình hai họ Lê và Nguyễn trân trọng mời bạn đến dự lễ thành hôn của</p>
-          <p class="dd-couple">Lê Quốc Huy<br /><span>cùng</span><br />Nguyễn Vũ Thu Phương</p>
-          <p>Sự có mặt của bạn là món quà quý nhất với chúng tôi.</p>
+      <section class="td-letter" id="loi-moi">
+        <figure class="ph td-photo" style="--ratio: 4 / 5" data-reveal><figcaption>Ảnh cưới · 4:5</figcaption></figure>
+        <div class="td-letter-copy" data-reveal>
+          <p class="kicker">Lời mời</p>
+          <h2>Rồi một ngày,<br /><em>hai đầu sợi chỉ</em><br />gặp nhau.</h2>
+          <p>Huy và Phương trân trọng mời bạn đến chung vui trong lễ thành hôn của hai đứa. Bạn cũng là một phần của sợi chỉ ấy.</p>
         </div>
       </section>
 
-      <section class="dd-event" aria-labelledby="event-title">
-        <p class="kicker">Tiệc cưới</p>
-        <h2 id="event-title">Selena Palace</h2>
-        <ul class="dd-tiles" data-reveal>
-          <li><span class="dd-tile" aria-hidden="true"></span><div><small>Ngày</small><strong>28 . 11 . 2026</strong><em>Thứ Bảy · 20 tháng 10 Bính Ngọ</em></div></li>
-          <li><span class="dd-tile" aria-hidden="true"></span><div><small>Giờ</small><strong>10 : 00</strong><em>Đón khách từ 9 giờ 30</em></div></li>
-          <li><span class="dd-tile" aria-hidden="true"></span><div><small>Địa chỉ</small><strong>Km 19 Quốc lộ 32</strong><em>Đức Thượng, Hoài Đức, Hà Nội</em></div></li>
-        </ul>
+      <section class="td-scratch" aria-labelledby="event-title">
+        <p class="kicker">Ngày chúng mình về chung nhà</p>
+        <h2 id="event-title">Cào để xem ngày vui</h2>
+        <div class="td-scratch-card" data-scratch>
+          <div class="td-scratch-under">
+            <span>Thứ Bảy</span>
+            <strong>28 . 11 . 2026</strong>
+            <span>10:00 sáng · Selena Palace</span>
+          </div>
+          <canvas class="td-scratch-foil" aria-hidden="true"></canvas>
+          <div class="td-burst" aria-hidden="true"></div>
+        </div>
+        <button class="td-scratch-skip" type="button" data-scratch-skip>Bấm để xem ngay</button>
+        <address>Selena Palace · Km 19 Quốc lộ 32, Đức Thượng, Hoài Đức, Hà Nội</address>
       </section>
 
       <footer class="theme-close">
-        <div class="dd-band" aria-hidden="true"></div>
-        <p data-reveal>Trân trọng kính mời</p>
+        <svg class="td-bow" viewBox="0 0 120 60" aria-hidden="true">
+          <path d="M60 30C40 6 10 8 12 28s34 18 48 2c14 16 46 18 48-2S80 6 60 30zM60 30 44 56M60 30l16 26" />
+        </svg>
+        <p data-reveal>Buộc lại một lời hẹn</p>
         <h2 data-reveal>Huy <i>&amp;</i> Phương</h2>
         <span>28 . 11 . 2026</span>
       </footer>

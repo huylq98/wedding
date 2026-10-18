@@ -1,0 +1,198 @@
+/* 04 · Tơ Duyên — giấy trắng ngà, một sợi chỉ đỏ chạy suốt thiệp. */
+body[data-theme="thread"] {
+  --bg: #fbf6f1;
+  --paper: #fffdf9;
+  --ink: #2a1715;
+  --muted: #7d6560;
+  --accent: #c41e3a;
+  --gold: #c41e3a;
+  --line: rgba(42, 23, 21, 0.1);
+  --on-accent: #fff6f2;
+  --f-display: "Noto Serif Display", Georgia, serif;
+  --radius: 14px;
+  --btn-radius: 999px;
+  --ph-1: #f1e1d8;
+  --ph-2: #d7b4a8;
+  --ph-ink: rgba(80, 24, 24, 0.5);
+  --backdrop:
+    radial-gradient(circle at 20% 15%, rgba(196, 30, 58, 0.08), transparent 40%),
+    #efe5dc;
+}
+
+/* Sợi chỉ dài: nằm sau nội dung, vẽ dần theo cuộn (to-duyen.js đặt d và độ dài). */
+.td-thread { position: absolute; z-index: 0; top: 0; left: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+.td-thread-path {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: var(--thread-offset, 1);
+}
+.td-thread-tip { fill: var(--accent); filter: drop-shadow(0 0 6px rgba(196, 30, 58, 0.6)); }
+.td > :not(.td-thread) { position: relative; z-index: 1; }
+/* Quầng nền quanh chữ để sợi chỉ không cắt ngang tiêu đề. */
+.td h2, .td .kicker, .td .x-kicker, .td address, .td-legend, .td-hint, .theme-close span {
+  text-shadow: 0 0 4px var(--bg), 0 0 8px var(--bg), 0 0 14px var(--bg);
+}
+
+.td-cover {
+  min-height: min(100svh, 860px);
+  display: grid;
+  align-content: center;
+  padding: 90px 28px 60px;
+}
+.td-eyebrow { margin: 0 0 30px; color: var(--accent); font: 600 11px/1 var(--f-body); letter-spacing: 0.3em; text-align: center; text-transform: uppercase; }
+.td-names { position: relative; height: 330px; }
+.td-names h1 { margin: 0; font: 300 52px/1 var(--f-display); letter-spacing: -0.02em; }
+.td-name { position: absolute; }
+.td-name-a { top: 0; left: 0; }
+.td-name-b { right: 0; bottom: 0; }
+.td-amp {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: var(--accent);
+  font: italic 300 22px/1 var(--f-display);
+  transform: translate(-50%, -10px);
+  opacity: 0;
+}
+.td-knot {
+  position: absolute;
+  top: 58px;
+  left: 0;
+  width: 100%;
+  height: 230px;
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+}
+.td-knot path { stroke-dasharray: 1; stroke-dashoffset: 1; }
+body:not(.is-invitation-locked) .td-knot path { animation: td-draw 2.6s 0.4s cubic-bezier(0.6, 0, 0.3, 1) forwards; }
+body:not(.is-invitation-locked) .td-amp { animation: td-fade 0.8s 2.6s ease forwards; }
+@keyframes td-draw { to { stroke-dashoffset: 0; } }
+@keyframes td-fade { to { opacity: 1; } }
+
+.td-legend {
+  margin: 38px 0 0;
+  padding: 0 6px;
+  color: var(--muted);
+  font: italic 300 18px/1.6 var(--f-display);
+  text-align: center;
+}
+.td-hint {
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+  margin-top: 36px;
+  color: var(--accent);
+  font: 600 11px/1 var(--f-body);
+  letter-spacing: 0.24em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+.td-hint::after { content: ""; width: 1px; height: 28px; background: currentColor; animation: td-pull 1.8s ease-in-out infinite; transform-origin: top; }
+@keyframes td-pull { 0%, 100% { transform: scaleY(0.3); } 50% { transform: scaleY(1); } }
+
+.td-letter { padding: 40px 28px 90px; }
+.td-photo { width: 78%; border-radius: 160px 160px 14px 14px; box-shadow: 0 30px 60px -36px rgba(80, 20, 20, 0.5); }
+.td-letter-copy { margin: -40px 0 0 22%; padding: 30px 24px; border-radius: 14px; background: var(--paper); box-shadow: 0 20px 50px -30px rgba(80, 20, 20, 0.35); }
+.td-letter-copy h2 { margin: 14px 0 16px; font: 300 34px/1.15 var(--f-display); }
+.td-letter-copy h2 em { color: var(--accent); }
+.td-letter-copy p:not(.kicker) { margin: 0; color: var(--muted); font-size: 15px; }
+
+.td-scratch { padding: 70px 28px 90px; text-align: center; }
+.td-scratch h2 { margin: 12px 0 28px; font: 300 32px/1.1 var(--f-display); }
+.td-scratch-card {
+  position: relative;
+  height: 196px;
+  overflow: hidden;
+  border-radius: 18px;
+  background: var(--paper);
+  box-shadow: 0 0 0 1px var(--line), 0 26px 50px -30px rgba(120, 20, 30, 0.45);
+}
+.td-scratch-under { height: 100%; display: grid; place-content: center; gap: 8px; }
+.td-scratch-under span { color: var(--muted); font: 600 11px/1 var(--f-body); letter-spacing: 0.24em; text-transform: uppercase; }
+.td-scratch-under strong { color: var(--accent); font: 300 46px/1 var(--f-display); letter-spacing: -0.01em; }
+.td-scratch-foil { position: absolute; inset: 0; width: 100%; height: 100%; cursor: grab; touch-action: none; transition: opacity 0.7s ease; }
+.td-scratch-card.is-revealed .td-scratch-foil { opacity: 0; pointer-events: none; }
+.td-scratch-skip {
+  margin-top: 14px;
+  border: 0;
+  background: none;
+  color: var(--muted);
+  cursor: pointer;
+  font: 500 12px/1 var(--f-body);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.td-scratch-card.is-revealed ~ .td-scratch-skip { visibility: hidden; }
+.td-scratch address { margin-top: 18px; color: var(--muted); font-size: 14px; font-style: normal; }
+
+.td-burst { position: absolute; inset: 0; pointer-events: none; }
+.td-burst i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 14px;
+  height: 14px;
+  background: var(--accent);
+  clip-path: path("M7 13C2 9 0 6 0 4 0 2 1.5 0 3.5 0 5 0 6.3 1 7 2.2 7.7 1 9 0 10.5 0 12.5 0 14 2 14 4 14 6 12 9 7 13z");
+  animation: td-heart 1.3s cubic-bezier(0.1, 0.7, 0.3, 1) forwards;
+}
+@keyframes td-heart {
+  0% { opacity: 1; transform: translate(-50%, -50%) scale(0.4); }
+  100% { opacity: 0; transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) scale(var(--s)) rotate(var(--r)); }
+}
+
+/* Phần dùng chung: nền trong suốt để thấy sợi chỉ chạy qua */
+body[data-theme="thread"] .wedding-extras { background: transparent; }
+body[data-theme="thread"] .x-section { border-top: 0; background: transparent; }
+body[data-theme="thread"] .x-head h2 { font-weight: 300; }
+body[data-theme="thread"] .x-head::after {
+  content: "";
+  width: 64px;
+  height: 12px;
+  margin: 18px auto 0;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 12'%3E%3Cpath d='M1 6c8-6 14 6 22 0s14-6 18 0 14 6 22 0' fill='none' stroke='%23c41e3a' stroke-width='1.4' stroke-linecap='round'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+body[data-theme="thread"] .x-family-grid,
+body[data-theme="thread"] .x-story-list,
+body[data-theme="thread"] .x-schedule-list,
+body[data-theme="thread"] .x-form,
+body[data-theme="thread"] .wish-preview { padding: 24px 18px; border-radius: 18px; background: var(--paper); box-shadow: 0 20px 50px -34px rgba(80, 20, 20, 0.4); }
+body[data-theme="thread"] .x-schedule-list .is-main { margin-inline: -6px; }
+body[data-theme="thread"] .x-wishes .x-field input, body[data-theme="thread"] .x-wishes .x-field textarea { background: var(--bg); }
+body[data-theme="thread"] .x-wishes .wish-preview { margin-top: 14px; }
+body[data-theme="thread"] .theme-close { padding-top: 70px; }
+body[data-theme="thread"] .theme-close h2 { font-weight: 300; }
+.td-bow { display: block; width: 110px; margin: 0 auto 22px; fill: none; stroke: var(--accent); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+/* Màn mở: hai tờ giấy, một sợi chỉ đỏ chạy giữa */
+body[data-theme="thread"] .invitation-gate { --gate-bg: #fbf6f1; --gate-ink: #2a1715; --gate-gold: #c41e3a; }
+body[data-theme="thread"] .invitation-door-left { box-shadow: inset -1px 0 0 rgba(42, 23, 21, 0.08); }
+body[data-theme="thread"] .invitation-gate::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: #c41e3a;
+  transform: translateX(-50%);
+  transition: transform 0.6s ease, opacity 0.6s ease;
+}
+body[data-theme="thread"] .invitation-gate.is-opening::after { opacity: 0; transform: translateX(-50%) scaleY(0); }
+body[data-theme="thread"] .invitation-gate-card { background: #fffdf9; border-radius: 22px; box-shadow: 0 30px 70px -36px rgba(80, 20, 20, 0.45); }
+body[data-theme="thread"] .invitation-gate-card h1 { font-weight: 300; }
+body[data-theme="thread"] .invitation-gate-card button span { color: #fff6f2; font: italic 300 24px/1 var(--f-display); }
+
+@media (max-width: 360px) {
+  .td-names h1 { font-size: 44px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .td-knot path { stroke-dashoffset: 0; animation: none !important; }
+  .td-amp { opacity: 1; animation: none !important; }
+  .td-hint::after { animation: none; }
+}

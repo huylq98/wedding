@@ -3,78 +3,65 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#140a0a" />
-    <meta name="description" content="Thiệp cưới Điện Ảnh của Huy và Phương: poster phim, vé mời và nhung đỏ." />
-    <title>05 · Điện Ảnh · Huy &amp; Phương</title>
+    <meta name="theme-color" content="#12060a" />
+    <meta name="description" content="Thiệp cưới Hoa Đăng của Huy và Phương: bầu trời đêm, đèn lồng đỏ và lời chúc bay lên cùng đèn." />
+    <title>05 · Hoa Đăng · Huy &amp; Phương</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&family=Oswald:wght@300;500;600&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&family=Corinthia:wght@400;700&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="demo-common.css?v=20261018" />
     <link rel="stylesheet" href="wedding-extras.css?v=20261018" />
-    <link rel="stylesheet" href="themes/dien-anh.css?v=20261018" />
+    <link rel="stylesheet" href="themes/hoa-dang.css?v=20261018-2" />
     <script src="demo-common.js?v=20261018" defer></script>
     <script src="wedding-extras.js?v=20261018" defer></script>
+    <script src="themes/hoa-dang.js?v=20261018-2" defer></script>
   </head>
-  <body data-theme="cinema">
+  <body data-theme="lantern">
+    <canvas class="hd-sky" aria-hidden="true"></canvas>
     <nav class="design-switcher" aria-label="Chọn mẫu thiệp">
       <a href="index.html"><span>01</span>Son Mài</a>
       <a href="editorial.html"><span>02</span>Thư Tay</a>
       <a href="keepsake.html"><span>03</span>Hồng Nhung</a>
-      <a href="photo-editorial.html"><span>04</span>Đông Dương</a>
-      <a class="is-active" href="wine-rustic.html" aria-current="page"><span>05</span>Điện Ảnh</a>
+      <a href="photo-editorial.html"><span>04</span>Tơ Duyên</a>
+      <a class="is-active" href="wine-rustic.html" aria-current="page"><span>05</span>Hoa Đăng</a>
     </nav>
     <button class="demo-music" data-music-toggle type="button" aria-pressed="false" aria-label="Bật nhạc nền tạm"><span class="music-bars" aria-hidden="true"><i></i><i></i><i></i></span><span data-music-label>Bật nhạc</span></button>
 
-    <main class="invite cine">
-      <header class="cine-poster" id="top">
-        <figure class="ph cine-still"><figcaption>Ảnh poster · 9:16</figcaption></figure>
-        <p class="cine-presents">Gia đình hai họ Lê &amp; Nguyễn<br />trân trọng giới thiệu</p>
-        <div class="cine-title-block" data-reveal>
-          <h1 class="cine-title"><span>Huy</span><i>&amp;</i><span>Phương</span></h1>
-          <p class="cine-tagline">Một chuyện tình, một lời hẹn.</p>
-          <p class="cine-release"><span>Khởi chiếu</span> 28 . 11 . 2026</p>
-        </div>
-        <p class="cine-billing">
-          Đạo diễn <b>Duyên Số</b> · Diễn viên chính <b>Lê Quốc Huy</b> <b>Nguyễn Vũ Thu Phương</b> ·
-          Kịch bản <b>Tình Yêu</b> · Âm nhạc <b>Tiếng cười bạn bè</b> · Khách mời đặc biệt <b>Bạn</b> ·
-          Bối cảnh <b>Selena Palace, Hà Nội</b>
-        </p>
+    <main class="invite hd">
+      <header class="hd-cover" id="top" data-release-sky>
+        <p class="hd-eyebrow">Đêm hoa đăng · Hà Nội</p>
+        <h1 class="hd-names" data-reveal>
+          <span>Quốc Huy</span>
+          <i>&amp;</i>
+          <span>Thu Phương</span>
+        </h1>
+        <p class="hd-date">28 . 11 . 2026</p>
+        <p class="hd-tap"><span aria-hidden="true"></span>Chạm vào bầu trời để thả một chiếc đèn</p>
+        <div class="hd-water" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
       </header>
 
-      <section class="cine-synopsis" id="loi-moi">
-        <p class="kicker">Nội dung phim</p>
-        <h2 data-reveal>Cảnh cuối:<br /><em>hai người về chung một nhà.</em></h2>
-        <p data-reveal>Sau nhiều năm cùng nhau viết từng cảnh, Huy và Phương đã sẵn sàng cho đoạn kết đẹp nhất. Buổi công chiếu chỉ trọn vẹn khi có bạn ngồi ở hàng ghế đầu.</p>
-        <div class="cine-strip" aria-label="Ảnh khoảnh khắc">
-          <figure class="ph" style="--ratio: 3 / 4"><figcaption>Cảnh 01</figcaption></figure>
-          <figure class="ph" style="--ratio: 3 / 4"><figcaption>Cảnh 02</figcaption></figure>
-          <figure class="ph" style="--ratio: 3 / 4"><figcaption>Cảnh 03</figcaption></figure>
+      <section class="hd-letter" id="loi-moi">
+        <figure class="ph hd-photo" style="--ratio: 4 / 5" data-reveal><figcaption>Ảnh cưới · 4:5</figcaption></figure>
+        <div data-reveal>
+          <p class="kicker">Mỗi chiếc đèn là một điều ước</p>
+          <h2>Điều ước của chúng mình<br /><em>là có bạn ở đó.</em></h2>
+          <p>Huy và Phương trân trọng mời bạn đến chung vui trong lễ thành hôn. Hãy cùng hai đứa thắp lên ngày vui nhất.</p>
         </div>
       </section>
 
-      <section class="cine-ticket-wrap" aria-labelledby="event-title">
-        <p class="kicker">Vé mời của bạn</p>
-        <article class="cine-ticket" data-reveal>
-          <div class="cine-ticket-main">
-            <p class="cine-ticket-head">Suất chiếu đặc biệt</p>
-            <h2 id="event-title">Huy <i>&amp;</i> Phương</h2>
-            <dl>
-              <div><dt>Ngày</dt><dd>28.11.2026</dd></div>
-              <div><dt>Suất</dt><dd>10:00</dd></div>
-              <div class="is-wide"><dt>Rạp</dt><dd>Selena Palace</dd></div>
-              <div class="is-wide"><dt>Địa chỉ</dt><dd>Km 19 QL 32, Hoài Đức, Hà Nội</dd></div>
-              <div class="is-wide"><dt>Ghế</dt><dd>Hàng ghế thân thương</dd></div>
-            </dl>
-          </div>
-          <div class="cine-ticket-stub" aria-hidden="true">
-            <span>Admit one · Nº 2811</span>
-            <i class="cine-barcode"></i>
-          </div>
-        </article>
+      <section class="hd-event" aria-labelledby="event-title">
+        <div class="hd-glass" data-reveal>
+          <p class="kicker">Lễ thành hôn</p>
+          <p class="hd-day">Thứ Bảy</p>
+          <p class="hd-big">28 . 11</p>
+          <p class="hd-year">2026 · 10 giờ sáng</p>
+          <h2 id="event-title">Selena Palace</h2>
+          <address>Km 19 Quốc lộ 32, Đức Thượng, Hoài Đức, Hà Nội</address>
+        </div>
       </section>
 
-      <footer class="theme-close">
-        <p data-reveal>Hẹn gặp bạn ở buổi công chiếu</p>
+      <footer class="theme-close" data-release-sky>
+        <p data-reveal>Hẹn gặp bạn dưới bầu trời ấy</p>
         <h2 data-reveal>Huy <i>&amp;</i> Phương</h2>
         <span>28 . 11 . 2026</span>
       </footer>

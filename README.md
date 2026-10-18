@@ -6,15 +6,15 @@ hiển thị thành một cột giữa nền trang trí):
 - `index.html` · **01 Son Mài**: đỏ son, vàng kim, chữ Song Hỷ, mở bằng hai cánh cửa son
 - `editorial.html` · **02 Thư Tay**: giấy kem, mực đỏ son, chữ in lớn, mục đánh số như một bức thư
 - `keepsake.html` · **03 Hồng Nhung**: hồng phấn, đỏ nhung, hoa hồng nét mảnh, lịch tháng 11
-- `photo-editorial.html` · **04 Đông Dương**: gạch bông đỏ, khung vòm art-deco
-- `wine-rustic.html` · **05 Điện Ảnh**: poster phim, vé mời, rèm nhung đỏ
+- `photo-editorial.html` · **04 Tơ Duyên**: sợi chỉ đỏ vẽ dần theo khi cuộn, thẻ cào để xem ngày cưới
+- `wine-rustic.html` · **05 Hoa Đăng**: trời đêm, đèn lồng đỏ bay lên, chạm để thả đèn, lời chúc bay lên cùng đèn
 
 Cấu trúc:
 
 - `demo-common.css` / `demo-common.js`: khung trang, thanh chọn mẫu, nhạc, màn mở thiệp
 - `wedding-extras.css` / `wedding-extras.js`: các phần chung (gia đình, chuyện tình,
   album, lịch trình, đếm ngược, bản đồ, xác nhận tham dự, lời chúc, mừng cưới)
-- `themes/*.css`: màu, font và bố cục riêng của từng mẫu
+- `themes/*.css`: màu, font và bố cục riêng của từng mẫu; `themes/*.js` cho phần tương tác riêng của mẫu 04 và 05
 
 Các mẫu có nhạc piano tạm do trình duyệt tạo. Nhạc chỉ phát khi khách bấm nút.
 
