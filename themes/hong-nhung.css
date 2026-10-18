@@ -1,0 +1,171 @@
+/* 03 · Hồng Nhung — hồng phấn, đỏ nhung, hoa hồng nét mảnh và chữ viết tay. */
+body[data-theme="rose"] {
+  --bg: #f8e9e5;
+  --paper: #fdf6f3;
+  --ink: #4a1420;
+  --muted: #8b6670;
+  --accent: #a3203a;
+  --gold: #c98f8a;
+  --line: rgba(163, 32, 58, 0.15);
+  --on-accent: #fff4f1;
+  --f-display: "Cormorant Garamond", Georgia, serif;
+  --f-script: "Great Vibes", cursive;
+  --ornament: "❦";
+  --radius: 18px;
+  --btn-radius: 999px;
+  --ph-1: #f2d6d1;
+  --ph-2: #d99ea0;
+  --ph-ink: rgba(90, 20, 36, 0.55);
+  --backdrop:
+    radial-gradient(circle at 15% 20%, rgba(255, 255, 255, 0.6), transparent 35%),
+    radial-gradient(circle at 85% 80%, rgba(163, 32, 58, 0.12), transparent 40%),
+    #f0d5cf;
+}
+
+.rose-cover {
+  position: relative;
+  padding: 80px 30px 70px;
+  background: radial-gradient(120% 60% at 50% 0%, #fdf3f0, var(--bg) 70%);
+  text-align: center;
+}
+.rose-eyebrow {
+  margin: 0 0 30px;
+  color: var(--accent);
+  font: 600 11px/1 var(--f-body);
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+}
+.rose-arch-wrap { position: relative; width: 82%; margin: 0 auto; }
+.rose-arch {
+  border-radius: 999px 999px 18px 18px;
+  outline: 1px solid var(--gold);
+  outline-offset: 10px;
+}
+.rose-arch figcaption { left: 50%; transform: translateX(-50%); white-space: nowrap; }
+.rose-bloom, .rose-sprig { position: absolute; color: var(--accent); pointer-events: none; }
+.rose-bloom { width: 92px; height: 92px; }
+.rose-bloom-a { top: 22%; left: -50px; transform: rotate(-18deg); }
+.rose-bloom-b { top: calc(22% + 58px); left: -22px; width: 64px; height: 64px; transform: rotate(14deg); opacity: 0.85; }
+.rose-bloom-c { right: -44px; bottom: 12%; transform: rotate(160deg) scaleX(-1); }
+.rose-sprig { width: 120px; height: 48px; }
+.rose-sprig-a { top: calc(22% - 36px); left: -36px; transform: rotate(-58deg); }
+.rose-sprig-b { right: -30px; bottom: calc(12% + 70px); transform: rotate(118deg); }
+.rose-names {
+  display: grid;
+  margin: 44px 0 0;
+  color: var(--accent);
+  font: 400 64px/1 var(--f-script);
+}
+.rose-names i { margin: 0 0 4px; color: var(--gold); font: italic 400 30px/1.2 var(--f-display); }
+.rose-date {
+  display: inline-block;
+  margin: 24px 0 0;
+  padding: 10px 20px;
+  border-block: 1px solid var(--gold);
+  font: 500 19px/1 var(--f-display);
+  letter-spacing: 0.14em;
+}
+
+.rose-petals { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+.rose-petals i {
+  position: absolute;
+  top: -20px;
+  width: 11px;
+  height: 15px;
+  border-radius: 80% 10% 70% 20%;
+  background: linear-gradient(135deg, #e48a96, #a3203a);
+  opacity: 0.55;
+  animation: rose-fall 14s linear infinite;
+}
+.rose-petals i:nth-child(1) { left: 12%; animation-delay: -2s; }
+.rose-petals i:nth-child(2) { left: 30%; animation-delay: -9s; animation-duration: 17s; transform: scale(0.8); }
+.rose-petals i:nth-child(3) { left: 55%; animation-delay: -5s; }
+.rose-petals i:nth-child(4) { left: 72%; animation-delay: -12s; animation-duration: 19s; }
+.rose-petals i:nth-child(5) { left: 88%; animation-delay: -7s; transform: scale(0.7); }
+.rose-petals i:nth-child(6) { left: 44%; animation-delay: -15s; animation-duration: 21s; }
+@keyframes rose-fall {
+  0% { translate: 0 0; rotate: 0deg; }
+  50% { translate: 26px 50vh; rotate: 180deg; }
+  100% { translate: -10px 110vh; rotate: 380deg; }
+}
+
+.rose-letter { padding: 30px 22px 70px; }
+.rose-card {
+  position: relative;
+  padding: 58px 26px 44px;
+  border-radius: 200px 200px 22px 22px;
+  background: var(--paper);
+  box-shadow: 0 24px 50px -30px rgba(120, 20, 40, 0.35);
+  text-align: center;
+}
+.rose-card-sprig { width: 110px; height: 44px; margin: 0 auto 14px; color: var(--accent); display: block; }
+.rose-card h2 { margin: 16px 0 18px; color: var(--accent); font: 400 36px/1.15 var(--f-display); }
+.rose-card p:not(.kicker) { margin: 0; color: var(--muted); font-size: 15px; }
+.rose-sign { display: block; margin-top: 22px; color: var(--accent); font: 400 38px/1 var(--f-script); }
+
+.rose-calendar { padding: 76px 26px; border-top: 1px solid var(--line); text-align: center; }
+.rose-calendar h2 { margin: 14px 0 30px; color: var(--accent); font: 400 50px/1 var(--f-script); }
+.rose-month {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  row-gap: 6px;
+  padding: 22px 14px;
+  border-radius: var(--radius);
+  background: var(--paper);
+  font: 500 17px/1 var(--f-display);
+}
+.rose-month span { display: grid; place-items: center; height: 38px; }
+.rose-month .rose-dow { height: 30px; color: var(--accent); font: 600 10px/1 var(--f-body); letter-spacing: 0.12em; }
+.rose-month .is-day { position: relative; color: #fff; font-weight: 600; z-index: 0; }
+.rose-month .is-day::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 40px;
+  height: 40px;
+  background: var(--accent);
+  clip-path: path("M20 36C8 27 1 20 1 12 1 6 6 1 12 1c4 0 7 2 8 5 1-3 4-5 8-5 6 0 11 5 11 11 0 8-7 15-19 24z");
+  animation: rose-beat 1.6s ease-in-out infinite;
+}
+@keyframes rose-beat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.12); } }
+.rose-when { display: grid; gap: 10px; margin-top: 14px; }
+.rose-when div { display: grid; gap: 4px; padding: 22px 18px; border: 1px solid var(--line); border-radius: var(--radius); }
+.rose-when strong { color: var(--accent); font: 500 28px/1.1 var(--f-display); }
+.rose-when span { color: var(--muted); font-size: 14px; }
+
+/* Phần dùng chung */
+body[data-theme="rose"] .x-head h2 { color: var(--accent); }
+body[data-theme="rose"] .x-story-list .ph { border-radius: 999px; }
+body[data-theme="rose"] .x-story-list .ph figcaption { display: none; }
+body[data-theme="rose"] .x-album-a { border-radius: 999px 999px 18px 18px; }
+body[data-theme="rose"] .x-schedule-list .is-main { background: linear-gradient(160deg, #b8304a, #8a1830); box-shadow: 0 20px 40px -24px rgba(120, 20, 40, 0.7); }
+body[data-theme="rose"] .x-gift { background: linear-gradient(180deg, var(--bg), #f1d3cd); }
+
+body[data-theme="rose"] .theme-close { position: relative; background: var(--paper); }
+body[data-theme="rose"] .theme-close h2 { color: var(--accent); font: 400 72px/1 var(--f-script); }
+body[data-theme="rose"] .theme-close h2 i { color: var(--gold); font: italic 400 36px/1 var(--f-display); }
+.rose-close-bloom { display: block; width: 70px; height: 70px; margin: 0 auto 18px; color: var(--accent); }
+
+/* Màn mở */
+body[data-theme="rose"] .invitation-gate { --gate-bg: #f8e9e5; --gate-ink: #4a1420; --gate-gold: #a3203a; }
+body[data-theme="rose"] .invitation-door {
+  background:
+    radial-gradient(circle, rgba(163, 32, 58, 0.12) 1.5px, transparent 2px) 0 0 / 22px 22px,
+    #f8e9e5;
+}
+body[data-theme="rose"] .invitation-door-left { border-right: 1px solid rgba(163, 32, 58, 0.2); }
+body[data-theme="rose"] .invitation-gate-card {
+  border-radius: 200px 200px 24px 24px;
+  background: #fdf6f3;
+  box-shadow: 0 30px 70px -30px rgba(120, 20, 40, 0.45);
+  padding-top: 70px;
+}
+body[data-theme="rose"] .invitation-gate-card h1 { color: #a3203a; font: 400 58px/1.05 var(--f-script); }
+body[data-theme="rose"] .invitation-gate-card h1 i { color: #c98f8a; font: italic 400 30px/1 var(--f-display); }
+body[data-theme="rose"] .invitation-gate-card button span { color: #fff4f1; font: italic 500 24px/1 var(--f-display); }
+body[data-theme="rose"] .opening-petals i { background: linear-gradient(135deg, #e48a96, #a3203a); }
+
+@media (prefers-reduced-motion: reduce) {
+  .rose-petals { display: none; }
+  .rose-month .is-day::before { animation: none; }
+}

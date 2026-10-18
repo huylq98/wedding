@@ -1,0 +1,218 @@
+/* 05 · Điện Ảnh — poster phim, nền đêm, đỏ rạp chiếu và vé mời. */
+body[data-theme="cinema"] {
+  --bg: #140a0a;
+  --paper: #1f1111;
+  --ink: #f3e7d3;
+  --muted: #b29d8b;
+  --accent: #d4252e;
+  --gold: #e0b66a;
+  --line: rgba(243, 231, 211, 0.13);
+  --on-accent: #fff3e6;
+  --f-display: "Playfair Display", Georgia, serif;
+  --f-cond: "Oswald", "Arial Narrow", sans-serif;
+  --ornament: "✦";
+  --radius: 4px;
+  --btn-radius: 4px;
+  --ph-1: #4a2020;
+  --ph-2: #160909;
+  --ph-ink: rgba(243, 231, 211, 0.5);
+  --backdrop:
+    radial-gradient(60% 50% at 50% 0%, rgba(212, 37, 46, 0.28), transparent 70%),
+    repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.35) 0 14px, rgba(255, 255, 255, 0.02) 14px 28px),
+    #2a0a0c;
+}
+body[data-theme="cinema"] .kicker { color: var(--gold); }
+
+.cine-poster {
+  position: relative;
+  min-height: min(100svh, 880px);
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  padding: 76px 24px 26px;
+  isolation: isolate;
+  text-align: center;
+}
+.cine-still { position: absolute; inset: 0; z-index: -1; aspect-ratio: auto; --ph-1: #6b2424; --ph-2: #1a0a0a; }
+.cine-still::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(20, 10, 10, 0.55) 0%, transparent 28%, transparent 45%, rgba(20, 10, 10, 0.92) 78%, #140a0a 100%);
+}
+.cine-still figcaption { top: 150px; bottom: auto; left: 50%; transform: translateX(-50%); white-space: nowrap; }
+.cine-presents {
+  margin: 0;
+  color: var(--muted);
+  font: 400 12px/1.6 var(--f-cond);
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+}
+.cine-title-block { align-self: end; }
+.cine-title {
+  display: grid;
+  margin: 0;
+  font: 600 92px/0.88 var(--f-cond);
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+}
+.cine-title i { margin: 4px 0; color: var(--accent); font: italic 400 46px/1 var(--f-display); text-transform: none; }
+.cine-tagline { margin: 20px 0 0; color: var(--gold); font: italic 400 20px/1.3 var(--f-display); }
+.cine-release {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin: 20px 0 0;
+  font: 500 20px/1 var(--f-cond);
+  letter-spacing: 0.12em;
+}
+.cine-release span {
+  padding: 6px 9px 5px;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+.cine-billing {
+  margin: 34px 0 0;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  color: rgba(243, 231, 211, 0.6);
+  font: 300 11px/1.35 var(--f-cond);
+  letter-spacing: 0.06em;
+  text-align: justify;
+  text-align-last: center;
+  text-transform: uppercase;
+}
+.cine-billing b { color: var(--ink); font-weight: 500; }
+
+.cine-synopsis { padding: 84px 0 76px; text-align: center; }
+.cine-synopsis > * { margin-inline: 26px; }
+.cine-synopsis h2 { margin-top: 16px; margin-bottom: 22px; font: 400 30px/1.25 var(--f-display); }
+.cine-synopsis h2 em { color: var(--accent); }
+.cine-synopsis > p:not(.kicker) { color: var(--muted); font-size: 15px; }
+.cine-strip {
+  display: flex;
+  gap: 8px;
+  margin: 40px 0 0 !important;
+  padding: 22px 10px;
+  overflow-x: auto;
+  background:
+    radial-gradient(circle, #140a0a 3px, transparent 3.5px) 0 5px / 16px 12px repeat-x,
+    radial-gradient(circle, #140a0a 3px, transparent 3.5px) 0 calc(100% - 5px) / 16px 12px repeat-x,
+    #050202;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+.cine-strip::-webkit-scrollbar { display: none; }
+.cine-strip .ph { flex: 0 0 62%; scroll-snap-align: center; }
+
+.cine-ticket-wrap { padding: 20px 20px 90px; text-align: center; }
+.cine-ticket {
+  display: grid;
+  grid-template-columns: 1fr 64px;
+  margin-top: 22px;
+  border-radius: 8px;
+  background: #f3e7d3;
+  color: #1c0d0d;
+  text-align: left;
+  filter: drop-shadow(0 26px 40px rgba(0, 0, 0, 0.5));
+  -webkit-mask: radial-gradient(circle 11px at calc(100% - 64px) 0, transparent 98%, #000) top / 100% 51% no-repeat,
+    radial-gradient(circle 11px at calc(100% - 64px) 100%, transparent 98%, #000) bottom / 100% 51% no-repeat;
+  mask: radial-gradient(circle 11px at calc(100% - 64px) 0, transparent 98%, #000) top / 100% 51% no-repeat,
+    radial-gradient(circle 11px at calc(100% - 64px) 100%, transparent 98%, #000) bottom / 100% 51% no-repeat;
+}
+.cine-ticket-main { padding: 24px 20px 22px 22px; border-right: 2px dashed rgba(28, 13, 13, 0.25); }
+.cine-ticket-head {
+  display: inline-block;
+  margin: 0;
+  padding: 5px 8px 4px;
+  background: var(--accent);
+  color: #fff3e6;
+  font: 500 11px/1 var(--f-cond);
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+.cine-ticket h2 { margin: 14px 0 16px; font: 600 44px/0.95 var(--f-cond); text-transform: uppercase; }
+.cine-ticket h2 i { color: var(--accent); font: italic 400 30px/1 var(--f-display); text-transform: none; }
+.cine-ticket dl { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 14px; margin: 0; }
+.cine-ticket dl div { padding-top: 8px; border-top: 1px solid rgba(28, 13, 13, 0.18); }
+.cine-ticket dl .is-wide { grid-column: 1 / -1; }
+.cine-ticket dt { color: #8a6b5c; font: 500 10px/1 var(--f-cond); letter-spacing: 0.24em; text-transform: uppercase; }
+.cine-ticket dd { margin: 5px 0 0; font: 500 18px/1.2 var(--f-cond); letter-spacing: 0.02em; }
+.cine-ticket-stub { display: grid; grid-template-rows: 1fr auto; justify-items: center; padding: 18px 0; }
+.cine-ticket-stub span {
+  color: var(--accent);
+  font: 500 12px/1 var(--f-cond);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  writing-mode: vertical-rl;
+}
+.cine-barcode {
+  width: 30px;
+  height: 90px;
+  margin-top: 14px;
+  background: repeating-linear-gradient(180deg, #1c0d0d 0 2px, transparent 2px 4px, #1c0d0d 4px 5px, transparent 5px 8px, #1c0d0d 8px 11px, transparent 11px 13px);
+}
+
+/* Phần dùng chung trên nền tối */
+body[data-theme="cinema"] .x-section { border-top-color: var(--line); }
+body[data-theme="cinema"] .x-kicker { color: var(--gold); font-family: var(--f-cond); font-weight: 500; font-size: 12px; letter-spacing: 0.3em; }
+body[data-theme="cinema"] .x-head h2 { font-size: 34px; }
+body[data-theme="cinema"] .x-label { color: var(--gold); font-family: var(--f-cond); font-weight: 500; }
+body[data-theme="cinema"] .x-story-when, body[data-theme="cinema"] .x-schedule-list time { color: var(--gold); font-family: var(--f-cond); font-weight: 500; letter-spacing: 0.2em; }
+body[data-theme="cinema"] .x-schedule-list h3, body[data-theme="cinema"] .x-story-list h3 { font-family: var(--f-cond); font-weight: 500; text-transform: uppercase; letter-spacing: 0.02em; }
+body[data-theme="cinema"] .x-schedule-list .is-main { background: var(--accent); }
+body[data-theme="cinema"] .x-schedule-list .is-main time { color: #fff3e6; }
+body[data-theme="cinema"] .countdown strong { font: 500 44px/1 var(--f-cond); color: var(--ink); }
+body[data-theme="cinema"] .countdown small { font-family: var(--f-cond); }
+body[data-theme="cinema"] .countdown > span { background: #0b0505; border-color: rgba(212, 37, 46, 0.4); box-shadow: inset 0 0 20px rgba(212, 37, 46, 0.12); }
+body[data-theme="cinema"] .x-btn { font-family: var(--f-cond); font-weight: 500; font-size: 14px; letter-spacing: 0.2em; }
+body[data-theme="cinema"] .x-btn:not(.is-solid) { border-color: var(--line); color: var(--ink); }
+body[data-theme="cinema"] .map-placeholder button { background: transparent; }
+body[data-theme="cinema"] .x-field input, body[data-theme="cinema"] .x-field textarea { background: #0b0505; }
+body[data-theme="cinema"] .x-wishes .x-field input, body[data-theme="cinema"] .x-wishes .x-field textarea { background: #0b0505; }
+body[data-theme="cinema"] .x-check input { accent-color: var(--accent); }
+body[data-theme="cinema"] .qr-placeholder { background: #f3e7d3; outline-color: var(--gold); color: #1c0d0d; }
+
+body[data-theme="cinema"] .theme-close {
+  background:
+    radial-gradient(70% 60% at 50% 100%, rgba(212, 37, 46, 0.35), transparent 70%),
+    #0b0505;
+}
+body[data-theme="cinema"] .theme-close p { color: var(--gold); font-family: var(--f-cond); font-weight: 500; letter-spacing: 0.3em; }
+body[data-theme="cinema"] .theme-close h2 { font: 600 78px/0.9 var(--f-cond); text-transform: uppercase; }
+body[data-theme="cinema"] .theme-close h2 i { display: block; margin: 6px 0; font: italic 400 40px/1 var(--f-display); text-transform: none; }
+
+/* Màn mở: rèm nhung kéo sang hai bên */
+body[data-theme="cinema"] .invitation-gate { --gate-bg: #5a0c12; --gate-ink: #f3e7d3; --gate-gold: #e0b66a; background: #050202; }
+body[data-theme="cinema"] .invitation-door {
+  background:
+    linear-gradient(180deg, transparent calc(100% - 22px), #e0b66a calc(100% - 22px) calc(100% - 20px), transparent calc(100% - 20px)),
+    repeating-linear-gradient(90deg, #3e070b 0, #7d121b 18px, #a51b25 26px, #7d121b 34px, #3e070b 52px);
+  box-shadow: inset 0 40px 60px rgba(0, 0, 0, 0.55);
+  transition-duration: 1.6s;
+}
+body[data-theme="cinema"] .invitation-gate.is-opening .invitation-door-left { transform: translateX(-101%) scaleX(0.6); transform-origin: left; }
+body[data-theme="cinema"] .invitation-gate.is-opening .invitation-door-right { transform: translateX(101%) scaleX(0.6); transform-origin: right; }
+body[data-theme="cinema"] .invitation-gate-card {
+  background: rgba(10, 4, 4, 0.82);
+  border: 1px solid rgba(224, 182, 106, 0.5);
+  border-radius: 6px;
+  backdrop-filter: blur(4px);
+}
+body[data-theme="cinema"] .invitation-gate-card .gate-mark::before {
+  content: "Suất chiếu đặc biệt";
+  display: inline-block;
+  margin-bottom: 18px;
+  padding: 6px 10px 5px;
+  background: #d4252e;
+  color: #fff3e6;
+  font: 500 11px/1 "Oswald", sans-serif;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+}
+body[data-theme="cinema"] .invitation-gate-card h1 { font: 600 64px/0.9 "Oswald", sans-serif; text-transform: uppercase; }
+body[data-theme="cinema"] .invitation-gate-card h1 i { display: block; margin: 6px 0; font: italic 400 34px/1 var(--f-display); text-transform: none; }
+body[data-theme="cinema"] .invitation-gate-card button span { color: #1c0d0d; font: 600 22px/1 "Oswald", sans-serif; }
+body[data-theme="cinema"] .opening-petals { display: none; }

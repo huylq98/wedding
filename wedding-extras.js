@@ -8,184 +8,194 @@ extras.className = "wedding-extras";
 extras.id = "tham-du";
 extras.setAttribute("aria-label", "Thông tin và xác nhận tham dự");
 extras.innerHTML = `
-  <div class="photo-placeholders" id="anh-cuoi" data-reveal>
-    <div class="placeholder-heading">
-      <p class="extras-kicker">Ảnh cưới</p>
-      <h2>Chỗ dành cho những khoảnh khắc của hai bạn.</h2>
-      <p>Các khung dưới đây ghi sẵn tỉ lệ để thay ảnh thật mà không phải sửa lại bố cục.</p>
-    </div>
-    <div class="photo-placeholder-grid">
-      <figure class="photo-slot photo-slot-cover">
-        <span class="slot-index">01</span>
-        <div><strong>Ảnh bìa ngang</strong><small>Tỉ lệ 16:9 · tối thiểu 1920 × 1080 px</small></div>
-      </figure>
-      <figure class="photo-slot photo-slot-portrait">
-        <span class="slot-index">02</span>
-        <div><strong>Chân dung hai bạn</strong><small>Tỉ lệ 4:5 · tối thiểu 1200 × 1500 px</small></div>
-      </figure>
-      <figure class="photo-slot photo-slot-detail">
-        <span class="slot-index">03</span>
-        <div><strong>Ảnh chi tiết</strong><small>Tỉ lệ 1:1 · nhẫn, hoa hoặc thiệp</small></div>
-      </figure>
-      <figure class="photo-slot photo-slot-story">
-        <span class="slot-index">04</span>
-        <div><strong>Ảnh kể chuyện</strong><small>Tỉ lệ 3:2 · một khoảnh khắc tự nhiên</small></div>
-      </figure>
-    </div>
-  </div>
-
-  <div class="planning-placeholders" data-reveal>
-    <article>
-      <span>01</span>
-      <p class="extras-kicker">Gia đình hai bên</p>
-      <h3>Tên bố mẹ nhà trai và nhà gái</h3>
-      <p>Đang chờ thông tin để hoàn thiện lời mời trang trọng.</p>
-    </article>
-    <article>
-      <span>02</span>
-      <p class="extras-kicker">Chuyện của chúng mình</p>
-      <h3>Gặp gỡ · Cầu hôn · Ngày cưới</h3>
-      <p>Thêm ba mốc ngắn và ảnh tương ứng nếu hai bạn muốn kể câu chuyện.</p>
-    </article>
-    <article>
-      <span>03</span>
-      <p class="extras-kicker">Lễ Vu Quy</p>
-      <h3>Ngày giờ và địa điểm nhà gái</h3>
-      <p>Đang chờ thông tin từ gia đình cô dâu để hoàn thiện.</p>
-    </article>
-    <article>
-      <span>04</span>
-      <p class="extras-kicker">Trang phục</p>
-      <h3>Màu sắc và lưu ý trang phục</h3>
-      <p>Đang chờ dress code hoặc bảng màu từ hai bạn.</p>
-    </article>
-  </div>
-
-  <div class="ceremony-schedule" id="lich-trinh" data-reveal>
-    <div class="schedule-heading">
-      <p class="extras-kicker">Lịch trình ngày vui</p>
-      <h2>Hai nghi lễ,<br />hai nhà cùng chung vui.</h2>
-    </div>
-    <div class="schedule-list">
-      <article class="schedule-item is-pending">
-        <span class="schedule-number">01</span>
-        <div><p>Lễ Vu Quy</p><h3>Nhà gái</h3><small>Ngày giờ và địa điểm đang cập nhật</small></div>
+  <section class="x-section x-family" data-reveal>
+    <header class="x-head">
+      <p class="x-kicker">Gia đình hai bên</p>
+      <h2>Trân trọng báo tin</h2>
+    </header>
+    <div class="x-family-grid">
+      <article>
+        <p class="x-label">Nhà trai</p>
+        <p class="x-parent">Ông ··················</p>
+        <p class="x-parent">Bà ··················</p>
+        <small>Tên bố mẹ đang cập nhật</small>
       </article>
-      <article class="schedule-item">
-        <span class="schedule-number">02</span>
-        <time datetime="2026-11-28T10:00:00+07:00">10:00 · 28.11.2026</time>
-        <div><p>Lễ Thành Hôn</p><h3>Selena Palace</h3><small>Km 19 Quốc lộ 32, Đức Thượng, Hoài Đức, Hà Nội</small></div>
-      </article>
-      <article class="schedule-item is-pending">
-        <span class="schedule-number">03</span>
-        <div><p>Tiệc Chung Vui</p><h3>Cùng gia đình và bạn bè</h3><small>Thời gian đang cập nhật</small></div>
+      <span class="x-family-amp" aria-hidden="true">&amp;</span>
+      <article>
+        <p class="x-label">Nhà gái</p>
+        <p class="x-parent">Ông ··················</p>
+        <p class="x-parent">Bà ··················</p>
+        <small>Tên bố mẹ đang cập nhật</small>
       </article>
     </div>
-  </div>
+  </section>
 
-  <div class="countdown-block" data-reveal>
-    <p class="extras-kicker">Đếm ngược đến ngày vui</p>
+  <section class="x-section x-story" data-reveal>
+    <header class="x-head">
+      <p class="x-kicker">Chuyện của chúng mình</p>
+      <h2>Từ hai người lạ,<br />thành một nhà.</h2>
+    </header>
+    <ol class="x-story-list">
+      <li>
+        <figure class="ph" style="--ratio: 1"><figcaption>1:1</figcaption></figure>
+        <div><span class="x-story-when">Năm ····</span><h3>Lần đầu gặp nhau</h3><p>Vài dòng kể lại ngày đầu tiên sẽ được thêm vào đây.</p></div>
+      </li>
+      <li>
+        <figure class="ph" style="--ratio: 1"><figcaption>1:1</figcaption></figure>
+        <div><span class="x-story-when">Năm ····</span><h3>Lời cầu hôn</h3><p>Khoảnh khắc nói lời đồng ý, kể ngắn trong hai câu.</p></div>
+      </li>
+      <li>
+        <figure class="ph" style="--ratio: 1"><figcaption>1:1</figcaption></figure>
+        <div><span class="x-story-when">28 · 11 · 2026</span><h3>Về chung một nhà</h3><p>Và hôm ấy, có bạn ở đây cùng chúng mình.</p></div>
+      </li>
+    </ol>
+  </section>
+
+  <section class="x-section x-album" id="anh-cuoi" data-reveal>
+    <header class="x-head">
+      <p class="x-kicker">Album ảnh cưới</p>
+      <h2>Những khoảnh khắc</h2>
+    </header>
+    <div class="x-album-grid">
+      <figure class="ph x-album-a" style="--ratio: 4 / 5"><figcaption>Chân dung · 4:5</figcaption></figure>
+      <figure class="ph x-album-b" style="--ratio: 1"><figcaption>Chi tiết · 1:1</figcaption></figure>
+      <figure class="ph x-album-c" style="--ratio: 1"><figcaption>Nhẫn · 1:1</figcaption></figure>
+      <figure class="ph x-album-d" style="--ratio: 3 / 2"><figcaption>Khoảnh khắc · 3:2</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="x-section x-schedule" id="lich-trinh" data-reveal>
+    <header class="x-head">
+      <p class="x-kicker">Lịch trình ngày vui</p>
+      <h2>Hai nghi lễ,<br />một ngày vui.</h2>
+    </header>
+    <ol class="x-schedule-list">
+      <li class="is-pending">
+        <time>Đang cập nhật</time>
+        <h3>Lễ Vu Quy</h3>
+        <p>Tại tư gia nhà gái</p>
+      </li>
+      <li class="is-main">
+        <time datetime="2026-11-28T10:00:00+07:00">10:00 · Thứ Bảy 28.11.2026</time>
+        <h3>Lễ Thành Hôn</h3>
+        <p>${venueName} · ${venueAddress}</p>
+      </li>
+      <li class="is-pending">
+        <time>Đang cập nhật</time>
+        <h3>Tiệc chung vui</h3>
+        <p>Cùng gia đình và bạn bè</p>
+      </li>
+    </ol>
+    <p class="x-dress">Trang phục · <span>đang cập nhật</span></p>
+  </section>
+
+  <section class="x-section x-countdown" data-reveal>
+    <header class="x-head">
+      <p class="x-kicker">Đếm ngược đến ngày vui</p>
+    </header>
     <div class="countdown" data-countdown aria-live="polite">
       <span><strong data-days>--</strong><small>Ngày</small></span>
       <span><strong data-hours>--</strong><small>Giờ</small></span>
       <span><strong data-minutes>--</strong><small>Phút</small></span>
       <span><strong data-seconds>--</strong><small>Giây</small></span>
     </div>
-  </div>
+  </section>
 
-  <div class="location-block" data-reveal>
-    <div class="location-copy">
-      <p class="extras-kicker">Địa điểm tổ chức</p>
+  <section class="x-section x-location" data-reveal>
+    <header class="x-head">
+      <p class="x-kicker">Địa điểm tổ chức</p>
       <h2>${venueName}</h2>
-      <p>${venueAddress}</p>
-      <div class="extras-actions">
-        <a href="https://www.google.com/maps/search/?api=1&query=${mapQuery}" target="_blank" rel="noopener">Mở Google Maps</a>
-        <button type="button" data-add-calendar>Thêm vào lịch</button>
-      </div>
-      <p class="venue-assumption">Địa chỉ đang dùng theo cơ sở Selena Palace tại Hoài Đức.</p>
-    </div>
+    </header>
+    <p class="x-address">${venueAddress}</p>
     <div class="map-frame is-collapsed" id="ban-do">
       <div class="map-placeholder">
-        <span class="map-pin" aria-hidden="true"><i></i></span>
-        <p class="extras-kicker">Chỉ đường</p>
-        <h3>${venueName}</h3>
+        <span class="map-pin" aria-hidden="true"></span>
         <p>Bản đồ chỉ tải khi bạn chọn xem.</p>
         <button type="button" data-map-reveal>Xem bản đồ</button>
       </div>
       <iframe
-        title="Bản đồ đến Selena Palace"
+        title="Bản đồ đến ${venueName}"
         data-src="https://www.google.com/maps?q=${mapQuery}&output=embed"
         loading="lazy"
         referrerpolicy="no-referrer-when-downgrade"
         hidden
       ></iframe>
     </div>
-  </div>
+    <div class="x-actions">
+      <a class="x-btn is-solid" href="https://www.google.com/maps/search/?api=1&query=${mapQuery}" target="_blank" rel="noopener">Chỉ đường</a>
+      <button class="x-btn" type="button" data-add-calendar>Thêm vào lịch</button>
+    </div>
+  </section>
 
-  <div class="guest-block">
-    <form class="rsvp-card" data-rsvp-form data-reveal>
-      <p class="extras-kicker">Xác nhận tham dự</p>
+  <section class="x-section x-rsvp" data-reveal>
+    <header class="x-head">
+      <p class="x-kicker">Xác nhận tham dự</p>
       <h2>Bạn sẽ đến chứ?</h2>
-      <label>
+    </header>
+    <form class="x-form" data-rsvp-form>
+      <label class="x-field">
         <span>Tên của bạn</span>
         <input name="guest-name" autocomplete="name" required placeholder="Nhập họ tên" />
       </label>
-      <fieldset>
+      <fieldset class="x-choice">
         <legend>Phản hồi</legend>
-        <label><input type="radio" name="attendance" value="yes" required /> Mình sẽ đến</label>
-        <label><input type="radio" name="attendance" value="no" /> Mình xin phép vắng</label>
+        <label><input type="radio" name="attendance" value="yes" required /><span>Mình sẽ đến</span></label>
+        <label><input type="radio" name="attendance" value="no" /><span>Xin phép vắng</span></label>
       </fieldset>
-      <label>
+      <label class="x-field">
         <span>Lời nhắn</span>
         <textarea name="message" rows="3" placeholder="Gửi vài lời đến Huy và Phương"></textarea>
       </label>
-      <button class="submit-rsvp" type="submit">Gửi xác nhận</button>
-      <p class="form-status" data-form-status>Form đang ở chế độ xem trước, chưa lưu phản hồi.</p>
+      <button class="x-btn is-solid" type="submit">Gửi xác nhận</button>
+      <p class="form-status" data-form-status>Bản xem trước, phản hồi chưa được lưu.</p>
     </form>
+  </section>
 
-    <section class="wishes-card" id="loi-chuc" data-reveal>
-      <p class="extras-kicker">Sổ lời chúc</p>
-      <h2>Gửi một lời đến hai đứa</h2>
-      <form data-wish-form>
-        <label class="wish-name-field">
-          <span>Tên của bạn</span>
-          <input name="wish-name" autocomplete="name" required placeholder="Nhập tên" />
-        </label>
-        <label class="anonymous-choice"><input type="checkbox" name="anonymous" /> Gửi ẩn danh</label>
-        <label>
-          <span>Lời chúc</span>
-          <textarea name="wish-message" rows="4" required placeholder="Viết lời chúc cho Huy và Phương"></textarea>
-        </label>
-        <button class="submit-wish" type="submit">Gửi lời chúc</button>
-        <p class="form-status" data-wish-status>Bản demo chỉ lưu lời chúc trên thiết bị này.</p>
-      </form>
-      <div class="wish-preview" aria-live="polite">
-        <p class="wish-empty" data-wish-empty>Chưa có lời chúc nào trên thiết bị này.</p>
-        <div class="wish-preview-list" data-wish-list></div>
-      </div>
-    </section>
-  </div>
+  <section class="x-section x-wishes" id="loi-chuc" data-reveal>
+    <header class="x-head">
+      <p class="x-kicker">Sổ lời chúc</p>
+      <h2>Đôi lời chúc phúc</h2>
+    </header>
+    <form class="x-form" data-wish-form>
+      <label class="x-field">
+        <span>Tên của bạn</span>
+        <input name="wish-name" autocomplete="name" required placeholder="Nhập tên" />
+      </label>
+      <label class="x-check"><input type="checkbox" name="anonymous" /> Gửi ẩn danh</label>
+      <label class="x-field">
+        <span>Lời chúc</span>
+        <textarea name="wish-message" rows="4" required placeholder="Viết lời chúc cho Huy và Phương"></textarea>
+      </label>
+      <button class="x-btn is-solid" type="submit">Gửi lời chúc</button>
+      <p class="form-status" data-wish-status>Bản demo chỉ lưu lời chúc trên thiết bị này.</p>
+    </form>
+    <div class="wish-preview" aria-live="polite">
+      <p class="wish-empty" data-wish-empty>Chưa có lời chúc nào trên thiết bị này.</p>
+      <div class="wish-preview-list" data-wish-list></div>
+    </div>
+  </section>
 
-  <div class="gift-card" id="mung-cuoi" data-reveal>
-    <div class="gift-heading">
-      <p class="extras-kicker">Mừng cưới</p>
+  <section class="x-section x-gift" id="mung-cuoi" data-reveal>
+    <header class="x-head">
+      <p class="x-kicker">Mừng cưới</p>
       <h2>Gửi chút yêu thương</h2>
-      <p>Hai mã QR sẽ được thay bằng thông tin ngân hàng thật của cô dâu và chú rể.</p>
-    </div>
-    <div class="gift-accounts">
-      <article class="gift-account-card">
-        <p>Cô dâu</p><h3>Nguyễn Vũ Thu Phương</h3>
-        <div class="qr-placeholder" role="img" aria-label="Vị trí mã QR ngân hàng của cô dâu sẽ cập nhật sau"><span>QR</span><small>Cô dâu</small></div>
-        <p class="bank-placeholder">Ngân hàng · Số tài khoản</p>
+    </header>
+    <p class="x-lead">Nếu không thể đến chung vui, bạn có thể gửi lời chúc qua mã QR bên dưới.</p>
+    <div class="x-gift-grid">
+      <article>
+        <p class="x-label">Chú rể</p>
+        <h3>Lê Quốc Huy</h3>
+        <div class="qr-placeholder" role="img" aria-label="Mã QR ngân hàng của chú rể sẽ cập nhật sau"><span>QR</span></div>
+        <small>Ngân hàng · Số tài khoản</small>
       </article>
-      <article class="gift-account-card">
-        <p>Chú rể</p><h3>Lê Quốc Huy</h3>
-        <div class="qr-placeholder" role="img" aria-label="Vị trí mã QR ngân hàng của chú rể sẽ cập nhật sau"><span>QR</span><small>Chú rể</small></div>
-        <p class="bank-placeholder">Ngân hàng · Số tài khoản</p>
+      <article>
+        <p class="x-label">Cô dâu</p>
+        <h3>Nguyễn Vũ Thu Phương</h3>
+        <div class="qr-placeholder" role="img" aria-label="Mã QR ngân hàng của cô dâu sẽ cập nhật sau"><span>QR</span></div>
+        <small>Ngân hàng · Số tài khoản</small>
       </article>
     </div>
-    <p class="gift-note">Thông tin chuyển khoản đang cập nhật.</p>
-  </div>
+  </section>
 `;
 
 const main = document.querySelector("main");

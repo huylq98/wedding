@@ -75,7 +75,7 @@ musicButton?.addEventListener("click", () => {
 });
 
 const invitationTheme = document.body.dataset.theme;
-if (["viet", "wine"].includes(invitationTheme)) {
+if (invitationTheme) {
   const storageKey = `huy-phuong-opened-${invitationTheme}`;
   let alreadyOpened = false;
   try {
@@ -92,7 +92,8 @@ if (["viet", "wine"].includes(invitationTheme)) {
       <div class="invitation-door invitation-door-left" aria-hidden="true"></div>
       <div class="invitation-door invitation-door-right" aria-hidden="true"></div>
       <div class="invitation-gate-card">
-        <p>Trân trọng mời bạn đến chung vui</p>
+        <span class="gate-mark" aria-hidden="true"></span>
+        <p>Trân trọng kính mời</p>
         <h1 id="invitation-gate-title">Huy <i>&amp;</i> Phương</h1>
         <button type="button" data-open-invitation><span>H&amp;P</span>Mở thiệp</button>
         <small>Nhạc nền sẽ bắt đầu sau khi mở</small>

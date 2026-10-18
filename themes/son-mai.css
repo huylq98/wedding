@@ -1,0 +1,221 @@
+/* 01 · Son Mài — đỏ son, vàng kim, đối xứng và trang trọng. */
+body[data-theme="son"] {
+  --bg: #f7eedd;
+  --paper: #fcf6eb;
+  --ink: #3a1410;
+  --muted: #86655a;
+  --accent: #8c1a15;
+  --gold: #c39a55;
+  --line: rgba(140, 26, 21, 0.16);
+  --on-accent: #f8ead0;
+  --f-display: "Cormorant Garamond", Georgia, serif;
+  --ornament: "◆";
+  --radius: 0px;
+  --btn-radius: 0px;
+  --ph-1: #e8d2b4;
+  --ph-2: #c99c7a;
+  --ph-ink: rgba(70, 22, 16, 0.6);
+  --backdrop:
+    radial-gradient(circle at 50% 0%, rgba(207, 165, 99, 0.18), transparent 50%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56'%3E%3Cpath d='M28 4 52 28 28 52 4 28Z' fill='none' stroke='%23c39a55' stroke-opacity='.14'/%3E%3C/svg%3E"),
+    #4f0e0b;
+}
+
+.son-cover {
+  position: relative;
+  min-height: min(100svh, 860px);
+  display: grid;
+  padding: 18px;
+  background:
+    radial-gradient(120% 70% at 50% 30%, #a3241c 0%, #7b1611 55%, #5a0e0b 100%);
+  color: #f6e3bf;
+  text-align: center;
+}
+.son-frame {
+  position: relative;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  padding: 72px 22px 120px;
+  border: 1px solid rgba(207, 165, 99, 0.7);
+  outline: 1px solid rgba(207, 165, 99, 0.35);
+  outline-offset: -8px;
+}
+.son-frame::before,
+.son-frame::after {
+  content: "";
+  position: absolute;
+  width: 46px;
+  height: 46px;
+  border: 2px solid #cfa563;
+}
+.son-frame::before { top: -1px; left: -1px; border-right: 0; border-bottom: 0; }
+.son-frame::after { right: -1px; bottom: -1px; border-left: 0; border-top: 0; }
+
+.son-eyebrow {
+  margin: 0;
+  color: #e3c48a;
+  font: 600 12px/1 var(--f-body);
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+}
+.son-seal {
+  display: grid;
+  place-items: center;
+  width: 104px;
+  height: 104px;
+  margin: 34px 0 30px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #f1d595, #c39a55 60%, #9c763a);
+  box-shadow: 0 0 0 6px rgba(207, 165, 99, 0.16), 0 14px 30px rgba(30, 4, 2, 0.35);
+}
+.son-seal span {
+  color: #7b1611;
+  font: 700 58px/1 "Noto Serif TC", "Songti SC", "SimSun", serif;
+}
+.son-names {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  color: #fbecd0;
+  font: 500 54px/1.04 var(--f-display);
+  letter-spacing: 0.01em;
+}
+.son-names i { margin: 4px 0; color: #e3c48a; font: italic 400 38px/1 var(--f-display); }
+.son-rule {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  margin: 28px auto;
+  color: #cfa563;
+}
+.son-rule::before, .son-rule::after { content: ""; flex: 1; height: 1px; background: currentColor; opacity: 0.7; }
+.son-rule i { width: 8px; height: 8px; margin: 0 10px; background: currentColor; transform: rotate(45deg); }
+.son-date { margin: 0; font: 500 22px/1.3 var(--f-display); letter-spacing: 0.08em; }
+.son-lunar { margin: 8px 0 0; color: #dcbf8b; font: italic 400 17px/1.4 var(--f-display); }
+.son-scroll {
+  position: absolute;
+  left: 50%;
+  bottom: 48px;
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  color: #e3c48a;
+  font: 600 11px/1 var(--f-body);
+  letter-spacing: 0.3em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transform: translateX(-50%);
+}
+.son-scroll::after { content: ""; width: 1px; height: 22px; background: currentColor; animation: son-drip 2s ease-in-out infinite; }
+@keyframes son-drip { 0%, 100% { transform: scaleY(0.3); transform-origin: top; } 50% { transform: scaleY(1); } }
+
+.son-portrait { padding: 56px 28px 0; }
+.son-portrait .ph {
+  outline: 1px solid var(--gold);
+  outline-offset: 8px;
+}
+
+.son-letter, .son-event { padding: 76px 30px; text-align: center; }
+.son-letter p { margin: 0; color: var(--muted); font-size: 15px; }
+.son-guest {
+  display: inline-block;
+  margin: 22px 0 18px !important;
+  padding: 0 18px 8px;
+  border-bottom: 1px dotted var(--gold);
+  color: var(--ink) !important;
+  font: italic 500 28px/1.2 var(--f-display) !important;
+}
+.son-letter h2 {
+  display: grid;
+  margin: 26px 0;
+  color: var(--accent);
+  font: 600 34px/1.15 var(--f-display);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.son-letter h2 i { margin: 6px 0; color: var(--gold); font: italic 400 30px/1 var(--f-display); text-transform: none; }
+.son-note { font-style: italic; }
+
+.son-event {
+  margin: 0 18px;
+  border: 1px solid var(--line);
+  outline: 1px solid var(--line);
+  outline-offset: 6px;
+  background: var(--paper);
+}
+.son-time { margin: 14px 0 22px; font: 500 30px/1 var(--f-display); }
+.son-datebox {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 18px;
+  color: var(--accent);
+}
+.son-datebox span {
+  padding: 10px 0;
+  border-block: 1px solid var(--gold);
+  font: 600 13px/1 var(--f-body);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+.son-datebox strong { font: 600 88px/0.9 var(--f-display); }
+.son-year { margin: 14px 0 0; font: 500 22px/1 var(--f-display); letter-spacing: 0.2em; }
+.son-event .son-lunar { color: var(--muted); }
+.son-event .son-rule { color: var(--gold); }
+.son-event h2 { margin: 0; color: var(--accent); font: 600 36px/1.1 var(--f-display); text-transform: uppercase; letter-spacing: 0.06em; }
+.son-event address { margin-top: 12px; color: var(--muted); font-style: normal; font-size: 14px; }
+
+/* Phần dùng chung theo phong cách Son Mài */
+body[data-theme="son"] .wedding-extras { margin-top: 76px; }
+body[data-theme="son"] .x-head h2 { color: var(--accent); font-weight: 500; }
+body[data-theme="son"] .x-schedule-list .is-main {
+  background: radial-gradient(120% 120% at 50% 0%, #a3241c, #7b1611);
+  outline: 1px solid rgba(207, 165, 99, 0.6);
+  outline-offset: -7px;
+}
+body[data-theme="son"] .x-gift { background: #7b1611; color: #f6e3bf; }
+body[data-theme="son"] .x-gift .x-kicker, body[data-theme="son"] .x-gift .x-head h2 { color: #e3c48a; }
+body[data-theme="son"] .x-gift .x-lead { color: rgba(246, 227, 191, 0.75); }
+
+body[data-theme="son"] .theme-close {
+  background: radial-gradient(120% 90% at 50% 0%, #a3241c, #5a0e0b);
+  color: #fbecd0;
+}
+body[data-theme="son"] .theme-close p { color: #e3c48a; }
+body[data-theme="son"] .theme-close h2 { font-weight: 500; }
+body[data-theme="son"] .theme-close h2 i { color: #e3c48a; }
+body[data-theme="son"] .theme-close span { color: #dcbf8b; }
+
+/* Màn mở: hai cánh cửa son */
+body[data-theme="son"] .invitation-gate { --gate-bg: #7b1611; --gate-ink: #fbecd0; --gate-gold: #cfa563; }
+body[data-theme="son"] .invitation-door {
+  background: radial-gradient(140% 90% at 50% 50%, #9e2219, #620f0c);
+}
+body[data-theme="son"] .invitation-door::before {
+  content: "";
+  position: absolute;
+  inset: 16px;
+  border: 1px solid rgba(207, 165, 99, 0.45);
+}
+body[data-theme="son"] .invitation-door::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #cfa563;
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+body[data-theme="son"] .invitation-door-left::after { right: 26px; }
+body[data-theme="son"] .invitation-door-right::after { left: 26px; }
+body[data-theme="son"] .invitation-gate-card .gate-mark::before {
+  content: "囍";
+  display: block;
+  margin-bottom: 18px;
+  color: #cfa563;
+  font: 700 46px/1 "Noto Serif TC", "SimSun", serif;
+}
+body[data-theme="son"] .invitation-gate-card { background: #6a120e; border: 1px solid rgba(207, 165, 99, 0.5); }

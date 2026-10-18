@@ -1,0 +1,127 @@
+/* 02 · Thư Tay — giấy kem, mực đỏ son, chữ in lớn và lưới bất đối xứng. */
+body[data-theme="ink"] {
+  --bg: #f3eee6;
+  --paper: #faf7f1;
+  --ink: #1e1a17;
+  --muted: #6e655e;
+  --accent: #c0281c;
+  --gold: #c0281c;
+  --line: rgba(30, 26, 23, 0.14);
+  --on-accent: #fbf6ee;
+  --f-display: "Fraunces", Georgia, serif;
+  --radius: 0px;
+  --btn-radius: 0px;
+  --ph-1: #e6ddd0;
+  --ph-2: #bfb1a0;
+  --ph-ink: rgba(30, 26, 23, 0.55);
+  --backdrop:
+    linear-gradient(90deg, rgba(30, 26, 23, 0.05) 1px, transparent 1px) 0 0 / 32px 32px,
+    linear-gradient(rgba(30, 26, 23, 0.05) 1px, transparent 1px) 0 0 / 32px 32px,
+    #e7e0d5;
+}
+body[data-theme="ink"] .kicker { color: var(--accent); }
+
+.ink-cover {
+  position: relative;
+  min-height: min(100svh, 860px);
+  display: grid;
+  grid-template-rows: auto 1fr auto auto;
+  padding: 72px 26px 34px;
+}
+.ink-top {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--ink);
+  font: 600 11px/1 var(--f-body);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+.ink-names {
+  align-self: center;
+  display: grid;
+  margin: 24px 0;
+  font: 300 112px/0.86 var(--f-display);
+  letter-spacing: -0.045em;
+}
+.ink-names em { margin: 6px 0 0 4px; color: var(--accent); font-size: 64px; font-style: italic; }
+.ink-names span:last-child { margin-left: 34px; }
+.ink-stamp {
+  position: absolute;
+  top: 132px;
+  right: 22px;
+  width: 104px;
+  fill: none;
+  stroke: var(--accent);
+  animation: ink-spin 40s linear infinite;
+}
+.ink-stamp circle { stroke-width: 1; }
+.ink-stamp text { fill: var(--accent); stroke: none; font: 600 9.5px/1 var(--f-body); letter-spacing: 0.2em; }
+.ink-stamp .ink-stamp-core { font: 700 26px/1 "Noto Serif TC", "SimSun", serif; letter-spacing: 0; }
+@keyframes ink-spin { to { transform: rotate(360deg); } }
+
+.ink-date { display: grid; grid-template-columns: repeat(3, 1fr); margin: 0; border-top: 1px solid var(--ink); }
+.ink-date div { padding: 12px 0 0; }
+.ink-date div + div { padding-left: 14px; border-left: 1px solid var(--line); }
+.ink-date dt { color: var(--muted); font: 600 10px/1 var(--f-body); letter-spacing: 0.22em; text-transform: uppercase; }
+.ink-date dd { margin: 6px 0 0; color: var(--accent); font: 300 64px/1 var(--f-display); letter-spacing: -0.04em; }
+.ink-sub { margin: 22px 0 0; color: var(--muted); font-size: 14px; line-height: 1.6; }
+
+.ink-photo { padding: 0 0 8px; }
+.ink-photo p { margin: 12px 26px 0; color: var(--muted); font: italic 300 15px/1.4 var(--f-display); text-align: right; }
+
+.ink-letter, .ink-event { padding: 84px 26px; }
+.ink-index { margin: 0 0 26px; color: var(--accent); font: 600 11px/1 var(--f-body); letter-spacing: 0.2em; text-transform: uppercase; }
+.ink-letter h2, .ink-event h2 { margin: 0; font: 300 58px/0.98 var(--f-display); letter-spacing: -0.04em; }
+.ink-letter h2 em { color: var(--accent); }
+.ink-letter-body { margin: 34px 0 0 56px; }
+.ink-letter-body p { margin: 0 0 16px; font-size: 15px; line-height: 1.75; }
+.ink-sign { margin-top: 26px !important; color: var(--accent); font: italic 400 26px/1 var(--f-display) !important; }
+.ink-event { border-top: 1px solid var(--ink); }
+.ink-event h2 { color: var(--accent); }
+.ink-facts { margin: 38px 0 0; }
+.ink-facts div { display: grid; grid-template-columns: 92px 1fr; gap: 14px; padding: 16px 0; border-top: 1px solid var(--line); }
+.ink-facts div:last-child { border-bottom: 1px solid var(--line); }
+.ink-facts dt { padding-top: 5px; color: var(--muted); font: 600 10px/1.4 var(--f-body); letter-spacing: 0.2em; text-transform: uppercase; }
+.ink-facts dd { margin: 0; font: 400 20px/1.35 var(--f-display); }
+
+/* Phần dùng chung: căn trái, đánh số mục như một bức thư */
+body[data-theme="ink"] .wedding-extras { counter-reset: ink-sec 2; }
+body[data-theme="ink"] .x-section { counter-increment: ink-sec; border-top-color: var(--ink); text-align: left; }
+body[data-theme="ink"] .x-kicker::before { content: "(" counter(ink-sec, decimal-leading-zero) ") — "; }
+body[data-theme="ink"] .x-head h2 { font-weight: 300; font-size: 42px; line-height: 1.02; letter-spacing: -0.035em; }
+body[data-theme="ink"] .x-family-grid { text-align: center; }
+body[data-theme="ink"] .x-schedule-list { text-align: left; }
+body[data-theme="ink"] .x-schedule-list li { padding-inline: 0; }
+body[data-theme="ink"] .x-schedule-list p { margin: 0; }
+body[data-theme="ink"] .x-schedule-list .is-main { padding: 28px 22px; }
+body[data-theme="ink"] .x-lead, body[data-theme="ink"] .x-address { margin-left: 0; }
+body[data-theme="ink"] .countdown > span { border: 0; border-left: 1px solid var(--ink); background: transparent; text-align: left; padding: 4px 0 4px 10px; }
+body[data-theme="ink"] .countdown strong { color: var(--accent); font-weight: 300; font-size: 44px; }
+body[data-theme="ink"] .x-wishes { background: var(--paper); }
+body[data-theme="ink"] .x-field input, body[data-theme="ink"] .x-field textarea { border-width: 0 0 1px; border-color: var(--ink); background: transparent; padding-inline: 0; }
+body[data-theme="ink"] .x-field input:focus, body[data-theme="ink"] .x-field textarea:focus { box-shadow: none; border-color: var(--accent); }
+body[data-theme="ink"] .form-status { text-align: left; }
+body[data-theme="ink"] .qr-placeholder { outline-color: var(--ink); }
+
+body[data-theme="ink"] .theme-close { border-top: 1px solid var(--ink); text-align: left; }
+body[data-theme="ink"] .theme-close h2 { font-weight: 300; font-size: 76px; letter-spacing: -0.05em; }
+body[data-theme="ink"] .theme-close h2 i { font-style: italic; }
+
+/* Màn mở: tờ giấy gấp đôi tách theo chiều ngang */
+body[data-theme="ink"] .invitation-gate { --gate-bg: #f3eee6; --gate-ink: #1e1a17; --gate-gold: #c0281c; }
+body[data-theme="ink"] .invitation-door-left { inset: 0 0 auto 0; width: auto; height: 50.5%; }
+body[data-theme="ink"] .invitation-door-right { inset: auto 0 0 0; width: auto; height: 50.5%; }
+body[data-theme="ink"] .invitation-gate.is-opening .invitation-door-left { transform: translateY(-101%); }
+body[data-theme="ink"] .invitation-gate.is-opening .invitation-door-right { transform: translateY(101%); }
+body[data-theme="ink"] .invitation-gate-card h1 { font-weight: 300; font-size: 60px; letter-spacing: -0.04em; }
+body[data-theme="ink"] .invitation-gate-card h1 i { font-style: italic; }
+body[data-theme="ink"] .invitation-gate-card button span { border-radius: 50%; color: #fbf6ee; font: italic 400 24px/1 var(--f-display); }
+
+@media (max-width: 360px) {
+  .ink-names { font-size: 92px; }
+  .ink-stamp { width: 86px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ink-stamp { animation: none; }
+}

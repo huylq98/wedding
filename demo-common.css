@@ -1,177 +1,288 @@
+/* Khung chung cho cả 5 mẫu: thiệp là một cột dọc kiểu điện thoại,
+   trên màn hình rộng thì nằm giữa nền trang trí của từng mẫu. */
+:root {
+  --bg: #f6efe4;
+  --paper: #fffaf2;
+  --ink: #2b1714;
+  --muted: #7a625c;
+  --accent: #9b1c1f;
+  --gold: #c39a5a;
+  --line: rgba(43, 23, 20, 0.16);
+  --on-accent: #fff8ee;
+  --backdrop: #e9dfd0;
+  --f-display: "Cormorant Garamond", Georgia, serif;
+  --f-body: "Be Vietnam Pro", Arial, sans-serif;
+  --f-script: "Great Vibes", cursive;
+  --radius: 0px;
+  --btn-radius: 999px;
+  --ph-1: #e9d6c4;
+  --ph-2: #d8b9a1;
+  --ph-ink: rgba(60, 30, 24, 0.55);
+  --column: 480px;
+}
+
+* { box-sizing: border-box; }
+/* Số kiểu cũ của Cormorant khó đọc ngày giờ; ép số thẳng hàng (font shorthand sẽ reset nếu không có !important). */
+*, *::before, *::after { font-variant-numeric: lining-nums !important; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: var(--backdrop);
+  color: var(--ink);
+  font: 400 15px/1.7 var(--f-body);
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; }
+h1, h2, h3 { font-weight: 400; }
+
+.invite {
+  position: relative;
+  width: min(var(--column), 100%);
+  margin: 0 auto;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+@media (min-width: 640px) {
+  body { padding: 72px 0 96px; }
+  .invite { box-shadow: 0 40px 120px rgba(20, 6, 4, 0.28), 0 0 0 1px rgba(255, 255, 255, 0.06); }
+}
+
+.kicker {
+  margin: 0;
+  color: var(--accent);
+  font: 600 11px/1.4 var(--f-body);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+/* Khung chờ ảnh: tông màu theo mẫu, ghi tỉ lệ nhỏ ở góc. */
+.ph {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  aspect-ratio: var(--ratio, 4 / 5);
+  background:
+    radial-gradient(120% 80% at 20% 10%, rgba(255, 255, 255, 0.45), transparent 55%),
+    radial-gradient(90% 70% at 85% 95%, rgba(0, 0, 0, 0.12), transparent 60%),
+    linear-gradient(160deg, var(--ph-1), var(--ph-2));
+}
+.ph::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .5 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+  opacity: 0.5;
+}
+.ph figcaption {
+  position: absolute;
+  left: 14px;
+  bottom: 12px;
+  color: var(--ph-ink);
+  font: 500 10px/1.3 var(--f-body);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+/* Thanh chọn mẫu (chỉ dùng cho bản demo). */
 .design-switcher {
   position: fixed;
   z-index: 200;
-  top: 14px;
+  top: 12px;
   left: 50%;
   display: flex;
-  gap: 3px;
-  width: max-content;
-  max-width: calc(100vw - 28px);
+  gap: 2px;
+  max-width: calc(100vw - 20px);
+  overflow-x: auto;
   padding: 4px;
-  border: 1px solid rgba(35, 30, 25, 0.18);
-  border-radius: 100px;
-  background: rgba(248, 244, 235, 0.92);
-  box-shadow: 0 8px 28px rgba(20, 17, 13, 0.1);
-  color: #27231f;
+  border-radius: 999px;
+  background: rgba(24, 12, 10, 0.78);
+  box-shadow: 0 10px 30px rgba(10, 4, 3, 0.25);
   font-family: "Be Vietnam Pro", Arial, sans-serif;
+  scrollbar-width: none;
   backdrop-filter: blur(14px);
   transform: translateX(-50%);
 }
-
+.design-switcher::-webkit-scrollbar { display: none; }
 .design-switcher a {
+  flex: 0 0 auto;
   display: flex;
   align-items: center;
-  min-height: 34px;
-  border-radius: 100px;
-  padding: 0 14px;
-  color: inherit;
-  font-size: 10px;
-  letter-spacing: 0.05em;
+  gap: 6px;
+  min-height: 32px;
+  padding: 0 13px;
+  border-radius: 999px;
+  color: rgba(255, 244, 232, 0.72);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
   text-decoration: none;
+  white-space: nowrap;
 }
-
-.design-switcher a span {
-  margin-right: 6px;
-  opacity: 0.5;
-}
-
-.design-switcher a.is-active {
-  background: #27231f;
-  color: #f7f2e8;
-}
+.design-switcher a span { font-size: 9px; opacity: 0.55; }
+.design-switcher a.is-active { background: #fff4e8; color: #2a1310; }
 
 .demo-music {
   position: fixed;
   z-index: 180;
-  right: 18px;
-  bottom: 18px;
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  min-height: 43px;
-  border: 1px solid rgba(245, 239, 227, 0.3);
-  border-radius: 100px;
-  padding: 0 16px;
-  background: #211f1c;
-  box-shadow: 0 10px 32px rgba(21, 18, 15, 0.18);
-  color: #f5efe3;
+  right: 16px;
+  bottom: 16px;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 12px 30px rgba(20, 6, 4, 0.3);
+  color: var(--on-accent);
   cursor: pointer;
-  font: 500 9px/1 "Be Vietnam Pro", Arial, sans-serif;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
 }
-
-.demo-music:focus-visible {
-  outline: 2px solid #b58a55;
-  outline-offset: 3px;
+.demo-music [data-music-label] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
 }
-
-.demo-music .music-bars {
-  display: flex;
-  align-items: center;
-  gap: 2px;
-  height: 13px;
-}
-
-.demo-music .music-bars i {
-  display: block;
-  width: 2px;
-  height: 4px;
-  background: currentColor;
-}
-
-.demo-music.is-playing .music-bars i {
-  animation: demo-music-bar 0.75s ease-in-out infinite alternate;
-}
-
+.demo-music:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+.demo-music .music-bars { display: flex; align-items: center; gap: 3px; height: 16px; }
+.demo-music .music-bars i { display: block; width: 2px; height: 5px; border-radius: 2px; background: currentColor; }
+.demo-music.is-playing .music-bars i { animation: demo-music-bar 0.75s ease-in-out infinite alternate; }
 .demo-music.is-playing .music-bars i:nth-child(2) { animation-delay: -0.3s; }
 .demo-music.is-playing .music-bars i:nth-child(3) { animation-delay: -0.55s; }
-
-@keyframes demo-music-bar { to { height: 13px; } }
+@keyframes demo-music-bar { to { height: 16px; } }
 
 [data-reveal] {
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.75s ease, transform 0.75s cubic-bezier(0.2, 0.75, 0.25, 1);
+  transform: translateY(22px);
+  transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.2, 0.75, 0.25, 1);
 }
-
 [data-reveal].is-visible { opacity: 1; transform: none; }
 
+/* Màn mở thiệp. Mỗi mẫu đổi màu và hướng mở trong file theme của mình. */
 body.is-invitation-locked { overflow: hidden; }
 .invitation-gate {
-  --gate-deep: #741a1a;
-  --gate-paper: #f3e5cc;
-  --gate-gold: #d3aa64;
+  --gate-bg: var(--accent);
+  --gate-ink: var(--on-accent);
+  --gate-gold: var(--gold);
   position: fixed;
   z-index: 1000;
   inset: 0;
   display: grid;
   place-items: center;
   overflow: hidden;
-  perspective: 1400px;
-  background: var(--gate-deep);
-  color: var(--gate-paper);
+  color: var(--gate-ink);
 }
-body[data-theme="wine"] .invitation-gate { --gate-deep: #3c2524; --gate-paper: #f0e3d5; --gate-gold: #b98774; }
-.invitation-door { position: absolute; top: 0; bottom: 0; width: 51%; background:
-  radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--gate-gold) 13%, transparent), transparent 38%),
-  repeating-linear-gradient(90deg, transparent 0 44px, color-mix(in srgb, var(--gate-gold) 6%, transparent) 45px 46px),
-  var(--gate-deep); transition: transform 1.25s cubic-bezier(.7,0,.2,1); }
-.invitation-door::after { content: ""; position: absolute; inset: 24px; border: 1px solid color-mix(in srgb, var(--gate-gold) 43%, transparent); }
-.invitation-door-left { left: 0; border-right: 1px solid color-mix(in srgb, var(--gate-gold) 48%, transparent); transform-origin: left center; }
-.invitation-door-right { right: 0; border-left: 1px solid color-mix(in srgb, var(--gate-gold) 48%, transparent); transform-origin: right center; }
-.invitation-gate-card { position: relative; z-index: 3; width: min(580px, calc(100vw - 44px)); padding: 58px 35px 48px; border: 1px solid color-mix(in srgb, var(--gate-gold) 60%, transparent); background: color-mix(in srgb, var(--gate-deep) 92%, transparent); box-shadow: 0 28px 90px rgba(26,10,8,.36); text-align: center; backdrop-filter: blur(8px); transition: opacity .45s ease, transform .65s ease; }
-.invitation-gate-card::before { content: "囍"; position: absolute; inset: 50% auto auto 50%; color: color-mix(in srgb, var(--gate-gold) 8%, transparent); font: 400 260px/1 Georgia, serif; transform: translate(-50%,-50%); }
-body[data-theme="wine"] .invitation-gate-card::before { content: "H&P"; font: 600 150px/1 "Dancing Script", cursive; }
-.invitation-gate-card > * { position: relative; z-index: 1; }
-.invitation-gate-card > p { margin: 0; color: var(--gate-gold); font-size: 9px; letter-spacing: .22em; text-transform: uppercase; }
-.invitation-gate-card h1 { margin: 30px 0 38px; font: 500 clamp(66px,9vw,118px)/.85 "Dancing Script", cursive; letter-spacing: -.04em; }
-.invitation-gate-card h1 i { color: var(--gate-gold); font-weight: 500; }
-.invitation-gate-card button { display: grid; gap: 13px; place-items: center; margin: 0 auto; border: 0; background: transparent; color: var(--gate-paper); cursor: pointer; font: 600 9px/1 "Be Vietnam Pro", Arial, sans-serif; letter-spacing: .17em; text-transform: uppercase; }
-.invitation-gate-card button span { display: grid; width: 88px; height: 88px; place-items: center; border: 1px solid var(--gate-gold); border-radius: 50%; background: var(--gate-gold); box-shadow: 0 0 0 8px color-mix(in srgb, var(--gate-gold) 14%, transparent); color: var(--gate-deep); font: 600 29px/1 "Dancing Script", cursive; transition: transform .3s ease, box-shadow .3s ease; }
-.invitation-gate-card button:hover span, .invitation-gate-card button:focus-visible span { box-shadow: 0 0 0 13px color-mix(in srgb, var(--gate-gold) 17%, transparent); transform: rotate(-5deg) scale(1.04); }
+.invitation-door {
+  position: absolute;
+  background: var(--gate-bg);
+  transition: transform 1.3s cubic-bezier(0.7, 0, 0.2, 1);
+}
+.invitation-door-left { top: 0; bottom: 0; left: 0; width: 50.5%; }
+.invitation-door-right { top: 0; bottom: 0; right: 0; width: 50.5%; }
+.invitation-gate.is-opening .invitation-door-left { transform: translateX(-101%); }
+.invitation-gate.is-opening .invitation-door-right { transform: translateX(101%); }
+
+.invitation-gate-card {
+  position: relative;
+  z-index: 3;
+  width: min(340px, calc(100vw - 48px));
+  padding: 44px 24px 38px;
+  text-align: center;
+  transition: opacity 0.5s ease, transform 0.7s ease;
+}
+.invitation-gate.is-opening .invitation-gate-card { opacity: 0; transform: scale(0.92); }
+.invitation-gate-card > p {
+  margin: 0;
+  color: var(--gate-gold);
+  font: 600 11px/1.5 var(--f-body);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+.invitation-gate-card h1 {
+  margin: 22px 0 34px;
+  font: 400 52px/1.02 var(--f-display);
+}
+.invitation-gate-card h1 i { color: var(--gate-gold); font-style: normal; }
+.invitation-gate-card button {
+  display: grid;
+  gap: 14px;
+  place-items: center;
+  margin: 0 auto;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font: 600 11px/1 var(--f-body);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+.invitation-gate-card button span {
+  display: grid;
+  width: 84px;
+  height: 84px;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--gate-gold);
+  box-shadow: 0 0 0 8px color-mix(in srgb, var(--gate-gold) 18%, transparent);
+  color: var(--gate-bg);
+  font: 500 26px/1 var(--f-display);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: gate-pulse 2.4s ease-in-out infinite;
+}
+.invitation-gate-card button:hover span,
+.invitation-gate-card button:focus-visible span { transform: scale(1.05); }
 .invitation-gate-card button:focus-visible { outline: 0; }
-.invitation-gate-card > small { display: block; margin-top: 25px; color: color-mix(in srgb, var(--gate-paper) 62%, transparent); font-size: 8px; letter-spacing: .08em; }
+.invitation-gate-card > small {
+  display: block;
+  margin-top: 24px;
+  color: color-mix(in srgb, var(--gate-ink) 60%, transparent);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+}
+@keyframes gate-pulse {
+  0%, 100% { box-shadow: 0 0 0 8px color-mix(in srgb, var(--gate-gold) 18%, transparent); }
+  50% { box-shadow: 0 0 0 16px color-mix(in srgb, var(--gate-gold) 6%, transparent); }
+}
+
 .opening-petals { position: absolute; z-index: 4; inset: 0; pointer-events: none; }
-.opening-petals i { position: absolute; top: 48%; left: var(--petal-x); width: 13px; height: 22px; border-radius: 80% 15% 70% 25%; background: var(--gate-gold); opacity: 0; transform: rotate(var(--petal-rotate)); }
-.invitation-gate.is-opening .invitation-door-left { transform: translateX(-102%) rotateY(10deg); }
-.invitation-gate.is-opening .invitation-door-right { transform: translateX(102%) rotateY(-10deg); }
-.invitation-gate.is-opening .invitation-gate-card { opacity: 0; transform: scale(.86); }
-.invitation-gate.is-opening .opening-petals i { animation: openingPetal 1.3s var(--petal-delay) cubic-bezier(.15,.65,.25,1) both; }
-
+.opening-petals i {
+  position: absolute;
+  top: 45%;
+  left: var(--petal-x);
+  width: 12px;
+  height: 18px;
+  border-radius: 80% 15% 70% 25%;
+  background: var(--gate-gold);
+  opacity: 0;
+}
+.invitation-gate.is-opening .opening-petals i {
+  animation: openingPetal 1.4s var(--petal-delay) cubic-bezier(0.15, 0.65, 0.25, 1) both;
+}
 @keyframes openingPetal {
-  0% { opacity: 0; translate: 0 0; rotate: 0deg; scale: .7; }
-  18% { opacity: .9; }
-  100% { opacity: 0; translate: var(--petal-drift) 48vh; rotate: 260deg; scale: 1.15; }
+  0% { opacity: 0; translate: 0 0; rotate: 0deg; }
+  18% { opacity: 0.9; }
+  100% { opacity: 0; translate: var(--petal-drift) 50vh; rotate: 280deg; }
 }
 
-@media (max-width: 620px) {
-  .design-switcher {
-    top: 9px;
-    width: calc(100vw - 18px);
-    overflow-x: auto;
-    scrollbar-width: none;
-  }
-
-  .design-switcher::-webkit-scrollbar { display: none; }
-
-  .design-switcher a {
-    flex: 1 0 auto;
-    justify-content: center;
-    min-width: 0;
-    padding-inline: 8px;
-    font-size: 8px;
-  }
-
-  .design-switcher a span { display: none; }
-  .demo-music { right: 12px; bottom: 12px; }
-  .invitation-gate-card { padding: 50px 22px 42px; }
-  .invitation-gate-card h1 { font-size: 68px; }
-  .invitation-door::after { inset: 14px; }
+/* Khép thiệp */
+.theme-close {
+  padding: 96px 28px 120px;
+  text-align: center;
 }
+.theme-close p { margin: 0; color: var(--accent); font: 600 11px/1.5 var(--f-body); letter-spacing: 0.24em; text-transform: uppercase; }
+.theme-close h2 { margin: 18px 0 14px; font: 400 64px/1 var(--f-display); }
+.theme-close h2 i { color: var(--accent); }
+.theme-close span { color: var(--muted); font-size: 13px; letter-spacing: 0.2em; }
 
 @media (prefers-reduced-motion: reduce) {
-  [data-reveal] { opacity: 1; transform: none; }
+  html { scroll-behavior: auto; }
+  [data-reveal] { opacity: 1; transform: none; transition: none; }
   .invitation-door, .invitation-gate-card { transition: none; }
+  .invitation-gate-card button span { animation: none; }
   .invitation-gate.is-opening .opening-petals i { animation: none; }
 }
