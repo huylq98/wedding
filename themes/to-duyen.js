@@ -6,7 +6,6 @@ const tdTip = tdSvg.querySelector(".td-thread-tip");
 let tdStart = 0;
 let tdEnd = 1;
 let tdLength = 0;
-const tdCalm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 function layoutThread() {
   const width = tdMain.clientWidth;
@@ -44,7 +43,7 @@ function layoutThread() {
 function drawThread() {
   const top = tdMain.getBoundingClientRect().top;
   const reach = window.innerHeight * 0.72 - top;
-  const progress = tdCalm ? 1 : Math.min(1, Math.max(0, (reach - tdStart) / (tdEnd - tdStart)));
+  const progress = Math.min(1, Math.max(0, (reach - tdStart) / (tdEnd - tdStart)));
   tdPath.style.setProperty("--thread-offset", String(1 - progress));
   const point = tdPath.getPointAtLength(progress * tdLength);
   tdTip.setAttribute("cx", point.x);

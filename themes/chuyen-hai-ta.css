@@ -284,7 +284,3 @@ body[data-theme="story"] .opening-petals { display: none; }
   .st-cover h1 { font-size: 64px; }
   .sc-caption h2 { font-size: 28px; }
 }
-@media (prefers-reduced-motion: reduce) {
-  .st-float, .st-bob, .st-pop, .st-glow, .st-leaves use, .st-confetti use, .st-stars circle, .st-rays, .st-lantern, .st-hint::after { animation: none; }
-  .st-leaves, .st-confetti { display: none; }
-}

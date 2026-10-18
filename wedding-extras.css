@@ -283,7 +283,3 @@
   .countdown strong { font-size: 30px; }
   .x-parent { font-size: 16px; }
 }
-
-@media (prefers-reduced-motion: reduce) {
-  .map-pin, .wish-bubble { animation: none; }
-}

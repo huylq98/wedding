@@ -281,11 +281,3 @@ body.is-invitation-locked { overflow: hidden; }
 .theme-close h2 { margin: 18px 0 14px; font: 400 64px/1 var(--f-display); }
 .theme-close h2 i { color: var(--accent); }
 .theme-close span { color: var(--muted); font-size: 13px; letter-spacing: 0.2em; }
-
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  [data-reveal] { opacity: 1; transform: none; transition: none; }
-  .invitation-door, .invitation-gate-card { transition: none; }
-  .invitation-gate-card button span { animation: none; }
-  .invitation-gate.is-opening .opening-petals i { animation: none; }
-}

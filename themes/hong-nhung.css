@@ -206,7 +206,3 @@ body[data-theme="rose"] .invitation-gate.is-opening .invitation-door { opacity: 
 @keyframes rose-sway { from { rotate: -8deg; } to { rotate: 8deg; } }
 body[data-theme="rose"] .opening-petals i { background: linear-gradient(135deg, #e48a96, #a3203a); }
 
-@media (prefers-reduced-motion: reduce) {
-  .rose-petals { display: none; }
-  .rose-month .is-day::before { animation: none; }
-}

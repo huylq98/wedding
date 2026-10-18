@@ -1,7 +1,6 @@
 const musicButton = document.querySelector("[data-music-toggle]");
 const musicLabel = document.querySelector("[data-music-label]");
 const AudioContextClass = window.AudioContext || window.webkitAudioContext;
-const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const melody = [
   261.63, 329.63, 392.0, 329.63,
   220.0, 261.63, 329.63, 261.63,
@@ -143,13 +142,13 @@ if (invitationTheme) {
         window.sessionStorage.setItem(storageKey, "yes");
       } catch {}
       if (AudioContextClass && !musicTimer) startMusic().catch(() => {});
-      window.setTimeout(() => gate.remove(), reduceMotion ? 80 : 1900);
+      window.setTimeout(() => gate.remove(), 1900);
     });
   }
 }
 
 const revealItems = document.querySelectorAll("[data-reveal]");
-if ("IntersectionObserver" in window && !reduceMotion) {
+if ("IntersectionObserver" in window) {
   const observer = new IntersectionObserver(
     (entries) => entries.forEach((entry) => {
       if (!entry.isIntersecting) return;

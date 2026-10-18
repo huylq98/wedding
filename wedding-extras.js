@@ -224,7 +224,7 @@ if (window.location.hash) {
 }
 
 const extraRevealItems = extras.querySelectorAll("[data-reveal]");
-if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+if ("IntersectionObserver" in window) {
   const extraObserver = new IntersectionObserver(
     (entries) => entries.forEach((entry) => {
       if (!entry.isIntersecting) return;

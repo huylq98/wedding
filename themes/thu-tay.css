@@ -179,6 +179,3 @@ body[data-theme="ink"] .opening-petals { display: none; }
   .ink-names { font-size: 92px; }
   .ink-stamp { width: 86px; }
 }
-@media (prefers-reduced-motion: reduce) {
-  .ink-stamp { animation: none; }
-}

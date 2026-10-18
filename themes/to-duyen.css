@@ -223,8 +223,3 @@ body[data-theme="thread"] .invitation-gate-card button:hover span { transform: s
 @media (max-width: 360px) {
   .td-names h1 { font-size: 44px; }
 }
-@media (prefers-reduced-motion: reduce) {
-  .td-knot path { stroke-dashoffset: 0; animation: none !important; }
-  .td-amp { opacity: 1; animation: none !important; }
-  .td-hint::after { animation: none; }
-}
