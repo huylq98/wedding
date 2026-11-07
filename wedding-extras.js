@@ -126,7 +126,7 @@ extras.innerHTML = `
       ></iframe>
     </div>
     <div class="x-actions">
-      <a class="x-btn is-solid" href="https://www.google.com/maps/search/?api=1&query=${mapQuery}" target="_blank" rel="noopener">Chỉ đường</a>
+      <a class="x-btn is-solid" href="https://maps.app.goo.gl/c5R5mBZ5yW817m9x5" target="_blank" rel="noopener">Chỉ đường</a>
       <button class="x-btn" type="button" data-add-calendar>Thêm vào lịch</button>
     </div>
   </section>
