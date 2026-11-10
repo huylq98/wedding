@@ -1,251 +1,1064 @@
-/* 01 · Son Mài — đỏ son, vàng kim, đối xứng và trang trọng. */
+/* 01 · Son Thư (Son Mài × Thư Tay)
+   Sự kết hợp hoàn chỉnh giữa sắc Đỏ Đô Sơn Mài thếp vàng và nền Giấy Dó Màu Be ấm:
+   - Màn mở: Đóng dấu chu sa -> Mở nắp phong bì đỏ đô -> Rút tờ thiệp màu be ra
+   - Khi cuộn: Nét bút chu sa & chỉ vàng dẫn lối + Cuộn thư mở dần theo ngón tay
+   - Ngày cưới: Cào lớp nhũ vàng trên bài vị đỏ đô + Đóng ấn tờ lịch tháng 11 */
+
 body[data-theme="son"] {
-  --bg: #f7eedd;
-  --paper: #fcf6eb;
-  --ink: #3a1410;
-  --muted: #86655a;
-  --accent: #8c1a15;
-  --gold: #c39a55;
-  --line: rgba(140, 26, 21, 0.16);
-  --on-accent: #f8ead0;
+  --bg: #f4ece0;
+  --paper: #fcf8f1;
+  --ink: #281310;
+  --muted: #75584f;
+  --accent: #841512;
+  --accent-deep: #540a08;
+  --gold: #c89b50;
+  --line: rgba(132, 21, 18, 0.16);
+  --on-accent: #fbecd0;
   --f-display: "Cormorant Garamond", Georgia, serif;
-  --ornament: "◆";
-  --radius: 0px;
-  --btn-radius: 0px;
+  --ornament: "❖ 囍 ❖";
+  --radius: 6px;
+  --btn-radius: 6px;
   --ph-1: #e8d2b4;
   --ph-2: #c99c7a;
   --ph-ink: rgba(70, 22, 16, 0.6);
   --backdrop:
-    radial-gradient(circle at 50% 0%, rgba(207, 165, 99, 0.18), transparent 50%),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56'%3E%3Cpath d='M28 4 52 28 28 52 4 28Z' fill='none' stroke='%23c39a55' stroke-opacity='.14'/%3E%3C/svg%3E"),
-    #4f0e0b;
+    radial-gradient(circle at 50% 0%, rgba(218, 173, 98, 0.22), transparent 55%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64'%3E%3Cpath d='M32 4 60 32 32 60 4 32Z' fill='none' stroke='%23cfa356' stroke-opacity='.15'/%3E%3Ccircle cx='32' cy='32' r='6' fill='none' stroke='%23cfa356' stroke-opacity='.12'/%3E%3C/svg%3E"),
+    #3b0706;
 }
 
+/* Nét bút chu sa & chỉ vàng dẫn lối dọc theo thiệp */
+.sm-trail {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+.sm-trail-gold {
+  fill: none;
+  stroke: rgba(200, 155, 80, 0.45);
+  stroke-width: 4.5;
+  stroke-linecap: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: var(--trail-offset, 1);
+}
+.sm-trail-red {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: var(--trail-offset, 1);
+}
+.sm-trail-tip {
+  opacity: 0;
+  filter: drop-shadow(0 4px 10px rgba(132, 21, 18, 0.45));
+  transition: opacity 0.25s ease;
+}
+.son > :not(.sm-trail) {
+  position: relative;
+  z-index: 1;
+}
+
+/* ==========================================================================
+   TRANG BÌA: Nền Giấy Be Ấm × Cửa Vòm Sơn Mài Đỏ Đô × Ấn Triện Thư Tay
+   ========================================================================== */
 .son-cover {
   position: relative;
-  min-height: min(100svh, 860px);
+  min-height: min(100svh, 960px);
   display: grid;
-  padding: 18px;
+  padding: 16px;
   background:
-    radial-gradient(120% 70% at 50% 30%, #a3241c 0%, #7b1611 55%, #5a0e0b 100%);
-  color: #f6e3bf;
+    radial-gradient(90% 50% at 50% 18%, rgba(200, 155, 80, 0.14), transparent 65%),
+    radial-gradient(80% 50% at 85% 25%, rgba(132, 21, 18, 0.06), transparent 60%),
+    var(--bg);
+  color: var(--ink);
   text-align: center;
 }
+
 .son-frame {
   position: relative;
   display: grid;
-  align-content: center;
-  justify-items: center;
-  padding: 72px 22px 120px;
-  border: 1px solid rgba(207, 165, 99, 0.7);
-  outline: 1px solid rgba(207, 165, 99, 0.35);
-  outline-offset: -8px;
+  align-content: space-between;
+  padding: 28px 18px 30px;
+  border: 1.5px solid rgba(132, 21, 18, 0.35);
+  outline: 1px solid rgba(200, 155, 80, 0.45);
+  outline-offset: -6px;
+  background:
+    linear-gradient(180deg, rgba(252, 248, 241, 0.7), rgba(244, 236, 224, 0.4));
 }
-.son-frame::before,
-.son-frame::after {
-  content: "";
-  position: absolute;
-  width: 46px;
-  height: 46px;
-  border: 2px solid #cfa563;
-}
-.son-frame::before { top: -1px; left: -1px; border-right: 0; border-bottom: 0; }
-.son-frame::after { right: -1px; bottom: -1px; border-left: 0; border-top: 0; }
 
-.son-eyebrow {
-  margin: 0;
-  color: #e3c48a;
-  font: 600 12px/1 var(--f-body);
-  letter-spacing: 0.42em;
+/* 4 góc triện kỷ hà đỏ đô */
+.son-corner {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  color: var(--accent);
+  pointer-events: none;
+}
+.son-c-tl { top: 4px; left: 4px; }
+.son-c-tr { top: 4px; right: 4px; transform: scaleX(-1); }
+.son-c-bl { bottom: 4px; left: 4px; transform: scaleY(-1); }
+.son-c-br { bottom: 4px; right: 4px; transform: scale(-1, -1); }
+
+/* Thanh tiêu đề báo hỷ kiểu Thư Tay */
+.son-masthead {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  border-bottom: 2px double var(--accent);
+  color: var(--accent);
+  font: 600 10px/1 var(--f-body);
+  letter-spacing: 0.18em;
   text-transform: uppercase;
 }
-.son-seal {
-  display: grid;
-  place-items: center;
-  width: 104px;
-  height: 104px;
-  margin: 34px 0 30px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 35% 30%, #f1d595, #c39a55 60%, #9c763a);
-  box-shadow: 0 0 0 6px rgba(207, 165, 99, 0.16), 0 14px 30px rgba(30, 4, 2, 0.35);
+
+.son-title-block {
+  position: relative;
+  margin: 18px 0 10px;
+  text-align: center;
 }
-.son-seal span {
-  color: #7b1611;
-  font: 700 58px/1 "Noto Serif TC", "Songti SC", "SimSun", serif;
+/* Ẩn chữ & chìm thừa để tránh trùng với chữ & giữa tên Dâu Rể */
+.son-amp-watermark {
+  display: none;
+}
+/* Hoa mẫu đơn đỏ thẫm bồng bềnh ở góc khung (Minimalism - Đỏ Đậm) */
+.son-peony-float {
+  position: absolute;
+  width: 58px;
+  height: 58px;
+  pointer-events: none;
+  filter: drop-shadow(0 8px 14px rgba(68, 8, 10, 0.25));
+  animation: drFloat 5.2s ease-in-out infinite;
+}
+.son-peony-tr {
+  top: -12px;
+  right: -6px;
+  z-index: 1;
+}
+.son-peony-tl {
+  top: -18px;
+  left: -10px;
+  z-index: 3;
+  animation-delay: -2.2s;
+}
+@keyframes drFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-7px) rotate(4deg); }
+}
+.son-eyebrow {
+  position: relative;
+  z-index: 1;
+  margin: 0 0 8px;
+  color: var(--muted);
+  font: italic 500 15px/1.3 var(--f-display);
+  letter-spacing: 0.04em;
 }
 .son-names {
-  display: grid;
-  gap: 0;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: baseline;
+  gap: 4px 10px;
   margin: 0;
-  color: #fbecd0;
-  font: 500 54px/1.04 var(--f-display);
-  letter-spacing: 0.01em;
+  color: var(--ink);
+  font: 400 46px/1.02 var(--f-display);
+  letter-spacing: -0.02em;
 }
-.son-names i { margin: 4px 0; color: #e3c48a; font: italic 400 38px/1 var(--f-display); }
+.son-names i {
+  color: var(--accent);
+  font: italic 400 34px/1 var(--f-display);
+}
+
+/* Sợi Tơ Hồng Nút Thắt Đồng Tâm tự vẽ nối Dâu – Rể (Hiệu ứng Tơ Duyên tinh giản, 1 nét chỉ đỏ thanh mảnh) */
+.son-love-knot-wrap {
+  position: relative;
+  height: 36px;
+  margin: 4px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.son-love-knot {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke-linecap: round;
+  overflow: visible;
+}
+.son-knot-gold,
+.son-knot-badge {
+  display: none;
+}
+.son-knot-red {
+  stroke: var(--accent);
+  stroke-width: 1.5;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  opacity: 0.82;
+}
+body:not(.is-invitation-locked) .son-knot-red {
+  animation: sonKnotDraw 2.2s 0.25s cubic-bezier(0.6, 0, 0.3, 1) forwards;
+}
+@keyframes sonKnotDraw {
+  to { stroke-dashoffset: 0; }
+}
+
+/* Sân khấu Ảnh Bìa: Khung Vòm Giấy Dó Viền Đỏ Đô Thanh Mảnh + Dấu Xoay */
+.son-hero-stage {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  margin: 6px 0 18px;
+}
+.son-vertical-couplet {
+  writing-mode: vertical-rl;
+  color: var(--accent);
+  opacity: 0.72;
+  font: 600 9.5px/1 "Noto Serif TC", var(--f-body);
+  letter-spacing: 0.26em;
+  border-right: 1px solid rgba(132, 21, 18, 0.22);
+  padding-right: 6px;
+  height: 88%;
+}
+
+/* Khung Cửa Vòm Giấy Dó Viền Mảnh Đỏ Đô (Thanh lịch, không nặng nề màu mè) */
+.son-moongate {
+  position: relative;
+  width: 92%;
+  margin: 0 auto;
+  padding: 10px;
+  border-radius: 999px 999px 10px 10px;
+  border: 1px solid rgba(132, 21, 18, 0.32);
+  background: #fcf8f0;
+  box-shadow: 0 20px 44px -26px rgba(35, 20, 15, 0.28);
+}
+.son-moongate-tag {
+  display: none;
+}
+/* Tấm ảnh Polaroid nhỏ nghiêng lấp ló ở góc dưới phải khung vòm */
+.son-mini-polaroid {
+  position: absolute;
+  right: -12px;
+  bottom: 20px;
+  z-index: 3;
+  width: 92px;
+  margin: 0;
+  padding: 4px 4px 12px;
+  border-radius: 4px;
+  background: #fcf8f1;
+  border: 1px solid rgba(132, 21, 18, 0.25);
+  box-shadow: 0 14px 28px -10px rgba(45, 6, 4, 0.55);
+  transform: rotate(9deg);
+  cursor: zoom-in;
+  transition: transform 0.28s ease;
+}
+.son-mini-polaroid:hover {
+  transform: rotate(4deg) scale(1.05);
+}
+.son-mini-polaroid img {
+  border-radius: 2px;
+}
+.son-moongate-arch {
+  border-radius: 999px 999px 8px 8px;
+  overflow: hidden;
+  border: 1px solid rgba(132, 21, 18, 0.22);
+}
+.son-hero-ph {
+  border-radius: 999px 999px 8px 8px;
+}
+
+/* Con dấu tròn xoay kiểu Thư Tay */
+.son-spinning-stamp {
+  position: absolute;
+  top: -18px;
+  right: -6px;
+  z-index: 4;
+  width: 98px;
+  fill: none;
+  stroke: var(--accent);
+  background: radial-gradient(circle, rgba(244, 236, 224, 0.9) 56%, transparent 72%);
+  border-radius: 50%;
+  animation: son-spin 38s linear infinite;
+}
+.son-spinning-stamp circle { stroke-width: 1.2; }
+.son-spinning-stamp text { fill: var(--accent); stroke: none; font: 600 8.8px/1 var(--f-body); letter-spacing: 0.16em; }
+.son-spinning-stamp .son-stamp-core { font: 700 25px/1 "Noto Serif TC", "SimSun", serif; letter-spacing: 0; }
+@keyframes son-spin { to { transform: rotate(360deg); } }
+
+/* Bảng Ngày Tháng 3 cột kiểu Thư Tay */
+.son-date-ledger {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 6px 0 0;
+  padding: 12px 0 10px;
+  border-top: 1.5px solid var(--accent);
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+}
+.son-date-ledger div + div {
+  padding-left: 14px;
+  border-left: 1px solid var(--line);
+}
+.son-date-ledger dt {
+  color: var(--muted);
+  font: 600 9.5px/1 var(--f-body);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.son-date-ledger dd {
+  margin: 4px 0 0;
+  color: var(--accent);
+  font: 300 50px/1 "Fraunces", var(--f-display);
+  letter-spacing: -0.03em;
+}
+.son-date-ledger .son-ledger-year {
+  font-size: 34px;
+  line-height: 1.45;
+  letter-spacing: -0.02em;
+}
+.son-cover .son-lunar {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font: italic 500 16px/1.4 var(--f-display);
+}
+
+.son-scroll {
+  position: absolute;
+  left: 50%;
+  bottom: 30px;
+  z-index: 3;
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  color: var(--accent);
+  font: 600 10px/1 var(--f-body);
+  letter-spacing: 0.24em;
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transform: translateX(-50%);
+}
+.son-scroll::after {
+  content: "";
+  width: 1.5px;
+  height: 18px;
+  background: var(--accent);
+  animation: son-drip 2s ease-in-out infinite;
+}
+/* Dải lụa đỏ đô uốn lượn mềm mại kiểu Tơ Duyên - Đỏ Đậm */
+.son-satin-ribbon {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -26px;
+  z-index: 2;
+  width: 100%;
+  height: 60px;
+  pointer-events: none;
+  filter: drop-shadow(0 10px 18px rgba(70, 8, 10, 0.28));
+}
+@keyframes son-drip {
+  0%, 100% { transform: scaleY(0.3); transform-origin: top; }
+  50% { transform: scaleY(1); }
+}
+
+/* Thanh chỉ mục đầu mỗi phần: kết hợp đánh số (01) của Thư Tay + Ấn Triện Đỏ Đô */
+.son-sec-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--line);
+}
+.son-index {
+  margin: 0;
+  color: var(--accent);
+  font: 600 11px/1 var(--f-body);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+.son-sec-stamp {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  border: 1.5px solid var(--accent);
+  border-radius: 3px;
+  color: var(--accent);
+  font: 700 9.5px/1 "Noto Serif TC", var(--f-body);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: scale(1.8) rotate(-12deg);
+  transition: opacity 0.35s ease, transform 0.45s cubic-bezier(0.22, 0.85, 0.32, 1.15);
+}
+[data-stamp-section].is-stamped .son-sec-stamp {
+  opacity: 0.88;
+  transform: scale(1) rotate(-4deg);
+}
+
+/* ==========================================================================
+   MỤC (01): CUỘN THƯ SƠN MÀI GIẤY DÓ MỞ DẦN THEO NGÓN TAY CUỘN
+   ========================================================================== */
+.son-letter {
+  padding: 64px 22px 40px;
+}
+.son-scroll-card {
+  --unroll: 1;
+  position: relative;
+}
+/* Trục gỗ sơn mài đỏ đô bịt đồng vàng ở hai đầu */
+.son-rod {
+  position: relative;
+  z-index: 3;
+  height: 16px;
+  margin-inline: -6px;
+  border-radius: 999px;
+  background:
+    linear-gradient(90deg,
+      #b68536 0%, #f3d799 6%, #8d611f 11%,
+      #520907 11.5%, #841512 50%, #520907 88.5%,
+      #8d611f 89%, #f3d799 94%, #b68536 100%);
+  box-shadow: 0 8px 18px rgba(45, 8, 6, 0.32);
+}
+.son-rod-bottom {
+  box-shadow: 0 -4px 12px rgba(45, 8, 6, 0.18), 0 10px 22px rgba(45, 8, 6, 0.35);
+}
+.son-tassel {
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  width: 2px;
+  height: 28px;
+  background: var(--accent);
+  transform: translateX(-50%);
+}
+.son-tassel::after {
+  content: "囍";
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1px solid #e6c687;
+  background: var(--accent);
+  color: #fae5b4;
+  font: 700 11px/1 "Noto Serif TC", serif;
+  transform: translateX(-50%);
+}
+
+/* Vùng giấy dó mở dần theo biến --unroll (từ son-mai.js) */
+.son-scroll-viewport {
+  overflow: hidden;
+  max-height: calc(160px + var(--unroll, 1) * 760px);
+  transition: max-height 0.12s linear;
+}
+.son-scroll-inner {
+  padding: 36px 22px 34px;
+  border-inline: 2px solid rgba(132, 21, 18, 0.28);
+  background:
+    repeating-linear-gradient(180deg, transparent 0 31px, rgba(132, 21, 18, 0.06) 31px 32px),
+    radial-gradient(circle at 50% 0%, rgba(200, 155, 80, 0.12), transparent 60%),
+    var(--paper);
+  box-shadow:
+    inset 0 14px 20px -14px rgba(60, 10, 8, 0.25),
+    inset 0 -14px 20px -14px rgba(60, 10, 8, 0.25),
+    inset 0 0 0 5px var(--bg),
+    inset 0 0 0 6px rgba(200, 155, 80, 0.35);
+}
+
+.son-letter-header {
+  text-align: center;
+  margin-bottom: 18px;
+}
+.son-mini-seal {
+  display: inline-grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  background: var(--accent);
+  color: #f9e4b4;
+  font: 700 19px/1 "Noto Serif TC", "SimSun", serif;
+  transform: rotate(45deg);
+  box-shadow: 0 6px 14px rgba(132, 21, 18, 0.25);
+}
+.son-guest {
+  display: inline-block;
+  margin: 10px 0 0 !important;
+  padding: 0 16px 5px;
+  border-bottom: 1.5px solid var(--gold);
+  color: var(--ink) !important;
+  font: italic 600 24px/1.2 var(--f-display) !important;
+}
+
+.son-letter-headline {
+  margin: 10px 0 18px;
+  font: 300 40px/1.08 "Fraunces", var(--f-display);
+  letter-spacing: -0.02em;
+  text-align: left;
+}
+.son-letter-headline em {
+  color: var(--accent);
+  font-style: italic;
+}
+.son-letter-prose p {
+  margin: 0 0 16px;
+  color: var(--ink);
+  font-size: 14.5px;
+  line-height: 2.02;
+  text-align: left;
+}
+.son-letter-prose strong {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.son-letter-polaroid {
+  margin: 20px auto 22px;
+  width: 88%;
+}
+.son-secondary-ph {
+  border-radius: 6px;
+  border: 4px solid var(--paper);
+  outline: 1px solid rgba(132, 21, 18, 0.25);
+  box-shadow: 0 16px 32px -18px rgba(55, 10, 8, 0.38);
+  transform: rotate(-1.2deg);
+}
+
+.son-signature-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px dashed rgba(132, 21, 18, 0.28);
+  text-align: left;
+}
+.son-sign-label {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+}
+.son-sign {
+  margin: 4px 0 0;
+  color: var(--accent);
+  font: italic 600 26px/1.1 var(--f-display);
+}
+
+/* Ấn triện Hỷ Sự tự động đóng xuống góc thư khi cuộn mở hết */
+.son-red-chop {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 2px solid var(--accent);
+  outline: 1px solid var(--accent);
+  outline-offset: -4px;
+  border-radius: 4px;
+  background: rgba(132, 21, 18, 0.08);
+  color: var(--accent);
+  font: 700 12px/1.1 "Noto Serif TC", serif;
+  text-align: center;
+  cursor: pointer;
+  opacity: 0;
+  transform: scale(2.2) rotate(14deg);
+}
+.son-scroll-card.is-chopped .son-red-chop {
+  animation: sonChopStamp 0.55s cubic-bezier(0.22, 0.85, 0.32, 1.15) forwards;
+}
+@keyframes sonChopStamp {
+  0% { opacity: 0; transform: translateY(-32px) scale(2.2) rotate(16deg); }
+  60% { opacity: 1; transform: translateY(0) scale(0.92) rotate(7deg); background: rgba(132, 21, 18, 0.14); }
+  100% { opacity: 0.92; transform: translateY(0) scale(1) rotate(7deg); background: rgba(132, 21, 18, 0.1); }
+}
+
+/* ==========================================================================
+   PANEL ĐỎ ĐÔ THÔNG TIN LỄ CƯỚI & TIỆC CƯỚI (Tinh gọn theo chungdoi.com)
+   ========================================================================== */
+.son-event {
+  padding: 28px 20px 36px;
+}
+.son-plaque {
+  position: relative;
+  padding: 36px 20px 32px;
+  border: 1px solid rgba(207, 163, 86, 0.55);
+  border-radius: 12px;
+  background: linear-gradient(180deg, #56100e 0%, #3d0907 100%);
+  color: #f9e8c6;
+  text-align: center;
+  box-shadow: 0 24px 48px -24px rgba(50, 6, 5, 0.55);
+}
+.son-plaque .kicker {
+  color: #f3dfb9;
+  font-size: 13px;
+  letter-spacing: 0.22em;
+}
+.son-plaque-families {
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr;
+  gap: 12px;
+  align-items: start;
+  margin: 22px 0 20px;
+}
+.son-plaque-families > i {
+  width: 1px;
+  height: 100%;
+  background: rgba(243, 223, 185, 0.25);
+}
+.son-plaque-families > div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.son-plaque-families span {
+  color: rgba(243, 223, 185, 0.72);
+  font: 500 10.5px/1.2 var(--f-body);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.son-plaque-families strong {
+  color: #fff6e4;
+  font: 600 13.5px/1.3 var(--f-body);
+}
+.son-plaque-families small {
+  margin-top: 2px;
+  color: rgba(243, 223, 185, 0.7);
+  font-size: 11px;
+}
+.son-plaque-announce {
+  margin: 0 0 16px;
+  color: rgba(249, 232, 198, 0.86);
+  font: 500 11px/1.4 var(--f-body);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.son-plaque-couple {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  margin: 0 0 18px;
+}
+.son-plaque-couple strong {
+  display: block;
+  color: #fff6e4;
+  font: 400 32px/1.12 var(--f-display);
+}
+.son-plaque-couple span {
+  display: block;
+  margin-top: 2px;
+  color: rgba(243, 223, 185, 0.72);
+  font: 500 10px/1 var(--f-body);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+.son-plaque-couple > i {
+  color: #e2bc76;
+  font: italic 400 26px/1 var(--f-display);
+}
+.son-event-time-row {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  gap: 10px;
+  margin: 4px 0 2px;
+  color: #fff6e4;
+}
+.son-event-time-row span {
+  font: 500 12px/1 var(--f-body);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.son-event-time-row strong {
+  color: #f3d493;
+  font: 600 20px/1.1 var(--f-display);
+}
+
 .son-rule {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 150px;
-  margin: 28px auto;
-  color: #cfa563;
+  margin: 18px auto 14px;
+  color: #dfc07f;
 }
 .son-rule::before, .son-rule::after { content: ""; flex: 1; height: 1px; background: currentColor; opacity: 0.7; }
 .son-rule i { width: 8px; height: 8px; margin: 0 10px; background: currentColor; transform: rotate(45deg); }
-.son-date { margin: 0; font: 500 22px/1.3 var(--f-display); letter-spacing: 0.08em; }
-.son-lunar { margin: 8px 0 0; color: #f0d6a6; font: italic 500 19px/1.4 var(--f-display); }
-.son-scroll {
+.son-dual-events {
+  display: grid;
+  gap: 12px;
+  text-align: center;
+}
+.son-event-box {
+  padding: 14px 12px;
+  border: 1px solid rgba(229, 193, 120, 0.35);
+  border-radius: 8px;
+  background: rgba(45, 4, 4, 0.38);
+}
+.son-event-box.is-featured {
+  border-color: rgba(229, 193, 120, 0.72);
+  background: rgba(58, 6, 4, 0.56);
+  box-shadow: inset 0 0 18px rgba(229, 193, 120, 0.08);
+}
+.son-venue-kicker {
+  margin: 0 0 4px;
+  color: #ebd099;
+  font: 600 10px/1.35 var(--f-body);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.son-event-lunar {
+  margin: 0 0 8px;
+  color: rgba(249, 232, 198, 0.78);
+  font: italic 400 13px/1.25 var(--f-display);
+}
+.son-plaque h2,
+.son-plaque h3 {
+  margin: 0;
+  color: #fff4d8;
+  font: 600 24px/1.2 var(--f-display);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.son-plaque h2 {
+  font-size: 28px;
+}
+.son-plaque address {
+  margin-top: 5px;
+  color: rgba(249, 232, 198, 0.88);
+  font-style: normal;
+  font-size: 13px;
+  line-height: 1.45;
+}
+.son-event-map-link {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 4px 11px;
+  border: 1px solid rgba(229, 193, 120, 0.55);
+  border-radius: 999px;
+  background: rgba(229, 193, 120, 0.12);
+  color: #fae3ae;
+  font: 600 10.5px/1.2 var(--f-body);
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.son-event-map-link:hover {
+  background: rgba(229, 193, 120, 0.25);
+  transform: translateY(-1px);
+}
+/* Dải rèm lượn sóng viền vàng gắn huy hiệu Song Hỷ (Song Hỷ V2 - Đỏ) */
+.son-curtain-wave {
+  position: relative;
+  margin: 22px -10px -16px;
+  padding-top: 4px;
+}
+.son-curtain-wave svg {
+  display: block;
+  width: 100%;
+  height: 30px;
+}
+.son-curtain-seal {
   position: absolute;
   left: 50%;
-  bottom: 48px;
+  top: 52%;
   display: grid;
-  justify-items: center;
-  gap: 8px;
-  color: #e3c48a;
-  font: 600 11px/1 var(--f-body);
-  letter-spacing: 0.3em;
-  text-decoration: none;
-  text-transform: uppercase;
-  transform: translateX(-50%);
-}
-.son-scroll::after { content: ""; width: 1px; height: 22px; background: currentColor; animation: son-drip 2s ease-in-out infinite; }
-@keyframes son-drip { 0%, 100% { transform: scaleY(0.3); transform-origin: top; } 50% { transform: scaleY(1); } }
-
-.son-portrait { padding: 56px 28px 0; }
-.son-portrait .ph {
-  outline: 1px solid var(--gold);
-  outline-offset: 8px;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1.5px solid #fae3af;
+  background: radial-gradient(circle at 30% 30%, #a51e18, #580b08);
+  color: #fae3af;
+  font: 700 14px/1 "Noto Serif TC", "SimSun", serif;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 4px 12px rgba(30, 3, 2, 0.45);
 }
 
-.son-letter, .son-event { padding: 76px 30px; text-align: center; }
-.son-letter p { margin: 0; color: var(--muted); font-size: 15px; }
-.son-guest {
-  display: inline-block;
-  margin: 22px 0 18px !important;
-  padding: 0 18px 8px;
-  border-bottom: 1px dotted var(--gold);
-  color: var(--ink) !important;
-  font: italic 500 28px/1.2 var(--f-display) !important;
+/* ==========================================================================
+   PHẦN DÙNG CHUNG: Kết hợp Đánh số mục Thư Tay + Sắc Đỏ Đô Sơn Mài trên nền Be
+   ========================================================================== */
+body[data-theme="son"] .wedding-extras {
+  margin-top: 16px;
+  background: transparent;
 }
-.son-letter h2 {
-  display: grid;
-  margin: 26px 0;
+body[data-theme="son"] .x-section {
+  border-top: 1.5px solid rgba(132, 21, 18, 0.2);
+}
+body[data-theme="son"] .x-head h2 {
   color: var(--accent);
-  font: 600 28px/1.2 var(--f-display);
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
+  font-weight: 600;
 }
-.son-letter h2 i { margin: 6px 0; color: var(--gold); font: italic 400 30px/1 var(--f-display); text-transform: none; }
-.son-note { font-style: italic; }
-
-.son-event {
-  margin: 0 18px;
-  border: 1px solid var(--line);
-  outline: 1px solid var(--line);
-  outline-offset: 6px;
-  background: var(--paper);
-}
-.son-time { margin: 14px 0 22px; font: 500 30px/1 var(--f-display); }
-.son-datebox {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  align-items: center;
-  gap: 18px;
-  color: var(--accent);
-}
-.son-datebox span {
-  padding: 10px 0;
-  border-block: 1px solid var(--gold);
-  font: 600 13px/1 var(--f-body);
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-}
-.son-datebox strong { font: 600 88px/0.9 var(--f-display); }
-.son-year { margin: 14px 0 0; font: 500 22px/1 var(--f-display); letter-spacing: 0.2em; }
-.son-event .son-lunar { color: var(--muted); }
-.son-event .son-rule { color: var(--gold); }
-.son-event h2 { margin: 0; color: var(--accent); font: 600 30px/1.15 var(--f-display); text-transform: uppercase; letter-spacing: 0.05em; }
-.son-event address { margin-top: 12px; color: var(--muted); font-style: normal; font-size: 14px; }
-
-/* Phần dùng chung theo phong cách Son Mài */
-body[data-theme="son"] .wedding-extras { margin-top: 76px; }
-body[data-theme="son"] .x-head h2 { color: var(--accent); font-weight: 500; }
 body[data-theme="son"] .x-schedule-list .is-main {
-  background: radial-gradient(120% 120% at 50% 0%, #a3241c, #7b1611);
+  background: radial-gradient(120% 120% at 50% 0%, #9b1d17, #5e0c09);
   outline: 1px solid rgba(207, 165, 99, 0.6);
   outline-offset: -7px;
 }
-body[data-theme="son"] .x-gift { background: #7b1611; color: #f6e3bf; }
-body[data-theme="son"] .x-gift .x-kicker, body[data-theme="son"] .x-gift .x-head h2 { color: #e3c48a; }
-body[data-theme="son"] .x-gift .x-lead { color: rgba(246, 227, 191, 0.75); }
+body[data-theme="son"] .x-gift {
+  background: radial-gradient(120% 100% at 50% 0%, #871611, #4b0906);
+  color: #f6e3bf;
+}
+body[data-theme="son"] .x-gift .x-kicker,
+body[data-theme="son"] .x-gift .x-head h2 { color: #ebd099; }
+body[data-theme="son"] .x-gift .x-lead { color: rgba(246, 227, 191, 0.84); }
+body[data-theme="son"] .x-gift .x-choice legend { color: #ebd099; }
 body[data-theme="son"] .x-gift .x-choice span { color: var(--ink); }
-body[data-theme="son"] .x-gift .x-choice input:checked + span { border-color: #e3c48a; background: #e3c48a; color: #7b1611; }
+body[data-theme="son"] .x-gift .x-choice input:checked + span {
+  border-color: #ebd099;
+  background: linear-gradient(135deg, #f7dfaa, #cfa356);
+  color: #5c0c09;
+  font-weight: 600;
+}
 
 body[data-theme="son"] .theme-close {
-  background: radial-gradient(120% 90% at 50% 0%, #a3241c, #5a0e0b);
+  background: radial-gradient(120% 90% at 50% 0%, #961b15, #480806);
   color: #fbecd0;
+  border-top: 2px solid #cfa356;
+}
+.son-close-bow-wrap {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  margin-bottom: 18px;
+}
+.son-bow {
+  width: 124px;
+  fill: none;
+  stroke: #e5c178;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.85;
+}
+.son-close-seal {
+  position: absolute;
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid #ebd099;
+  background: radial-gradient(circle at 30% 30%, #961b15, #480806);
+  color: #ebd099;
+  font: 700 22px/1 "Noto Serif TC", "SimSun", serif;
+  box-shadow: 0 6px 16px rgba(20, 2, 2, 0.45);
 }
 body[data-theme="son"] .theme-close p { color: #e3c48a; }
-body[data-theme="son"] .theme-close h2 { font-weight: 500; }
+body[data-theme="son"] .theme-close h2 { font-weight: 500; font-size: 50px; }
 body[data-theme="son"] .theme-close h2 i { color: #e3c48a; }
-body[data-theme="son"] .theme-close span { color: #dcbf8b; }
+body[data-theme="son"] .theme-close span { display: block; color: #dcbf8b; }
+.son-footer-guest-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 22px;
+  padding: 7px 15px;
+  border: 1px dashed rgba(227, 196, 138, 0.45);
+  border-radius: 999px;
+  background: rgba(255, 244, 220, 0.08);
+  color: rgba(245, 219, 166, 0.85);
+  font: 500 11px/1.2 var(--f-body);
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+.son-footer-guest-btn:hover {
+  background: rgba(255, 244, 220, 0.16);
+  border-color: #e3c48a;
+  color: #fff6e0;
+}
 
-/* Màn mở: hai cánh cửa son */
-body[data-theme="son"] .invitation-gate { --gate-bg: #7b1611; --gate-ink: #fbecd0; --gate-gold: #cfa563; }
+/* ==========================================================================
+   MÀN MỞ THIỆP TINH GIẢN (THƯ TAY GIẤY DÓ MÀU BE & ẤN TRIỆN ĐỎ ĐÔ):
+   Nền giấy dó kem ấm, thẻ thư tối giản, đóng ấn chu sa tách giấy nhẹ nhàng
+   ========================================================================== */
+body[data-theme="son"] .invitation-gate {
+  --ink-speckle: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='92' height='92'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.55' numOctaves='3' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 .95 0 0 0 0 .93 0 0 0 0 .9 0 0 0 -16 6.4'/%3E%3C/filter%3E%3Crect width='92' height='92' filter='url(%23n)'/%3E%3C/svg%3E");
+  --gate-bg: #f4ede1;
+  --gate-ink: #231915;
+  --gate-gold: #841512;
+}
 body[data-theme="son"] .invitation-door {
-  background: radial-gradient(140% 90% at 50% 50%, #9e2219, #620f0c);
+  background: var(--gate-bg);
+  transition: transform 0.85s 1s cubic-bezier(0.7, 0, 0.2, 1);
 }
-body[data-theme="son"] .invitation-door::before {
-  content: "";
-  position: absolute;
-  inset: 16px;
-  border: 1px solid rgba(207, 165, 99, 0.45);
+body[data-theme="son"] .invitation-door-left {
+  inset: 0 0 auto 0;
+  width: auto;
+  height: 50.5%;
+  border-bottom: 1px dashed rgba(132, 21, 18, 0.28);
 }
-body[data-theme="son"] .invitation-door::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  width: 16px;
-  height: 16px;
-  border: 2px solid #cfa563;
-  border-radius: 50%;
-  transform: translateY(-50%);
+body[data-theme="son"] .invitation-door-right {
+  inset: auto 0 0 0;
+  width: auto;
+  height: 50.5%;
 }
-body[data-theme="son"] .invitation-door-left::after { right: 26px; }
-body[data-theme="son"] .invitation-door-right::after { left: 26px; }
-body[data-theme="son"] .invitation-gate-card .gate-mark::before {
-  content: "囍";
+body[data-theme="son"] .invitation-gate.is-opening .invitation-door-left {
+  transform: translateY(-101%);
+}
+body[data-theme="son"] .invitation-gate.is-opening .invitation-door-right {
+  transform: translateY(101%);
+}
+
+body[data-theme="son"] .gate-envelope {
+  display: none;
+}
+
+body[data-theme="son"] .invitation-gate-card {
+  position: relative;
+  z-index: 5;
+  width: min(352px, calc(100vw - 40px));
+  padding: 44px 28px 36px;
+  background: #fcf8f0;
+  border: 1px solid rgba(35, 25, 21, 0.16);
+  outline: 1px solid rgba(132, 21, 18, 0.14);
+  outline-offset: -8px;
+  box-shadow: 0 24px 60px -24px rgba(35, 20, 15, 0.25);
+  transition-delay: 1s;
+}
+body[data-theme="son"] .invitation-gate-card .gate-title {
+  margin: 6px 0 10px;
+  font-weight: 300;
+  font-size: 46px;
+  letter-spacing: -0.025em;
+  color: var(--gate-ink);
+  text-shadow: none;
+}
+body[data-theme="son"] .invitation-gate-card .gate-title i {
   display: block;
-  margin-bottom: 18px;
-  color: #cfa563;
-  font: 700 46px/1 "Noto Serif TC", "SimSun", serif;
+  margin: 4px 0;
+  color: var(--gate-gold);
+  font-size: 28px;
+  font-style: italic;
 }
-body[data-theme="son"] .invitation-gate-card { background: #6a120e; border: 1px solid rgba(207, 165, 99, 0.5); }
-/* Bấm mở: thẻ lui ra, hai cánh cửa xoay vào trong, ánh vàng hắt ra từ khe cửa */
-body[data-theme="son"] .invitation-gate { perspective: 1100px; }
-body[data-theme="son"] .invitation-gate::before {
+body[data-theme="son"] .invitation-gate-card .gate-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 140px;
+  margin: 8px auto 12px;
+  color: var(--gate-gold);
+  font-size: 14px;
+}
+body[data-theme="son"] .invitation-gate-card .gate-divider::before,
+body[data-theme="son"] .invitation-gate-card .gate-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: rgba(132, 21, 18, 0.25);
+}
+body[data-theme="son"] .invitation-gate-card .gate-date {
+  margin: 0 0 14px;
+  font-size: 15px;
+  color: #5c4b42;
+  letter-spacing: 0.08em;
+}
+body[data-theme="son"] .invitation-gate-card .gate-invite-word {
+  margin: 0 0 24px;
+  color: var(--gate-ink);
+  font: 400 18px/1.2 var(--f-display);
+  letter-spacing: 0.06em;
+  text-transform: none;
+}
+
+/* Ấn triện chu sa đỏ đô lì kiểu Thư Tay */
+body[data-theme="son"] .invitation-gate-card button {
+  gap: 18px;
+  color: var(--gate-gold);
+}
+body[data-theme="son"] .invitation-gate-card button span {
+  position: relative;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: #841512;
+  box-shadow:
+    inset 0 0 0 4px #841512,
+    inset 0 0 0 5.5px rgba(252, 248, 240, 0.82),
+    0 12px 22px -6px rgba(30, 22, 18, 0.35);
+  color: #fbf6ee;
+  font: 700 38px/1 "Noto Serif TC", "SimSun", serif;
+  animation: none;
+  transform: translateY(-4px) rotate(-8deg);
+}
+body[data-theme="son"] .invitation-gate-card button span::after {
   content: "";
   position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(90deg, transparent 42%, rgba(255, 236, 190, 0.9) 50%, transparent 58%),
-    radial-gradient(60% 70% at 50% 50%, rgba(255, 222, 150, 0.85), rgba(207, 165, 99, 0.35) 45%, transparent 75%);
+  inset: -2px;
+  border: 1.5px solid #841512;
+  border-radius: 50%;
   opacity: 0;
-  pointer-events: none;
 }
-body[data-theme="son"] .invitation-gate.is-opening::before { animation: son-light 1.5s 0.35s ease-out both; }
-body[data-theme="son"] .invitation-door {
-  backface-visibility: hidden;
-  transition: transform 1.35s 0.35s cubic-bezier(0.55, 0, 0.25, 1), filter 1.35s 0.35s ease-in;
+body[data-theme="son"] .invitation-gate-card button:hover span {
+  transform: translateY(-8px) rotate(-4deg) scale(1.04);
 }
-body[data-theme="son"] .invitation-door-left { transform-origin: left center; }
-body[data-theme="son"] .invitation-door-right { transform-origin: right center; }
-body[data-theme="son"] .invitation-gate.is-opening .invitation-door-left { transform: rotateY(88deg); filter: brightness(0.45); }
-body[data-theme="son"] .invitation-gate.is-opening .invitation-door-right { transform: rotateY(-88deg); filter: brightness(0.45); }
-body[data-theme="son"] .invitation-gate-card { transition: opacity 0.45s ease, transform 0.6s ease; }
-body[data-theme="son"] .invitation-gate.is-opening .invitation-gate-card { transform: scale(1.06); }
-@keyframes son-light {
-  0% { opacity: 0; }
-  35% { opacity: 1; }
-  100% { opacity: 0; }
+body[data-theme="son"] .invitation-gate-card > small {
+  color: #7c6a5f;
+}
+body[data-theme="son"] .opening-petals {
+  display: none;
+}
+
+body[data-theme="son"] .invitation-gate.is-opening button span {
+  animation: sonInkPress 0.8s cubic-bezier(0.3, 0, 0.3, 1) forwards;
+}
+body[data-theme="son"] .invitation-gate.is-opening button span::after {
+  animation: sonInkRing 0.7s 0.38s ease-out both;
+}
+body[data-theme="son"] .invitation-gate.is-opening .invitation-gate-card {
+  animation: sonInkJolt 0.24s 0.36s ease-out;
+}
+
+@keyframes sonInkPress {
+  0% { transform: translateY(-4px) rotate(-8deg) scale(1); }
+  38% {
+    transform: translateY(-46px) rotate(-16deg) scale(1.35);
+    box-shadow: inset 0 0 0 4px #841512, inset 0 0 0 5px rgba(252, 248, 240, 0.75), 0 60px 34px -14px rgba(30, 22, 18, 0.25);
+    animation-timing-function: cubic-bezier(0.6, 0, 1, 0.6);
+  }
+  48% {
+    transform: translateY(0) rotate(-3deg) scale(0.9);
+    box-shadow: inset 0 0 0 4px #841512, inset 0 0 0 5px rgba(252, 248, 240, 0.75), 0 0 0 0 rgba(30, 22, 18, 0);
+    background-image: none;
+  }
+  49% { background-image: var(--ink-speckle); }
+  58% { transform: translateY(0) rotate(-3deg) scale(1.05); }
+  100% {
+    transform: translateY(0) rotate(-3deg) scale(1);
+    box-shadow: inset 0 0 0 4px #841512, inset 0 0 0 5px rgba(252, 248, 240, 0.75), 0 0 0 0 rgba(30, 22, 18, 0);
+    background-image: var(--ink-speckle);
+  }
+}
+@keyframes sonInkRing {
+  from { opacity: 0.75; transform: scale(1); }
+  to { opacity: 0; transform: scale(2.05); }
+}
+@keyframes sonInkJolt {
+  0% { transform: translateY(0); }
+  35% { transform: translateY(3px) scale(0.995); }
+  100% { transform: translateY(0); }
+}
+
+@media (max-width: 360px) {
+  .son-names { font-size: 40px; }
+  .son-spinning-stamp { width: 82px; }
 }

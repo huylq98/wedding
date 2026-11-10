@@ -1,20 +1,18 @@
 # Demo thiệp cưới Huy & Phương
 
-Bốn mẫu độc lập, cùng tông đỏ, thiết kế ưu tiên điện thoại (trên máy tính thiệp
-hiển thị thành một cột giữa nền trang trí):
+Ba mẫu thiết kế mang đậm dấu ấn thẩm mỹ Á Đông đương đại, ưu tiên điện thoại
+(trên máy tính thiệp hiển thị thành một khung dọc giữa nền họa tiết trang trí):
 
-- `index.html` · **01 Son Mài**: đỏ son, vàng kim, chữ Song Hỷ, mở bằng hai cánh cửa son
-- `editorial.html` · **02 Thư Tay**: giấy kem, mực đỏ son, chữ in lớn, mục đánh số như một bức thư
-- `photo-editorial.html` · **03 Tơ Duyên**: sợi tơ hồng vẽ dần theo khi cuộn, thẻ cào để xem ngày cưới
-- `wine-rustic.html` · **04 Chuyện Hai Ta**: sách tranh cắt giấy, năm chương chuyện tình chuyển cảnh theo khi cuộn
+- `index.html` · **01 Son Mài × Thư Tay (Bản Chủ Đạo)**: kết hợp sắc **Đỏ Đô Sơn Mài thếp vàng** với nền **Giấy Dó Màu Be ấm**. Màn mở đóng ấn chu sa lên phong bì đỏ đô để mở nắp và rút tờ thiệp màu be ra; khi cuộn có nét bút chu sa & chỉ vàng dẫn lối, cuộn thư lụa tự động lăn trục gỗ mở dần kèm đóng mộc Hỷ Sự, và bài vị đỏ đô có lớp nhũ vàng để cào xem ngày giờ lành.
+- `photo-editorial.html` · **02 Tơ Duyên**: cảm hứng Hồng Tuyến Nguyệt Lão với đôi khung ảnh vòm lụa kết nối bằng nút thắt đồng tâm, sợi chỉ hồng vẽ dần khi cuộn và thẻ cào Kim Bài Hỷ Sự xem ngày cưới.
+- `wine-rustic.html` · **03 Chuyện Hai Ta**: nghệ thuật tranh cắt giấy Á Đông kết hợp đèn lồng hỷ sự và khung tròn hoa văn trên bìa, kể chuyện tình qua 5 hồi chuyển cảnh theo thao tác cuộn.
 
 Cấu trúc:
 
-- `demo-common.css` / `demo-common.js`: khung trang, thanh chọn mẫu, nhạc, màn mở thiệp
-- `wedding-extras.css` / `wedding-extras.js`: các phần chung (gia đình, chuyện tình,
-  album, lịch trình, đếm ngược, bản đồ, xác nhận tham dự, lời chúc, mừng cưới)
-- `themes/*.css`: màu, font và bố cục riêng của từng mẫu; `themes/*.js` cho phần tương tác riêng của mẫu 03 và 04
-- `apps-script/Code.gs`: nhận xác nhận tham dự và lời chúc vào Google Sheet
+- `demo-common.css` / `demo-common.js`: khung trang, thanh chọn mẫu (kèm nút `↻ Mở thiệp` để xem lại hiệu ứng cổng mở), nhạc nền ngũ cung/hộp nhạc, nút thả tim chúc phúc (`囍`), hiệu ứng cánh hoa & bụi vàng rơi, màn mở thiệp.
+- `wedding-extras.css` / `wedding-extras.js`: các phần dùng chung (thiệp gia tiên hai bên gia đình, dòng thời gian chuyện tình, album 6 ảnh kèm Lightbox phóng to, lịch trình nghi lễ & bảng màu Dress Code, tờ lịch tháng 11/2026 đánh dấu ngày cưới 28/11 & đồng hồ đếm ngược, bản đồ, xác nhận tham dự, sổ vàng lưu bút kèm gợi ý lời chúc nhanh, phong bao mừng cưới kèm nút sao chép STK).
+- `themes/*.css`: màu, font, họa tiết Á Đông và bố cục riêng của từng mẫu; `themes/*.js` cho phần tương tác riêng của mẫu 03 và 04.
+- `apps-script/Code.gs`: nhận xác nhận tham dự và lời chúc vào Google Sheet.
 
 ## Nhận phản hồi vào Google Sheet
 

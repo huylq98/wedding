@@ -1,13 +1,19 @@
-/* Các phần dùng chung. Màu, font và bo góc lấy từ biến của từng mẫu. */
-.wedding-extras { background: var(--bg); color: var(--ink); }
+/* Các phần dùng chung: lấy màu, font và bo góc từ biến của từng mẫu,
+   kết hợp họa tiết Á Đông tinh xảo (Song Hỷ, vân mây, khung vòm, lịch tháng cưới, phong bao hỷ). */
+.wedding-extras {
+  position: relative;
+  background: var(--bg);
+  color: var(--ink);
+}
 
 .x-section {
-  padding: 88px 28px;
+  position: relative;
+  padding: 84px 26px;
   border-top: 1px solid var(--line);
   text-align: center;
 }
 
-.x-head { margin-bottom: 40px; }
+.x-head { margin-bottom: 36px; }
 .x-kicker {
   margin: 0;
   color: var(--accent);
@@ -16,77 +22,814 @@
   text-transform: uppercase;
 }
 .x-head h2 {
-  margin: 14px 0 0;
+  margin: 12px 0 0;
   font: 400 36px/1.15 var(--f-display);
   letter-spacing: -0.01em;
 }
 .x-head::after {
-  content: var(--ornament, "");
+  content: var(--ornament, "❖ 囍 ❖");
   display: block;
-  margin-top: 18px;
+  margin-top: 16px;
   color: var(--gold);
-  font-size: 13px;
-  letter-spacing: 0.6em;
+  font-size: 12px;
+  letter-spacing: 0.45em;
 }
 
 .x-label {
-  margin: 0 0 12px;
+  margin: 0 0 10px;
   color: var(--accent);
-  font: 600 11px/1.4 var(--f-body);
-  letter-spacing: 0.2em;
+  font: 600 10.5px/1.4 var(--f-body);
+  letter-spacing: 0.22em;
   text-transform: uppercase;
 }
-.x-lead { max-width: 340px; margin: -16px auto 32px; color: var(--muted); font-size: 14px; }
+.x-lead {
+  max-width: 340px;
+  margin: -14px auto 28px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.65;
+}
 
-/* Gia đình */
-.x-family-grid { display: grid; grid-template-columns: 1fr auto 1fr; gap: 12px; align-items: center; }
-.x-family-grid article { display: grid; gap: 8px; }
-.x-parent { margin: 0; font: 400 19px/1.3 var(--f-display); text-wrap: balance; }
-.x-family-grid small { margin-top: 8px; color: var(--muted); font-size: 11px; }
-.x-family-amp { color: var(--gold); font: italic 400 34px/1 var(--f-display); }
-
-/* Chuyện tình */
-.x-story-list { display: grid; gap: 28px; margin: 0; padding: 0; list-style: none; text-align: left; }
-.x-story-list li { display: grid; grid-template-columns: 104px 1fr; gap: 20px; align-items: center; }
-.x-story-list li:nth-child(even) { grid-template-columns: 1fr 104px; text-align: right; }
-.x-story-list li:nth-child(even) .ph { order: 2; }
-.x-story-list .ph { border-radius: var(--radius); }
-.x-story-when { color: var(--accent); font: 600 11px/1.4 var(--f-body); letter-spacing: 0.16em; text-transform: uppercase; }
-.x-story-list h3 { margin: 6px 0 4px; font: 400 23px/1.2 var(--f-display); }
-.x-story-list p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.6; }
-
-/* Album */
-.x-album-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-.x-album-grid .ph { border-radius: var(--radius); }
-.x-album-a, .x-album-d { grid-column: 1 / -1; }
-
-/* Lịch trình */
-.x-schedule-list { position: relative; display: grid; gap: 0; margin: 0; padding: 0; list-style: none; }
-.x-schedule-list li { position: relative; padding: 26px 8px; }
-.x-schedule-list li + li { border-top: 1px solid var(--line); }
-.x-schedule-list time { display: block; color: var(--accent); font: 600 12px/1.4 var(--f-body); letter-spacing: 0.12em; text-transform: uppercase; }
-.x-schedule-list h3 { margin: 8px 0 6px; font: 400 30px/1.15 var(--f-display); }
-.x-schedule-list p { max-width: 320px; margin: 0 auto; color: var(--muted); font-size: 13px; line-height: 1.6; }
-.x-schedule-list .is-pending time { color: var(--muted); font-weight: 500; }
-.x-schedule-list .is-pending h3 { opacity: 0.72; }
-.x-schedule-list .is-main {
-  margin: 6px 0;
-  padding: 32px 20px;
-  border: 0;
+/* 1. Gia đình hai bên — Thiệp Gia Tiên đối xứng */
+.x-family-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 12px;
+  align-items: stretch;
+  padding: 28px 16px;
+  border: 1px solid var(--line);
   border-radius: var(--radius);
+  background: var(--paper);
+  box-shadow: 0 16px 40px -28px rgba(60, 14, 12, 0.25);
+}
+.x-family-card article {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  padding: 6px 4px;
+}
+.x-parent {
+  margin: 0;
+  font: 500 18px/1.32 var(--f-display);
+  text-wrap: balance;
+}
+.x-family-loc {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+}
+.x-family-divider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.x-family-divider::before,
+.x-family-divider::after {
+  content: "";
+  width: 1px;
+  flex: 1;
+  background: linear-gradient(180deg, transparent, var(--gold), transparent);
+  opacity: 0.65;
+}
+.x-family-seal {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--gold);
+  background: color-mix(in srgb, var(--accent) 8%, var(--paper));
+  color: var(--accent);
+  font: 700 16px/1 "Noto Serif TC", "SimSun", serif;
+}
+
+/* 2. Chuyện của chúng mình — Dòng thời gian nối chỉ vàng */
+.x-story-list {
+  position: relative;
+  display: grid;
+  gap: 28px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-align: left;
+}
+.x-story-list li {
+  position: relative;
+  display: grid;
+  grid-template-columns: 118px 1fr;
+  gap: 18px;
+  align-items: center;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+  box-shadow: 0 14px 34px -26px rgba(60, 14, 12, 0.22);
+}
+.x-story-list li:nth-child(even) {
+  grid-template-columns: 1fr 118px;
+  text-align: right;
+}
+.x-story-list li:nth-child(even) .ph { order: 2; }
+.x-story-list .ph {
+  border-radius: calc(var(--radius) + 40px) calc(var(--radius) + 40px) var(--radius) var(--radius);
+  border: 1px solid color-mix(in srgb, var(--gold) 45%, transparent);
+}
+.x-story-when {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+  color: var(--accent);
+  font: 600 10px/1.4 var(--f-body);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.x-story-list h3 {
+  margin: 8px 0 5px;
+  font: 500 22px/1.2 var(--f-display);
+}
+.x-story-list p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* 3. Album ảnh cưới (Lật 3D Coverflow + Dạng lưới) + Lightbox */
+.x-album-toolbar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin: -18px 0 22px;
+}
+.x-album-tabs {
+  display: inline-flex;
+  padding: 4px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--paper);
+  box-shadow: 0 6px 18px -12px rgba(45, 10, 10, 0.25);
+}
+.x-album-tab {
+  min-height: 30px;
+  padding: 0 14px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+  font: 600 11px/1 var(--f-body);
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: all 0.22s ease;
+}
+.x-album-tab.is-active {
+  background: var(--accent);
+  color: var(--on-accent);
+  box-shadow: 0 4px 12px color-mix(in srgb, var(--accent) 40%, transparent);
+}
+.x-album-hint {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  font-style: italic;
+}
+
+/* Sân khấu Album Lật 3D Coverflow (tham khảo chungdoi.com) */
+.x-album-3d[hidden],
+.x-album-grid[hidden] { display: none !important; }
+.x-album-3d-stage {
+  position: relative;
+  height: 392px;
+  margin: 4px auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  overflow: clip;
+  touch-action: pan-y;
+}
+.x-album-3d-track {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+.x-album-3d-card {
+  position: absolute;
+  width: 64%;
+  max-width: 246px;
+  aspect-ratio: 2 / 3;
+  border-radius: 16px;
+  border: 3px solid var(--paper);
+  box-shadow: 0 22px 46px -18px rgba(24, 5, 5, 0.45), 0 0 0 1px var(--line);
+  transition: transform 0.72s cubic-bezier(0.22, 0.8, 0.26, 1), opacity 0.6s ease;
+  cursor: pointer;
+  user-select: none;
+}
+.x-album-3d-card.is-studio-a {
+  background: linear-gradient(90deg, #2b2b2b 0%, #373737 50%, #353535 100%);
+}
+.x-album-3d-card.is-studio-d {
+  background: linear-gradient(90deg, #262626 0%, #393939 50%, #2a2b2f 100%);
+}
+.x-album-3d-card.is-studio-a > img,
+.x-album-3d-card.is-studio-d > img {
+  object-fit: contain;
+  object-position: bottom center;
+}
+.x-album-3d-card.is-center {
+  border-color: var(--gold-light, #edd39c);
+  box-shadow: 0 28px 56px -16px rgba(45, 8, 8, 0.52), 0 0 0 1.5px var(--gold);
+}
+.x-album-3d-card figcaption {
+  position: absolute;
+  z-index: 3;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(28, 6, 6, 0.68);
+  backdrop-filter: blur(8px);
+  color: #fff8ee;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.x-album-3d-card.is-center figcaption {
+  opacity: 1;
+  transform: none;
+}
+.x-album-nav {
+  position: absolute;
+  z-index: 35;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 36px;
+  height: 36px;
+  border: 1px solid color-mix(in srgb, var(--gold) 55%, var(--line));
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--paper) 88%, transparent);
+  backdrop-filter: blur(8px);
+  color: var(--accent);
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.16);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+.x-album-nav:hover {
   background: var(--accent);
   color: var(--on-accent);
 }
-.x-schedule-list .is-main + li { border-top: 0; }
-.x-schedule-list .is-main time, .x-schedule-list .is-main p { color: inherit; }
-.x-schedule-list .is-main p { opacity: 0.94; }
-.x-dress { margin: 30px 0 0; color: var(--muted); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; }
-.x-dress span { color: var(--ink); }
+.x-album-prev { left: 4px; }
+.x-album-next { right: 4px; }
+.x-album-3d-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 14px;
+}
+.x-album-dots {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.x-album-dot {
+  width: 6px;
+  height: 6px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--accent) 26%, transparent);
+  cursor: pointer;
+  transition: width 0.28s ease, background 0.28s ease;
+}
+.x-album-dot.is-active {
+  width: 18px;
+  background: var(--accent);
+}
+.x-album-counter {
+  color: var(--muted);
+  font: 600 11px/1 var(--f-body);
+  letter-spacing: 0.12em;
+}
 
-/* Đếm ngược */
-.x-countdown .x-head { margin-bottom: 26px; }
-.x-countdown .x-head::after { display: none; }
-.countdown { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.x-album-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.x-album-grid .ph {
+  border-radius: var(--radius);
+  box-shadow: 0 14px 32px -22px rgba(45, 10, 10, 0.35);
+}
+.x-album-a {
+  grid-column: 1 / -1;
+  border-radius: 180px 180px var(--radius) var(--radius) !important;
+}
+.x-album-d {
+  grid-column: 1 / -1;
+}
+.x-album-caption {
+  position: absolute;
+  z-index: 2;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(28, 8, 8, 0.62);
+  backdrop-filter: blur(8px);
+  color: #fff8ee;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+}
+.x-album-grid .ph:hover .x-album-caption {
+  opacity: 1;
+  transform: none;
+}
+
+/* Lightbox xem ảnh phóng to + Dải thumbnail bên dưới */
+.wedding-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  display: grid;
+  grid-template-rows: auto 1fr auto auto;
+  align-items: center;
+  padding: 18px 16px;
+  background: rgba(18, 4, 4, 0.92);
+  backdrop-filter: blur(14px);
+  color: #fff8ee;
+}
+.wedding-lightbox[hidden] { display: none; }
+.lb-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 520px;
+  width: 100%;
+  margin: 0 auto;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.lb-close {
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(255, 248, 238, 0.25);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff8ee;
+  font-size: 18px;
+  cursor: pointer;
+}
+.lb-stage {
+  position: relative;
+  display: grid;
+  place-items: center;
+  max-width: 520px;
+  width: 100%;
+  max-height: 68vh;
+  margin: 0 auto;
+}
+.lb-stage img {
+  max-width: 100%;
+  max-height: 66vh;
+  border-radius: 12px;
+  border: 1px solid rgba(212, 170, 99, 0.4);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
+  object-fit: contain;
+}
+.lb-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(255, 248, 238, 0.3);
+  border-radius: 50%;
+  background: rgba(28, 6, 6, 0.72);
+  color: #fff8ee;
+  font-size: 18px;
+  cursor: pointer;
+}
+.lb-prev { left: 8px; }
+.lb-next { right: 8px; }
+.lb-caption {
+  margin: 8px auto 6px;
+  color: #f3d9a4;
+  font: italic 400 16px/1.35 var(--f-display);
+  text-align: center;
+}
+.lb-thumbs {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  max-width: min(520px, 92vw);
+  margin: 4px auto 0;
+  padding: 6px 10px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.06);
+  scrollbar-width: none;
+}
+.lb-thumbs::-webkit-scrollbar { display: none; }
+.lb-thumb {
+  flex: 0 0 46px;
+  width: 46px;
+  height: 46px;
+  padding: 0;
+  border: 2px solid transparent;
+  border-radius: 7px;
+  overflow: hidden;
+  background: transparent;
+  opacity: 0.52;
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+}
+.lb-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.lb-thumb.is-active {
+  opacity: 1;
+  border-color: #e5c178;
+  transform: scale(1.06);
+}
+
+/* 4. Lịch trình ngày vui (kèm huy hiệu vẽ nét) + Dresscode */
+.x-schedule-list {
+  position: relative;
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.x-schedule-list li {
+  position: relative;
+  padding: 20px 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+}
+.x-schedule-body {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  text-align: left;
+}
+.x-schedule-copy { flex: 1; min-width: 0; }
+.x-schedule-emblem {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  color: var(--accent);
+  opacity: 0.85;
+}
+.x-schedule-icon {
+  display: none;
+}
+.x-schedule-list time {
+  display: block;
+  color: var(--accent);
+  font: 600 11px/1.4 var(--f-body);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.x-schedule-list h3 {
+  margin: 4px 0 4px;
+  font: 500 24px/1.18 var(--f-display);
+}
+.x-schedule-list p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12.5px;
+  line-height: 1.55;
+}
+.x-schedule-list .is-pending time { color: var(--muted); font-weight: 500; }
+.x-schedule-list .is-main {
+  padding: 24px 18px;
+  border: 1px solid var(--gold);
+  border-radius: var(--radius);
+  background: linear-gradient(155deg, var(--accent), var(--accent-deep));
+  color: var(--on-accent);
+  box-shadow: 0 18px 40px -22px rgba(120, 16, 18, 0.55);
+}
+.x-schedule-list .is-main .x-schedule-icon {
+  background: rgba(255, 236, 195, 0.18);
+  color: #f9dfa5;
+  border: 1px solid rgba(255, 236, 195, 0.4);
+}
+.x-schedule-list .is-main .x-schedule-emblem {
+  color: #f7dc9c;
+  opacity: 0.95;
+}
+.x-schedule-list .is-main time,
+.x-schedule-list .is-main p { color: inherit; }
+.x-schedule-list .is-main p { opacity: 0.92; }
+
+/* Dress Code Swatches */
+.x-dress-card {
+  margin-top: 24px;
+  padding: 18px 16px;
+  border: 1px dashed color-mix(in srgb, var(--gold) 55%, var(--line));
+  border-radius: var(--radius);
+  background: color-mix(in srgb, var(--paper) 75%, transparent);
+}
+.x-dress {
+  margin: 0 0 12px;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.x-dress-swatches {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+}
+.x-swatch {
+  display: grid;
+  justify-items: center;
+  gap: 5px;
+  font-size: 10.5px;
+  color: var(--muted);
+}
+.x-swatch i {
+  display: block;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--sw);
+  border: 2px solid var(--paper);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15), 0 0 0 1px var(--line);
+}
+
+/* 5. Tờ lịch Tháng 11 / 2026 & Đếm ngược + Tương tác Đóng Ấn Lưu Lịch */
+.x-calendar-sheet {
+  position: relative;
+  margin-bottom: 24px;
+  padding: 24px 18px 20px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+  box-shadow: 0 18px 44px -28px rgba(60, 14, 12, 0.25);
+  overflow: hidden;
+}
+.x-calendar-sheet.is-jolting {
+  animation: calSheetJolt 0.32s cubic-bezier(0.3, 0, 0.3, 1);
+}
+@keyframes calSheetJolt {
+  0% { transform: translateY(0) scale(1); }
+  40% { transform: translateY(4px) scale(0.988); }
+  100% { transform: translateY(0) scale(1); }
+}
+.x-cal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-bottom: 14px;
+  margin-bottom: 14px;
+  border-bottom: 1px solid var(--line);
+}
+.x-cal-month {
+  font: 600 24px/1 var(--f-display);
+  color: var(--accent);
+}
+.x-cal-lunar {
+  font: italic 400 13px/1 var(--f-display);
+  color: var(--muted);
+}
+.x-cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px 2px;
+  text-align: center;
+  font-size: 13px;
+}
+.x-cal-dow {
+  padding-bottom: 6px;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.x-cal-day {
+  position: relative;
+  display: grid;
+  place-items: center;
+  height: 36px;
+  border-radius: 50%;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+.x-cal-day.is-muted {
+  opacity: 0.28;
+}
+.x-cal-day.is-bride-party {
+  position: relative;
+  z-index: 2;
+  border: 1.5px dashed var(--gold);
+  background: color-mix(in srgb, var(--gold) 18%, var(--paper));
+  color: var(--accent);
+  font-weight: 700;
+}
+.x-cal-day.is-bride-party .x-cal-sub {
+  position: absolute;
+  bottom: -9px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 1px 4px;
+  border-radius: 999px;
+  background: var(--gold);
+  color: #3a1a08;
+  font: 700 7.5px/1.1 var(--f-body);
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+.x-cal-events-note {
+  margin-top: 16px;
+  padding: 10px 12px;
+  border: 1px dashed color-mix(in srgb, var(--gold) 55%, var(--line));
+  border-radius: calc(var(--radius) * 0.75);
+  background: color-mix(in srgb, var(--gold) 8%, var(--paper));
+  text-align: left;
+  font-size: 11.5px;
+  line-height: 1.55;
+  color: var(--ink);
+}
+.x-cal-events-note p {
+  margin: 0;
+}
+.x-cal-events-note p + p {
+  margin-top: 4px;
+  padding-top: 4px;
+  border-top: 1px dotted var(--line);
+}
+.x-cal-events-note strong {
+  color: var(--accent);
+}
+.x-cal-day.is-wedding {
+  position: relative;
+  z-index: 2;
+  border: 1.5px dashed var(--accent);
+  background: color-mix(in srgb, var(--accent) 12%, var(--paper));
+  color: var(--accent);
+  font-weight: 700;
+  cursor: pointer;
+  animation: calHeartPulse 2s ease-in-out infinite;
+}
+.x-cal-day.is-wedding::after {
+  content: "♥";
+  position: absolute;
+  top: -7px;
+  right: -3px;
+  font-size: 11px;
+  color: var(--accent);
+  text-shadow: 0 0 3px var(--paper);
+}
+/* Dấu triện đóng xuống ngày 28 */
+.x-cal-seal-mark {
+  position: absolute;
+  z-index: 4;
+  inset: -10px;
+  display: grid;
+  place-items: center;
+  border: 2px solid var(--accent);
+  outline: 1px solid var(--accent);
+  outline-offset: -4px;
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--accent) 92%, transparent);
+  color: #fff8ee;
+  font: 700 10px/1.05 "Noto Serif TC", "SimSun", serif;
+  letter-spacing: 0.04em;
+  box-shadow: 0 6px 16px rgba(140, 18, 16, 0.38);
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(2.4) rotate(-18deg);
+}
+.x-calendar-sheet.is-stamped .x-cal-day.is-wedding {
+  animation: none;
+  border-style: solid;
+}
+.x-calendar-sheet.is-stamped .x-cal-seal-mark {
+  animation: calStampSlam 0.55s cubic-bezier(0.22, 0.85, 0.32, 1.15) forwards;
+}
+.x-cal-day.is-wedding::before {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border: 2px solid var(--accent);
+  border-radius: 50%;
+  opacity: 0;
+  pointer-events: none;
+}
+.x-calendar-sheet.is-stamped .x-cal-day.is-wedding::before {
+  animation: calInkRing 0.7s 0.2s ease-out forwards;
+}
+@keyframes calStampSlam {
+  0% { opacity: 0; transform: translateY(-38px) scale(2.3) rotate(-18deg); }
+  55% { opacity: 1; transform: translateY(0) scale(0.92) rotate(-8deg); }
+  78% { opacity: 1; transform: translateY(0) scale(1.06) rotate(-8deg); }
+  100% { opacity: 1; transform: translateY(0) scale(1) rotate(-8deg); }
+}
+@keyframes calInkRing {
+  0% { opacity: 0.85; transform: scale(0.9); }
+  100% { opacity: 0; transform: scale(2.4); }
+}
+@keyframes calHeartPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+.x-cal-footer {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--line);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.x-cal-gcal-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--muted);
+  font: 500 11.5px/1.2 var(--f-body);
+  letter-spacing: 0.04em;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s ease;
+}
+.x-cal-gcal-link:hover {
+  color: var(--accent);
+}
+.x-cal-stamp-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 38px;
+  padding: 0 18px;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--accent) 8%, var(--paper));
+  color: var(--accent);
+  font: 600 11.5px/1 var(--f-body);
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+.x-cal-stamp-btn span {
+  display: inline-grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff8ee;
+  font: 700 12px/1 "Noto Serif TC", "SimSun", serif;
+}
+.x-cal-stamp-btn:hover {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+.x-calendar-sheet.is-stamped .x-cal-stamp-btn {
+  border-color: var(--gold);
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+.x-countdown .x-head { margin-bottom: 24px; }
+.countdown {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
 .countdown > span {
   display: grid;
   gap: 4px;
@@ -95,16 +838,188 @@
   border-radius: var(--radius);
   background: var(--paper);
 }
-.countdown strong { font: 400 38px/1 var(--f-display); font-variant-numeric: tabular-nums; }
-.countdown small { color: var(--muted); font-size: 10px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; }
-.wedding-day-message { grid-column: 1 / -1; margin: 0; font: 400 36px/1.2 var(--f-display); }
+.countdown strong {
+  color: var(--accent);
+  font: 500 38px/1 var(--f-display);
+  font-variant-numeric: tabular-nums;
+}
+.countdown small {
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.wedding-day-message {
+  grid-column: 1 / -1;
+  margin: 0;
+  font: 400 32px/1.2 var(--f-display);
+}
 
-/* Địa điểm */
+/* 6. Địa điểm */
 .x-location .x-head { margin-bottom: 12px; }
-.x-location .x-head::after { display: none; }
-.x-address { max-width: 300px; margin: 0 auto 30px; color: var(--muted); font-size: 14px; }
-.map-frame { position: relative; overflow: hidden; border-radius: var(--radius); background: var(--paper); border: 1px solid var(--line); }
-.map-frame iframe { display: block; width: 100%; height: 340px; border: 0; filter: saturate(0.7); }
+.x-venue-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin: 0 0 18px;
+}
+.x-venue-card {
+  display: grid;
+  gap: 4px;
+  padding: 12px 10px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+  color: var(--ink);
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease;
+}
+.x-venue-card:hover {
+  border-color: var(--gold);
+  transform: translateY(-1px);
+}
+.x-venue-card.is-active {
+  border-color: var(--accent);
+  background: linear-gradient(155deg, var(--accent), var(--accent-deep));
+  color: var(--on-accent);
+  box-shadow: 0 14px 32px -18px rgba(120, 16, 18, 0.52);
+}
+.x-venue-badge {
+  display: inline-block;
+  width: fit-content;
+  padding: 2px 7px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+  color: var(--accent);
+  font: 700 9.5px/1.3 var(--f-body);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.x-venue-card.is-active .x-venue-badge {
+  background: rgba(255, 240, 200, 0.18);
+  color: #f9dfa5;
+}
+.x-venue-card strong {
+  font: 600 16px/1.2 var(--f-display);
+}
+.x-venue-time {
+  color: var(--accent);
+  font: 600 10.5px/1.3 var(--f-body);
+}
+.x-venue-card.is-active .x-venue-time {
+  color: #f9dfa5;
+}
+.x-venue-sub {
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.35;
+}
+.x-venue-card.is-active .x-venue-sub {
+  color: rgba(255, 248, 238, 0.85);
+}
+.x-address {
+  max-width: 330px;
+  margin: 0 auto 16px;
+  color: var(--muted);
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+.x-location-qr-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 0 0 18px;
+  padding: 14px;
+  border: 1px dashed color-mix(in srgb, var(--gold) 65%, var(--line));
+  border-radius: var(--radius);
+  background: var(--paper);
+  text-align: left;
+  box-shadow: 0 14px 32px -24px rgba(55, 10, 10, 0.25);
+}
+.x-location-qr-frame {
+  flex: 0 0 108px;
+  width: 108px;
+  height: 108px;
+  padding: 6px;
+  border: 1.5px solid color-mix(in srgb, var(--gold) 70%, var(--line));
+  border-radius: 10px;
+  background: #ffffff;
+  box-shadow: 0 6px 16px -10px rgba(0, 0, 0, 0.22);
+}
+.x-location-qr-frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.x-location-qr-info {
+  flex: 1;
+  min-width: 0;
+  display: grid;
+  gap: 4px;
+}
+.x-location-qr-kicker {
+  color: var(--accent);
+  font: 700 9.5px/1.2 var(--f-body);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.x-location-qr-info strong {
+  color: var(--ink);
+  font: 600 17px/1.2 var(--f-display);
+}
+.x-location-qr-info p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 11.5px;
+  line-height: 1.45;
+}
+.x-location-qr-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+}
+.x-location-qr-open,
+.x-location-qr-dl {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  font: 600 10.5px/1.2 var(--f-body);
+  text-decoration: none;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+.x-location-qr-open {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+.x-location-qr-dl {
+  border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--accent) 6%, var(--paper));
+  color: var(--accent);
+}
+.x-location-qr-open:hover,
+.x-location-qr-dl:hover {
+  transform: translateY(-1px);
+}
+.map-frame {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: var(--paper);
+  border: 1px solid var(--line);
+}
+.map-frame iframe {
+  display: block;
+  width: 100%;
+  height: 340px;
+  border: 0;
+  filter: saturate(0.82);
+}
 .map-frame iframe[hidden] { display: none; }
 .map-frame.is-open .map-placeholder { display: none; }
 .map-placeholder {
@@ -113,13 +1028,14 @@
   gap: 12px;
   padding: 44px 24px 36px;
   background:
+    radial-gradient(circle at 50% 35%, color-mix(in srgb, var(--gold) 14%, transparent), transparent 65%),
     repeating-linear-gradient(32deg, transparent 0 34px, color-mix(in srgb, var(--accent) 7%, transparent) 34px 35px),
     repeating-linear-gradient(-58deg, transparent 0 52px, color-mix(in srgb, var(--accent) 6%, transparent) 52px 53px);
 }
 .map-placeholder p { margin: 0; color: var(--muted); font-size: 13px; }
 .map-placeholder button {
   min-height: 42px;
-  padding: 0 20px;
+  padding: 0 22px;
   border: 1px solid var(--accent);
   border-radius: var(--btn-radius);
   background: var(--paper);
@@ -138,32 +1054,46 @@
   transform: rotate(-45deg);
   animation: mapPinFloat 2.6s ease-in-out infinite;
 }
-.x-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 16px; }
+.x-actions {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  margin-top: 16px;
+}
 
 .x-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 50px;
-  padding: 0 20px;
+  gap: 6px;
+  min-height: 46px;
+  padding: 6px 12px;
   border: 1px solid var(--accent);
   border-radius: var(--btn-radius);
   background: transparent;
   color: var(--accent);
   cursor: pointer;
-  font: 600 12px/1 var(--f-body);
-  letter-spacing: 0.1em;
-  white-space: nowrap;
+  font: 600 11px/1.25 var(--f-body);
+  letter-spacing: 0.06em;
+  text-align: center;
   text-decoration: none;
   text-transform: uppercase;
-  transition: transform 0.2s ease, background 0.2s ease;
+  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
 }
-.x-btn.is-solid { background: var(--accent); color: var(--on-accent); }
+.x-btn.is-solid {
+  background: linear-gradient(135deg, var(--accent), var(--accent-deep));
+  color: var(--on-accent);
+  box-shadow: 0 10px 24px -10px color-mix(in srgb, var(--accent) 60%, transparent);
+}
 .x-btn:active { transform: scale(0.98); }
 .x-btn:focus-visible, .map-placeholder button:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
 
-/* Biểu mẫu */
-.x-form { display: grid; gap: 22px; text-align: left; }
+/* 7. Biểu mẫu RSVP & Sổ lời chúc */
+.x-form {
+  display: grid;
+  gap: 20px;
+  text-align: left;
+}
 .x-field { display: grid; gap: 8px; }
 .x-field > span, .x-choice legend {
   color: var(--muted);
@@ -179,16 +1109,35 @@
   border-radius: var(--radius);
   background: var(--paper);
   color: var(--ink);
-  font: 400 16px/1.5 var(--f-body);
+  font: 400 15px/1.5 var(--f-body);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
-.x-field input::placeholder, .x-field textarea::placeholder { color: var(--muted); }
+.x-field input::placeholder, .x-field textarea::placeholder { color: var(--muted); opacity: 0.75; }
 .x-field input:disabled { opacity: 0.55; }
 .x-field textarea { resize: vertical; }
-.x-field select { appearance: none; background-image: linear-gradient(45deg, transparent 50%, var(--muted) 50%), linear-gradient(-45deg, transparent 50%, var(--muted) 50%); background-position: calc(100% - 22px) 50%, calc(100% - 16px) 50%; background-size: 6px 6px; background-repeat: no-repeat; }
-/* Ô bẫy spam: người thật không thấy, bot hay điền vào. */
+.x-field select {
+  appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--muted) 50%),
+    linear-gradient(-45deg, transparent 50%, var(--muted) 50%);
+  background-position: calc(100% - 22px) 50%, calc(100% - 16px) 50%;
+  background-size: 6px 6px;
+  background-repeat: no-repeat;
+}
 .x-hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
-.x-field input:focus, .x-field textarea:focus, .x-field select:focus { outline: 0; border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 14%, transparent); }
-.x-choice { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 0; padding: 0; border: 0; }
+.x-field input:focus, .x-field textarea:focus, .x-field select:focus {
+  outline: 0;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 14%, transparent);
+}
+.x-choice {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
 .x-choice legend { margin-bottom: 8px; padding: 0; }
 .x-choice label { position: relative; }
 .x-choice input { position: absolute; opacity: 0; }
@@ -196,27 +1145,114 @@
   display: grid;
   place-items: center;
   min-height: 50px;
+  padding: 0 10px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: var(--paper);
   cursor: pointer;
-  font-size: 14px;
+  font-size: 13.5px;
+  font-weight: 500;
+  text-align: center;
   transition: all 0.2s ease;
 }
-.x-choice input:checked + span { border-color: var(--accent); background: var(--accent); color: var(--on-accent); }
+.x-choice input:checked + span {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--on-accent);
+  box-shadow: 0 8px 20px -10px color-mix(in srgb, var(--accent) 65%, transparent);
+}
 .x-choice input:focus-visible + span { outline: 2px solid var(--gold); outline-offset: 2px; }
-.x-check { display: flex; gap: 10px; align-items: center; min-height: 44px; margin-top: -8px; font-size: 14px; }
+.x-check {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  min-height: 40px;
+  margin-top: -6px;
+  font-size: 14px;
+  cursor: pointer;
+}
 .x-check input { width: 18px; height: 18px; accent-color: var(--accent); }
-.form-status { margin: -6px 0 0; color: var(--muted); font-size: 12px; line-height: 1.6; text-align: center; }
+.form-status {
+  margin: -6px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* Gợi ý lời chúc nhanh (Quick Wish Chips & Đũa thần 🪄) */
+.x-wish-label-row {
+  display: flex !important;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.x-wish-wand {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  min-height: 26px;
+  padding: 0 10px;
+  border: 1px solid color-mix(in srgb, var(--gold) 65%, var(--line));
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--gold) 12%, var(--paper));
+  color: var(--accent);
+  font: 600 10.5px/1 var(--f-body);
+  letter-spacing: 0.06em;
+  text-transform: none;
+  cursor: pointer;
+  transition: transform 0.25s ease, background 0.2s ease, border-color 0.2s ease;
+}
+.x-wish-wand:hover {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 10%, var(--paper));
+}
+.x-wish-wand.is-sparkling {
+  transform: scale(1.08) rotate(-4deg);
+}
+.x-wish-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 2px;
+}
+.x-wish-chip {
+  padding: 6px 11px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--bg);
+  color: var(--muted);
+  font: 400 11.5px/1.3 var(--f-body);
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+.x-wish-chip:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 6%, var(--paper));
+}
 
 /* Lời chúc */
 .x-wishes { background: var(--paper); }
 .x-wishes .x-field input, .x-wishes .x-field textarea { background: var(--bg); }
-.wish-preview { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
+.wish-preview { margin-top: 34px; padding-top: 24px; border-top: 1px solid var(--line); }
 .wish-empty { margin: 0; color: var(--muted); font-size: 13px; }
-.wish-preview-list { display: grid; gap: 12px; max-height: 520px; overflow-y: auto; text-align: left; overscroll-behavior: contain; }
-.wish-preview-list article { padding: 18px 20px; border-left: 2px solid var(--accent); border-radius: var(--radius); background: var(--bg); }
-.wish-preview-list strong { font: 400 21px/1.2 var(--f-display); }
+.wish-preview-list {
+  display: grid;
+  gap: 12px;
+  max-height: 520px;
+  overflow-y: auto;
+  text-align: left;
+  overscroll-behavior: contain;
+}
+.wish-preview-list article {
+  position: relative;
+  padding: 16px 18px;
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius);
+  background: var(--bg);
+}
+.wish-preview-list strong { font: 500 20px/1.2 var(--f-display); color: var(--accent); }
 .wish-preview-list p { margin: 6px 0 0; font-size: 14px; line-height: 1.6; }
 .wish-bubble {
   position: fixed;
@@ -230,7 +1266,7 @@
   padding: 14px 20px;
   border-radius: 999px;
   background: var(--accent);
-  box-shadow: 0 18px 55px rgba(36, 20, 18, 0.25);
+  box-shadow: 0 18px 55px rgba(36, 20, 18, 0.32);
   color: var(--on-accent);
   transform: translateX(-50%);
   animation: wishBubble 3.6s ease both;
@@ -238,34 +1274,157 @@
 .wish-bubble span { font-size: 20px; }
 .wish-bubble strong { font-size: 13px; font-weight: 500; }
 
-/* Mừng cưới */
-.x-gift-pick { margin-bottom: 12px; }
+/* 8. Mừng cưới — Phong Bao Đỏ Hỷ Sự & Fanned Envelopes */
+.x-gift-envelope-art {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 112px;
+  margin: 0 auto 18px;
+  pointer-events: none;
+}
+.x-env-pair {
+  position: relative;
+  width: 96px;
+  height: 98px;
+}
+.x-env-card {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  border: 1.5px solid #e7c87d;
+  border-radius: 6px;
+  background: linear-gradient(155deg, #8b1e23 0%, #511419 100%);
+  box-shadow: 0 12px 24px -10px rgba(38, 8, 10, 0.45);
+  transform-origin: 50% 88%;
+}
+.x-env-card::before {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border: 1px solid rgba(231, 200, 125, 0.35);
+  border-radius: 3px;
+}
+.x-env-card.is-back {
+  transform: translate(-18px, 4px) rotate(-14deg) scale(0.94);
+  background: linear-gradient(155deg, #6e161a 0%, #3d0d11 100%);
+  opacity: 0.9;
+}
+.x-env-card.is-front {
+  transform: translate(12px, 0) rotate(9deg);
+}
+.x-env-card span {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #fff2c6, #d4af59 65%, #966b28);
+  color: #5a1014;
+  font: 700 16px/1 "Noto Serif TC", "SimSun", serif;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
+}
+.x-sparkle {
+  position: absolute;
+  color: var(--gold);
+  font-size: 14px;
+  line-height: 1;
+  animation: giftSparkle 2.4s ease-in-out infinite;
+}
+.x-sparkle.s1 { top: 8px; left: calc(50% - 68px); animation-delay: 0s; }
+.x-sparkle.s2 { top: 4px; right: calc(50% - 66px); font-size: 17px; animation-delay: 0.7s; }
+.x-sparkle.s3 { bottom: 10px; left: calc(50% - 60px); font-size: 11px; animation-delay: 1.3s; }
+.x-sparkle.s4 { bottom: 14px; right: calc(50% - 64px); font-size: 13px; animation-delay: 1.9s; }
+@keyframes giftSparkle {
+  0%, 100% { opacity: 0.28; transform: scale(0.8) rotate(0deg); }
+  50% { opacity: 1; transform: scale(1.2) rotate(18deg); }
+}
+
+.x-gift-pick { margin-bottom: 14px; }
 .x-gift-grid { display: grid; }
 /* Chỉ hiện một mã mỗi lúc để camera không bắt nhầm mã bên cạnh. */
 .x-gift:has([value="groom"]:checked) [data-gift="bride"],
 .x-gift:has([value="bride"]:checked) [data-gift="groom"] { display: none; }
+
 .x-gift-grid article {
+  position: relative;
   display: grid;
   justify-items: center;
-  padding: 24px 12px 20px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  background: var(--paper);
+  padding: 32px 18px 24px;
+  border: 1.5px solid color-mix(in srgb, var(--gold) 55%, var(--line));
+  border-radius: calc(var(--radius) + 4px);
+  background:
+    radial-gradient(circle at 50% 0%, color-mix(in srgb, var(--gold) 16%, transparent), transparent 60%),
+    var(--paper);
   color: var(--ink);
+  box-shadow: 0 22px 48px -28px rgba(50, 10, 10, 0.35);
 }
-.x-gift-grid .x-label { margin-bottom: 6px; }
-.x-gift-grid h3 { min-height: 2.4em; margin: 0; font: 400 18px/1.2 var(--f-display); }
+.x-gift-seal {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  margin-bottom: 10px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #fae3af, var(--gold) 65%, #966b28);
+  color: #6b0f12;
+  font: 700 20px/1 "Noto Serif TC", "SimSun", serif;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+}
+.x-gift-grid .x-label { margin-bottom: 4px; }
+.x-gift-grid h3 { margin: 0; font: 500 22px/1.25 var(--f-display); }
 .qr-code {
   display: block;
   width: 100%;
   max-width: 200px;
   aspect-ratio: 1;
-  margin: 16px 0 14px;
+  margin: 18px 0 14px;
+  padding: 8px;
+  background: #ffffff;
   border-radius: calc(var(--radius) / 2);
-  outline: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
-  outline-offset: 6px;
+  outline: 1px solid color-mix(in srgb, var(--gold) 60%, var(--accent));
+  outline-offset: 4px;
 }
-.x-gift-grid small { color: var(--muted); font-size: 11px; }
+.x-gift-bank {
+  margin: 4px 0 12px;
+  color: var(--muted);
+  font-size: 12.5px;
+  letter-spacing: 0.04em;
+}
+.x-gift-btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+.x-copy-stk,
+.x-save-qr {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 34px;
+  padding: 0 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--bg);
+  color: var(--ink);
+  font: 500 11.5px/1 var(--f-body);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.x-save-qr {
+  border-color: color-mix(in srgb, var(--gold) 60%, var(--line));
+  background: color-mix(in srgb, var(--gold) 12%, var(--paper));
+  color: var(--accent);
+}
+.x-copy-stk:hover,
+.x-save-qr:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
 
 @keyframes mapPinFloat { 0%, 100% { translate: 0 0; } 50% { translate: 0 -6px; } }
 @keyframes wishBubble {
@@ -275,8 +1434,10 @@
 }
 
 @media (max-width: 360px) {
-  .x-section { padding-inline: 20px; }
-  .x-head h2 { font-size: 34px; }
+  .x-section { padding-inline: 18px; }
+  .x-head h2 { font-size: 32px; }
   .countdown strong { font-size: 30px; }
   .x-parent { font-size: 16px; }
+  .x-story-list li { grid-template-columns: 96px 1fr; }
+  .x-story-list li:nth-child(even) { grid-template-columns: 1fr 96px; }
 }

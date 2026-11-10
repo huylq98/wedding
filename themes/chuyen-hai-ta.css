@@ -1,4 +1,4 @@
-/* 05 · Chuyện Hai Ta — sách tranh cắt giấy, năm chương chạy theo cuộn trang.
+/* 04 · Chuyện Hai Ta — Sách tranh cắt giấy Á Đông & đèn lồng hỷ sự, năm chương chạy theo cuộn trang.
    chuyen-hai-ta.js đặt --s (0 → 1) cho từng chương; mọi chuyển động trong chương tính từ --s. */
 body[data-theme="story"] {
   --bg: #fbf1e6;
@@ -6,11 +6,12 @@ body[data-theme="story"] {
   --ink: #3a1013;
   --muted: #80605a;
   --accent: #b81d2a;
+  --accent-deep: #80111a;
   --gold: #d9a248;
-  --line: rgba(58, 16, 19, 0.12);
+  --line: rgba(58, 16, 19, 0.14);
   --on-accent: #fff6ec;
   --f-display: "Playfair Display", Georgia, serif;
-  --ornament: "✦";
+  --ornament: "✦ 囍 ✦";
   --radius: 16px;
   --btn-radius: 999px;
   --ph-1: #f3d2c2;
@@ -19,26 +20,102 @@ body[data-theme="story"] {
   --backdrop:
     radial-gradient(circle at 80% 10%, rgba(242, 196, 107, 0.25), transparent 40%),
     radial-gradient(circle at 10% 90%, rgba(184, 29, 42, 0.18), transparent 45%),
-    #f1ded0;
+    #ecd4c2;
 }
 /* Sticky cần tổ tiên không phải vùng cuộn: dùng clip thay cho hidden. */
 body[data-theme="story"] .invite { overflow: clip; }
 body[data-theme="story"] .kicker { color: var(--accent); }
 
-/* Bìa */
+/* Bìa sách tranh cắt giấy Á Đông */
 .st-cover {
   position: relative;
-  min-height: min(100svh, 880px);
-  padding: 120px 28px 0;
+  min-height: min(100svh, 920px);
+  padding: 86px 26px 240px;
   overflow: hidden;
-  background: linear-gradient(180deg, #fdf3e8 0%, #fbe1d0 70%);
+  background:
+    radial-gradient(circle at 50% 25%, rgba(255, 240, 205, 0.7), transparent 65%),
+    linear-gradient(180deg, #fdf3e8 0%, #fbe1d0 72%);
   text-align: center;
 }
-.st-eyebrow { margin: 0; color: var(--accent); font: 600 11px/1 var(--f-body); letter-spacing: 0.3em; text-transform: uppercase; }
-.st-cover h1 { margin: 22px 0 14px; font: 400 76px/0.95 var(--f-display); letter-spacing: -0.02em; }
+.st-cover-lanterns {
+  position: absolute;
+  top: 44px;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+}
+.st-cover-lanterns svg {
+  width: 100%;
+  height: 92px;
+}
+.st-eyebrow {
+  margin: 0;
+  color: var(--accent);
+  font: 600 10.5px/1 var(--f-body);
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+.st-cover h1 {
+  margin: 14px 0 10px;
+  font: 400 66px/0.95 var(--f-display);
+  letter-spacing: -0.02em;
+}
 .st-cover h1 em { color: var(--accent); }
-.st-byline { margin: 0; color: var(--muted); font: italic 400 18px/1.4 var(--f-display); }
-.st-cover-art { position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: 46%; }
+.st-byline {
+  margin: 0 0 22px;
+  color: var(--muted);
+  font: italic 400 17px/1.4 var(--f-display);
+}
+
+/* Khung Tròn Hoa Văn Cắt Giấy lồng ảnh cô dâu chú rể trên bìa */
+.st-medallion {
+  position: relative;
+  z-index: 2;
+  width: 196px;
+  height: 196px;
+  margin: 0 auto;
+  padding: 10px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, #c82832 62%, transparent 63%),
+    conic-gradient(from 0deg, #c82832, #e3b45f, #c82832, #e3b45f, #c82832, #e3b45f, #c82832);
+  box-shadow:
+    0 18px 40px -18px rgba(120, 18, 24, 0.5),
+    0 0 0 6px rgba(255, 248, 236, 0.8),
+    0 0 0 8px rgba(200, 40, 50, 0.35);
+}
+.st-medallion-ph {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 3px solid #fff8ee;
+}
+.st-medallion-seal {
+  position: absolute;
+  right: 2px;
+  bottom: 2px;
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #fff8ee;
+  background: linear-gradient(135deg, #f6d58e, #c88f32);
+  color: #7a1118;
+  font: 700 20px/1 "Noto Serif TC", "SimSun", serif;
+  box-shadow: 0 6px 14px rgba(60, 10, 12, 0.35);
+}
+
+.st-cover-art {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 38%;
+  pointer-events: none;
+}
 .st-couple { transform-box: fill-box; }
 .st-cover-heart { transform-box: fill-box; transform-origin: center; animation: st-heart 1.4s ease-in-out infinite alternate; }
 .st-float { animation: st-sway 7s ease-in-out infinite alternate; }
@@ -48,27 +125,34 @@ body[data-theme="story"] .kicker { color: var(--accent); }
 @keyframes st-sway { from { translate: -6px 0; } to { translate: 6px 3px; } }
 .st-hint {
   position: absolute;
-  z-index: 2;
+  z-index: 3;
   left: 50%;
-  bottom: 30px;
+  bottom: 22px;
   display: grid;
   justify-items: center;
-  gap: 10px;
+  gap: 8px;
   color: #fff3e6;
-  font: 600 11px/1 var(--f-body);
-  letter-spacing: 0.24em;
+  font: 600 10.5px/1 var(--f-body);
+  letter-spacing: 0.22em;
   text-decoration: none;
   text-transform: uppercase;
   transform: translateX(-50%);
   white-space: nowrap;
 }
-.st-hint::after { content: ""; width: 18px; height: 28px; border: 1.5px solid currentColor; border-radius: 10px; background: radial-gradient(circle at 50% 30%, currentColor 2px, transparent 2.5px) 0 0 / 100% 100% no-repeat; animation: st-scroll 1.6s ease-in-out infinite; }
+.st-hint::after {
+  content: "";
+  width: 18px;
+  height: 28px;
+  border: 1.5px solid currentColor;
+  border-radius: 10px;
+  background: radial-gradient(circle at 50% 30%, currentColor 2px, transparent 2.5px) 0 0 / 100% 100% no-repeat;
+  animation: st-scroll 1.6s ease-in-out infinite;
+}
 @keyframes st-scroll { 50% { background-position: 0 8px; } }
 
-/* Sân khấu truyện */
+/* Sân khấu truyện 5 hồi */
 .st-story { position: relative; height: 600vh; height: 600svh; }
 .st-stage { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; background: #fbe9da; }
-/* Trình duyệt cũ không có overflow: clip thì bỏ cắt để sticky vẫn chạy. */
 @supports not (overflow: clip) {
   body[data-theme="story"] .invite { overflow: visible; }
 }
@@ -80,7 +164,7 @@ body[data-theme="story"] .kicker { color: var(--accent); }
   pointer-events: none;
   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .5 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.3'/%3E%3C/svg%3E");
   mix-blend-mode: multiply;
-  opacity: 0.35;
+  opacity: 0.32;
 }
 .sc { --s: 0; position: absolute; inset: 0; opacity: 0; visibility: hidden; }
 .sc-art { position: absolute; inset: 0; width: 100%; height: 100%; }
@@ -88,21 +172,30 @@ body[data-theme="story"] .kicker { color: var(--accent); }
 .sc-caption {
   position: absolute;
   z-index: 2;
-  top: 84px;
-  left: 30px;
-  right: 30px;
+  top: 76px;
+  left: 24px;
+  right: 24px;
+  padding: 18px 18px;
+  border-radius: 16px;
+  background: rgba(255, 250, 243, 0.76);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(184, 29, 42, 0.14);
   text-align: center;
   transform: translateY(calc((0.25 - var(--s)) * 28px));
 }
-.sc-caption h2 { margin: 10px 0 10px; font: 400 32px/1.15 var(--f-display); }
-.sc-caption p:not(.kicker) { margin: 0 auto; max-width: 320px; color: var(--muted); font-size: 15px; line-height: 1.6; }
-.sc.is-dark .sc-caption { color: #fbe9d6; }
+.sc-caption h2 { margin: 8px 0 8px; font: 400 30px/1.15 var(--f-display); }
+.sc-caption p:not(.kicker) { margin: 0 auto; max-width: 320px; color: var(--muted); font-size: 14px; line-height: 1.6; }
+.sc.is-dark .sc-caption {
+  color: #fbe9d6;
+  background: rgba(36, 8, 14, 0.72);
+  border-color: rgba(242, 196, 107, 0.25);
+}
 .sc.is-dark .sc-caption .kicker { color: #f2c46b; }
-.sc.is-dark .sc-caption p:not(.kicker) { color: rgba(251, 233, 214, 0.75); }
+.sc.is-dark .sc-caption p:not(.kicker) { color: rgba(251, 233, 214, 0.82); }
 
 .st-dots { position: absolute; z-index: 6; top: 50%; right: 12px; display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; transform: translateY(-50%); }
 .st-dots li { width: 6px; height: 6px; border-radius: 3px; background: rgba(58, 16, 19, 0.25); transition: height 0.3s ease, background 0.3s ease; }
-.st-dots li.is-active { height: 20px; background: var(--accent); }
+.st-dots li.is-active { height: 22px; background: var(--accent); }
 .st-dots.is-dark li { background: rgba(251, 233, 214, 0.3); }
 .st-dots.is-dark li.is-active { background: #f2c46b; }
 
@@ -145,7 +238,6 @@ body[data-theme="story"] .kicker { color: var(--accent); }
 .sc3 .c1 { opacity: calc(1 - var(--a2)); }
 .sc3 .c2 { opacity: calc(var(--a2) - var(--a3)); }
 .sc3 .c3 { opacity: calc(var(--a3) - var(--a4)); }
-/* Chữ tên mùa: chữ cũ mờ hẳn rồi chữ mới mới hiện, không chồng lên nhau. */
 .st-words .w1 { opacity: calc(1 - clamp(0, (var(--s) - 0.16) * 16, 1)); }
 .st-words .w2 { opacity: calc(var(--a2) - clamp(0, (var(--s) - 0.41) * 16, 1)); }
 .st-words .w3 { opacity: calc(var(--a3) - clamp(0, (var(--s) - 0.66) * 16, 1)); }
@@ -195,7 +287,7 @@ body[data-theme="story"] .kicker { color: var(--accent); }
 .st-home-b { transform: translateX(calc(var(--m) * -140px)); opacity: var(--f); }
 .st-cap-a { opacity: calc(1 - var(--q)); }
 .st-cap-b { opacity: var(--e); }
-.st-final-date { margin: 6px 0 8px !important; color: var(--accent) !important; font: 400 48px/1 var(--f-display) !important; max-width: none !important; }
+.st-final-date { margin: 6px 0 8px !important; color: var(--accent) !important; font: 400 44px/1 var(--f-display) !important; max-width: none !important; }
 .st-confetti { opacity: var(--e); }
 .st-confetti use { animation-name: st-confetti; animation-duration: 5s; }
 @keyframes st-confetti {
@@ -204,20 +296,52 @@ body[data-theme="story"] .kicker { color: var(--accent); }
 }
 
 /* Trang mời sau câu chuyện */
-.st-invite { padding: 90px 26px 70px; background: var(--bg); }
+.st-invite { padding: 80px 24px 64px; background: var(--bg); }
 .st-page {
-  padding: 40px 26px 30px;
-  border-radius: 6px;
+  position: relative;
+  padding: 44px 24px 32px;
+  border: 1px solid rgba(184, 29, 42, 0.2);
+  border-radius: 10px;
   background: var(--paper);
   box-shadow: 6px 6px 0 #f1c3b2, 12px 12px 0 #e08a78, 18px 18px 0 #c2413c;
   text-align: center;
 }
-.st-page h2 { margin: 12px 0 16px; font: 400 30px/1.2 var(--f-display); }
+.st-page-seal {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 2px solid #fffaf3;
+  background: var(--accent);
+  color: #fae5b2;
+  font: 700 20px/1 "Noto Serif TC", "SimSun", serif;
+  box-shadow: 0 6px 16px rgba(184, 29, 42, 0.35);
+}
+.st-page h2 { margin: 12px 0 18px; font: 400 30px/1.2 var(--f-display); }
 .st-page h2 em { color: var(--accent); }
-.st-page > p:not(.kicker) { margin: 0; color: var(--muted); font-size: 15px; }
-.st-page dl { margin: 26px 0 0; text-align: left; }
-.st-page dl div { display: grid; grid-template-columns: 74px 1fr; gap: 12px; padding: 12px 0; border-top: 1px solid var(--line); }
-.st-page dt { color: var(--accent); font: 600 10px/1.8 var(--f-body); letter-spacing: 0.2em; text-transform: uppercase; }
+.cht-guest {
+  display: inline-block;
+  margin: 6px 0 0 !important;
+  padding: 0 12px 4px;
+  border-bottom: 1.5px solid var(--gold);
+  color: var(--ink) !important;
+  font: italic 500 20px/1.2 var(--f-display) !important;
+}
+.st-invite-ph {
+  margin: 0 auto 18px;
+  border-radius: 10px;
+  border: 3px solid var(--bg);
+  box-shadow: 0 12px 28px -16px rgba(60, 12, 14, 0.4);
+}
+.st-page > p:not(.kicker):not(.cht-guest) { margin: 0; color: var(--muted); font-size: 14.5px; line-height: 1.65; }
+.st-page dl { margin: 24px 0 0; text-align: left; }
+.st-page dl div { display: grid; grid-template-columns: 82px 1fr; gap: 12px; padding: 12px 0; border-top: 1px solid var(--line); }
+.st-page dt { color: var(--accent); font: 600 10px/1.8 var(--f-body); letter-spacing: 0.18em; text-transform: uppercase; }
 .st-page dd { margin: 0; font: 400 18px/1.4 var(--f-display); }
 
 /* Phần dùng chung: mỗi mục một tờ giấy, mép lượn như giấy cắt */
@@ -236,6 +360,7 @@ body[data-theme="story"] .x-wishes { background: var(--paper); }
 
 body[data-theme="story"] .theme-close { background: linear-gradient(180deg, var(--bg), #f8d3bf); }
 body[data-theme="story"] .theme-close p { font: italic 400 20px/1.4 var(--f-display); letter-spacing: 0; text-transform: none; }
+body[data-theme="story"] .theme-close h2 { font-size: 48px; }
 
 /* Màn mở: bìa sách tranh cắt giấy lật sang trái, lộ trang giấy kẻ */
 body[data-theme="story"] .invitation-gate { --gate-bg: #fbe1d0; --gate-ink: #3a1013; --gate-gold: #b81d2a; perspective: 1600px; }
@@ -258,10 +383,10 @@ body[data-theme="story"] .invitation-door-right {
 }
 body[data-theme="story"] .invitation-gate.is-opening .invitation-door-left { transform: rotateY(-105deg); }
 body[data-theme="story"] .invitation-gate.is-opening .invitation-door-right { transform: none; opacity: 0; }
-body[data-theme="story"] .invitation-gate-card { align-self: start; margin-top: 16vh; }
+body[data-theme="story"] .invitation-gate-card { align-self: start; margin-top: 14vh; }
 body[data-theme="story"] .invitation-gate-card > p { color: #b81d2a; }
-body[data-theme="story"] .invitation-gate-card .gate-mark::before { content: "Một câu chuyện có thật"; display: block; margin-bottom: 14px; color: #80605a; font: italic 400 16px/1 var(--f-display); }
-body[data-theme="story"] .invitation-gate-card .gate-title { margin: 14px 0 26px; font: 400 60px/1 var(--f-display); }
+body[data-theme="story"] .invitation-gate-card .gate-mark::before { content: "Tranh cắt giấy Á Đông · 5 Hồi"; display: block; margin-bottom: 12px; color: #80605a; font: italic 400 15px/1 var(--f-display); }
+body[data-theme="story"] .invitation-gate-card .gate-title { margin: 12px 0 12px; font: 400 46px/1.05 var(--f-display); }
 body[data-theme="story"] .invitation-gate-card .gate-title i { color: #b81d2a; font-style: italic; }
 body[data-theme="story"] .invitation-gate-card button {
   display: inline-block;
@@ -271,7 +396,7 @@ body[data-theme="story"] .invitation-gate-card button {
   box-shadow: 4px 4px 0 #f1c3b2, 8px 8px 0 #e08a78;
   color: #fff6ec;
   font: 600 13px/1 var(--f-body);
-  letter-spacing: 0.24em;
+  letter-spacing: 0.22em;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 body[data-theme="story"] .invitation-gate-card button:hover,
@@ -281,6 +406,6 @@ body[data-theme="story"] .invitation-gate-card > small { color: #80605a; }
 body[data-theme="story"] .opening-petals { display: none; }
 
 @media (max-width: 360px) {
-  .st-cover h1 { font-size: 64px; }
-  .sc-caption h2 { font-size: 28px; }
+  .st-cover h1 { font-size: 54px; }
+  .sc-caption h2 { font-size: 25px; }
 }
