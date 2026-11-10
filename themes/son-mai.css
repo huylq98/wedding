@@ -178,6 +178,8 @@ body[data-theme="son"] .x-schedule-list .is-main {
 body[data-theme="son"] .x-gift { background: #7b1611; color: #f6e3bf; }
 body[data-theme="son"] .x-gift .x-kicker, body[data-theme="son"] .x-gift .x-head h2 { color: #e3c48a; }
 body[data-theme="son"] .x-gift .x-lead { color: rgba(246, 227, 191, 0.75); }
+body[data-theme="son"] .x-gift .x-choice span { color: var(--ink); }
+body[data-theme="son"] .x-gift .x-choice input:checked + span { border-color: #e3c48a; background: #e3c48a; color: #7b1611; }
 
 body[data-theme="son"] .theme-close {
   background: radial-gradient(120% 90% at 50% 0%, #a3241c, #5a0e0b);

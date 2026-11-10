@@ -194,14 +194,19 @@ extras.innerHTML = `
       <h2>Gửi chút yêu thương</h2>
     </header>
     <p class="x-lead">Nếu không thể đến chung vui, bạn có thể gửi quà mừng qua mã QR bên dưới.</p>
+    <fieldset class="x-choice x-gift-pick">
+      <legend>Gửi đến</legend>
+      <label><input type="radio" name="gift-to" value="groom" checked /><span>Chú rể</span></label>
+      <label><input type="radio" name="gift-to" value="bride" /><span>Cô dâu</span></label>
+    </fieldset>
     <div class="x-gift-grid">
-      <article>
+      <article data-gift="groom">
         <p class="x-label">Chú rể</p>
         <h3>Lê Quốc Huy</h3>
         <img class="qr-code" src="images/qr_chong-code.png" alt="Mã QR chuyển khoản cho chú rể Lê Quốc Huy" loading="lazy" />
         <small>STK 1430180506534</small>
       </article>
-      <article>
+      <article data-gift="bride">
         <p class="x-label">Cô dâu</p>
         <h3>Nguyễn Vũ Thu Phương</h3>
         <img class="qr-code" src="images/qr_vo-code.png" alt="Mã QR chuyển khoản ACB cho cô dâu Nguyễn Vũ Thu Phương" loading="lazy" />

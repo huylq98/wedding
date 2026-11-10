@@ -239,7 +239,11 @@
 .wish-bubble strong { font-size: 13px; font-weight: 500; }
 
 /* Mừng cưới */
-.x-gift-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.x-gift-pick { margin-bottom: 12px; }
+.x-gift-grid { display: grid; }
+/* Chỉ hiện một mã mỗi lúc để camera không bắt nhầm mã bên cạnh. */
+.x-gift:has([value="groom"]:checked) [data-gift="bride"],
+.x-gift:has([value="bride"]:checked) [data-gift="groom"] { display: none; }
 .x-gift-grid article {
   display: grid;
   justify-items: center;
@@ -254,7 +258,7 @@
 .qr-code {
   display: block;
   width: 100%;
-  max-width: 150px;
+  max-width: 200px;
   aspect-ratio: 1;
   margin: 16px 0 14px;
   border-radius: calc(var(--radius) / 2);
