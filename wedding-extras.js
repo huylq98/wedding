@@ -20,16 +20,13 @@ extras.innerHTML = `
     <div class="x-family-grid">
       <article>
         <p class="x-label">Nhà trai</p>
-        <p class="x-parent">Ông ··················</p>
-        <p class="x-parent">Bà ··················</p>
-        <small>Tên bố mẹ đang cập nhật</small>
+        <p class="x-parent">Ông Lê Văn Hưng</p>
       </article>
       <span class="x-family-amp" aria-hidden="true">&amp;</span>
       <article>
         <p class="x-label">Nhà gái</p>
-        <p class="x-parent">Ông ··················</p>
-        <p class="x-parent">Bà ··················</p>
-        <small>Tên bố mẹ đang cập nhật</small>
+        <p class="x-parent">Ông Vũ Văn Nhân</p>
+        <p class="x-parent">Bà Nguyễn Thị Đương</p>
       </article>
     </div>
   </section>
@@ -61,8 +58,8 @@ extras.innerHTML = `
       <h2>Những khoảnh khắc</h2>
     </header>
     <div class="x-album-grid">
-      <figure class="ph x-album-a" style="--ratio: 4 / 5"><img src="images/album-a.jpg" alt="Huy và Phương chụp chân dung" loading="lazy" /></figure>
-      <figure class="ph x-album-b" style="--ratio: 1"><img src="images/album-b.jpg" alt="Huy và Phương vẫy tay" loading="lazy" /></figure>
+      <figure class="ph x-album-a" style="--ratio: 4 / 5"><img src="images/album-a.jpg" alt="Huy và Phương vẫy tay" loading="lazy" /></figure>
+      <figure class="ph x-album-b" style="--ratio: 1"><img src="images/album-b.jpg" alt="Huy và Phương chụp chân dung" loading="lazy" /></figure>
       <figure class="ph x-album-c" style="--ratio: 1"><img src="images/album-c.jpg" alt="Huy và Phương nắm tay" loading="lazy" /></figure>
       <figure class="ph x-album-d" style="--ratio: 3 / 2"><img src="images/album-d.jpg" alt="Huy và Phương đứng cạnh nhau" loading="lazy" /></figure>
     </div>

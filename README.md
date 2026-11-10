@@ -1,20 +1,19 @@
 # Demo thiệp cưới Huy & Phương
 
-Năm mẫu độc lập, cùng tông đỏ, thiết kế ưu tiên điện thoại (trên máy tính thiệp
+Bốn mẫu độc lập, cùng tông đỏ, thiết kế ưu tiên điện thoại (trên máy tính thiệp
 hiển thị thành một cột giữa nền trang trí):
 
 - `index.html` · **01 Son Mài**: đỏ son, vàng kim, chữ Song Hỷ, mở bằng hai cánh cửa son
 - `editorial.html` · **02 Thư Tay**: giấy kem, mực đỏ son, chữ in lớn, mục đánh số như một bức thư
-- `keepsake.html` · **03 Hồng Nhung**: hồng phấn, đỏ nhung, cúc họa mi, lịch tháng 11
-- `photo-editorial.html` · **04 Tơ Duyên**: sợi tơ hồng vẽ dần theo khi cuộn, thẻ cào để xem ngày cưới
-- `wine-rustic.html` · **05 Chuyện Hai Ta**: sách tranh cắt giấy, năm chương chuyện tình chuyển cảnh theo khi cuộn
+- `photo-editorial.html` · **03 Tơ Duyên**: sợi tơ hồng vẽ dần theo khi cuộn, thẻ cào để xem ngày cưới
+- `wine-rustic.html` · **04 Chuyện Hai Ta**: sách tranh cắt giấy, năm chương chuyện tình chuyển cảnh theo khi cuộn
 
 Cấu trúc:
 
 - `demo-common.css` / `demo-common.js`: khung trang, thanh chọn mẫu, nhạc, màn mở thiệp
 - `wedding-extras.css` / `wedding-extras.js`: các phần chung (gia đình, chuyện tình,
   album, lịch trình, đếm ngược, bản đồ, xác nhận tham dự, lời chúc, mừng cưới)
-- `themes/*.css`: màu, font và bố cục riêng của từng mẫu; `themes/*.js` cho phần tương tác riêng của mẫu 04 và 05
+- `themes/*.css`: màu, font và bố cục riêng của từng mẫu; `themes/*.js` cho phần tương tác riêng của mẫu 03 và 04
 - `apps-script/Code.gs`: nhận xác nhận tham dự và lời chúc vào Google Sheet
 
 ## Nhận phản hồi vào Google Sheet
