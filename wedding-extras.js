@@ -41,15 +41,15 @@ extras.innerHTML = `
     </header>
     <ol class="x-story-list">
       <li>
-        <figure class="ph" style="--ratio: 1"><figcaption>1:1</figcaption></figure>
+        <figure class="ph" style="--ratio: 1"><img src="images/story-1.jpg" alt="Huy và Phương nhìn nhau" loading="lazy" /></figure>
         <div><span class="x-story-when">Năm ····</span><h3>Lần đầu gặp nhau</h3><p>Vài dòng kể lại ngày đầu tiên sẽ được thêm vào đây.</p></div>
       </li>
       <li>
-        <figure class="ph" style="--ratio: 1"><figcaption>1:1</figcaption></figure>
+        <figure class="ph" style="--ratio: 1"><img src="images/story-2.jpg" alt="Huy hôn tay Phương" loading="lazy" /></figure>
         <div><span class="x-story-when">Năm ····</span><h3>Lời cầu hôn</h3><p>Khoảnh khắc nói lời đồng ý, kể ngắn trong hai câu.</p></div>
       </li>
       <li>
-        <figure class="ph" style="--ratio: 1"><figcaption>1:1</figcaption></figure>
+        <figure class="ph" style="--ratio: 1"><img src="images/story-3.jpg" alt="Huy vén khăn voan cho Phương" loading="lazy" /></figure>
         <div><span class="x-story-when">28 · 11 · 2026</span><h3>Về chung một nhà</h3><p>Và hôm ấy, có bạn ở đây cùng chúng mình.</p></div>
       </li>
     </ol>
@@ -61,10 +61,10 @@ extras.innerHTML = `
       <h2>Những khoảnh khắc</h2>
     </header>
     <div class="x-album-grid">
-      <figure class="ph x-album-a" style="--ratio: 4 / 5"><figcaption>Chân dung · 4:5</figcaption></figure>
-      <figure class="ph x-album-b" style="--ratio: 1"><figcaption>Chi tiết · 1:1</figcaption></figure>
-      <figure class="ph x-album-c" style="--ratio: 1"><figcaption>Nhẫn · 1:1</figcaption></figure>
-      <figure class="ph x-album-d" style="--ratio: 3 / 2"><figcaption>Khoảnh khắc · 3:2</figcaption></figure>
+      <figure class="ph x-album-a" style="--ratio: 4 / 5"><img src="images/album-a.jpg" alt="Huy và Phương chụp chân dung" loading="lazy" /></figure>
+      <figure class="ph x-album-b" style="--ratio: 1"><img src="images/album-b.jpg" alt="Huy và Phương vẫy tay" loading="lazy" /></figure>
+      <figure class="ph x-album-c" style="--ratio: 1"><img src="images/album-c.jpg" alt="Huy và Phương nắm tay" loading="lazy" /></figure>
+      <figure class="ph x-album-d" style="--ratio: 3 / 2"><img src="images/album-d.jpg" alt="Huy và Phương đứng cạnh nhau" loading="lazy" /></figure>
     </div>
   </section>
 
@@ -201,14 +201,14 @@ extras.innerHTML = `
       <article>
         <p class="x-label">Chú rể</p>
         <h3>Lê Quốc Huy</h3>
-        <div class="qr-placeholder" role="img" aria-label="Mã QR ngân hàng của chú rể sẽ cập nhật sau"><span>QR</span></div>
-        <small>Ngân hàng · Số tài khoản</small>
+        <img class="qr-code" src="images/qr_chong-code.png" alt="Mã QR chuyển khoản cho chú rể Lê Quốc Huy" loading="lazy" />
+        <small>STK 1430180506534</small>
       </article>
       <article>
         <p class="x-label">Cô dâu</p>
         <h3>Nguyễn Vũ Thu Phương</h3>
-        <div class="qr-placeholder" role="img" aria-label="Mã QR ngân hàng của cô dâu sẽ cập nhật sau"><span>QR</span></div>
-        <small>Ngân hàng · Số tài khoản</small>
+        <img class="qr-code" src="images/qr_vo-code.png" alt="Mã QR chuyển khoản ACB cho cô dâu Nguyễn Vũ Thu Phương" loading="lazy" />
+        <small>ACB · STK 9043737</small>
       </article>
     </div>
   </section>

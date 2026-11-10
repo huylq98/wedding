@@ -51,7 +51,6 @@
 .x-story-list li:nth-child(even) { grid-template-columns: 1fr 104px; text-align: right; }
 .x-story-list li:nth-child(even) .ph { order: 2; }
 .x-story-list .ph { border-radius: var(--radius); }
-.x-story-list .ph figcaption { left: 8px; bottom: 6px; font-size: 9px; }
 .x-story-when { color: var(--accent); font: 600 11px/1.4 var(--f-body); letter-spacing: 0.16em; text-transform: uppercase; }
 .x-story-list h3 { margin: 6px 0 4px; font: 400 23px/1.2 var(--f-display); }
 .x-story-list p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.6; }
@@ -252,22 +251,16 @@
 }
 .x-gift-grid .x-label { margin-bottom: 6px; }
 .x-gift-grid h3 { min-height: 2.4em; margin: 0; font: 400 18px/1.2 var(--f-display); }
-.qr-placeholder {
+.qr-code {
+  display: block;
   width: 100%;
   max-width: 150px;
   aspect-ratio: 1;
-  display: grid;
-  place-items: center;
   margin: 16px 0 14px;
   border-radius: calc(var(--radius) / 2);
-  background:
-    linear-gradient(var(--paper), var(--paper)) center / 44% 44% no-repeat,
-    conic-gradient(from 90deg at 2px 2px, transparent 25%, color-mix(in srgb, var(--accent) 22%, transparent) 0) 0 0 / 14px 14px;
   outline: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
   outline-offset: 6px;
-  color: var(--accent);
 }
-.qr-placeholder span { font: 500 22px/1 var(--f-display); letter-spacing: 0.1em; }
 .x-gift-grid small { color: var(--muted); font-size: 11px; }
 
 @keyframes mapPinFloat { 0%, 100% { translate: 0 0; } 50% { translate: 0 -6px; } }

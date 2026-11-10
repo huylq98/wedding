@@ -41,7 +41,6 @@ body[data-theme="rose"] {
   outline: 1px solid var(--gold);
   outline-offset: 10px;
 }
-.rose-arch figcaption { left: 50%; transform: translateX(-50%); white-space: nowrap; }
 .rose-bloom, .rose-sprig { position: absolute; color: var(--accent); pointer-events: none; }
 .rose-bloom { width: 84px; height: 84px; filter: drop-shadow(0 6px 8px rgba(120, 20, 40, 0.18)); }
 .rose-bloom-a { top: 20%; left: -42px; transform: rotate(-12deg); }
@@ -144,7 +143,6 @@ body[data-theme="rose"] .x-head::after {
   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 40'%3E%3Cg fill='none' stroke='%23a3203a' stroke-width='1.4' stroke-linecap='round'%3E%3Cpath d='M4 30c30-4 60-14 92-26'/%3E%3Cpath d='M24 26c-2-8 2-14 10-16-1 8-4 13-10 16zM44 21c0-8 5-13 13-14-2 8-6 12-13 14zM64 14c1-7 6-11 13-11-2 7-7 10-13 11zM30 27c6 4 13 4 18 0-6-3-12-3-18 0zM52 20c6 3 13 2 17-2-6-2-12-1-17 2z'/%3E%3C/g%3E%3C/svg%3E") center / contain no-repeat;
 }
 body[data-theme="rose"] .x-story-list .ph { border-radius: 999px; }
-body[data-theme="rose"] .x-story-list .ph figcaption { display: none; }
 body[data-theme="rose"] .x-album-a { border-radius: 999px 999px 18px 18px; }
 body[data-theme="rose"] .x-schedule-list .is-main { background: linear-gradient(160deg, #b8304a, #8a1830); box-shadow: 0 20px 40px -24px rgba(120, 20, 40, 0.7); }
 body[data-theme="rose"] .x-gift { background: linear-gradient(180deg, var(--bg), #f1d3cd); }
