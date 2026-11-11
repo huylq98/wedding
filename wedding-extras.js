@@ -33,25 +33,19 @@ extras.innerHTML = `
           <figure class="x-album-3d-card ph" data-3d-index="0" data-lightbox="images/son-mai.jpg" data-caption="Quốc Huy &amp; Thu Phương">
             <img src="images/son-mai.jpg" alt="Huy và Phương sánh đôi" />
           </figure>
-          <figure class="x-album-3d-card ph" data-3d-index="1" data-lightbox="images/thu-tay.jpg" data-caption="Quốc Huy &amp; Thu Phương">
-            <img src="images/thu-tay.jpg" alt="Huy và Phương bên hoa cưới" loading="lazy" />
-          </figure>
-          <figure class="x-album-3d-card ph" data-3d-index="2" data-lightbox="images/album-c.jpg" data-caption="Quốc Huy &amp; Thu Phương">
+          <figure class="x-album-3d-card ph" data-3d-index="1" data-lightbox="images/album-c.jpg" data-caption="Quốc Huy &amp; Thu Phương">
             <img src="images/album-c.jpg" alt="Huy và Phương nắm chặt tay nhau" loading="lazy" />
           </figure>
-          <figure class="x-album-3d-card ph" data-3d-index="3" data-lightbox="images/album-b.jpg" data-caption="Quốc Huy &amp; Thu Phương">
+          <figure class="x-album-3d-card ph" data-3d-index="2" data-lightbox="images/album-b.jpg" data-caption="Quốc Huy &amp; Thu Phương">
             <img src="images/album-b.jpg" alt="Huy và Phương sánh bước bên nhau" loading="lazy" />
           </figure>
-          <figure class="x-album-3d-card ph" data-3d-index="4" data-lightbox="images/album-f.jpg" data-caption="Quốc Huy &amp; Thu Phương">
+          <figure class="x-album-3d-card ph" data-3d-index="3" data-lightbox="images/album-f.jpg" data-caption="Quốc Huy &amp; Thu Phương">
             <img src="images/album-f.jpg" alt="Huy và Phương nghiêng đầu hạnh phúc" loading="lazy" />
           </figure>
-          <figure class="x-album-3d-card ph" data-3d-index="5" data-lightbox="images/album-k.jpg" data-caption="Quốc Huy &amp; Thu Phương">
+          <figure class="x-album-3d-card ph" data-3d-index="4" data-lightbox="images/album-k.jpg" data-caption="Quốc Huy &amp; Thu Phương">
             <img src="images/album-k.jpg" alt="Phương khoác tay Huy bên thảm hoa" loading="lazy" />
           </figure>
-          <figure class="x-album-3d-card ph" data-3d-index="6" data-lightbox="images/to-duyen.jpg" data-caption="Quốc Huy &amp; Thu Phương">
-            <img src="images/to-duyen.jpg" alt="Huy và Phương khoác tay nhau" loading="lazy" />
-          </figure>
-          <figure class="x-album-3d-card ph" data-3d-index="7" data-lightbox="images/album-e.jpg" data-caption="Quốc Huy &amp; Thu Phương">
+          <figure class="x-album-3d-card ph" data-3d-index="5" data-lightbox="images/album-e.jpg" data-caption="Quốc Huy &amp; Thu Phương">
             <img src="images/album-e.jpg" alt="Huy và Phương trong trang phục cưới" loading="lazy" />
           </figure>
         </div>
@@ -59,7 +53,7 @@ extras.innerHTML = `
       </div>
       <div class="x-album-3d-footer">
         <div class="x-album-dots" data-album-dots></div>
-        <span class="x-album-counter" data-album-counter>1 / 8</span>
+        <span class="x-album-counter" data-album-counter>1 / 6</span>
       </div>
     </div>
   </section>
