@@ -112,6 +112,15 @@ if (musicButton) {
     if (!Number.isNaN(saved) && saved >= 281) heartCount = saved;
   } catch {}
 
+  let lastControlsY = window.scrollY;
+  window.addEventListener("scroll", () => {
+    const y = window.scrollY;
+    const atBottom = window.innerHeight + y >= document.documentElement.scrollHeight - 40;
+    if (Math.abs(y - lastControlsY) < 8) return;
+    controls.classList.toggle("is-tucked", y > lastControlsY && y > 200 && !atBottom);
+    lastControlsY = y;
+  }, { passive: true });
+
   heartBtn.innerHTML = `<span aria-hidden="true">囍</span><span class="heart-count" data-heart-count>${heartCount}</span>`;
   controls.append(heartBtn, musicButton);
 

@@ -112,8 +112,8 @@ body[data-theme="son"] {
   padding-bottom: 10px;
   border-bottom: 2px double var(--accent);
   color: var(--accent);
-  font: 600 10px/1 var(--f-body);
-  letter-spacing: 0.18em;
+  font: 600 12px/1 var(--f-body);
+  letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 
@@ -311,8 +311,8 @@ body:not(.is-invitation-locked) .son-knot-red {
 }
 .son-date-ledger dt {
   color: var(--muted);
-  font: 600 9.5px/1 var(--f-body);
-  letter-spacing: 0.18em;
+  font: 600 12px/1 var(--f-body);
+  letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 .son-date-ledger dd {
@@ -329,7 +329,7 @@ body:not(.is-invitation-locked) .son-knot-red {
 .son-cover .son-lunar {
   margin: 10px 0 0;
   color: var(--muted);
-  font: italic 500 16px/1.4 var(--f-display);
+  font: italic 400 16px/1.4 var(--f-display);
 }
 
 .son-scroll {
@@ -608,14 +608,14 @@ body:not(.is-invitation-locked) .son-knot-red {
 }
 .son-plaque .kicker {
   color: #f3dfb9;
-  font-size: 13px;
-  letter-spacing: 0.22em;
+  font-size: 12px;
+  letter-spacing: 0.12em;
 }
 .son-plaque-families {
   display: grid;
   grid-template-columns: 1fr 1px 1fr;
   gap: 12px;
-  align-items: start;
+  align-items: stretch;
   margin: 22px 0 20px;
 }
 .son-plaque-families > i {
@@ -630,8 +630,8 @@ body:not(.is-invitation-locked) .son-knot-red {
 }
 .son-plaque-families span {
   color: rgba(243, 223, 185, 0.72);
-  font: 500 10.5px/1.2 var(--f-body);
-  letter-spacing: 0.14em;
+  font: 600 12px/1.2 var(--f-body);
+  letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 .son-plaque-families strong {
@@ -639,16 +639,17 @@ body:not(.is-invitation-locked) .son-knot-red {
   font: 600 13px/1.35 var(--f-body);
 }
 .son-plaque-families small {
-  margin-top: 2px;
+  margin-top: auto;
+  padding-top: 2px;
   color: rgba(243, 223, 185, 0.7);
-  font-size: 10.5px;
+  font-size: 12px;
   line-height: 1.35;
 }
 .son-plaque-announce {
   margin: 0 0 16px;
   color: rgba(249, 232, 198, 0.86);
-  font: 500 11px/1.4 var(--f-body);
-  letter-spacing: 0.14em;
+  font: 600 12px/1.4 var(--f-body);
+  letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 .son-plaque-couple {
@@ -684,9 +685,7 @@ body:not(.is-invitation-locked) .son-knot-red {
   color: #fff6e4;
 }
 .son-event-time-row span {
-  font: 500 12px/1 var(--f-body);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font: 600 13px/1 var(--f-body);
 }
 .son-event-time-row strong {
   color: #f3d493;
@@ -722,8 +721,8 @@ body:not(.is-invitation-locked) .son-knot-red {
 .son-venue-kicker {
   margin: 0 0 4px;
   color: #ebd099;
-  font: 600 10px/1.35 var(--f-body);
-  letter-spacing: 0.14em;
+  font: 600 12px/1.35 var(--f-body);
+  letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 .son-event-lunar {
@@ -735,12 +734,10 @@ body:not(.is-invitation-locked) .son-knot-red {
 .son-plaque h3 {
   margin: 0;
   color: #fff4d8;
-  font: 600 20px/1.25 var(--f-display);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
+  font: 600 22px/1.25 var(--f-display);
 }
 .son-plaque h2 {
-  font-size: 22px;
+  font-size: 24px;
 }
 .son-plaque address {
   margin-top: 6px;
@@ -751,14 +748,13 @@ body:not(.is-invitation-locked) .son-knot-red {
 }
 .son-event-map-link {
   display: inline-block;
-  margin-top: 8px;
-  padding: 4px 11px;
+  margin-top: 10px;
+  padding: 8px 16px;
   border: 1px solid rgba(229, 193, 120, 0.55);
   border-radius: 999px;
   background: rgba(229, 193, 120, 0.12);
   color: #fae3ae;
-  font: 600 10.5px/1.2 var(--f-body);
-  letter-spacing: 0.04em;
+  font: 600 12.5px/1.2 var(--f-body);
   text-decoration: none;
   transition: background 0.2s ease, transform 0.2s ease;
 }
@@ -807,11 +803,6 @@ body[data-theme="son"] .x-section {
 body[data-theme="son"] .x-head h2 {
   color: var(--accent);
   font-weight: 600;
-}
-body[data-theme="son"] .x-schedule-list .is-main {
-  background: radial-gradient(120% 120% at 50% 0%, #9b1d17, #5e0c09);
-  outline: 1px solid rgba(207, 165, 99, 0.6);
-  outline-offset: -7px;
 }
 body[data-theme="son"] .x-gift {
   background: radial-gradient(120% 100% at 50% 0%, #871611, #4b0906);
@@ -863,8 +854,8 @@ body[data-theme="son"] .theme-close {
   box-shadow: 0 6px 16px rgba(20, 2, 2, 0.45);
 }
 body[data-theme="son"] .theme-close p { color: #e3c48a; }
-body[data-theme="son"] .theme-close h2 { font-weight: 500; font-size: 50px; }
-body[data-theme="son"] .theme-close h2 i { color: #e3c48a; }
+body[data-theme="son"] .theme-close h2 { font-weight: 600; font-size: 50px; }
+body[data-theme="son"] .theme-close h2 i { color: #e3c48a; font-weight: 400; }
 body[data-theme="son"] .theme-close span { display: block; color: #dcbf8b; }
 .son-footer-guest-btn {
   display: inline-flex;
@@ -973,13 +964,13 @@ body[data-theme="son"] .invitation-gate-card .gate-date {
   margin: 0 0 14px;
   font-size: 15px;
   color: #5c4b42;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.12em;
 }
 body[data-theme="son"] .invitation-gate-card .gate-invite-word {
   margin: 0 0 24px;
   color: var(--gate-ink);
-  font: 400 18px/1.2 var(--f-display);
-  letter-spacing: 0.06em;
+  font: 600 18px/1.2 var(--f-display);
+  letter-spacing: 0.01em;
   text-transform: none;
 }
 

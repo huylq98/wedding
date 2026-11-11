@@ -96,42 +96,6 @@ extras.innerHTML = `
     </ol>
   </section>
 
-  <section class="x-section x-schedule" id="lich-trinh" data-reveal>
-    <header class="x-head">
-      <h2>Lịch Trình Ngày Cưới</h2>
-    </header>
-    <ol class="x-schedule-list">
-      <li class="is-pending">
-        <div class="x-schedule-body">
-          <div class="x-schedule-copy">
-            <time datetime="2026-11-27T16:00:00+07:00">16:00 · Thứ Sáu · 27.11.2026</time>
-            <h3>Tiệc Cưới Nhà Gái</h3>
-            <p>${brideVenueName} · Bắc Ninh</p>
-          </div>
-          <svg class="x-schedule-emblem" viewBox="0 0 56 56" aria-hidden="true">
-            <circle cx="22" cy="31" r="11" fill="none" stroke="currentColor" stroke-width="1.8"/>
-            <circle cx="34" cy="31" r="11" fill="none" stroke="currentColor" stroke-width="1.8"/>
-            <path d="M22 18l-3-5h6l-3 5zm6-4c-4-4-10-4-11 0 2 3 7 3 11 0zm0 0c4-4 10-4 11 0-2 3-7 3-11 0zm0 0l-5 6m5-6l5 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
-        </div>
-      </li>
-      <li class="is-main">
-        <div class="x-schedule-body">
-          <div class="x-schedule-copy">
-            <time datetime="2026-11-28T11:30:00+07:00">11:30 · Thứ Bảy · 28.11.2026</time>
-            <h3>Lễ Thành Hôn &amp; Khai Tiệc</h3>
-            <p>${venueName} · Hoài Đức, Hà Nội</p>
-          </div>
-          <svg class="x-schedule-emblem" viewBox="0 0 56 56" aria-hidden="true">
-            <path d="M18 14h9l-2 13a4 4 0 0 1-5 0l-2-13zm2.5 14v12m-4 0h8" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
-            <path d="M30 14h9l-2 13a4 4 0 0 1-5 0l-2-13zm2.5 14v12m-4 0h8" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
-            <path d="M28 8l1.2 2.8L32 12l-2.8 1.2L28 16l-1.2-2.8L24 12l2.8-1.2z" fill="currentColor"/>
-          </svg>
-        </div>
-      </li>
-    </ol>
-  </section>
-
   <section class="x-section x-countdown" data-reveal>
     <header class="x-head">
       <h2>Tháng 11 / 2026</h2>
@@ -180,10 +144,9 @@ extras.innerHTML = `
         role="tab"
         aria-selected="true"
       >
-        <span class="x-venue-badge">Tiệc Cưới Nhà Gái</span>
+        <span class="x-venue-badge">Tiệc Nhà Gái</span>
         <strong>${brideVenueName}</strong>
-        <span class="x-venue-time">16:00 · 27/11/2026 (19/10 ÂL)</span>
-        <span class="x-venue-sub">${brideVenueAddress}</span>
+        <span class="x-venue-time">16:00 · 27/11</span>
       </button>
 
       <button
@@ -195,8 +158,7 @@ extras.innerHTML = `
       >
         <span class="x-venue-badge">Lễ Thành Hôn</span>
         <strong>${venueName}</strong>
-        <span class="x-venue-time">11:30 · 28/11/2026 (20/10 ÂL)</span>
-        <span class="x-venue-sub">${venueAddress}</span>
+        <span class="x-venue-time">11:30 · 28/11</span>
       </button>
     </div>
 
@@ -213,8 +175,7 @@ extras.innerHTML = `
         <span class="x-location-qr-kicker" data-venue-qr-badge>QR Chỉ Đường · Nhà Gái</span>
         <strong data-venue-qr-label>${brideVenueName}</strong>
         <div class="x-location-qr-links">
-          <a class="x-location-qr-open" data-venue-qr-link href="${brideMapUrl}" target="_blank" rel="noopener">📍 Mở Google Maps</a>
-          <a class="x-location-qr-dl" data-venue-qr-dl href="qr-thiep-den-trang/qr-nha-gai.png" download="QR-Chi-Duong-Nha-Gai-Mao-Trung.png">⬇ Lưu QR</a>
+          <a class="x-location-qr-dl" data-venue-qr-dl href="qr-thiep-den-trang/qr-nha-gai.png" download="QR-Chi-Duong-Nha-Gai-Mao-Trung.png"><svg class="x-ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v8m-3.5-3.5L8 10l3.5-3.5M3 13h10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Lưu QR</a>
         </div>
       </div>
     </div>
@@ -252,15 +213,15 @@ extras.innerHTML = `
         <label><input type="radio" name="attendance" value="yes" required checked /><span>♥ Sẽ tham dự</span></label>
         <label><input type="radio" name="attendance" value="no" /><span>Xin vắng mặt</span></label>
       </fieldset>
-      <label class="x-field">
+      <label class="x-field" data-attend-only>
         <span>Buổi tiệc tham dự</span>
         <select name="event-side">
-          <option value="Tiệc Cưới Nhà Gái (16:00 · 27/11 tại Nhà văn hoá Tổ Dân Phố Mao Trung, Bắc Ninh)">Tiệc Cưới Nhà Gái · 16:00 Thứ Sáu 27/11 (Tổ Dân Phố Mao Trung)</option>
-          <option value="Lễ Thành Hôn (11:30 · 28/11 tại Selena Palace, Hà Nội)">Lễ Thành Hôn · 11:30 Thứ Bảy 28/11 (Selena Palace)</option>
-          <option value="Tham dự cả hai ngày (27/11 & 28/11)">Tham dự cả hai ngày (27/11 &amp; 28/11)</option>
+          <option value="Tiệc Cưới Nhà Gái (16:00 · 27/11 tại Nhà văn hoá Tổ Dân Phố Mao Trung, Bắc Ninh)">Tiệc Nhà Gái · Thứ Sáu 27/11</option>
+          <option value="Lễ Thành Hôn (11:30 · 28/11 tại Selena Palace, Hà Nội)">Lễ Thành Hôn · Thứ Bảy 28/11</option>
+          <option value="Tham dự cả hai ngày (27/11 & 28/11)">Cả hai ngày 27 &amp; 28/11</option>
         </select>
       </label>
-      <label class="x-field">
+      <label class="x-field" data-attend-only>
         <span>Số khách</span>
         <select name="guests">
           <option value="1">1 người</option>
@@ -334,7 +295,7 @@ extras.innerHTML = `
         <p class="x-gift-bank">MBBank · STK: <strong>1430180506534</strong></p>
         <div class="x-gift-btn-row">
           <button type="button" class="x-copy-stk" data-copy-stk="1430180506534">Sao chép STK</button>
-          <a class="x-save-qr" href="images/qr_chong-code.png" download="QR-ChuRe-LeQuocHuy.png">⬇ Lưu QR</a>
+          <a class="x-save-qr" href="images/qr_chong-code.png" download="QR-ChuRe-LeQuocHuy.png"><svg class="x-ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v8m-3.5-3.5L8 10l3.5-3.5M3 13h10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Lưu QR</a>
         </div>
       </article>
       <article data-gift="bride">
@@ -345,7 +306,7 @@ extras.innerHTML = `
         <p class="x-gift-bank">ACB · STK: <strong>9043737</strong></p>
         <div class="x-gift-btn-row">
           <button type="button" class="x-copy-stk" data-copy-stk="9043737">Sao chép STK</button>
-          <a class="x-save-qr" href="images/qr_vo-code.png" download="QR-CoDau-NguyenVuThuPhuong.png">⬇ Lưu QR</a>
+          <a class="x-save-qr" href="images/qr_vo-code.png" download="QR-CoDau-NguyenVuThuPhuong.png"><svg class="x-ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v8m-3.5-3.5L8 10l3.5-3.5M3 13h10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Lưu QR</a>
         </div>
       </article>
     </div>
@@ -417,7 +378,8 @@ function updateAlbum3D(targetIdx) {
     const opacity = abs === 0 ? 1 : abs === 1 ? 0.78 : abs === 2 ? 0.36 : 0;
     const zIndex = 20 - Math.min(abs, 10);
 
-    card.style.transform = `translateX(${tx}%) translateZ(${tz}px) rotateY(${ry}deg) scale(${scale})`;
+    // Ảnh ở giữa không dùng transform 3D để trình duyệt vẽ nét như ảnh thường
+    card.style.transform = abs === 0 ? "none" : `translateX(${tx}%) translateZ(${tz}px) rotateY(${ry}deg) scale(${scale})`;
     card.style.opacity = String(opacity);
     card.style.zIndex = String(zIndex);
     card.style.pointerEvents = abs <= 2 ? "auto" : "none";
@@ -560,7 +522,6 @@ document.querySelectorAll("[data-venue-switch]").forEach((btn) => {
     const qrImgEl = document.querySelector("[data-venue-qr-img]");
     const qrBadgeEl = document.querySelector("[data-venue-qr-badge]");
     const qrLabelEl = document.querySelector("[data-venue-qr-label]");
-    const qrLinkEl = document.querySelector("[data-venue-qr-link]");
     const qrDlEl = document.querySelector("[data-venue-qr-dl]");
     const mapFrame = document.querySelector(".map-frame");
     const map = mapFrame?.querySelector("iframe");
@@ -576,7 +537,6 @@ document.querySelectorAll("[data-venue-switch]").forEach((btn) => {
     }
     if (qrBadgeEl) qrBadgeEl.textContent = info.qrBadge;
     if (qrLabelEl) qrLabelEl.textContent = info.qrLabel;
-    if (qrLinkEl) qrLinkEl.href = info.dirHref;
     if (qrDlEl) {
       qrDlEl.href = info.qrPng;
       qrDlEl.setAttribute("download", info.qrDownloadName);
@@ -734,6 +694,18 @@ async function sendToSheet(payload) {
 }
 
 const rsvpForm = document.querySelector("[data-rsvp-form]");
+// Chọn "Xin vắng mặt" thì ẩn & bỏ qua ô buổi tiệc / số khách
+function syncAttendFields() {
+  if (!rsvpForm) return;
+  const absent = rsvpForm.elements.namedItem("attendance")?.value === "no";
+  rsvpForm.querySelectorAll("[data-attend-only]").forEach((field) => {
+    field.hidden = absent;
+    field.querySelectorAll("select, input").forEach((control) => { control.disabled = absent; });
+  });
+}
+rsvpForm?.addEventListener("change", (event) => {
+  if (event.target.name === "attendance") syncAttendFields();
+});
 rsvpForm?.addEventListener("submit", async (event) => {
   event.preventDefault();
   const status = document.querySelector("[data-form-status]");
@@ -766,6 +738,7 @@ rsvpForm?.addEventListener("submit", async (event) => {
       website: formData.get("website"),
     });
     rsvpForm.reset();
+    syncAttendFields();
     status.textContent = "Cảm ơn bạn! Huy và Phương đã nhận được phản hồi.";
   } catch {
     status.textContent = "Chưa gửi được. Bạn kiểm tra mạng rồi thử lại nhé.";

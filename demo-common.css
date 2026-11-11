@@ -92,16 +92,6 @@ p, blockquote, address { text-wrap: pretty; }
     radial-gradient(90% 70% at 85% 95%, rgba(0, 0, 0, 0.12), transparent 60%),
     linear-gradient(160deg, var(--ph-1), var(--ph-2));
 }
-.ph::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .5 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.25'/%3E%3C/svg%3E");
-  mix-blend-mode: overlay;
-  opacity: 0.45;
-}
 .ph img {
   position: absolute;
   inset: 0;
@@ -305,6 +295,14 @@ p, blockquote, address { text-wrap: pretty; }
   overflow: hidden;
   clip: rect(0 0 0 0);
 }
+/* Cuộn xuống thì thu nút nổi vào để không che nội dung, cuộn lên thì hiện lại */
+.floating-controls { transition: transform 0.3s ease, opacity 0.3s ease; }
+.floating-controls:focus-within { transform: none; opacity: 1; pointer-events: auto; }
+.floating-controls.is-tucked {
+  transform: translateX(calc(100% + 24px));
+  opacity: 0;
+  pointer-events: none;
+}
 .demo-music:focus-visible,
 .demo-heart-btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
 .demo-music .music-bars { display: flex; align-items: center; gap: 3px; height: 16px; }
@@ -449,8 +447,8 @@ body.is-invitation-locked { overflow: hidden; }
 .invitation-gate-card .gate-date {
   margin: 0 0 16px;
   opacity: 0.82;
-  font: 500 13px/1.4 var(--f-body);
-  letter-spacing: 0.22em;
+  font: 600 13px/1.4 var(--f-body);
+  letter-spacing: 0.12em;
 }
 .invitation-gate-card .gate-guest-pill {
   display: inline-flex;
@@ -478,8 +476,8 @@ body.is-invitation-locked { overflow: hidden; }
   background: transparent;
   color: inherit;
   cursor: pointer;
-  font: 600 11px/1 var(--f-body);
-  letter-spacing: 0.22em;
+  font: 600 12px/1 var(--f-body);
+  letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 .invitation-gate-card button span {
@@ -609,4 +607,4 @@ body.is-invitation-locked { overflow: hidden; }
 .theme-close p { margin: 0; color: var(--accent); font: 600 11px/1.5 var(--f-body); letter-spacing: 0.24em; text-transform: uppercase; }
 .theme-close h2 { margin: 18px 0 14px; font: 400 60px/1.04 var(--f-display); }
 .theme-close h2 i { color: var(--accent); }
-.theme-close span { color: var(--muted); font-size: 13px; letter-spacing: 0.22em; }
+.theme-close span { color: var(--muted); font-size: 14px; line-height: 1.6; }
