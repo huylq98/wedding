@@ -189,7 +189,7 @@ function mountInvitationGate(forceShow = false) {
       <div class="invitation-gate-card">
         <h2 class="gate-title" id="invitation-gate-title">Quốc Huy <i>&amp;</i> Thu Phương</h2>
         <div class="gate-divider" aria-hidden="true"><span>❦</span></div>
-        <p class="gate-date">28 tháng 11, 2026</p>
+        <p class="gate-date">Tháng 11 · 2026</p>
         <p class="gate-invite-word">Thân Mời</p>
         <button type="button" data-open-invitation><span>囍</span>Mở thiệp</button>
       </div>

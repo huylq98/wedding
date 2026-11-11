@@ -14,7 +14,7 @@ body[data-theme="son"] {
   --gold: #c89b50;
   --line: rgba(132, 21, 18, 0.16);
   --on-accent: #fbecd0;
-  --f-display: "Cormorant Garamond", Georgia, serif;
+  --f-display: "Playfair Display", Georgia, serif;
   --ornament: "❖ 囍 ❖";
   --radius: 6px;
   --btn-radius: 6px;
@@ -168,12 +168,12 @@ body[data-theme="son"] {
   gap: 4px 10px;
   margin: 0;
   color: var(--ink);
-  font: 400 46px/1.02 var(--f-display);
-  letter-spacing: -0.02em;
+  font: 600 38px/1.15 var(--f-display);
+  letter-spacing: -0.01em;
 }
 .son-names i {
   color: var(--accent);
-  font: italic 400 34px/1 var(--f-display);
+  font: italic 400 30px/1 var(--f-display);
 }
 
 /* Sợi Tơ Hồng Nút Thắt Đồng Tâm tự vẽ nối Dâu – Rể (Hiệu ứng Tơ Duyên tinh giản, 1 nét chỉ đỏ thanh mảnh) */
@@ -318,13 +318,13 @@ body:not(.is-invitation-locked) .son-knot-red {
 .son-date-ledger dd {
   margin: 4px 0 0;
   color: var(--accent);
-  font: 300 50px/1 "Fraunces", var(--f-display);
-  letter-spacing: -0.03em;
+  font: 600 44px/1 var(--f-display);
+  letter-spacing: -0.02em;
 }
 .son-date-ledger .son-ledger-year {
-  font-size: 34px;
-  line-height: 1.45;
-  letter-spacing: -0.02em;
+  font-size: 26px;
+  line-height: 1.8;
+  letter-spacing: -0.01em;
 }
 .son-cover .son-lunar {
   margin: 10px 0 0;
@@ -594,11 +594,11 @@ body:not(.is-invitation-locked) .son-knot-red {
    PANEL ĐỎ ĐÔ THÔNG TIN LỄ CƯỚI & TIỆC CƯỚI (Tinh gọn theo chungdoi.com)
    ========================================================================== */
 .son-event {
-  padding: 28px 20px 36px;
+  padding: 32px 16px 36px;
 }
 .son-plaque {
   position: relative;
-  padding: 36px 20px 32px;
+  padding: 36px 18px 32px;
   border: 1px solid rgba(207, 163, 86, 0.55);
   border-radius: 12px;
   background: linear-gradient(180deg, #56100e 0%, #3d0907 100%);
@@ -636,12 +636,13 @@ body:not(.is-invitation-locked) .son-knot-red {
 }
 .son-plaque-families strong {
   color: #fff6e4;
-  font: 600 13.5px/1.3 var(--f-body);
+  font: 600 13px/1.35 var(--f-body);
 }
 .son-plaque-families small {
   margin-top: 2px;
   color: rgba(243, 223, 185, 0.7);
-  font-size: 11px;
+  font-size: 10.5px;
+  line-height: 1.35;
 }
 .son-plaque-announce {
   margin: 0 0 16px;
@@ -660,7 +661,7 @@ body:not(.is-invitation-locked) .son-knot-red {
 .son-plaque-couple strong {
   display: block;
   color: #fff6e4;
-  font: 400 32px/1.12 var(--f-display);
+  font: 600 28px/1.2 var(--f-display);
 }
 .son-plaque-couple span {
   display: block;
@@ -734,19 +735,19 @@ body:not(.is-invitation-locked) .son-knot-red {
 .son-plaque h3 {
   margin: 0;
   color: #fff4d8;
-  font: 600 24px/1.2 var(--f-display);
+  font: 600 20px/1.25 var(--f-display);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
 }
 .son-plaque h2 {
-  font-size: 28px;
+  font-size: 22px;
 }
 .son-plaque address {
-  margin-top: 5px;
-  color: rgba(249, 232, 198, 0.88);
+  margin-top: 6px;
+  color: rgba(249, 232, 198, 0.9);
   font-style: normal;
-  font-size: 13px;
-  line-height: 1.45;
+  font-size: 12px;
+  line-height: 1.5;
 }
 .son-event-map-link {
   display: inline-block;
@@ -936,9 +937,10 @@ body[data-theme="son"] .invitation-gate-card {
 }
 body[data-theme="son"] .invitation-gate-card .gate-title {
   margin: 6px 0 10px;
-  font-weight: 300;
-  font-size: 46px;
-  letter-spacing: -0.025em;
+  font-weight: 600;
+  font-size: 38px;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
   color: var(--gate-ink);
   text-shadow: none;
 }
@@ -946,8 +948,9 @@ body[data-theme="son"] .invitation-gate-card .gate-title i {
   display: block;
   margin: 4px 0;
   color: var(--gate-gold);
-  font-size: 28px;
+  font-size: 26px;
   font-style: italic;
+  font-weight: 400;
 }
 body[data-theme="son"] .invitation-gate-card .gate-divider {
   display: flex;

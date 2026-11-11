@@ -12,9 +12,9 @@
   --line: rgba(138, 35, 30, 0.16);
   --on-accent: #fff8ee;
   --backdrop: #2e090a;
-  --f-display: "Cormorant Garamond", Georgia, serif;
+  --f-display: "Playfair Display", Georgia, serif;
   --f-body: "Be Vietnam Pro", -apple-system, BlinkMacSystemFont, sans-serif;
-  --f-serif-vi: "Noto Serif Display", "Cormorant Garamond", Georgia, serif;
+  --f-serif-vi: "Playfair Display", Georgia, serif;
   --radius: 8px;
   --btn-radius: 999px;
   --ph-1: #e9d6c4;

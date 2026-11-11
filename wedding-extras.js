@@ -176,27 +176,27 @@ extras.innerHTML = `
       <button
         type="button"
         class="x-venue-card is-active"
-        data-venue-switch="groom"
-        role="tab"
-        aria-selected="true"
-      >
-        <span class="x-venue-badge">Lễ Thành Hôn</span>
-        <strong>${venueName}</strong>
-        <span class="x-venue-time">11:30 · 28/11/2026 (20/10 ÂL)</span>
-        <span class="x-venue-sub">${venueAddress}</span>
-      </button>
-
-      <button
-        type="button"
-        class="x-venue-card"
         data-venue-switch="bride"
         role="tab"
-        aria-selected="false"
+        aria-selected="true"
       >
         <span class="x-venue-badge">Tiệc Cưới Nhà Gái</span>
         <strong>${brideVenueName}</strong>
         <span class="x-venue-time">16:00 · 27/11/2026 (19/10 ÂL)</span>
         <span class="x-venue-sub">${brideVenueAddress}</span>
+      </button>
+
+      <button
+        type="button"
+        class="x-venue-card"
+        data-venue-switch="groom"
+        role="tab"
+        aria-selected="false"
+      >
+        <span class="x-venue-badge">Lễ Thành Hôn</span>
+        <strong>${venueName}</strong>
+        <span class="x-venue-time">11:30 · 28/11/2026 (20/10 ÂL)</span>
+        <span class="x-venue-sub">${venueAddress}</span>
       </button>
     </div>
 
@@ -204,17 +204,17 @@ extras.innerHTML = `
       <div class="x-location-qr-frame">
         <img
           data-venue-qr-img
-          src="${groomLocationQr}"
-          alt="Mã QR chỉ đường đến ${venueName}"
+          src="${brideLocationQr}"
+          alt="Mã QR chỉ đường đến ${brideVenueName}"
           loading="lazy"
         />
       </div>
       <div class="x-location-qr-info">
-        <span class="x-location-qr-kicker" data-venue-qr-badge>QR Chỉ Đường · Nhà Hàng</span>
-        <strong data-venue-qr-label>${venueName}</strong>
+        <span class="x-location-qr-kicker" data-venue-qr-badge>QR Chỉ Đường · Nhà Gái</span>
+        <strong data-venue-qr-label>${brideVenueName}</strong>
         <div class="x-location-qr-links">
-          <a class="x-location-qr-open" data-venue-qr-link href="${groomMapUrl}" target="_blank" rel="noopener">📍 Mở Google Maps</a>
-          <a class="x-location-qr-dl" data-venue-qr-dl href="qr-thiep-den-trang/qr-nha-hang.png" download="QR-Chi-Duong-Selena-Palace.png">⬇ Lưu QR</a>
+          <a class="x-location-qr-open" data-venue-qr-link href="${brideMapUrl}" target="_blank" rel="noopener">📍 Mở Google Maps</a>
+          <a class="x-location-qr-dl" data-venue-qr-dl href="qr-thiep-den-trang/qr-nha-gai.png" download="QR-Chi-Duong-Nha-Gai-Mao-Trung.png">⬇ Lưu QR</a>
         </div>
       </div>
     </div>
@@ -226,15 +226,15 @@ extras.innerHTML = `
         <button type="button" data-map-reveal>Xem bản đồ</button>
       </div>
       <iframe
-        title="Bản đồ đến ${venueName}"
-        data-src="${groomMapEmbed}"
+        title="Bản đồ đến ${brideVenueName}"
+        data-src="${brideMapEmbed}"
         loading="lazy"
         referrerpolicy="no-referrer-when-downgrade"
         hidden
       ></iframe>
     </div>
     <div class="x-actions">
-      <a class="x-btn is-solid" data-venue-dir href="${groomMapUrl}" target="_blank" rel="noopener">Chỉ đường Google Maps</a>
+      <a class="x-btn is-solid" data-venue-dir href="${brideMapUrl}" target="_blank" rel="noopener">Chỉ đường Google Maps</a>
     </div>
   </section>
 
@@ -244,8 +244,8 @@ extras.innerHTML = `
     </header>
     <form class="x-form" data-rsvp-form>
       <label class="x-field">
-        <span>Tên của bạn (không bắt buộc)</span>
-        <input name="guest-name" autocomplete="name" placeholder="Nhập tên hoặc để trống (Ẩn danh)" />
+        <span>Tên của bạn *</span>
+        <input name="guest-name" autocomplete="name" required placeholder="Nhập họ và tên của bạn" />
       </label>
       <fieldset class="x-choice">
         <legend>Tham dự</legend>
@@ -253,10 +253,10 @@ extras.innerHTML = `
         <label><input type="radio" name="attendance" value="no" /><span>Xin vắng mặt</span></label>
       </fieldset>
       <label class="x-field">
-        <span>Buổi lễ</span>
+        <span>Buổi tiệc tham dự</span>
         <select name="event-side">
-          <option value="Lễ Thành Hôn (11:30 · 28/11 tại Selena Palace, Hà Nội)">Lễ Thành Hôn · 11:30 Thứ Bảy 28/11 (Selena Palace)</option>
           <option value="Tiệc Cưới Nhà Gái (16:00 · 27/11 tại Nhà văn hoá Tổ Dân Phố Mao Trung, Bắc Ninh)">Tiệc Cưới Nhà Gái · 16:00 Thứ Sáu 27/11 (Tổ Dân Phố Mao Trung)</option>
+          <option value="Lễ Thành Hôn (11:30 · 28/11 tại Selena Palace, Hà Nội)">Lễ Thành Hôn · 11:30 Thứ Bảy 28/11 (Selena Palace)</option>
           <option value="Tham dự cả hai ngày (27/11 & 28/11)">Tham dự cả hai ngày (27/11 &amp; 28/11)</option>
         </select>
       </label>
@@ -748,7 +748,12 @@ rsvpForm?.addEventListener("submit", async (event) => {
   try {
     const eventSide = formData.get("event-side") || "";
     const rawMsg = (formData.get("message") || "").toString().trim();
-    const guestName = (formData.get("guest-name") || "").toString().trim() || "Ẩn danh";
+    const guestName = (formData.get("guest-name") || "").toString().trim();
+    if (!guestName) {
+      status.textContent = "Vui lòng nhập tên của bạn để cô dâu chú rể tiện sắp xếp tiếp đón nhé.";
+      button.disabled = false;
+      return;
+    }
     const combinedMessage = eventSide
       ? rawMsg ? `[${eventSide}] ${rawMsg}` : `[${eventSide}]`
       : rawMsg;
