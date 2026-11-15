@@ -60,34 +60,40 @@ extras.innerHTML = `
 
   <section class="x-section x-story" data-reveal>
     <header class="x-head">
-      <h2>Chuyện Tình Yêu</h2>
+      <p class="x-kicker">Milestones</p>
+      <h2>Hành Trình</h2>
     </header>
-    <ol class="x-story-list">
-      <li>
-        <figure class="ph" style="--ratio: 1" data-lightbox="images/story-1.jpg" data-caption="Lần đầu gặp gỡ"><img src="images/story-1.jpg" alt="Huy và Phương nhìn nhau" loading="lazy" /></figure>
-        <div>
-          <span class="x-story-when">Khởi duyên · Hà Nội</span>
-          <h3>Lần đầu gặp gỡ</h3>
-          <p>Hai con đường giao nhau trong một chiều thu Hà Nội.</p>
+    <div class="x-story-grid">
+      <article class="x-story-item">
+        <figure class="ph x-story-ph" style="--ratio: 4 / 5" data-lightbox="images/story-1.jpg" data-caption="Hà Nội · Ngày gặp gỡ">
+          <img src="images/story-1.jpg" alt="Huy và Phương nhìn nhau" loading="lazy" />
+        </figure>
+        <div class="x-story-meta">
+          <span class="x-story-tag">Hà Nội</span>
+          <h3 class="x-story-title">Ngày gặp gỡ</h3>
         </div>
-      </li>
-      <li>
-        <figure class="ph" style="--ratio: 1" data-lightbox="images/story-2.jpg" data-caption="Lời cầu hôn"><img src="images/story-2.jpg" alt="Huy hôn tay Phương" loading="lazy" /></figure>
-        <div>
-          <span class="x-story-when">Hẹn ước</span>
-          <h3>Lời cầu hôn</h3>
-          <p>Một câu hỏi khẽ khàng, một cái gật đầu trọn vẹn.</p>
+      </article>
+
+      <article class="x-story-item">
+        <figure class="ph x-story-ph" style="--ratio: 4 / 5" data-lightbox="images/story-2.jpg" data-caption="Hẹn ước · Lời hẹn ước">
+          <img src="images/story-2.jpg" alt="Huy hôn tay Phương" loading="lazy" />
+        </figure>
+        <div class="x-story-meta">
+          <span class="x-story-tag">Hẹn ước</span>
+          <h3 class="x-story-title">Lời hẹn ước</h3>
         </div>
-      </li>
-      <li>
-        <figure class="ph" style="--ratio: 1" data-lightbox="images/story-3.jpg" data-caption="Về chung một nhà"><img src="images/story-3.jpg" alt="Huy vén khăn voan cho Phương" loading="lazy" /></figure>
-        <div>
-          <span class="x-story-when">28 · 11 · 2026</span>
-          <h3>Về chung một nhà</h3>
-          <p>Cùng nhau mở ra chương mới dưới một mái nhà.</p>
+      </article>
+
+      <article class="x-story-item">
+        <figure class="ph x-story-ph" style="--ratio: 4 / 5" data-lightbox="images/story-3.jpg" data-caption="Tháng 11 · 2026 · Ngày chung đôi">
+          <img src="images/story-3.jpg" alt="Huy vén khăn voan cho Phương" loading="lazy" />
+        </figure>
+        <div class="x-story-meta">
+          <span class="x-story-tag">Tháng 11 · 2026</span>
+          <h3 class="x-story-title">Ngày chung đôi</h3>
         </div>
-      </li>
-    </ol>
+      </article>
+    </div>
   </section>
 
   <section class="x-section x-countdown" data-reveal>

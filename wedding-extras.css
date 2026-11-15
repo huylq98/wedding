@@ -108,56 +108,71 @@
   font: 700 16px/1 "Noto Serif TC", "SimSun", serif;
 }
 
-/* 2. Chuyện của chúng mình — Dòng thời gian nối chỉ vàng */
-.x-story-list {
-  position: relative;
+/* 2. Hành trình — Minimalist Editorial Triptych */
+.x-story-grid {
   display: grid;
-  gap: 28px;
-  margin: 0;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 720px;
+  margin: 0 auto;
   padding: 0;
   list-style: none;
-  text-align: left;
 }
-.x-story-list li {
+.x-story-item {
   position: relative;
-  display: grid;
-  grid-template-columns: 118px 1fr;
-  gap: 18px;
-  align-items: center;
-  padding: 14px;
-  border: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  transition: transform 0.4s cubic-bezier(0.2, 0.75, 0.25, 1);
+}
+.x-story-item:hover {
+  transform: translateY(-4px);
+}
+.x-story-ph {
   border-radius: var(--radius);
+  border: 1px solid var(--line);
+  box-shadow: 0 12px 28px -18px rgba(60, 14, 12, 0.2);
   background: var(--paper);
-  box-shadow: 0 14px 34px -26px rgba(60, 14, 12, 0.22);
 }
-.x-story-list li:nth-child(even) {
-  grid-template-columns: 1fr 118px;
-  text-align: right;
+.x-story-meta {
+  padding-top: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
 }
-.x-story-list li:nth-child(even) .ph { order: 2; }
-.x-story-list .ph {
-  border-radius: calc(var(--radius) + 40px) calc(var(--radius) + 40px) var(--radius) var(--radius);
-  border: 1px solid color-mix(in srgb, var(--gold) 45%, transparent);
-}
-.x-story-when {
+.x-story-tag {
   display: inline-block;
-  padding: 3px 10px;
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--accent) 10%, transparent);
-  color: var(--accent);
-  font: 600 12px/1.4 var(--f-body);
-  letter-spacing: 0.08em;
+  font: 500 11px/1.4 var(--f-body);
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-}
-.x-story-list h3 {
-  margin: 8px 0 5px;
-  font: 600 22px/1.2 var(--f-display);
-}
-.x-story-list p {
-  margin: 0;
   color: var(--muted);
-  font-size: 13px;
-  line-height: 1.6;
+}
+.x-story-title {
+  margin: 2px 0 0;
+  font: 600 17px/1.3 var(--f-display);
+  color: var(--ink);
+  letter-spacing: 0.01em;
+  text-wrap: balance;
+}
+
+@media (max-width: 640px) {
+  .x-story-grid {
+    gap: 12px;
+  }
+  .x-story-meta {
+    padding-top: 10px;
+    gap: 3px;
+  }
+  .x-story-tag {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+  }
+  .x-story-title {
+    font-size: 13.5px;
+    line-height: 1.25;
+    text-wrap: balance;
+  }
 }
 
 /* 3. Album ảnh cưới (Lật 3D Coverflow + Dạng lưới) + Lightbox */
@@ -1364,6 +1379,6 @@
   .x-head h2 { font-size: 32px; }
   .countdown strong { font-size: 30px; }
   .x-parent { font-size: 16px; }
-  .x-story-list li { grid-template-columns: 96px 1fr; }
-  .x-story-list li:nth-child(even) { grid-template-columns: 1fr 96px; }
+  .x-story-grid { gap: 8px; }
+  .x-story-title { font-size: 12px; }
 }
