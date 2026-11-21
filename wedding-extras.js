@@ -736,12 +736,7 @@ function createWishCard(wish) {
   name.textContent = wish.name || "Ẩn danh";
 
   authorWrap.append(icon, name);
-
-  const seal = document.createElement("span");
-  seal.className = "wish-card-seal";
-  seal.textContent = "Hỷ Sự";
-
-  head.append(authorWrap, seal);
+  head.append(authorWrap);
 
   const message = document.createElement("p");
   message.className = "wish-card-msg";
