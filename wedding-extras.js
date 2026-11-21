@@ -48,86 +48,22 @@ extras.innerHTML = `
           <figure class="x-album-3d-card ph" data-3d-index="5" data-lightbox="images/album-e.jpg" data-caption="Quốc Huy &amp; Thu Phương">
             <img src="images/album-e.jpg" alt="Huy và Phương trong trang phục cưới" loading="lazy" />
           </figure>
+          <figure class="x-album-3d-card ph" data-3d-index="6" data-lightbox="images/story-1.jpg" data-caption="Quốc Huy &amp; Thu Phương · Hà Nội">
+            <img src="images/story-1.jpg" alt="Huy và Phương nhìn nhau" loading="lazy" />
+          </figure>
+          <figure class="x-album-3d-card ph" data-3d-index="7" data-lightbox="images/story-2.jpg" data-caption="Quốc Huy &amp; Thu Phương · Hẹn ước">
+            <img src="images/story-2.jpg" alt="Huy hôn tay Phương" loading="lazy" />
+          </figure>
+          <figure class="x-album-3d-card ph" data-3d-index="8" data-lightbox="images/story-3.jpg" data-caption="Quốc Huy &amp; Thu Phương · Ngày chung đôi">
+            <img src="images/story-3.jpg" alt="Huy vén khăn voan cho Phương" loading="lazy" />
+          </figure>
         </div>
         <button type="button" class="x-album-nav x-album-next" data-album-next aria-label="Ảnh tiếp theo">›</button>
       </div>
       <div class="x-album-3d-footer">
         <div class="x-album-dots" data-album-dots></div>
-        <span class="x-album-counter" data-album-counter>1 / 6</span>
+        <span class="x-album-counter" data-album-counter>1 / 9</span>
       </div>
-    </div>
-  </section>
-
-  <section class="x-section x-story" data-reveal>
-    <header class="x-head">
-      <p class="x-kicker">Milestones</p>
-      <h2>Hành Trình</h2>
-    </header>
-    <div class="x-story-grid">
-      <article class="x-story-item">
-        <figure class="ph x-story-ph" style="--ratio: 4 / 5" data-lightbox="images/story-1.jpg" data-caption="Hà Nội · Ngày gặp gỡ">
-          <img src="images/story-1.jpg" alt="Huy và Phương nhìn nhau" loading="lazy" />
-        </figure>
-        <div class="x-story-meta">
-          <span class="x-story-tag">Hà Nội</span>
-          <h3 class="x-story-title">Ngày gặp gỡ</h3>
-        </div>
-      </article>
-
-      <article class="x-story-item">
-        <figure class="ph x-story-ph" style="--ratio: 4 / 5" data-lightbox="images/story-2.jpg" data-caption="Hẹn ước · Lời hẹn ước">
-          <img src="images/story-2.jpg" alt="Huy hôn tay Phương" loading="lazy" />
-        </figure>
-        <div class="x-story-meta">
-          <span class="x-story-tag">Hẹn ước</span>
-          <h3 class="x-story-title">Lời hẹn ước</h3>
-        </div>
-      </article>
-
-      <article class="x-story-item">
-        <figure class="ph x-story-ph" style="--ratio: 4 / 5" data-lightbox="images/story-3.jpg" data-caption="Tháng 11 · 2026 · Ngày chung đôi">
-          <img src="images/story-3.jpg" alt="Huy vén khăn voan cho Phương" loading="lazy" />
-        </figure>
-        <div class="x-story-meta">
-          <span class="x-story-tag">Tháng 11 · 2026</span>
-          <h3 class="x-story-title">Ngày chung đôi</h3>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <section class="x-section x-countdown" data-reveal>
-    <header class="x-head">
-      <h2>Tháng 11 / 2026</h2>
-    </header>
-    <div class="x-calendar-sheet" data-cal-sheet aria-label="Lịch tháng 11 năm 2026">
-      <div class="x-cal-header">
-        <span class="x-cal-month">Tháng 11 · 2026</span>
-        <span class="x-cal-lunar">19 &amp; 20 / 10 Bính Ngọ</span>
-      </div>
-      <div class="x-cal-grid" aria-hidden="true">
-        <span class="x-cal-dow">T2</span><span class="x-cal-dow">T3</span><span class="x-cal-dow">T4</span><span class="x-cal-dow">T5</span><span class="x-cal-dow">T6</span><span class="x-cal-dow">T7</span><span class="x-cal-dow">CN</span>
-        <span class="x-cal-day is-muted">26</span><span class="x-cal-day is-muted">27</span><span class="x-cal-day is-muted">28</span><span class="x-cal-day is-muted">29</span><span class="x-cal-day is-muted">30</span><span class="x-cal-day is-muted">31</span><span class="x-cal-day">1</span>
-        <span class="x-cal-day">2</span><span class="x-cal-day">3</span><span class="x-cal-day">4</span><span class="x-cal-day">5</span><span class="x-cal-day">6</span><span class="x-cal-day">7</span><span class="x-cal-day">8</span>
-        <span class="x-cal-day">9</span><span class="x-cal-day">10</span><span class="x-cal-day">11</span><span class="x-cal-day">12</span><span class="x-cal-day">13</span><span class="x-cal-day">14</span><span class="x-cal-day">15</span>
-        <span class="x-cal-day">16</span><span class="x-cal-day">17</span><span class="x-cal-day">18</span><span class="x-cal-day">19</span><span class="x-cal-day">20</span><span class="x-cal-day">21</span><span class="x-cal-day">22</span>
-        <span class="x-cal-day">23</span><span class="x-cal-day">24</span><span class="x-cal-day">25</span><span class="x-cal-day">26</span><span class="x-cal-day is-bride-party" title="Tiệc Nhà Gái · 16:00 Thứ Sáu 27/11/2026">27<small class="x-cal-sub">Nhà gái</small></span><span class="x-cal-day is-wedding" data-cal-day-28 title="Lễ Thành Hôn · 11:30 Thứ Bảy 28/11/2026">28<b class="x-cal-seal-mark">囍<br/>28·11</b></span><span class="x-cal-day">29</span>
-        <span class="x-cal-day">30</span><span class="x-cal-day is-muted">1</span><span class="x-cal-day is-muted">2</span><span class="x-cal-day is-muted">3</span><span class="x-cal-day is-muted">4</span><span class="x-cal-day is-muted">5</span><span class="x-cal-day is-muted">6</span>
-      </div>
-      <div class="x-cal-footer">
-        <a
-          class="x-cal-gcal-link"
-          href="https://www.google.com/calendar/render?action=TEMPLATE&text=%C4%90%C3%A1m%20c%C6%B0%E1%BB%9Bi%20L%C3%AA%20Qu%E1%BB%91c%20Huy%20%26%20Nguy%E1%BB%85n%20V%C5%A9%20Thu%20Ph%C6%B0%C6%A1ng&dates=20261128T043000Z/20261128T070000Z&ctz=Asia/Ho_Chi_Minh&details=Tiec%20Nha%20Gai%3A%2016h00%20Thu%206%2027%2F11%2F2026%20tai%20Nha%20van%20hoa%20To%20Dan%20Pho%20Mao%20Trung%20(Phuong%20Phuong%20Lieu%20-%20TP.%20Bac%20Ninh).%20Le%20Thanh%20Hon%20%26%20Khai%20Tiec%3A%2011h30%20Thu%207%2028%2F11%2F2026%20tai%20Selena%20Palace%2C%20Ha%20Noi.&location=Selena%20Palace%2C%20Km%2019%20Qu%E1%BB%91c%20l%E1%BB%99%2032%2C%20%C4%90%E1%BB%A9c%20Th%C6%B0%E1%BB%A3ng%2C%20Ho%C3%A0i%20%C4%90%E1%BB%A9c%2C%20H%C3%A0%20N%E1%BB%99i"
-          target="_blank"
-          rel="noopener noreferrer"
-        >+ Thêm vào Google Calendar</a>
-      </div>
-    </div>
-    <div class="countdown" data-countdown>
-      <span><strong data-days>--</strong><small>Ngày</small></span>
-      <span><strong data-hours>--</strong><small>Giờ</small></span>
-      <span><strong data-minutes>--</strong><small>Phút</small></span>
-      <span><strong data-seconds>--</strong><small>Giây</small></span>
     </div>
   </section>
 
@@ -196,70 +132,6 @@ extras.innerHTML = `
     </div>
     <div class="x-actions">
       <a class="x-btn is-solid" data-venue-dir href="${brideMapUrl}" target="_blank" rel="noopener">Chỉ đường Google Maps</a>
-    </div>
-  </section>
-
-  <section class="x-section x-rsvp" data-reveal>
-    <header class="x-head">
-      <h2>Xác Nhận Tham Dự</h2>
-    </header>
-    <form class="x-form" data-rsvp-form>
-      <label class="x-field">
-        <span>Tên của bạn *</span>
-        <input name="guest-name" autocomplete="name" required placeholder="Nhập họ và tên của bạn" />
-      </label>
-      <fieldset class="x-choice">
-        <legend>Tham dự</legend>
-        <label><input type="radio" name="attendance" value="yes" required checked /><span>♥ Sẽ tham dự</span></label>
-        <label><input type="radio" name="attendance" value="no" /><span>Xin vắng mặt</span></label>
-      </fieldset>
-      <label class="x-field" data-attend-only>
-        <span>Buổi tiệc tham dự</span>
-        <select name="event-side">
-          <option value="Tiệc Cưới Nhà Gái (16:00 · 27/11 tại Nhà văn hoá Tổ Dân Phố Mao Trung, Bắc Ninh)">Tiệc Nhà Gái · Thứ Sáu 27/11</option>
-          <option value="Lễ Thành Hôn (11:30 · 28/11 tại Selena Palace, Hà Nội)">Lễ Thành Hôn · Thứ Bảy 28/11</option>
-          <option value="Tham dự cả hai ngày (27/11 & 28/11)">Cả hai ngày 27 &amp; 28/11</option>
-        </select>
-      </label>
-      <label class="x-field" data-attend-only>
-        <span>Số khách</span>
-        <select name="guests">
-          <option value="1">1 người</option>
-          <option value="2">2 người</option>
-          <option value="3">3 người</option>
-          <option value="4">4 người</option>
-          <option value="5">Gia đình / Nhóm</option>
-        </select>
-      </label>
-      <input class="x-hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
-      <button class="x-btn is-solid" type="submit">Gửi xác nhận</button>
-      <p class="form-status" data-form-status role="status"></p>
-    </form>
-  </section>
-
-  <section class="x-section x-wishes" id="loi-chuc" data-reveal>
-    <header class="x-head">
-      <h2>Sổ Lưu Bút</h2>
-    </header>
-    <form class="x-form" data-wish-form>
-      <label class="x-field">
-        <input name="wish-name" autocomplete="name" placeholder="Nhập tên của bạn (để trống nếu ẩn danh)" aria-label="Tên người gửi (không bắt buộc)" />
-      </label>
-      <div class="x-field">
-        <div class="x-wish-chips" role="group" aria-label="Lời chúc gợi ý">
-          <button type="button" class="x-wish-chip" data-wish-suggest="Chúc Huy và Phương trăm năm tình viên mãn, bạc đầu nghĩa phu thê! 囍">Trăm năm viên mãn 囍</button>
-          <button type="button" class="x-wish-chip" data-wish-suggest="Chúc hai bạn mãi thương nhau nồng ấm như ngày đầu tiên! ♥">Mãi thương như ngày đầu ♥</button>
-          <button type="button" class="x-wish-chip" data-wish-suggest="Tân hôn hạnh phúc, sớm đón thiên thần nhỏ đáng yêu nhé!">Tân hôn hạnh phúc ✿</button>
-        </div>
-        <textarea name="wish-message" rows="3" required maxlength="500" placeholder="Nhập lời chúc *" aria-label="Lời chúc"></textarea>
-      </div>
-      <input class="x-hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
-      <button class="x-btn is-solid" type="submit">Gửi lời chúc</button>
-      <p class="form-status" data-wish-status role="status"></p>
-    </form>
-    <div class="wish-preview" aria-live="polite">
-      <p class="wish-empty" data-wish-empty></p>
-      <div class="wish-preview-list" data-wish-list></div>
     </div>
   </section>
 
@@ -474,10 +346,12 @@ function updateCountdown() {
   return true;
 }
 
-updateCountdown();
-const countdownTimer = window.setInterval(() => {
-  if (!updateCountdown()) window.clearInterval(countdownTimer);
-}, 1000);
+if (document.querySelector("[data-countdown]")) {
+  updateCountdown();
+  const countdownTimer = window.setInterval(() => {
+    if (!updateCountdown()) window.clearInterval(countdownTimer);
+  }, 1000);
+}
 
 // Chuyển đổi địa điểm Nhà Trai / Nhà Gái trên bản đồ & Mã QR Chỉ Đường
 const venueConfig = {
@@ -902,5 +776,7 @@ wishForm?.addEventListener("submit", async (event) => {
   showWishBubble();
 });
 
-if (sheetEndpoint) loadApprovedWishes();
-else renderPreviewWishes();
+if (document.querySelector("[data-wish-list]")) {
+  if (sheetEndpoint) loadApprovedWishes();
+  else renderPreviewWishes();
+}
