@@ -146,29 +146,61 @@ if (musicButton) {
   });
 }
 
-// Cá nhân hóa tên khách mời từ URL (?khach=... / ?guest=... / ?to=...) học hỏi từ chungdoi.com
+function escapeHtml(str) {
+  return String(str ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+function formatGuestDisplay(rawName) {
+  if (!rawName) return "";
+  let clean = rawName.trim();
+  clean = clean.replace(/^(Kính mời|Thân mời|Mời)\s*[:：\-–]?\s*/i, "");
+  return clean;
+}
+
+// Cá nhân hóa tên khách mời từ URL (?khach=... / ?guest=... / ?to=... / ?ten=...)
 function getGuestNameFromUrl() {
   const params = new URLSearchParams(window.location.search);
-  const raw = params.get("khach") || params.get("guest") || params.get("to") || params.get("ten") || "";
+  const raw = params.get("khach") || params.get("guest") || params.get("to") || params.get("ten") || params.get("k") || params.get("u") || "";
   return raw.trim();
 }
 
 function applyGuestPersonalization(guestName) {
-  const display = guestName || "Bạn cùng Người thương";
+  const display = formatGuestDisplay(guestName);
   document.querySelectorAll(".son-guest, .td-guest, .cht-guest, [data-guest-name]").forEach((el) => {
-    el.textContent = display;
+    if (display) {
+      el.textContent = display;
+      el.hidden = false;
+    } else {
+      el.textContent = "";
+      el.hidden = true;
+    }
   });
   const gateGuest = document.querySelector("[data-gate-guest]");
   if (gateGuest) {
-    gateGuest.innerHTML = `Thân mời: <strong>${display}</strong>`;
+    if (display) {
+      gateGuest.innerHTML = `<strong>${escapeHtml(display)}</strong>`;
+      gateGuest.hidden = false;
+    } else {
+      gateGuest.innerHTML = "";
+      gateGuest.hidden = true;
+    }
   }
-  if (guestName) {
+  if (display) {
     const rsvpInput = document.querySelector("[data-rsvp-form] input[name='guest-name']");
-    if (rsvpInput && !rsvpInput.value) rsvpInput.value = guestName;
+    if (rsvpInput && !rsvpInput.value) rsvpInput.value = display;
     const wishInput = document.querySelector("[data-wish-form] input[name='wish-name']");
-    if (wishInput && !wishInput.value) wishInput.value = guestName;
+    if (wishInput && !wishInput.value) wishInput.value = display;
   }
 }
+window.escapeHtml = escapeHtml;
+window.formatGuestDisplay = formatGuestDisplay;
+window.getGuestNameFromUrl = getGuestNameFromUrl;
+window.applyGuestPersonalization = applyGuestPersonalization;
 
 // Cổng mở thiệp (Invitation Gate)
 const invitationTheme = document.body.dataset.theme;
@@ -184,7 +216,8 @@ function mountInvitationGate(forceShow = false) {
   if (alreadyOpened) return;
 
   document.querySelector(".invitation-gate")?.remove();
-  const currentGuest = getGuestNameFromUrl() || "Bạn cùng Người thương";
+  const currentGuest = getGuestNameFromUrl();
+  const display = formatGuestDisplay(currentGuest);
 
   const gate = document.createElement("div");
   gate.className = "invitation-gate";
@@ -199,7 +232,10 @@ function mountInvitationGate(forceShow = false) {
         <h2 class="gate-title" id="invitation-gate-title">Quốc Huy <i>&amp;</i> Thu Phương</h2>
         <div class="gate-divider" aria-hidden="true"><span>❦</span></div>
         <p class="gate-date">Tháng 11 · 2026</p>
-        <p class="gate-invite-word">Thân Mời</p>
+        <div class="gate-invite-section">
+          <p class="gate-invite-word">Thân Mời</p>
+          <div class="gate-guest-pill" data-gate-guest ${display ? "" : "hidden"}>${display ? `<strong>${escapeHtml(display)}</strong>` : ""}</div>
+        </div>
         <button type="button" data-open-invitation><span>囍</span>Mở thiệp</button>
       </div>
     </div>
@@ -326,60 +362,6 @@ function mountAmbientBlossoms() {
 mountAmbientBlossoms();
 
 mountInvitationGate(false);
-
-// Hộp thoại tạo link mời cá nhân hóa tên khách (mở từ nút ở cuối thiệp để không làm rối màn hình khách)
-const guestTriggerBtn = document.querySelector("[data-open-guest-tool]");
-if (guestTriggerBtn) {
-  const popover = document.createElement("div");
-  popover.className = "guest-link-popover";
-  popover.hidden = true;
-  popover.innerHTML = `
-    <strong>Cá nhân hóa tên khách mời</strong>
-    <p>Nhập tên khách (VD: <em>Gia đình Anh Minh</em>) để tự động in lên phong bì &amp; bức thư mời:</p>
-    <div class="guest-link-row">
-      <input type="text" data-guest-input placeholder="VD: Anh Tuấn & Chị Lan..." value="${getGuestNameFromUrl().replace(/"/g, "&quot;")}" />
-      <button type="button" data-guest-copy>Sao chép link</button>
-    </div>
-    <small class="guest-link-status" data-guest-status></small>
-  `;
-  document.body.append(popover);
-
-  guestTriggerBtn.addEventListener("click", (e) => {
-    e.stopPropagation();
-    popover.hidden = !popover.hidden;
-    if (!popover.hidden) popover.querySelector("[data-guest-input]")?.focus();
-  });
-
-  const guestInput = popover.querySelector("[data-guest-input]");
-  const guestCopyBtn = popover.querySelector("[data-guest-copy]");
-  const guestStatus = popover.querySelector("[data-guest-status]");
-
-  guestInput?.addEventListener("input", () => {
-    const val = guestInput.value.trim();
-    applyGuestPersonalization(val);
-  });
-
-  guestCopyBtn?.addEventListener("click", async () => {
-    const val = guestInput.value.trim();
-    const url = new URL(window.location.href);
-    url.searchParams.delete("open");
-    if (val) url.searchParams.set("khach", val);
-    else url.searchParams.delete("khach");
-    applyGuestPersonalization(val);
-    try {
-      await navigator.clipboard.writeText(url.toString());
-      guestStatus.textContent = `✓ Đã sao chép link mời dành cho "${val || "Bạn cùng Người thương"}"!`;
-    } catch {
-      guestStatus.textContent = url.toString();
-    }
-  });
-
-  document.addEventListener("click", (e) => {
-    if (!popover.hidden && !popover.contains(e.target) && !guestTriggerBtn.contains(e.target)) {
-      popover.hidden = true;
-    }
-  });
-}
 
 const revealItems = document.querySelectorAll("[data-reveal]");
 if ("IntersectionObserver" in window) {

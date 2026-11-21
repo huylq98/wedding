@@ -317,6 +317,7 @@ const main = document.querySelector("main");
 const footer = main?.querySelector(":scope > footer");
 if (footer) main.insertBefore(extras, footer);
 else main?.append(extras);
+window.applyGuestPersonalization?.(window.getGuestNameFromUrl?.());
 
 if (window.location.hash) {
   const anchorTarget = document.getElementById(decodeURIComponent(window.location.hash.slice(1)));

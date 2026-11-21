@@ -41,6 +41,21 @@ Dùng hằng ngày:
 
 Các mẫu có nhạc piano tạm do trình duyệt tạo. Nhạc chỉ phát khi khách bấm nút.
 
+## Chức năng tạo link mời cá nhân hoá từng khách
+
+Thiệp hỗ trợ cá nhân hoá tên khách mời qua tham số URL `?khach=...` (hoặc `?to=...`, `?guest=...`, `?ten=...`):
+- **Bìa ngoài (Cổng mở thiệp)**: Chữ **"Thân Mời"** hiển thị nổi bật tên khách mời (VD: *Thân mời: Anh Phong & Người thương*).
+- **Thiệp chính**: Phần bảng đỏ Thông tin lễ cưới có khung trang trọng **"Thân mời: [Tên khách] tới dự bữa tiệc chung vui..."**.
+- **Xác nhận tham dự (RSVP) & Sổ lưu bút**: Tự động điền sẵn tên khách vào ô họ và tên.
+
+### Cách gửi link mời cho khách:
+1. **Lấy từ file Excel**:
+   - Mở file `Danh_sach_khach_moi_Chu_re_Quoc_Huy.xlsx`, chuyển tới tab **`👥 Danh Sách Khách Mời`**.
+   - Cột **R (`Link Thiệp Mời Online`)** đã được tạo sẵn đường link cá nhân hóa cho toàn bộ 133 khách mời, chỉ cần copy gửi cho từng người.
+2. **Tự tạo thủ công**:
+   - Thêm đuôi `?khach=Tên_Khách` vào cuối link (VD: `https://thu-phuong-va-quoc-huy.wedding/?khach=Anh+Phong+%26+Người+thương`).
+   - Khách mở link sẽ thấy tên mình xuất hiện trang trọng ở mục "Thân mời" mà không hề thấy bất kỳ công cụ kỹ thuật nào.
+
 Cần xác nhận trước khi gửi khách mời:
 
 - Địa chỉ Selena Palace tại Km 19 Quốc lộ 32, Đức Thượng, Hoài Đức, Hà Nội.
