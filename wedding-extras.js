@@ -137,26 +137,42 @@ extras.innerHTML = `
 
   <section class="x-section x-wishes" id="loi-chuc" data-reveal>
     <header class="x-head">
+      <p class="x-kicker">Gửi Gắm Yêu Thương</p>
       <h2>Sổ Lưu Bút</h2>
+      <p class="x-wish-sub">Những lời chúc phúc ngọt ngào gửi tới Quốc Huy &amp; Thu Phương</p>
     </header>
-    <form class="x-form" data-wish-form>
-      <label class="x-field">
-        <input name="wish-name" autocomplete="name" placeholder="Nhập tên của bạn (để trống nếu ẩn danh)" aria-label="Tên người gửi (không bắt buộc)" />
-      </label>
-      <div class="x-field">
-        <div class="x-wish-chips" role="group" aria-label="Lời chúc gợi ý">
-          <button type="button" class="x-wish-chip" data-wish-suggest="Chúc Huy và Phương trăm năm tình viên mãn, bạc đầu nghĩa phu thê! 囍">Trăm năm viên mãn 囍</button>
-          <button type="button" class="x-wish-chip" data-wish-suggest="Chúc hai bạn mãi thương nhau nồng ấm như ngày đầu tiên! ♥">Mãi thương như ngày đầu ♥</button>
-          <button type="button" class="x-wish-chip" data-wish-suggest="Tân hôn hạnh phúc, sớm đón thiên thần nhỏ đáng yêu nhé!">Tân hôn hạnh phúc ✿</button>
+    <div class="x-wish-box">
+      <form class="x-form x-wish-form" data-wish-form>
+        <div class="x-wish-field">
+          <label class="x-wish-input-wrap">
+            <span class="x-wish-input-icon" aria-hidden="true">✎</span>
+            <input name="wish-name" autocomplete="name" placeholder="Tên của bạn (để trống nếu gửi Ẩn danh)" aria-label="Tên người gửi" />
+          </label>
         </div>
-        <textarea name="wish-message" rows="3" required maxlength="500" placeholder="Nhập lời chúc *" aria-label="Lời chúc"></textarea>
-      </div>
-      <input class="x-hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
-      <button class="x-btn is-solid" type="submit">Gửi lời chúc</button>
-      <p class="form-status" data-wish-status role="status"></p>
-    </form>
+        <div class="x-wish-field">
+          <div class="x-wish-chips" role="group" aria-label="Lời chúc gợi ý">
+            <button type="button" class="x-wish-chip" data-wish-suggest="Chúc Huy và Phương trăm năm tình viên mãn, bạc đầu nghĩa phu thê! 囍">Trăm năm viên mãn 囍</button>
+            <button type="button" class="x-wish-chip" data-wish-suggest="Chúc hai bạn mãi thương nhau nồng ấm như ngày đầu tiên! ♥">Mãi thương như ngày đầu ♥</button>
+            <button type="button" class="x-wish-chip" data-wish-suggest="Tân hôn hạnh phúc, sớm đón thiên thần nhỏ đáng yêu nhé! ✿">Tân hôn hạnh phúc ✿</button>
+          </div>
+          <div class="x-wish-textarea-wrap">
+            <textarea name="wish-message" rows="3" required maxlength="500" placeholder="Viết lời chúc phúc của bạn… *" aria-label="Lời chúc"></textarea>
+          </div>
+        </div>
+        <input class="x-hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
+        <button class="x-btn is-solid x-wish-submit-btn" type="submit">
+          <span>Gửi lời chúc phúc</span>
+          <svg class="x-ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8l11-5-4 10-2-4-5-1z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        </button>
+        <p class="form-status" data-wish-status role="status"></p>
+      </form>
+    </div>
     <div class="wish-preview" aria-live="polite">
-      <p class="wish-empty" data-wish-empty></p>
+      <div class="wish-preview-head">
+        <span class="wish-preview-kicker">Sổ Lưu Niệm</span>
+        <span class="wish-preview-divider" aria-hidden="true">❦</span>
+      </div>
+      <p class="wish-empty" data-wish-empty>Hãy là người đầu tiên gửi lời chúc phúc tới Huy &amp; Phương ♥</p>
       <div class="wish-preview-list" data-wish-list></div>
     </div>
   </section>
@@ -702,16 +718,41 @@ function readPreviewWishes() {
 
 // wishes: mới nhất đứng trước.
 function renderWishes(wishes) {
+  if (!wishList) return;
   wishList.replaceChildren();
-  wishEmpty.hidden = wishes.length > 0;
+  if (wishEmpty) wishEmpty.hidden = wishes.length > 0;
   wishes.forEach((wish) => {
-    const item = document.createElement("article");
+    const card = document.createElement("article");
+    card.className = "wish-card";
+
+    const head = document.createElement("div");
+    head.className = "wish-card-head";
+
+    const authorWrap = document.createElement("div");
+    authorWrap.className = "wish-card-author-wrap";
+
+    const icon = document.createElement("span");
+    icon.className = "wish-card-icon";
+    icon.textContent = "♥";
+
     const name = document.createElement("strong");
+    name.className = "wish-card-author";
+    name.textContent = wish.name || "Ẩn danh";
+
+    authorWrap.append(icon, name);
+
+    const seal = document.createElement("span");
+    seal.className = "wish-card-seal";
+    seal.textContent = "Hỷ Sự";
+
+    head.append(authorWrap, seal);
+
     const message = document.createElement("p");
-    name.textContent = wish.name;
+    message.className = "wish-card-msg";
     message.textContent = wish.message;
-    item.append(name, message);
-    wishList.append(item);
+
+    card.append(head, message);
+    wishList.append(card);
   });
 }
 
