@@ -135,6 +135,32 @@ extras.innerHTML = `
     </div>
   </section>
 
+  <section class="x-section x-wishes" id="loi-chuc" data-reveal>
+    <header class="x-head">
+      <h2>Sổ Lưu Bút</h2>
+    </header>
+    <form class="x-form" data-wish-form>
+      <label class="x-field">
+        <input name="wish-name" autocomplete="name" placeholder="Nhập tên của bạn (để trống nếu ẩn danh)" aria-label="Tên người gửi (không bắt buộc)" />
+      </label>
+      <div class="x-field">
+        <div class="x-wish-chips" role="group" aria-label="Lời chúc gợi ý">
+          <button type="button" class="x-wish-chip" data-wish-suggest="Chúc Huy và Phương trăm năm tình viên mãn, bạc đầu nghĩa phu thê! 囍">Trăm năm viên mãn 囍</button>
+          <button type="button" class="x-wish-chip" data-wish-suggest="Chúc hai bạn mãi thương nhau nồng ấm như ngày đầu tiên! ♥">Mãi thương như ngày đầu ♥</button>
+          <button type="button" class="x-wish-chip" data-wish-suggest="Tân hôn hạnh phúc, sớm đón thiên thần nhỏ đáng yêu nhé!">Tân hôn hạnh phúc ✿</button>
+        </div>
+        <textarea name="wish-message" rows="3" required maxlength="500" placeholder="Nhập lời chúc *" aria-label="Lời chúc"></textarea>
+      </div>
+      <input class="x-hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
+      <button class="x-btn is-solid" type="submit">Gửi lời chúc</button>
+      <p class="form-status" data-wish-status role="status"></p>
+    </form>
+    <div class="wish-preview" aria-live="polite">
+      <p class="wish-empty" data-wish-empty></p>
+      <div class="wish-preview-list" data-wish-list></div>
+    </div>
+  </section>
+
   <section class="x-section x-gift" id="mung-cuoi" data-reveal>
     <header class="x-head">
       <h2>Hộp Quà Mừng</h2>
