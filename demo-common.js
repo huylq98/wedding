@@ -155,18 +155,53 @@ function escapeHtml(str) {
     .replace(/'/g, "&#39;");
 }
 
+function decodeGuestParam(raw) {
+  if (!raw) return "";
+  let str = String(raw).trim();
+  // Thay dấu + bằng khoảng trắng nếu URL được encode theo chuẩn application/x-www-form-urlencoded
+  str = str.replace(/\+/g, " ");
+  // Giải mã tối đa 3 lần để xử lý triệt để trường hợp double/triple encode từ app chat (Zalo, Messenger, Facebook webview)
+  for (let i = 0; i < 3; i++) {
+    if (/%[0-9a-fA-F]{2}/.test(str)) {
+      try {
+        const decoded = decodeURIComponent(str);
+        if (decoded === str) break;
+        str = decoded;
+      } catch {
+        break;
+      }
+    } else {
+      break;
+    }
+  }
+  // Thay thế dự phòng an toàn nếu còn sót mã url hoặc html entity
+  str = str.replace(/%26/gi, "&")
+           .replace(/&amp;/gi, "&")
+           .replace(/%20/gi, " ")
+           .replace(/%2b/gi, "+");
+  return str.trim();
+}
+
 function formatGuestDisplay(rawName) {
   if (!rawName) return "";
-  let clean = rawName.trim();
+  let clean = decodeGuestParam(rawName);
   clean = clean.replace(/^(Kính mời|Thân mời|Mời)\s*[:：\-–]?\s*/i, "");
-  return clean;
+  return clean.trim();
 }
 
 // Cá nhân hóa tên khách mời từ URL (?khach=... / ?guest=... / ?to=... / ?ten=...)
 function getGuestNameFromUrl() {
-  const params = new URLSearchParams(window.location.search);
-  const raw = params.get("khach") || params.get("guest") || params.get("to") || params.get("ten") || params.get("k") || params.get("u") || "";
-  return raw.trim();
+  const search = window.location.search || "";
+  // Tìm kiếm thông minh tham số tên khách (bắt cả trường hợp app chat/trình duyệt decode dấu & trần trong URL)
+  const match = search.match(/[?&](?:khach|guest|to|ten|k|u)=([^#]*)/i);
+  let raw = "";
+  if (match) {
+    raw = match[1].replace(/&(?:open|mode|tab|theme)=.*/i, "");
+  } else {
+    const params = new URLSearchParams(search);
+    raw = params.get("khach") || params.get("guest") || params.get("to") || params.get("ten") || params.get("k") || params.get("u") || "";
+  }
+  return decodeGuestParam(raw);
 }
 
 function applyGuestPersonalization(guestName) {
