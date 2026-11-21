@@ -174,8 +174,9 @@ function decodeGuestParam(raw) {
       break;
     }
   }
-  // Thay thế dự phòng an toàn nếu còn sót mã url hoặc html entity
+  // Thay thế dự phòng an toàn nếu còn sót mã url hoặc html entity hoặc đảo 26%
   str = str.replace(/%26/gi, "&")
+           .replace(/26%/g, "&")
            .replace(/&amp;/gi, "&")
            .replace(/%20/gi, " ")
            .replace(/%2b/gi, "+");
@@ -218,10 +219,12 @@ function applyGuestPersonalization(guestName) {
   const gateGuest = document.querySelector("[data-gate-guest]");
   if (gateGuest) {
     if (display) {
-      gateGuest.innerHTML = `<strong>${escapeHtml(display)}</strong>`;
+      const strong = gateGuest.querySelector("strong") || document.createElement("strong");
+      strong.textContent = display;
+      if (!gateGuest.contains(strong)) gateGuest.replaceChildren(strong);
       gateGuest.hidden = false;
     } else {
-      gateGuest.innerHTML = "";
+      gateGuest.replaceChildren();
       gateGuest.hidden = true;
     }
   }
@@ -269,12 +272,15 @@ function mountInvitationGate(forceShow = false) {
         <p class="gate-date">Tháng 11 · 2026</p>
         <div class="gate-invite-section">
           <p class="gate-invite-word">Thân Mời</p>
-          <div class="gate-guest-pill" data-gate-guest ${display ? "" : "hidden"}>${display ? `<strong>${escapeHtml(display)}</strong>` : ""}</div>
+          <div class="gate-guest-pill" data-gate-guest ${display ? "" : "hidden"}><strong></strong></div>
         </div>
         <button type="button" data-open-invitation><span>囍</span>Mở thiệp</button>
       </div>
     </div>
   `;
+
+  const pillStrong = gate.querySelector("[data-gate-guest] strong");
+  if (pillStrong) pillStrong.textContent = display || "";
 
   const behind = [...document.body.children].filter((el) => el !== gate && !el.classList.contains("ambient-fx"));
   behind.forEach((element) => { element.inert = true; });
