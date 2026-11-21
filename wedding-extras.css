@@ -1293,26 +1293,49 @@
   font-size: 13px;
   opacity: 0.7;
 }
+.wish-preview-hint {
+  margin: -10px auto 14px;
+  font: 400 11.5px/1 var(--f-body);
+  color: color-mix(in srgb, var(--gold) 85%, var(--accent));
+  letter-spacing: 0.05em;
+  opacity: 0.85;
+}
+.wish-preview-hint[hidden] {
+  display: none;
+}
 .wish-empty {
   margin: 12px 0 0;
   color: var(--muted);
   font: italic 400 13px/1.5 var(--f-body);
 }
 .wish-preview-list {
+  position: relative;
+  max-height: 400px;
+  overflow: hidden;
+  padding: 8px 4px;
+  mask-image: linear-gradient(to bottom, transparent 0%, black 7%, black 93%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 7%, black 93%, transparent 100%);
+}
+.wish-marquee-track {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  max-height: 480px;
-  overflow-y: auto;
-  padding-right: 4px;
-  overscroll-behavior: contain;
+  will-change: transform;
 }
-.wish-preview-list::-webkit-scrollbar {
-  width: 4px;
+.wish-marquee-track.is-scrolling {
+  animation: wishScrollVertical var(--marquee-duration, 26s) linear infinite;
 }
-.wish-preview-list::-webkit-scrollbar-thumb {
-  background: color-mix(in srgb, var(--gold) 40%, transparent);
-  border-radius: 999px;
+.wish-marquee-track.is-scrolling:hover,
+.wish-marquee-track.is-scrolling:active {
+  animation-play-state: paused;
+}
+@keyframes wishScrollVertical {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
 }
 .wish-card {
   position: relative;

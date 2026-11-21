@@ -172,6 +172,7 @@ extras.innerHTML = `
         <span class="wish-preview-kicker">Sổ Lưu Niệm</span>
         <span class="wish-preview-divider" aria-hidden="true">❦</span>
       </div>
+      <p class="wish-preview-hint" data-wish-hint hidden aria-hidden="true">✦ Chạm để dừng xem lời chúc</p>
       <p class="wish-empty" data-wish-empty>Hãy là người đầu tiên gửi lời chúc phúc tới Huy &amp; Phương ♥</p>
       <div class="wish-preview-list" data-wish-list></div>
     </div>
@@ -716,44 +717,69 @@ function readPreviewWishes() {
   }
 }
 
-// wishes: mới nhất đứng trước.
+function createWishCard(wish) {
+  const card = document.createElement("article");
+  card.className = "wish-card";
+
+  const head = document.createElement("div");
+  head.className = "wish-card-head";
+
+  const authorWrap = document.createElement("div");
+  authorWrap.className = "wish-card-author-wrap";
+
+  const icon = document.createElement("span");
+  icon.className = "wish-card-icon";
+  icon.textContent = "♥";
+
+  const name = document.createElement("strong");
+  name.className = "wish-card-author";
+  name.textContent = wish.name || "Ẩn danh";
+
+  authorWrap.append(icon, name);
+
+  const seal = document.createElement("span");
+  seal.className = "wish-card-seal";
+  seal.textContent = "Hỷ Sự";
+
+  head.append(authorWrap, seal);
+
+  const message = document.createElement("p");
+  message.className = "wish-card-msg";
+  message.textContent = wish.message;
+
+  card.append(head, message);
+  return card;
+}
+
+// wishes: mới nhất đứng trước, có hiệu ứng cuộn trôi êm ái khi có nhiều lời chúc
 function renderWishes(wishes) {
   if (!wishList) return;
   wishList.replaceChildren();
-  if (wishEmpty) wishEmpty.hidden = wishes.length > 0;
+  if (wishEmpty) wishEmpty.hidden = Boolean(wishes && wishes.length > 0);
+  const wishHint = document.querySelector("[data-wish-hint]");
+  if (wishHint) wishHint.hidden = !Boolean(wishes && wishes.length >= 3);
+  if (!wishes || !wishes.length) return;
+
+  const track = document.createElement("div");
+  track.className = "wish-marquee-track";
+
   wishes.forEach((wish) => {
-    const card = document.createElement("article");
-    card.className = "wish-card";
-
-    const head = document.createElement("div");
-    head.className = "wish-card-head";
-
-    const authorWrap = document.createElement("div");
-    authorWrap.className = "wish-card-author-wrap";
-
-    const icon = document.createElement("span");
-    icon.className = "wish-card-icon";
-    icon.textContent = "♥";
-
-    const name = document.createElement("strong");
-    name.className = "wish-card-author";
-    name.textContent = wish.name || "Ẩn danh";
-
-    authorWrap.append(icon, name);
-
-    const seal = document.createElement("span");
-    seal.className = "wish-card-seal";
-    seal.textContent = "Hỷ Sự";
-
-    head.append(authorWrap, seal);
-
-    const message = document.createElement("p");
-    message.className = "wish-card-msg";
-    message.textContent = wish.message;
-
-    card.append(head, message);
-    wishList.append(card);
+    track.append(createWishCard(wish));
   });
+
+  // Nếu có từ 3 lời chúc trở lên: kích hoạt hiệu ứng cuộn trôi tự động mượt mà (chạm vào để dừng đọc)
+  if (wishes.length >= 3) {
+    wishes.forEach((wish) => {
+      const clone = createWishCard(wish);
+      clone.setAttribute("aria-hidden", "true");
+      track.append(clone);
+    });
+    track.classList.add("is-scrolling");
+    const duration = Math.max(20, wishes.length * 6);
+    track.style.setProperty("--marquee-duration", `${duration}s`);
+  }
+
+  wishList.append(track);
 }
 
 anonymousInput?.addEventListener("change", () => {
