@@ -172,7 +172,7 @@ extras.innerHTML = `
         <span class="wish-preview-kicker">Sổ Lưu Niệm</span>
         <span class="wish-preview-divider" aria-hidden="true">❦</span>
       </div>
-      <p class="wish-preview-hint" data-wish-hint hidden aria-hidden="true">✦ Chạm để dừng xem lời chúc</p>
+      <p class="wish-preview-hint" data-wish-hint hidden aria-hidden="true">✦ Chạm, lướt hoặc kéo để xem nhanh lời chúc</p>
       <p class="wish-empty" data-wish-empty>Hãy là người đầu tiên gửi lời chúc phúc tới Huy &amp; Phương ♥</p>
       <div class="wish-preview-list" data-wish-list></div>
     </div>
@@ -769,12 +769,77 @@ function renderWishes(wishes) {
       clone.setAttribute("aria-hidden", "true");
       track.append(clone);
     });
-    track.classList.add("is-scrolling");
-    const duration = Math.max(20, wishes.length * 6);
-    track.style.setProperty("--marquee-duration", `${duration}s`);
   }
 
   wishList.append(track);
+  wishList.scrollTop = 0;
+  if (wishes.length >= 3) startWishAutoScroll(wishes.length);
+}
+
+// Tự cuộn bằng scrollTop thật, để khách chạm/lướt/kéo/lăn chuột xem nhanh;
+// rảnh tay vài giây thì tự chạy tiếp từ chỗ đang xem.
+const WISH_RESUME_DELAY = 2500;
+let wishAutoFrame = 0;
+let wishPausedUntil = 0;
+let wishHovering = false;
+let wishDrag = null;
+
+function startWishAutoScroll(count) {
+  cancelAnimationFrame(wishAutoFrame);
+  wishList.classList.add("is-auto");
+  const track = wishList.firstElementChild;
+  const firstClone = track.children[count];
+  const speed = () => (firstClone.offsetTop - track.firstElementChild.offsetTop) / Math.max(20, count * 6); // px/giây, giữ nhịp cũ
+  let pos = 0;
+  let last = performance.now();
+
+  const step = (now) => {
+    const dt = Math.min(now - last, 100) / 1000;
+    last = now;
+    // Khách vừa tự cuộn (lướt, quán tính, lăn chuột) thì dời mốc chạy lại.
+    if (Math.abs(wishList.scrollTop - pos) > 2) {
+      pos = wishList.scrollTop;
+      wishPausedUntil = Math.max(wishPausedUntil, now + WISH_RESUME_DELAY);
+    }
+    if (!wishHovering && !wishDrag && now >= wishPausedUntil) {
+      const loop = firstClone.offsetTop - track.firstElementChild.offsetTop;
+      pos += speed() * dt;
+      if (pos >= loop) pos -= loop; // nửa sau là bản sao nên nhảy về không bị giật
+      wishList.scrollTop = pos;
+    }
+    wishAutoFrame = requestAnimationFrame(step);
+  };
+  wishAutoFrame = requestAnimationFrame(step);
+}
+
+function pauseWishAuto() {
+  wishPausedUntil = performance.now() + WISH_RESUME_DELAY;
+}
+
+if (wishList) {
+  wishList.addEventListener("touchstart", pauseWishAuto, { passive: true });
+  wishList.addEventListener("touchend", pauseWishAuto, { passive: true });
+  wishList.addEventListener("wheel", pauseWishAuto, { passive: true });
+  wishList.addEventListener("pointerenter", (e) => { if (e.pointerType === "mouse") wishHovering = true; });
+  wishList.addEventListener("pointerleave", (e) => { if (e.pointerType === "mouse") { wishHovering = false; pauseWishAuto(); } });
+  // Máy tính: nhấn giữ chuột rồi kéo (điện thoại đã có cuộn chạm sẵn).
+  wishList.addEventListener("pointerdown", (e) => {
+    if (e.pointerType !== "mouse" || e.button !== 0) return;
+    wishDrag = { y: e.clientY, top: wishList.scrollTop };
+    wishList.classList.add("is-dragging");
+    wishList.setPointerCapture(e.pointerId);
+  });
+  wishList.addEventListener("pointermove", (e) => {
+    if (wishDrag) wishList.scrollTop = wishDrag.top - (e.clientY - wishDrag.y);
+  });
+  const endDrag = () => {
+    if (!wishDrag) return;
+    wishDrag = null;
+    wishList.classList.remove("is-dragging");
+    pauseWishAuto();
+  };
+  wishList.addEventListener("pointerup", endDrag);
+  wishList.addEventListener("pointercancel", endDrag);
 }
 
 anonymousInput?.addEventListener("change", () => {

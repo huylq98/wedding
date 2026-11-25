@@ -1311,31 +1311,27 @@
 .wish-preview-list {
   position: relative;
   max-height: 400px;
-  overflow: hidden;
+  overflow-y: auto;
+  scrollbar-width: none;
   padding: 8px 4px;
   mask-image: linear-gradient(to bottom, transparent 0%, black 7%, black 93%, transparent 100%);
   -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 7%, black 93%, transparent 100%);
+}
+.wish-preview-list::-webkit-scrollbar {
+  display: none;
+}
+.wish-preview-list.is-auto {
+  cursor: grab;
+}
+.wish-preview-list.is-dragging {
+  cursor: grabbing;
+  user-select: none;
 }
 .wish-marquee-track {
   display: flex;
   flex-direction: column;
   gap: 12px;
   will-change: transform;
-}
-.wish-marquee-track.is-scrolling {
-  animation: wishScrollVertical var(--marquee-duration, 26s) linear infinite;
-}
-.wish-marquee-track.is-scrolling:hover,
-.wish-marquee-track.is-scrolling:active {
-  animation-play-state: paused;
-}
-@keyframes wishScrollVertical {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(-50%);
-  }
 }
 .wish-card {
   position: relative;
