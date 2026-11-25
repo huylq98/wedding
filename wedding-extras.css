@@ -1379,6 +1379,7 @@
   font: 400 13.5px/1.65 var(--f-body);
   color: #3f2e2b;
   word-break: break-word;
+  white-space: pre-line;
 }
 .wish-bubble {
   position: fixed;
